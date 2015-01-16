@@ -1,0 +1,809 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		67B510011A69929800BB46B7 /* FeedlyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67B50FF61A69929800BB46B7 /* FeedlyKit.framework */; };
+		67B510111A6992C700BB46B7 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67C9DE481A638E1900B73CCA /* Alamofire.framework */; };
+		67B510121A6992C700BB46B7 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67C9DE491A638E1900B73CCA /* SwiftyJSON.framework */; };
+		67B510241A69943D00BB46B7 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67C9DE531A639C7800B73CCA /* Nimble.framework */; };
+		67B510251A69943D00BB46B7 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67C9DE541A639C7900B73CCA /* Quick.framework */; };
+		67B5102A1A6994AB00BB46B7 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67B510281A6994AB00BB46B7 /* Nimble.framework */; };
+		67B5102B1A6994AB00BB46B7 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67B510291A6994AB00BB46B7 /* Quick.framework */; };
+		67B510311A69963600BB46B7 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67B510261A69949B00BB46B7 /* Alamofire.framework */; };
+		67B510381A69E67D00BB46B7 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67B510371A69E67D00BB46B7 /* SwiftyJSON.framework */; };
+		67B5103B1A69E7EB00BB46B7 /* SwiftyJSON.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 67B510371A69E67D00BB46B7 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		67B5103C1A69E7EB00BB46B7 /* Nimble.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 67B510281A6994AB00BB46B7 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		67B5103D1A69E7EB00BB46B7 /* Quick.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 67B510291A6994AB00BB46B7 /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		67B5103E1A69E7EB00BB46B7 /* Alamofire.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 67B510261A69949B00BB46B7 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		67B510441A69E83A00BB46B7 /* SwiftyJSON.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 67C9DE491A638E1900B73CCA /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		67B510451A69E83A00BB46B7 /* Alamofire.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 67C9DE481A638E1900B73CCA /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		67B510461A69E83A00BB46B7 /* Nimble.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 67C9DE531A639C7800B73CCA /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		67B510471A69E83A00BB46B7 /* Quick.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 67C9DE541A639C7900B73CCA /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		67B510551A69EBA200BB46B7 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B5104E1A69EBA200BB46B7 /* Category.swift */; };
+		67B510561A69EBA200BB46B7 /* CloudAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B5104F1A69EBA200BB46B7 /* CloudAPIClient.swift */; };
+		67B510571A69EBA200BB46B7 /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B510501A69EBA200BB46B7 /* Entry.swift */; };
+		67B510581A69EBA200BB46B7 /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B510511A69EBA200BB46B7 /* Feed.swift */; };
+		67B510591A69EBA200BB46B7 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B510521A69EBA200BB46B7 /* Profile.swift */; };
+		67B5105A1A69EBA200BB46B7 /* Stream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B510531A69EBA200BB46B7 /* Stream.swift */; };
+		67B5105B1A69EBA200BB46B7 /* Subscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B510541A69EBA200BB46B7 /* Subscription.swift */; };
+		67B510671A69F13000BB46B7 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B5104E1A69EBA200BB46B7 /* Category.swift */; };
+		67B510681A69F13000BB46B7 /* CloudAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B5104F1A69EBA200BB46B7 /* CloudAPIClient.swift */; };
+		67B510691A69F13000BB46B7 /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B510501A69EBA200BB46B7 /* Entry.swift */; };
+		67B5106A1A69F13000BB46B7 /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B510511A69EBA200BB46B7 /* Feed.swift */; };
+		67B5106B1A69F13000BB46B7 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B510521A69EBA200BB46B7 /* Profile.swift */; };
+		67B5106C1A69F13000BB46B7 /* Stream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B510531A69EBA200BB46B7 /* Stream.swift */; };
+		67B5106D1A69F13000BB46B7 /* Subscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B510541A69EBA200BB46B7 /* Subscription.swift */; };
+		67B5106E1A69F13900BB46B7 /* FeedlyKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B510481A69EB5A00BB46B7 /* FeedlyKitTests.swift */; };
+		67B510711A69F5D500BB46B7 /* ProfileSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B5104A1A69EB5A00BB46B7 /* ProfileSpec.swift */; };
+		67B510721A69F5E000BB46B7 /* ProfileSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B5104A1A69EB5A00BB46B7 /* ProfileSpec.swift */; };
+		67B510741A69F68900BB46B7 /* CloudAPISpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B510731A69F68900BB46B7 /* CloudAPISpec.swift */; };
+		67B510761A69F7DB00BB46B7 /* CloudAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B5104F1A69EBA200BB46B7 /* CloudAPIClient.swift */; };
+		67B510771A69F89D00BB46B7 /* FeedlyKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B510481A69EB5A00BB46B7 /* FeedlyKitTests.swift */; };
+		67F71BA31A698B9800D8A6BC /* FeedlyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67F71B981A698B9800D8A6BC /* FeedlyKit.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		67B510021A69929800BB46B7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 67C9DE191A637F5E00B73CCA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 67B50FF51A69929800BB46B7;
+			remoteInfo = "FeedlyKit-iOS";
+		};
+		67F71BA41A698B9800D8A6BC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 67C9DE191A637F5E00B73CCA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 67F71B971A698B9800D8A6BC;
+			remoteInfo = "FeedlyKit-Mac";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		67B5103A1A69E7D100BB46B7 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				67B5103B1A69E7EB00BB46B7 /* SwiftyJSON.framework in CopyFiles */,
+				67B5103C1A69E7EB00BB46B7 /* Nimble.framework in CopyFiles */,
+				67B5103D1A69E7EB00BB46B7 /* Quick.framework in CopyFiles */,
+				67B5103E1A69E7EB00BB46B7 /* Alamofire.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		67B510431A69E83100BB46B7 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				67B510441A69E83A00BB46B7 /* SwiftyJSON.framework in CopyFiles */,
+				67B510451A69E83A00BB46B7 /* Alamofire.framework in CopyFiles */,
+				67B510461A69E83A00BB46B7 /* Nimble.framework in CopyFiles */,
+				67B510471A69E83A00BB46B7 /* Quick.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		67B50FF61A69929800BB46B7 /* FeedlyKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FeedlyKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		67B510001A69929800BB46B7 /* FeedlyKit-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "FeedlyKit-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		67B510261A69949B00BB46B7 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/Mac/Alamofire.framework; sourceTree = "<group>"; };
+		67B510281A6994AB00BB46B7 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/Mac/Nimble.framework; sourceTree = "<group>"; };
+		67B510291A6994AB00BB46B7 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/Mac/Quick.framework; sourceTree = "<group>"; };
+		67B510371A69E67D00BB46B7 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/Mac/SwiftyJSON.framework; sourceTree = "<group>"; };
+		67B510481A69EB5A00BB46B7 /* FeedlyKitTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedlyKitTests.swift; path = Spec/FeedlyKitTests.swift; sourceTree = "<group>"; };
+		67B5104A1A69EB5A00BB46B7 /* ProfileSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileSpec.swift; path = Spec/ProfileSpec.swift; sourceTree = "<group>"; };
+		67B5104E1A69EBA200BB46B7 /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Category.swift; path = Source/Category.swift; sourceTree = SOURCE_ROOT; };
+		67B5104F1A69EBA200BB46B7 /* CloudAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CloudAPIClient.swift; path = Source/CloudAPIClient.swift; sourceTree = SOURCE_ROOT; };
+		67B510501A69EBA200BB46B7 /* Entry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Entry.swift; path = Source/Entry.swift; sourceTree = SOURCE_ROOT; };
+		67B510511A69EBA200BB46B7 /* Feed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Feed.swift; path = Source/Feed.swift; sourceTree = SOURCE_ROOT; };
+		67B510521A69EBA200BB46B7 /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Profile.swift; path = Source/Profile.swift; sourceTree = SOURCE_ROOT; };
+		67B510531A69EBA200BB46B7 /* Stream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Stream.swift; path = Source/Stream.swift; sourceTree = SOURCE_ROOT; };
+		67B510541A69EBA200BB46B7 /* Subscription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Subscription.swift; path = Source/Subscription.swift; sourceTree = SOURCE_ROOT; };
+		67B510731A69F68900BB46B7 /* CloudAPISpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudAPISpec.swift; sourceTree = "<group>"; };
+		67C9DE481A638E1900B73CCA /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		67C9DE491A638E1900B73CCA /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
+		67C9DE531A639C7800B73CCA /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
+		67C9DE541A639C7900B73CCA /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
+		67F71B981A698B9800D8A6BC /* FeedlyKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FeedlyKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		67F71BA21A698B9800D8A6BC /* FeedlyKit-MacTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "FeedlyKit-MacTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		67B50FF21A69929800BB46B7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				67B510111A6992C700BB46B7 /* Alamofire.framework in Frameworks */,
+				67B510121A6992C700BB46B7 /* SwiftyJSON.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		67B50FFD1A69929800BB46B7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				67B510011A69929800BB46B7 /* FeedlyKit.framework in Frameworks */,
+				67B510241A69943D00BB46B7 /* Nimble.framework in Frameworks */,
+				67B510251A69943D00BB46B7 /* Quick.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		67F71B941A698B9800D8A6BC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				67B510381A69E67D00BB46B7 /* SwiftyJSON.framework in Frameworks */,
+				67B510311A69963600BB46B7 /* Alamofire.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		67F71B9F1A698B9800D8A6BC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				67F71BA31A698B9800D8A6BC /* FeedlyKit.framework in Frameworks */,
+				67B5102A1A6994AB00BB46B7 /* Nimble.framework in Frameworks */,
+				67B5102B1A6994AB00BB46B7 /* Quick.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		67B5102C1A6994C600BB46B7 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				67C9DE491A638E1900B73CCA /* SwiftyJSON.framework */,
+				67C9DE481A638E1900B73CCA /* Alamofire.framework */,
+				67C9DE531A639C7800B73CCA /* Nimble.framework */,
+				67C9DE541A639C7900B73CCA /* Quick.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		67B5102D1A6994CF00BB46B7 /* Mac */ = {
+			isa = PBXGroup;
+			children = (
+				67B510371A69E67D00BB46B7 /* SwiftyJSON.framework */,
+				67B510281A6994AB00BB46B7 /* Nimble.framework */,
+				67B510291A6994AB00BB46B7 /* Quick.framework */,
+				67B510261A69949B00BB46B7 /* Alamofire.framework */,
+			);
+			name = Mac;
+			sourceTree = "<group>";
+		};
+		67B5102F1A6995C400BB46B7 /* Spec */ = {
+			isa = PBXGroup;
+			children = (
+				67B510481A69EB5A00BB46B7 /* FeedlyKitTests.swift */,
+				67B5104A1A69EB5A00BB46B7 /* ProfileSpec.swift */,
+				67B510731A69F68900BB46B7 /* CloudAPISpec.swift */,
+			);
+			name = Spec;
+			sourceTree = "<group>";
+		};
+		67B510361A69DEDC00BB46B7 /* Fixture */ = {
+			isa = PBXGroup;
+			children = (
+				67B5105D1A69EE2500BB46B7 /* Response */,
+				67B5105C1A69EE1B00BB46B7 /* Request */,
+			);
+			name = Fixture;
+			sourceTree = "<group>";
+		};
+		67B5105C1A69EE1B00BB46B7 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Request;
+			sourceTree = "<group>";
+		};
+		67B5105D1A69EE2500BB46B7 /* Response */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Response;
+			sourceTree = "<group>";
+		};
+		67C9DE181A637F5E00B73CCA = {
+			isa = PBXGroup;
+			children = (
+				67B510361A69DEDC00BB46B7 /* Fixture */,
+				67F71BB11A698DD800D8A6BC /* Source */,
+				67B5102F1A6995C400BB46B7 /* Spec */,
+				67C9DE4C1A638E3C00B73CCA /* Frameworks */,
+				67C9DE231A637F5E00B73CCA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		67C9DE231A637F5E00B73CCA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				67F71B981A698B9800D8A6BC /* FeedlyKit.framework */,
+				67F71BA21A698B9800D8A6BC /* FeedlyKit-MacTests.xctest */,
+				67B50FF61A69929800BB46B7 /* FeedlyKit.framework */,
+				67B510001A69929800BB46B7 /* FeedlyKit-iOSTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		67C9DE4C1A638E3C00B73CCA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				67B5102D1A6994CF00BB46B7 /* Mac */,
+				67B5102C1A6994C600BB46B7 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		67F71BB11A698DD800D8A6BC /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				67B5104E1A69EBA200BB46B7 /* Category.swift */,
+				67B5104F1A69EBA200BB46B7 /* CloudAPIClient.swift */,
+				67B510501A69EBA200BB46B7 /* Entry.swift */,
+				67B510511A69EBA200BB46B7 /* Feed.swift */,
+				67B510521A69EBA200BB46B7 /* Profile.swift */,
+				67B510531A69EBA200BB46B7 /* Stream.swift */,
+				67B510541A69EBA200BB46B7 /* Subscription.swift */,
+			);
+			name = Source;
+			path = FeedlyKit;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		67B50FF31A69929800BB46B7 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		67F71B951A698B9800D8A6BC /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		67B50FF51A69929800BB46B7 /* FeedlyKit-iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 67B510091A69929800BB46B7 /* Build configuration list for PBXNativeTarget "FeedlyKit-iOS" */;
+			buildPhases = (
+				67B50FF11A69929800BB46B7 /* Sources */,
+				67B50FF21A69929800BB46B7 /* Frameworks */,
+				67B50FF31A69929800BB46B7 /* Headers */,
+				67B50FF41A69929800BB46B7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "FeedlyKit-iOS";
+			productName = "FeedlyKit-iOS";
+			productReference = 67B50FF61A69929800BB46B7 /* FeedlyKit.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		67B50FFF1A69929800BB46B7 /* FeedlyKit-iOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 67B5100C1A69929800BB46B7 /* Build configuration list for PBXNativeTarget "FeedlyKit-iOSTests" */;
+			buildPhases = (
+				67B50FFC1A69929800BB46B7 /* Sources */,
+				67B50FFD1A69929800BB46B7 /* Frameworks */,
+				67B50FFE1A69929800BB46B7 /* Resources */,
+				67B510431A69E83100BB46B7 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				67B510031A69929800BB46B7 /* PBXTargetDependency */,
+			);
+			name = "FeedlyKit-iOSTests";
+			productName = "FeedlyKit-iOSTests";
+			productReference = 67B510001A69929800BB46B7 /* FeedlyKit-iOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		67F71B971A698B9800D8A6BC /* FeedlyKit-Mac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 67F71BAB1A698B9800D8A6BC /* Build configuration list for PBXNativeTarget "FeedlyKit-Mac" */;
+			buildPhases = (
+				67F71B931A698B9800D8A6BC /* Sources */,
+				67F71B941A698B9800D8A6BC /* Frameworks */,
+				67F71B951A698B9800D8A6BC /* Headers */,
+				67F71B961A698B9800D8A6BC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "FeedlyKit-Mac";
+			productName = "FeedlyKit-Mac";
+			productReference = 67F71B981A698B9800D8A6BC /* FeedlyKit.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		67F71BA11A698B9800D8A6BC /* FeedlyKit-MacTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 67F71BAE1A698B9800D8A6BC /* Build configuration list for PBXNativeTarget "FeedlyKit-MacTests" */;
+			buildPhases = (
+				67F71B9E1A698B9800D8A6BC /* Sources */,
+				67F71B9F1A698B9800D8A6BC /* Frameworks */,
+				67F71BA01A698B9800D8A6BC /* Resources */,
+				67B5103A1A69E7D100BB46B7 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				67F71BA51A698B9800D8A6BC /* PBXTargetDependency */,
+			);
+			name = "FeedlyKit-MacTests";
+			productName = "FeedlyKit-MacTests";
+			productReference = 67F71BA21A698B9800D8A6BC /* FeedlyKit-MacTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		67C9DE191A637F5E00B73CCA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "Hiroki Kumamoto";
+				TargetAttributes = {
+					67B50FF51A69929800BB46B7 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					67B50FFF1A69929800BB46B7 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					67F71B971A698B9800D8A6BC = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					67F71BA11A698B9800D8A6BC = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+				};
+			};
+			buildConfigurationList = 67C9DE1C1A637F5E00B73CCA /* Build configuration list for PBXProject "FeedlyKit" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 67C9DE181A637F5E00B73CCA;
+			productRefGroup = 67C9DE231A637F5E00B73CCA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				67F71B971A698B9800D8A6BC /* FeedlyKit-Mac */,
+				67F71BA11A698B9800D8A6BC /* FeedlyKit-MacTests */,
+				67B50FF51A69929800BB46B7 /* FeedlyKit-iOS */,
+				67B50FFF1A69929800BB46B7 /* FeedlyKit-iOSTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		67B50FF41A69929800BB46B7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		67B50FFE1A69929800BB46B7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		67F71B961A698B9800D8A6BC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		67F71BA01A698B9800D8A6BC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		67B50FF11A69929800BB46B7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				67B510671A69F13000BB46B7 /* Category.swift in Sources */,
+				67B510681A69F13000BB46B7 /* CloudAPIClient.swift in Sources */,
+				67B510691A69F13000BB46B7 /* Entry.swift in Sources */,
+				67B5106A1A69F13000BB46B7 /* Feed.swift in Sources */,
+				67B5106B1A69F13000BB46B7 /* Profile.swift in Sources */,
+				67B5106C1A69F13000BB46B7 /* Stream.swift in Sources */,
+				67B5106D1A69F13000BB46B7 /* Subscription.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		67B50FFC1A69929800BB46B7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				67B510761A69F7DB00BB46B7 /* CloudAPIClient.swift in Sources */,
+				67B510711A69F5D500BB46B7 /* ProfileSpec.swift in Sources */,
+				67B5106E1A69F13900BB46B7 /* FeedlyKitTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		67F71B931A698B9800D8A6BC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				67B5105B1A69EBA200BB46B7 /* Subscription.swift in Sources */,
+				67B510591A69EBA200BB46B7 /* Profile.swift in Sources */,
+				67B5105A1A69EBA200BB46B7 /* Stream.swift in Sources */,
+				67B510571A69EBA200BB46B7 /* Entry.swift in Sources */,
+				67B510581A69EBA200BB46B7 /* Feed.swift in Sources */,
+				67B510561A69EBA200BB46B7 /* CloudAPIClient.swift in Sources */,
+				67B510551A69EBA200BB46B7 /* Category.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		67F71B9E1A698B9800D8A6BC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				67B510771A69F89D00BB46B7 /* FeedlyKitTests.swift in Sources */,
+				67B510721A69F5E000BB46B7 /* ProfileSpec.swift in Sources */,
+				67B510741A69F68900BB46B7 /* CloudAPISpec.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		67B510031A69929800BB46B7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 67B50FF51A69929800BB46B7 /* FeedlyKit-iOS */;
+			targetProxy = 67B510021A69929800BB46B7 /* PBXContainerItemProxy */;
+		};
+		67F71BA51A698B9800D8A6BC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 67F71B971A698B9800D8A6BC /* FeedlyKit-Mac */;
+			targetProxy = 67F71BA41A698B9800D8A6BC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		67B5100A1A69929800BB46B7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = Source/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(PROJECT_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		67B5100B1A69929800BB46B7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = Source/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(PROJECT_NAME)";
+				SKIP_INSTALL = YES;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		67B5100D1A69929800BB46B7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = Spec/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		67B5100E1A69929800BB46B7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = Spec/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		67C9DE361A637F5E00B73CCA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		67C9DE371A637F5E00B73CCA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = NO;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		67F71BAC1A698B9800D8A6BC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
+				FRAMEWORK_VERSION = A;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = Source/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_NAME = "$(PROJECT_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		67F71BAD1A698B9800D8A6BC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = Source/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_NAME = "$(PROJECT_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		67F71BAF1A698B9800D8A6BC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = Spec/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					XCTest,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		67F71BB01A698B9800D8A6BC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
+				INFOPLIST_FILE = Spec/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					XCTest,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		67B510091A69929800BB46B7 /* Build configuration list for PBXNativeTarget "FeedlyKit-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				67B5100A1A69929800BB46B7 /* Debug */,
+				67B5100B1A69929800BB46B7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		67B5100C1A69929800BB46B7 /* Build configuration list for PBXNativeTarget "FeedlyKit-iOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				67B5100D1A69929800BB46B7 /* Debug */,
+				67B5100E1A69929800BB46B7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		67C9DE1C1A637F5E00B73CCA /* Build configuration list for PBXProject "FeedlyKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				67C9DE361A637F5E00B73CCA /* Debug */,
+				67C9DE371A637F5E00B73CCA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		67F71BAB1A698B9800D8A6BC /* Build configuration list for PBXNativeTarget "FeedlyKit-Mac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				67F71BAC1A698B9800D8A6BC /* Debug */,
+				67F71BAD1A698B9800D8A6BC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		67F71BAE1A698B9800D8A6BC /* Build configuration list for PBXNativeTarget "FeedlyKit-MacTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				67F71BAF1A698B9800D8A6BC /* Debug */,
+				67F71BB01A698B9800D8A6BC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 67C9DE191A637F5E00B73CCA /* Project object */;
+}
