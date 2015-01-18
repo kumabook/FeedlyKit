@@ -9,18 +9,19 @@
 import SwiftyJSON
 
 public class Profile: NSObject, NSCoding {
-    let id:         String
-    let email:      String?
-    let reader:     String?
-    let gender:     String?
-    let wave:       String?
-    let google:     String?
-    let facebook:   String?
-    let familyName: String?
-    let picture:    String?
-    let twitter:    String?
-    let givenName:  String?
-    let locale:     String?
+    public let id:         String
+    public let email:      String?
+    public let reader:     String?
+    public let gender:     String?
+    public let wave:       String?
+    public let google:     String?
+    public let facebook:   String?
+    public let familyName: String?
+    public let picture:    String?
+    public let twitter:    String?
+    public let givenName:  String?
+    public let locale:     String?
+
     public init (json: JSON) {
         id         = json["id"].string!
         email      = json["email"].string?
