@@ -8,11 +8,11 @@
 
 import SwiftyJSON
 
-class Category {
-    let id:    String
-    let label: String
+public class Category {
+    public let id:    String
+    public let label: String
     init(json: JSON) {
-        id    = json["id"].string!
-        label = json["label"].string!
+        id    = json["id"].stringValue
+        label = json["label"].stringValue
     }
 }

@@ -7,12 +7,11 @@
 //
 
 import Foundation
-//import SwiftyJSON
 
 public class SpecHelper {
     public class func fixtureJSONObject(#fixtureNamed: String) -> AnyObject? {
         let bundle   = NSBundle(forClass: SpecHelper.self)
-        let filePath = bundle.pathForResource("profile", ofType: "json")
+        let filePath = bundle.pathForResource(fixtureNamed, ofType: "json")
         let data     = NSData(contentsOfFile: filePath!)
         let jsonObject : AnyObject? = NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers, error: nil)
         return jsonObject?

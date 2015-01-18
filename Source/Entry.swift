@@ -8,41 +8,53 @@
 
 import SwiftyJSON
 
-class Entry: NSObject {
-    let id: String
-    let published: Int
-//    let updated: Int
-    let crawled: Int
-    let unread: Bool
-//    let label: String
-//    let type: String
-//    let href: String
-//    let engagement: Int
-    let author: String
-    let title: String
-    let visualUrl: String?
-//    let website: String
-    //    let tags: String
-    //    let categories: String
-    let alternate: String?
-    //    let origin
-    //    let content
+public class Entry: NSObject {
+    public let id:              String
+    public let title:           String?
+    public let content:         Content?
+    public let summary:         String?
+    public let author:          String?
+    public let crawled:         Int
+    public let recrawled:       Int
+    public let published:       Int
+    public let updated:         Int?
+    public let alternate:       [Link]?
+    public let origin:          Origin?
+    public let keywords:        [String]?
+    public let visual:          Visual?
+    public let unread:          Bool
+    public let categories:      [Category]
+    public let engagement:      Int?
+    public let actionTimestamp: Int?
+    public let enclosure:       [Link]?
+    public let fingerprint:     String?
+    public let originId:        String?
+    public let sid:             String?
 
-    init(json:JSON) {
-        self.id         = json["id"].string!
-        self.published  = json["published"].int!
-//        self.updated    = json["updated"].int!
-        self.crawled    = json["crawled"].int!
-        self.unread     = json["unread"].bool!
-//        self.label      = json["label"].string!
-//        self.type       = json["type"].string!
-//        self.href       = json["href"].string!
-//        self.engagement = json["engagement"].int!
-        self.author     = json["author"].string!
-        self.title      = json["title"].string!
-//        self.website    = json["website"].string!
-        //        self.categories = json["categories"].string!
-        self.visualUrl  = json["visual"]["url"].string
-        self.alternate  = json["alternate"][0]["href"].string
+    public init(json: JSON) {
+        self.id              = json["id"].stringValue
+        self.title           = json["title"].string
+        self.content         = Content(json: json["content"])
+        self.summary         = json["summary"].string
+        self.author          = json["author"].string
+        self.crawled         = json["crawled"].intValue
+        self.recrawled       = json["recrawled"].intValue
+        self.published       = json["published"].intValue
+        self.updated         = json["updated"].int
+        self.origin          = Origin(json: json["origin"])
+        self.keywords        = json["keywords"].array?.map({ $0.string! })
+        self.visual          = Visual(json: json["dictionary"])
+        self.unread          = json["unread"].boolValue
+        self.categories      = json["categories"].arrayValue.map({ Category(json: $0) })
+        self.engagement      = json["engagement"].int
+        self.actionTimestamp = json["actionTimestamp"].int
+        self.fingerprint     = json["fingerprint"].string
+        self.originId        = json["originId"].string
+        if let alternates = json["alternate"].array? {
+            self.alternate   = alternates.map({ Link(json: $0) })
+        }
+        if let enclosures = json["enclosure"].array {
+            self.enclosure   = enclosures.map({ Link(json: $0) })
+        }
     }
 }

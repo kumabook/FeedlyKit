@@ -8,21 +8,20 @@
 
 import SwiftyJSON
 
-class Feed: Stream {
-    let id:          String
-    let subscribers: Int
-    let title:       String
-    let description: String?
-    let language:    String?
-    let velocity:    Double?
-    let website:     String?
-    let topics:      [String]?
-    let status:      String?
+public class Feed: Stream {
+    public let id:          String
+    public let subscribers: Int
+    public let title:       String
+    public let description: String?
+    public let language:    String?
+    public let velocity:    Float?
+    public let website:     String?
+    public let topics:      [String]?
+    public let status:      String?
+    public let curated:     Bool?
+    public let featured:    Bool?
 
-    let curated:     Bool?
-    let featured:    Bool?
-
-    init(json: JSON) {
+    public init(json: JSON) {
         if let fid = json["id"].string {
             id      = fid
         } else if let fid = json["feedId"].string {
@@ -30,16 +29,16 @@ class Feed: Stream {
         } else {
             id      = "unknownId"
         }
-        subscribers = json["subscribers"].int!
-        title       = json["title"].string!
-        description = json["description"].string?
-        language    = json["language"].string?
-        velocity    = json["velocity"].double
-        website     = json["website"].string?
-        topics      = json["topics"].array?.map({$0.string!})
+        subscribers = json["subscribers"].intValue
+        title       = json["title"].stringValue
+        description = json["description"].string
+        language    = json["language"].string
+        velocity    = json["velocity"].float
+        website     = json["website"].string
+        topics      = json["topics"].array?.map({ $0.stringValue })
         status      = json["status"].string
 
-        curated     = json["curated"].bool?
-        featured    = json["featured"].bool?
+        curated     = json["curated"].bool
+        featured    = json["featured"].bool
     }
 }

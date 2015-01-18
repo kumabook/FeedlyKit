@@ -33,10 +33,21 @@
 		674A5B2C1A6A3F4B00F7B534 /* profile.json in Resources */ = {isa = PBXBuildFile; fileRef = 674A5B081A6A3F1100F7B534 /* profile.json */; };
 		674A5B2D1A6A3F4B00F7B534 /* undo_mark_as_read.json in Resources */ = {isa = PBXBuildFile; fileRef = 674A5B091A6A3F1100F7B534 /* undo_mark_as_read.json */; };
 		6796477F1A6B50F500D133E6 /* Evernote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6796477A1A6B50F500D133E6 /* Evernote.swift */; };
-		679647801A6B50F500D133E6 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6796477B1A6B50F500D133E6 /* Info.plist */; };
 		679647811A6B50F500D133E6 /* Microsoft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6796477C1A6B50F500D133E6 /* Microsoft.swift */; };
 		679647821A6B50F500D133E6 /* Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6796477D1A6B50F500D133E6 /* Topic.swift */; };
 		679647831A6B50F500D133E6 /* Twitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6796477E1A6B50F500D133E6 /* Twitter.swift */; };
+		679CC11F1A6B9B96003846D8 /* EntrySpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679CC11E1A6B9B96003846D8 /* EntrySpec.swift */; };
+		679CC1201A6B9B96003846D8 /* EntrySpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679CC11E1A6B9B96003846D8 /* EntrySpec.swift */; };
+		679CC1221A6BA03D003846D8 /* Link.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679CC1211A6BA03D003846D8 /* Link.swift */; };
+		679CC1231A6BA03D003846D8 /* Link.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679CC1211A6BA03D003846D8 /* Link.swift */; };
+		679CC1251A6BA2F2003846D8 /* Visual.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679CC1241A6BA2F2003846D8 /* Visual.swift */; };
+		679CC1261A6BA2F2003846D8 /* Visual.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679CC1241A6BA2F2003846D8 /* Visual.swift */; };
+		679CC12B1A6BCF7B003846D8 /* Origin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679CC12A1A6BCF7B003846D8 /* Origin.swift */; };
+		679CC12C1A6BCF7B003846D8 /* Origin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679CC12A1A6BCF7B003846D8 /* Origin.swift */; };
+		679CC12E1A6BD2D6003846D8 /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679CC12D1A6BD2D6003846D8 /* Content.swift */; };
+		679CC12F1A6BD2D6003846D8 /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679CC12D1A6BD2D6003846D8 /* Content.swift */; };
+		679CC1341A6BD9BB003846D8 /* FeedSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679CC1331A6BD9BB003846D8 /* FeedSpec.swift */; };
+		679CC1351A6BD9BB003846D8 /* FeedSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679CC1331A6BD9BB003846D8 /* FeedSpec.swift */; };
 		67B510011A69929800BB46B7 /* FeedlyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67B50FF61A69929800BB46B7 /* FeedlyKit.framework */; };
 		67B510111A6992C700BB46B7 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67C9DE481A638E1900B73CCA /* Alamofire.framework */; };
 		67B510121A6992C700BB46B7 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67C9DE491A638E1900B73CCA /* SwiftyJSON.framework */; };
@@ -146,10 +157,16 @@
 		674A5B081A6A3F1100F7B534 /* profile.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = profile.json; path = Fixture/Response/profile.json; sourceTree = "<group>"; };
 		674A5B091A6A3F1100F7B534 /* undo_mark_as_read.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = undo_mark_as_read.json; path = Fixture/Response/undo_mark_as_read.json; sourceTree = "<group>"; };
 		6796477A1A6B50F500D133E6 /* Evernote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Evernote.swift; path = Source/Evernote.swift; sourceTree = SOURCE_ROOT; };
-		6796477B1A6B50F500D133E6 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Source/Info.plist; sourceTree = SOURCE_ROOT; };
 		6796477C1A6B50F500D133E6 /* Microsoft.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Microsoft.swift; path = Source/Microsoft.swift; sourceTree = SOURCE_ROOT; };
 		6796477D1A6B50F500D133E6 /* Topic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Topic.swift; path = Source/Topic.swift; sourceTree = SOURCE_ROOT; };
 		6796477E1A6B50F500D133E6 /* Twitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Twitter.swift; path = Source/Twitter.swift; sourceTree = SOURCE_ROOT; };
+		679CC11E1A6B9B96003846D8 /* EntrySpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntrySpec.swift; sourceTree = "<group>"; };
+		679CC1211A6BA03D003846D8 /* Link.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Link.swift; sourceTree = SOURCE_ROOT; };
+		679CC1241A6BA2F2003846D8 /* Visual.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Visual.swift; sourceTree = SOURCE_ROOT; };
+		679CC1271A6BA91F003846D8 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		679CC12A1A6BCF7B003846D8 /* Origin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Origin.swift; path = Source/Origin.swift; sourceTree = SOURCE_ROOT; };
+		679CC12D1A6BD2D6003846D8 /* Content.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Content.swift; path = Source/Content.swift; sourceTree = SOURCE_ROOT; };
+		679CC1331A6BD9BB003846D8 /* FeedSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedSpec.swift; path = Spec/FeedSpec.swift; sourceTree = "<group>"; };
 		67B50FF61A69929800BB46B7 /* FeedlyKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FeedlyKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		67B510001A69929800BB46B7 /* FeedlyKit-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "FeedlyKit-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		67B510261A69949B00BB46B7 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/Mac/Alamofire.framework; sourceTree = "<group>"; };
@@ -250,6 +267,8 @@
 			children = (
 				67F606A61A6ACDBA002DEAC1 /* SpecHelper.swift */,
 				67F6069B1A6AB868002DEAC1 /* ProfileSpec.swift */,
+				679CC11E1A6B9B96003846D8 /* EntrySpec.swift */,
+				679CC1331A6BD9BB003846D8 /* FeedSpec.swift */,
 				67B510731A69F68900BB46B7 /* CloudAPISpec.swift */,
 			);
 			name = Spec;
@@ -294,6 +313,7 @@
 		67C9DE181A637F5E00B73CCA = {
 			isa = PBXGroup;
 			children = (
+				679CC1271A6BA91F003846D8 /* Info.plist */,
 				67F71BB11A698DD800D8A6BC /* Source */,
 				67B5102F1A6995C400BB46B7 /* Spec */,
 				67B510361A69DEDC00BB46B7 /* Fixture */,
@@ -326,7 +346,6 @@
 			isa = PBXGroup;
 			children = (
 				6796477A1A6B50F500D133E6 /* Evernote.swift */,
-				6796477B1A6B50F500D133E6 /* Info.plist */,
 				6796477C1A6B50F500D133E6 /* Microsoft.swift */,
 				6796477E1A6B50F500D133E6 /* Twitter.swift */,
 			);
@@ -337,8 +356,8 @@
 			isa = PBXGroup;
 			children = (
 				67F606D41A6B4DB4002DEAC1 /* OuthAccount */,
-				67B5104E1A69EBA200BB46B7 /* Category.swift */,
 				67B5104F1A69EBA200BB46B7 /* CloudAPIClient.swift */,
+				67B5104E1A69EBA200BB46B7 /* Category.swift */,
 				67B510501A69EBA200BB46B7 /* Entry.swift */,
 				67B510511A69EBA200BB46B7 /* Feed.swift */,
 				67B510521A69EBA200BB46B7 /* Profile.swift */,
@@ -348,6 +367,10 @@
 				67F606C21A6B4B2F002DEAC1 /* Tag.swift */,
 				6796477D1A6B50F500D133E6 /* Topic.swift */,
 				67213E9B1A6B51300074471B /* Marker.swift */,
+				679CC1211A6BA03D003846D8 /* Link.swift */,
+				679CC1241A6BA2F2003846D8 /* Visual.swift */,
+				679CC12A1A6BCF7B003846D8 /* Origin.swift */,
+				679CC12D1A6BD2D6003846D8 /* Content.swift */,
 			);
 			name = Source;
 			path = FeedlyKit;
@@ -521,7 +544,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				679647801A6B50F500D133E6 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -557,9 +579,13 @@
 				67B510691A69F13000BB46B7 /* Entry.swift in Sources */,
 				67B5106A1A69F13000BB46B7 /* Feed.swift in Sources */,
 				67B5106B1A69F13000BB46B7 /* Profile.swift in Sources */,
+				679CC1261A6BA2F2003846D8 /* Visual.swift in Sources */,
+				679CC12F1A6BD2D6003846D8 /* Content.swift in Sources */,
 				67B5106C1A69F13000BB46B7 /* Stream.swift in Sources */,
 				67B5106D1A69F13000BB46B7 /* Subscription.swift in Sources */,
 				67F606BE1A6B49A6002DEAC1 /* Preferences.swift in Sources */,
+				679CC1231A6BA03D003846D8 /* Link.swift in Sources */,
+				679CC12C1A6BCF7B003846D8 /* Origin.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -569,7 +595,9 @@
 			files = (
 				67F606A21A6AB9A3002DEAC1 /* ProfileSpec.swift in Sources */,
 				67F606A31A6AB9A3002DEAC1 /* CloudAPISpec.swift in Sources */,
+				679CC1351A6BD9BB003846D8 /* FeedSpec.swift in Sources */,
 				67F606A81A6ACDBA002DEAC1 /* SpecHelper.swift in Sources */,
+				679CC1201A6B9B96003846D8 /* EntrySpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -582,15 +610,19 @@
 				67B510591A69EBA200BB46B7 /* Profile.swift in Sources */,
 				67F606C31A6B4B2F002DEAC1 /* Tag.swift in Sources */,
 				67B5105A1A69EBA200BB46B7 /* Stream.swift in Sources */,
+				679CC12E1A6BD2D6003846D8 /* Content.swift in Sources */,
 				679647831A6B50F500D133E6 /* Twitter.swift in Sources */,
 				67B510571A69EBA200BB46B7 /* Entry.swift in Sources */,
 				679647811A6B50F500D133E6 /* Microsoft.swift in Sources */,
 				67B510581A69EBA200BB46B7 /* Feed.swift in Sources */,
+				679CC1221A6BA03D003846D8 /* Link.swift in Sources */,
 				67B510561A69EBA200BB46B7 /* CloudAPIClient.swift in Sources */,
+				679CC1251A6BA2F2003846D8 /* Visual.swift in Sources */,
 				67B510551A69EBA200BB46B7 /* Category.swift in Sources */,
 				67F606BD1A6B49A6002DEAC1 /* Preferences.swift in Sources */,
 				679647821A6B50F500D133E6 /* Topic.swift in Sources */,
 				67213E9C1A6B51300074471B /* Marker.swift in Sources */,
+				679CC12B1A6BCF7B003846D8 /* Origin.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -600,7 +632,9 @@
 			files = (
 				67F606A01A6AB978002DEAC1 /* ProfileSpec.swift in Sources */,
 				67F606A71A6ACDBA002DEAC1 /* SpecHelper.swift in Sources */,
+				679CC1341A6BD9BB003846D8 /* FeedSpec.swift in Sources */,
 				67B510741A69F68900BB46B7 /* CloudAPISpec.swift in Sources */,
+				679CC11F1A6B9B96003846D8 /* EntrySpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -635,7 +669,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = Source/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(PROJECT_NAME)";
@@ -654,7 +688,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = Source/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(PROJECT_NAME)";
@@ -798,7 +832,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = Source/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
@@ -822,7 +856,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = Source/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;

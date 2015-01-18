@@ -6,4 +6,14 @@
 //  Copyright (c) 2015 Hiroki Kumamoto. All rights reserved.
 //
 
-import Foundation
+import SwiftyJSON
+
+public class Tag {
+    public let id:    String
+    public let label: String
+    
+    public init(json: JSON) {
+        self.id    = json["id"].stringValue
+        self.label = json["label"].stringValue
+    }
+}

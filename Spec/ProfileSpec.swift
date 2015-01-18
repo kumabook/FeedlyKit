@@ -16,7 +16,7 @@ class ProfileSpec: QuickSpec {
     override func spec() {
         describe("a profile") {
             it ("should be constructed with json") {
-                let json = JSON(SpecHelper.fixtureJSONObject(fixtureNamed: "profile.json")!)
+                let json = JSON(SpecHelper.fixtureJSONObject(fixtureNamed: "profile")!)
                 var profile: Profile = Profile(json: json)
                 expect(profile).notTo(beNil())
 

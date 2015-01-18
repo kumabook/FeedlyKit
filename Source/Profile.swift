@@ -23,18 +23,18 @@ public class Profile: NSObject, NSCoding {
     public let locale:     String?
 
     public init (json: JSON) {
-        id         = json["id"].string!
-        email      = json["email"].string?
-        reader     = json["reader"].string?
-        gender     = json["gender"].string?
-        wave       = json["wave"].string?
-        google     = json["google"].string?
-        facebook   = json["facebook"].string?
-        familyName = json["familyName"].string?
-        picture    = json["picture"].string?
-        twitter    = json["twitter"].string?
-        givenName  = json["givenName"].string?
-        locale     = json["locale"].string?
+        id         = json["id"].stringValue
+        email      = json["email"].string
+        reader     = json["reader"].string
+        gender     = json["gender"].string
+        wave       = json["wave"].string
+        google     = json["google"].string
+        facebook   = json["facebook"].string
+        familyName = json["familyName"].string
+        picture    = json["picture"].string
+        twitter    = json["twitter"].string
+        givenName  = json["givenName"].string
+        locale     = json["locale"].string
     }
     required public init(coder aDecoder: NSCoder) {
         id         = aDecoder.decodeObjectForKey("id")         as String
