@@ -1,0 +1,8 @@
+{
+  "action": "markAsRead",
+  "feedIds": [
+    "feed/http://feeds.feedburner.com/design-milk"
+  ],
+  "asOf": 1367539068016,
+  "type": "feeds"
+}

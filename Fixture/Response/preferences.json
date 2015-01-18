@@ -1,0 +1,8 @@
+{
+  "subscription/feed/http://feeds.feedburner.com/venturebeat/entryOverviewSize.mobile": "1",
+  "subscription/feed/http://www.yatzer.com/feed/index.php/hideReadArticlesFilter": "off",
+  "subscription/feed/http://feeds.engadget.com/weblogsinc/engadget/entryOverviewSize": "4",
+  "autoMarkAsReadOnSelect": "50",
+  "category/reviews/entryOverviewSize": "0",
+  "category/photography/entryOverviewSize": "6"
+}

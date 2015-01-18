@@ -1,0 +1,16 @@
+{
+  "velocity": 180.3,
+  "curated": false,
+  "language": "en",
+  "topics": [
+    "tech",
+    "gadgets"
+  ],
+  "title": "Engadget",
+  "website": "http://www.engadget.com/",
+  "sponsored": false,
+  "featured": false,
+  "state": "alive",
+  "subscribers": 123,
+  "id": "feed/http://feeds.engadget.com/weblogsinc/engadget"
+}
