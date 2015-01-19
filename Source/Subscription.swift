@@ -8,24 +8,24 @@
 
 import SwiftyJSON
 
-class Subscription: Stream {
-    let id:         String
-    let title:      String
-    let categories: [Category]
-    let website:    String
-    let visualUrl:  String?
-    let sortId:     String?
-    let updated:    Int
-    let added:      Int?
+public class Subscription: Stream {
+    public let id:         String
+    public let title:      String
+    public let categories: [Category]
+    public let website:    String
+    public let visualUrl:  String?
+    public let sortId:     String?
+    public let updated:    Int?
+    public let added:      Int?
 
-    init(json:JSON) {
-        self.id         = json["id"].string!
-        self.title      = json["title"].string!
-        self.website    = json["website"].string!
-        self.categories = json["categories"].array!.map({Category(json: $0)})
-        self.visualUrl  = json["visualUrl"].string?
-        self.sortId     = json["sortid"].string?
-        self.updated    = json["updated"].int!
-        self.added      = json["added"].int?
+    public init(json: JSON) {
+        self.id         = json["id"].stringValue
+        self.title      = json["title"].stringValue
+        self.website    = json["website"].stringValue
+        self.categories = json["categories"].arrayValue.map({Category(json: $0)})
+        self.visualUrl  = json["visualUrl"].string
+        self.sortId     = json["sortid"].string
+        self.updated    = json["updated"].int
+        self.added      = json["added"].int
     }
 }

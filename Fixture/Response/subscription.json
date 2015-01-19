@@ -1,0 +1,18 @@
+{
+  "categories": [
+    {
+      "label": "design",
+      "id": "user/c805fcbf-3acf-4302-a97e-d82f9d7c897f/category/design"
+    },
+    {
+      "label": "weekly",
+      "id": "user/c805fcbf-3acf-4302-a97e-d82f9d7c897f/category/weekly"
+    },
+    {
+      "label": "must reads",
+      "id": "user/c805fcbf-3acf-4302-a97e-d82f9d7c897f/category/global.must"
+    }
+  ],
+  "title": "Design Milk",
+  "id": "feed/http://feeds.feedburner.com/design-milk"
+}

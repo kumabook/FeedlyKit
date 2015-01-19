@@ -23,6 +23,7 @@ public class Entry: NSObject {
     public let keywords:        [String]?
     public let visual:          Visual?
     public let unread:          Bool
+    public let tags:            [Tag]?
     public let categories:      [Category]
     public let engagement:      Int?
     public let actionTimestamp: Int?
@@ -45,6 +46,7 @@ public class Entry: NSObject {
         self.keywords        = json["keywords"].array?.map({ $0.string! })
         self.visual          = Visual(json: json["dictionary"])
         self.unread          = json["unread"].boolValue
+        self.tags            = json["tags"].array?.map({ Tag(json: $0) })
         self.categories      = json["categories"].arrayValue.map({ Category(json: $0) })
         self.engagement      = json["engagement"].int
         self.actionTimestamp = json["actionTimestamp"].int
