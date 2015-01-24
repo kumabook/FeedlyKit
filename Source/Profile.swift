@@ -8,7 +8,7 @@
 
 import SwiftyJSON
 
-public class Profile: NSObject, NSCoding {
+public class Profile: NSObject, NSCoding, ResponseObjectSerializable {
     public let id:         String
     public let email:      String?
     public let reader:     String?
@@ -22,7 +22,12 @@ public class Profile: NSObject, NSCoding {
     public let givenName:  String?
     public let locale:     String?
 
-    public init (json: JSON) {
+    required public convenience init?(response: NSHTTPURLResponse, representation: AnyObject) {
+        let json = JSON(representation)
+        self.init(json: json)
+    }
+
+    public init(json: JSON) {
         id         = json["id"].stringValue
         email      = json["email"].string
         reader     = json["reader"].string

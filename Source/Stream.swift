@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Hiroki Kumamoto. All rights reserved.
 //
 
-@objc protocol Stream {
+@objc public protocol Stream {
     var id:    String { get }
     var title: String { get }
 }

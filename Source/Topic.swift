@@ -8,11 +8,21 @@
 
 import SwiftyJSON
 
-public class Topic {
-    public let id: String
+public final class Topic: ResponseObjectSerializable, ResponseCollectionSerializable {
+    public let id:       String
     public let interest: String
-    public let created: Int
-    public let updated: Int
+    public let created:  Int
+    public let updated:  Int
+
+    public class func collection(#response: NSHTTPURLResponse, representation: AnyObject) -> [Topic] {
+        let json = JSON(representation)
+        return json.arrayValue.map({ Topic(json: $0) })
+    }
+
+    required public convenience init?(response: NSHTTPURLResponse, representation: AnyObject) {
+        let json = JSON(representation)
+        self.init(json: json)
+    }
     
     public init(json: JSON) {
         self.id       = json["id"].stringValue

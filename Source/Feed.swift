@@ -8,7 +8,7 @@
 
 import SwiftyJSON
 
-public class Feed: Stream {
+public final class Feed: Stream, ResponseObjectSerializable, ResponseCollectionSerializable  {
     public let id:          String
     public let subscribers: Int
     public let title:       String
@@ -20,6 +20,16 @@ public class Feed: Stream {
     public let status:      String?
     public let curated:     Bool?
     public let featured:    Bool?
+
+    public class func collection(#response: NSHTTPURLResponse, representation: AnyObject) -> [Feed] {
+        let json = JSON(representation)
+        return json.arrayValue.map({ Feed(json: $0) })
+    }
+
+    required public convenience init?(response: NSHTTPURLResponse, representation: AnyObject) {
+        let json = JSON(representation)
+        self.init(json: json)
+    }
 
     public init(json: JSON) {
         if let fid = json["id"].string {

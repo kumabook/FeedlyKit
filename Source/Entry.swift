@@ -8,7 +8,7 @@
 
 import SwiftyJSON
 
-public class Entry: NSObject {
+public final class Entry: NSObject, JSONSerializable, ResponseObjectSerializable, ResponseCollectionSerializable, ParameterEncodable {
     public let id:              String
     public let title:           String?
     public let content:         Content?
@@ -31,6 +31,16 @@ public class Entry: NSObject {
     public let fingerprint:     String?
     public let originId:        String?
     public let sid:             String?
+
+    public class func collection(#response: NSHTTPURLResponse, representation: AnyObject) -> [Entry] {
+        let json = JSON(representation)
+        return json.arrayValue.map({ Entry(json: $0) })
+    }
+
+    required public convenience init?(response: NSHTTPURLResponse, representation: AnyObject) {
+        let json = JSON(representation)
+        self.init(json: json)
+    }
 
     public init(json: JSON) {
         self.id              = json["id"].stringValue
@@ -58,5 +68,20 @@ public class Entry: NSObject {
         if let enclosures = json["enclosure"].array {
             self.enclosure   = enclosures.map({ Link(json: $0) })
         }
+    }
+
+    func toParameters() -> [String : AnyObject] {
+        var params: [String: AnyObject] = ["published": published]
+        if let _title     = title     { params["title"]     = _title }
+        if let _content   = content   { params["content"]   = _content.toParameters() }
+        if let _summary   = summary   { params["summary"]   = _summary }
+        if let _author    = author    { params["author"]    = _author }
+        if let _enclosure = enclosure { params["enclosure"] = _enclosure.map({ $0.toParameters() }) }
+        if let _alternate = alternate { params["alternate"] = _alternate.map({ $0.toParameters() }) }
+        if let _keywords  = keywords  { params["keywords"]  = _keywords }
+        if let _tags      = tags      { params["tags"]      = _tags }
+        if let _origin    = origin    { params["origin"]    = _origin.toParameters() }
+
+        return params
     }
 }

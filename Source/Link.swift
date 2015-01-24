@@ -8,7 +8,7 @@
 
 import SwiftyJSON
 
-public class Link: NSObject {
+public class Link: NSObject, ParameterEncodable {
     public let href:   String
     public let type:   String
     public let length: Int?
@@ -17,5 +17,8 @@ public class Link: NSObject {
         self.href   = json["href"].stringValue
         self.type   = json["type"].stringValue
         self.length = json["length"].int?
+    }
+    func toParameters() -> [String : AnyObject] {
+        return ["href": href, "type": type]
     }
 }

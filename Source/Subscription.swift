@@ -8,7 +8,10 @@
 
 import SwiftyJSON
 
-public class Subscription: Stream {
+public final class Subscription: Stream,
+                                 ResponseObjectSerializable,
+                                 ResponseCollectionSerializable,
+                                 ParameterEncodable {
     public let id:         String
     public let title:      String
     public let categories: [Category]
@@ -17,6 +20,16 @@ public class Subscription: Stream {
     public let sortId:     String?
     public let updated:    Int?
     public let added:      Int?
+
+    public class func collection(#response: NSHTTPURLResponse, representation: AnyObject) -> [Subscription] {
+        let json = JSON(representation)
+        return json.arrayValue.map({ Subscription(json: $0) })
+    }
+
+    required public convenience init?(response: NSHTTPURLResponse, representation: AnyObject) {
+        let json = JSON(representation)
+        self.init(json: json)
+    }
 
     public init(json: JSON) {
         self.id         = json["id"].stringValue
@@ -27,5 +40,13 @@ public class Subscription: Stream {
         self.sortId     = json["sortid"].string
         self.updated    = json["updated"].int
         self.added      = json["added"].int
+    }
+
+    func toParameters() -> [String : AnyObject] {
+        return [
+                 "title": title,
+                    "id": id,
+            "categories": categories.map( { $0.toParameters() })
+            ]
     }
 }

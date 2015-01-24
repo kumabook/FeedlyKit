@@ -8,17 +8,17 @@
 
 import SwiftyJSON
 
-public class Origin {
-    public let streamId: String!
-    public let title:    String!
-    public let htmlUrl:  String!
+public class Origin: ParameterEncodable {
+    public let streamId: String
+    public let title:    String
+    public let htmlUrl:  String
 
-    public init?(json: JSON) {
-        if json.isEmpty {
-            return nil
-        }
+    public init(json: JSON) {
         self.streamId = json["streamId"].stringValue
         self.title    = json["title"].stringValue
         self.htmlUrl  = json["htmlUrl"].stringValue
+    }
+    func toParameters() -> [String : AnyObject] {
+        return ["title": title, "htmlUrl": htmlUrl]
     }
 }
