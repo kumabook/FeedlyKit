@@ -1,4 +1,4 @@
 github "Alamofire/Alamofire" "1.1.3"
-github "Quick/Nimble" "v0.2.0"
+github "Quick/Nimble" "v0.3.0"
 github "Quick/Quick" "v0.2.0"
 github "kumabook/SwiftyJSON" "2.1.4"
