@@ -34,20 +34,22 @@ extension String: JSONSerializable {
 }
 
 @objc public class PaginatedCollection<T:JSONSerializable>: ResponseObjectSerializable {
-    public let count:        Int?
-    public let ranked:       String?
-    public let unreadOnly:   Bool?
-    public let newerThan:    Int64?
+    public let id:           String
+    public let updated:      Int64?
     public let continuation: String?
-    public let collection:   [T]
+    public let title:        String?
+    public let direction:    String?
+    public let alternate:    Link?
+    public let items:        [T]
     required public init?(response: NSHTTPURLResponse, representation: AnyObject) {
         let json     = JSON(representation)
-        count        = json["count"].int
-        ranked       = json["ranekd"].string
-        unreadOnly   = json["unreadOnly"].bool
-        newerThan    = json["newerThan"].int64
+        id           = json["id"].stringValue
+        updated      = json["update"].int64
         continuation = json["continuation"].string
-        collection   = json["items"].arrayValue.map( {T(json: $0)} )
+        title        = json["title"].string
+        direction    = json["direction"].string
+        alternate    = json["alternate"].isEmpty ? nil : Link(json: json["alternate"])
+        items        = json["items"].arrayValue.map( {T(json: $0)} )
     }
 }
 
