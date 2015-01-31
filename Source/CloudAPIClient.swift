@@ -34,12 +34,12 @@ extension String: JSONSerializable {
 }
 
 @objc public class PaginatedCollection<T:JSONSerializable>: ResponseObjectSerializable {
-    let count:        Int?
-    let ranked:       String?
-    let unreadOnly:   Bool?
-    let newerThan:    Int64?
-    let continuation: String?
-    let collection:   [T]
+    public let count:        Int?
+    public let ranked:       String?
+    public let unreadOnly:   Bool?
+    public let newerThan:    Int64?
+    public let continuation: String?
+    public let collection:   [T]
     required public init?(response: NSHTTPURLResponse, representation: AnyObject) {
         let json     = JSON(representation)
         count        = json["count"].int
