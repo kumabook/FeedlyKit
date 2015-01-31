@@ -33,6 +33,24 @@ extension String: JSONSerializable {
     class func collection(#response: NSHTTPURLResponse, representation: AnyObject) -> [Self]
 }
 
+@objc public class PaginationParams: ParameterEncodable {
+    public var count:        Int?
+    public var ranked:       String?
+    public var unreadOnly:   Bool?
+    public var newerThan:    Int64?
+    public var continuation: String?
+    public init() {}
+    func toParameters() -> [String : AnyObject] {
+        var params: [String:AnyObject] = [:]
+        if let _count        = count        { params["count"]        = _count }
+        if let _ranked       = ranked       { params["ranked"]       = _ranked }
+        if let _unreadOnly   = unreadOnly   { params["unreadOnly"]   = _unreadOnly }
+        if let _newerThan    = newerThan    { params["newerThan"]    = NSNumber(longLong: newerThan!) }
+        if let _continuation = continuation { params["continuation"] = _continuation }
+        return params
+    }
+}
+
 @objc public class PaginatedCollection<T:JSONSerializable>: ResponseObjectSerializable {
     public let id:           String
     public let updated:      Int64?
@@ -154,8 +172,8 @@ public class CloudAPIClient {
         case FetchProfile
         case UpdateProfile([String:String])
         //Streams API
-        case FetchEntryIds(String)
-        case FetchContents(String)
+        case FetchEntryIds(String, PaginationParams)
+        case FetchContents(String, PaginationParams)
         // Subscriptions API
         case FetchSubscriptions
         case SubscribeTo(Subscription)
@@ -322,8 +340,10 @@ public class CloudAPIClient {
             case .UpdateProfile(let params):
                 return J.encode(req, parameters: params).0
                 //Streams API
-            case .FetchEntryIds:      return req
-            case .FetchContents:      return req
+            case .FetchEntryIds(let streamId, let params):
+                return J.encode(req, parameters: params).0
+            case .FetchContents(let streamId, let params):
+                return J.encode(req, parameters: params).0
                 // Subscriptions API
             case .FetchSubscriptions: return req
             case .SubscribeTo(let subscription):

@@ -18,8 +18,8 @@ extension CloudAPIClient {
         (Authorization is optional; it is required for category and tag streams)
         TODO
     */
-    public func fetchEntryIds(streamId: String, completionHandler: (NSURLRequest, NSHTTPURLResponse?, PaginatedCollection<String>?, NSError?) -> Void) -> Self {
-        Alamofire.request(Router.FetchEntryIds(streamId)).responseObject(completionHandler)
+    public func fetchEntryIds(streamId: String, paginationParams: PaginationParams, completionHandler: (NSURLRequest, NSHTTPURLResponse?, PaginatedCollection<String>?, NSError?) -> Void) -> Self {
+        Alamofire.request(Router.FetchEntryIds(streamId, paginationParams)).responseObject(completionHandler)
         return self
     }
     
@@ -31,8 +31,8 @@ extension CloudAPIClient {
         (Authorization is optional; it is required for category and tag streams)
         TODO
     */
-    public func fetchContents(streamId: String, completionHandler: (NSURLRequest, NSHTTPURLResponse?, PaginatedCollection<Entry>?, NSError?) -> Void) -> Self {
-        Alamofire.request(Router.FetchContents(streamId)).responseObject(completionHandler)
+    public func fetchContents(streamId: String, paginationParams: PaginationParams, completionHandler: (NSURLRequest, NSHTTPURLResponse?, PaginatedCollection<Entry>?, NSError?) -> Void) -> Self {
+        Alamofire.request(Router.FetchContents(streamId, paginationParams)).responseObject(completionHandler)
         return self
     }
 }
