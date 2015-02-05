@@ -152,6 +152,10 @@ public class CloudAPIClient {
     
     public enum Router: URLRequestConvertible {
         var comma: String { return "," }
+        func urlEncode(string: String) -> String {
+            return string.stringByAddingPercentEncodingWithAllowedCharacters(
+                                NSCharacterSet.URLHostAllowedCharacterSet())!
+        }
         // Categories API
         case FetchCategories
         case UpdateCategory(String, String)
@@ -258,8 +262,12 @@ public class CloudAPIClient {
             case .FetchProfile:                     return "/v3/profile"
             case .UpdateProfile:                    return "/v3/profile"
                 // Streams API
-            case .FetchEntryIds(let streamId):      return "/v3/streams/:streamId/ids"
-            case .FetchContents(let streamId):      return "/v3/streams/:streamId/contents"
+            case .FetchEntryIds(let streamId,  let paginationParams):
+                return "/v3/streams/" + urlEncode(streamId) + "/ids"
+            case .FetchContents(let streamId, let paginationParams):
+                print(urlEncode(streamId))
+                return "/v3/streams/" + urlEncode(streamId) + "/contents"
+
                 // Subscriptions API
             case .FetchSubscriptions:               return "/v3/subscriptions"
             case .SubscribeTo:                      return "/v3/subscriptions"
@@ -290,8 +298,9 @@ public class CloudAPIClient {
         // MARK: URLRequestConvertible
         public var URLRequest: NSURLRequest {
             let J = Alamofire.ParameterEncoding.JSON
-            let URL = NSURL(string: CloudAPIClient.baseURLString)!
-            let req = NSMutableURLRequest(URL: URL.URLByAppendingPathComponent(path))
+            let URL = NSURL(string: CloudAPIClient.baseURLString + path)!
+            let req = NSMutableURLRequest(URL: URL)
+
             req.HTTPMethod = method.rawValue
             
             if let token = CloudAPIClient.accessToken {
