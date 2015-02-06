@@ -51,26 +51,6 @@ extension String: JSONSerializable {
     }
 }
 
-@objc public class PaginatedCollection<T:JSONSerializable>: ResponseObjectSerializable {
-    public let id:           String
-    public let updated:      Int64?
-    public let continuation: String?
-    public let title:        String?
-    public let direction:    String?
-    public let alternate:    Link?
-    public let items:        [T]
-    required public init?(response: NSHTTPURLResponse, representation: AnyObject) {
-        let json     = JSON(representation)
-        id           = json["id"].stringValue
-        updated      = json["update"].int64
-        continuation = json["continuation"].string
-        title        = json["title"].string
-        direction    = json["direction"].string
-        alternate    = json["alternate"].isEmpty ? nil : Link(json: json["alternate"])
-        items        = json["items"].arrayValue.map( {T(json: $0)} )
-    }
-}
-
 extension Alamofire.Request {
     public func responseObject<T: ResponseObjectSerializable>(completionHandler: (NSURLRequest, NSHTTPURLResponse?, T?, NSError?) -> Void) -> Self {
         let serializer: Serializer = { (request, response, data) in
