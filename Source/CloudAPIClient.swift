@@ -19,18 +19,18 @@ extension Int: JSONSerializable {
     }
 }
 
-extension String: JSONSerializable {
-    public init(json: JSON) {
-        self = json.stringValue
-    }
-}
-
 @objc public protocol ResponseObjectSerializable {
     init?(response: NSHTTPURLResponse, representation: AnyObject)
 }
 
 @objc public protocol ResponseCollectionSerializable {
     class func collection(#response: NSHTTPURLResponse, representation: AnyObject) -> [Self]
+}
+
+extension String: JSONSerializable {
+    public init(json: JSON) {
+        self = json.stringValue
+    }
 }
 
 @objc public class PaginationParams: ParameterEncodable {
@@ -100,6 +100,21 @@ extension Alamofire.Request {
         
         return response(serializer: serializer, completionHandler: { (request, response, object, error) in
             completionHandler(request, response, object as? [T], error)
+        })
+    }
+    public func responseStringList(completionHandler: (NSURLRequest, NSHTTPURLResponse?, [String]?, NSError?) -> Void) -> Self {
+        let serializer: Serializer = { (request, response, data) in
+            let JSONSerializer = Request.JSONResponseSerializer(options: .AllowFragments)
+            let (JSON: AnyObject?, serializationError) = JSONSerializer(request, response, data)
+            if response != nil && JSON != nil {
+                return (JSON!.array.map({$0.stringValue}), nil)
+            } else {
+                return (nil, serializationError)
+            }
+        }
+
+        return response(serializer: serializer, completionHandler: { (request, response, object, error) in
+            completionHandler(request, response, object as? [String], error)
         })
     }
     public func response(completionHandler: (NSURLRequest, NSHTTPURLResponse?, NSError?) -> Void) -> Self {

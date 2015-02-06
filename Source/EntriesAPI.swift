@@ -35,8 +35,8 @@ extension CloudAPIClient {
         POST /v3/entries/
         (Authorization is required)
     */
-    public func createEntry(entry: Entry, completionHandler: (NSURLRequest, NSHTTPURLResponse?, PaginatedCollection<String>?, NSError?) -> Void) -> Self {
-        Alamofire.request(Router.CreateEntry(entry)).responseObject(completionHandler)
+    public func createEntry(entry: Entry, completionHandler: (NSURLRequest, NSHTTPURLResponse?, [String]?, NSError?) -> Void) -> Self {
+        Alamofire.request(Router.CreateEntry(entry)).response
         return self
     }
 }
