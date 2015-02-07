@@ -114,6 +114,14 @@ extension Alamofire.ParameterEncoding {
     }
 }
 
+extension NSMutableURLRequest {
+    func addParam(params: AnyObject) -> NSURLRequest {
+        let data = NSJSONSerialization.dataWithJSONObject(params, options: NSJSONWritingOptions.PrettyPrinted, error: nil)
+        self.HTTPBody = data
+        self.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        return self
+    }
+}
 
 public class CloudAPIClient {
     public typealias AccessToken = String
@@ -309,13 +317,12 @@ public class CloudAPIClient {
                 return J.encode(req, parameters: ["label": label]).0
             case .DeleteCategory:  return req
                 // Entries API
-            case .FetchEntry:      return req
-            case .FetchEntries:    return req
-            case .CreateEntry(let entry):
-                return J.encode(req, parameters: entry).0
+            case .FetchEntry:                 return req
+            case .FetchEntries(let entryIds): return req.addParam(entryIds)
+            case .CreateEntry(let entry):     return J.encode(req, parameters: entry).0
                 // Feeds API
-            case .FetchFeed:       return req
-            case .FetchFeeds:      return req
+            case .FetchFeed:                  return req
+            case .FetchFeeds(let feedIds):    return req.addParam(feedIds)
                 // Markers API
             case .FetchUnreadCounts(let (autorefresh: autorefresh, newerThan: newerThan, streamId: streamId)):
                 var params: [String: AnyObject] = [:]
