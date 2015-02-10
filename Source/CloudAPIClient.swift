@@ -141,7 +141,7 @@ public class CloudAPIClient {
             }
         }
     }
-    private struct Config {
+    public struct Config {
         static var target:        Target  = Target.Sandbox
         static var baseURLString: String  = Config.target.baseUrl
         static var accessToken:   AccessToken?
