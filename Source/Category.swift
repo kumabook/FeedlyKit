@@ -24,9 +24,14 @@ public final class Category: Equatable, Hashable,
         self.init(json: json)
     }
 
-    init(json: JSON) {
+    public init(json: JSON) {
         id    = json["id"].stringValue
         label = json["label"].stringValue
+    }
+
+    public init(id: String, label: String) {
+        self.id    = id
+        self.label = label
     }
 
     public var hashValue: Int {
