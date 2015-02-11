@@ -8,9 +8,9 @@
 
 import SwiftyJSON
 
-public final class Subscription: Stream,
-                                 ResponseObjectSerializable,
-                                 ResponseCollectionSerializable,
+public final class Subscription: Equatable, Hashable,
+                                 Stream,
+                                 ResponseObjectSerializable, ResponseCollectionSerializable,
                                  ParameterEncodable {
     public let id:         String
     public let title:      String
@@ -42,6 +42,10 @@ public final class Subscription: Stream,
         self.added      = json["added"].int
     }
 
+    public var hashValue: Int {
+        get { return id.hashValue }
+    }
+
     func toParameters() -> [String : AnyObject] {
         return [
                  "title": title,
@@ -49,4 +53,8 @@ public final class Subscription: Stream,
             "categories": categories.map( { $0.toParameters() })
             ]
     }
+}
+
+public func ==(lhs: Subscription, rhs: Subscription) -> Bool {
+    return lhs.id == rhs.id
 }

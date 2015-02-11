@@ -9,28 +9,12 @@
 import SwiftyJSON
 import Alamofire
 
-public protocol JSONSerializable {
-    init(json: JSON)
-}
-
-extension Int: JSONSerializable {
-    public init(json: JSON) {
-        self = json.intValue
-    }
-}
-
 @objc public protocol ResponseObjectSerializable {
     init?(response: NSHTTPURLResponse, representation: AnyObject)
 }
 
 @objc public protocol ResponseCollectionSerializable {
     class func collection(#response: NSHTTPURLResponse, representation: AnyObject) -> [Self]
-}
-
-extension String: JSONSerializable {
-    public init(json: JSON) {
-        self = json.stringValue
-    }
 }
 
 @objc public class PaginationParams: ParameterEncodable {
@@ -142,9 +126,9 @@ public class CloudAPIClient {
         }
     }
     public struct Config {
-        static var target:        Target  = Target.Sandbox
+        public static var target:      Target  = Target.Sandbox
+        public static var accessToken: AccessToken?
         static var baseURLString: String  = Config.target.baseUrl
-        static var accessToken:   AccessToken?
     }
 
     public class var baseURLString: String       { get { return Config.target.baseUrl } }
@@ -268,7 +252,6 @@ public class CloudAPIClient {
             case .FetchEntryIds(let streamId,  let paginationParams):
                 return "/v3/streams/" + urlEncode(streamId) + "/ids"
             case .FetchContents(let streamId, let paginationParams):
-                print(urlEncode(streamId))
                 return "/v3/streams/" + urlEncode(streamId) + "/contents"
 
                 // Subscriptions API

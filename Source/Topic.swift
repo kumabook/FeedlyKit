@@ -8,7 +8,8 @@
 
 import SwiftyJSON
 
-public final class Topic: ResponseObjectSerializable, ResponseCollectionSerializable {
+public final class Topic: Equatable, Hashable,
+                          ResponseObjectSerializable, ResponseCollectionSerializable {
     public let id:       String
     public let interest: String
     public let created:  Int
@@ -30,4 +31,13 @@ public final class Topic: ResponseObjectSerializable, ResponseCollectionSerializ
         self.created  = json["created"].intValue
         self.updated  = json["updated"].intValue
     }
+
+    public var hashValue: Int {
+        get { return id.hashValue }
+    }
 }
+
+public func ==(lhs: Topic, rhs: Topic) -> Bool {
+    return lhs.id == rhs.id
+}
+

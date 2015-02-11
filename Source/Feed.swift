@@ -8,7 +8,9 @@
 
 import SwiftyJSON
 
-public final class Feed: Stream, ResponseObjectSerializable, ResponseCollectionSerializable  {
+public final class Feed: Equatable, Hashable,
+                         Stream,
+                         ResponseObjectSerializable, ResponseCollectionSerializable  {
     public let id:          String
     public let subscribers: Int
     public let title:       String
@@ -51,4 +53,12 @@ public final class Feed: Stream, ResponseObjectSerializable, ResponseCollectionS
         curated     = json["curated"].bool
         featured    = json["featured"].bool
     }
+
+    public var hashValue: Int {
+        get { return id.hashValue }
+    }
+}
+
+public func ==(lhs: Feed, rhs: Feed) -> Bool {
+    return lhs.id == rhs.id
 }

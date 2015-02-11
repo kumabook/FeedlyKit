@@ -8,10 +8,12 @@
 
 import SwiftyJSON
 
-public final class Category: ResponseObjectSerializable, ResponseCollectionSerializable, ParameterEncodable {
+public final class Category: Equatable, Hashable,
+                             ResponseObjectSerializable, ResponseCollectionSerializable,
+                             ParameterEncodable {
     public let id:    String
     public let label: String
-    
+
     public class func collection(#response: NSHTTPURLResponse, representation: AnyObject) -> [Category] {
         let json = JSON(representation)
         return json.arrayValue.map({ Category(json: $0) })
@@ -27,8 +29,17 @@ public final class Category: ResponseObjectSerializable, ResponseCollectionSeria
         label = json["label"].stringValue
     }
 
+    public var hashValue: Int {
+        get { return id.hashValue }
+    }
+
     func toParameters() -> [String : AnyObject] {
         return ["id": id, "label": label]
     }
-    
 }
+
+public func ==(lhs: Category, rhs: Category) -> Bool {
+    return lhs.id == rhs.id
+}
+
+

@@ -8,7 +8,9 @@
 
 import SwiftyJSON
 
-public final class Entry: NSObject, JSONSerializable, ResponseObjectSerializable, ResponseCollectionSerializable, ParameterEncodable {
+public final class Entry: Equatable, Hashable,
+                          ResponseObjectSerializable, ResponseCollectionSerializable,
+                          ParameterEncodable {
     public let id:              String
     public let title:           String?
     public let content:         Content?
@@ -70,6 +72,10 @@ public final class Entry: NSObject, JSONSerializable, ResponseObjectSerializable
         }
     }
 
+    public var hashValue: Int {
+        get { return id.hashValue }
+    }
+
     func toParameters() -> [String : AnyObject] {
         var params: [String: AnyObject] = ["published": published]
         if let _title     = title     { params["title"]     = _title }
@@ -84,4 +90,8 @@ public final class Entry: NSObject, JSONSerializable, ResponseObjectSerializable
 
         return params
     }
+}
+
+public func ==(lhs: Entry, rhs: Entry) -> Bool {
+    return lhs.id == rhs.id
 }

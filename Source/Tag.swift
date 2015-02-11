@@ -8,7 +8,8 @@
 
 import SwiftyJSON
 
-public final class Tag: ResponseObjectSerializable, ResponseCollectionSerializable {
+public final class Tag: Equatable, Hashable,
+                        ResponseObjectSerializable, ResponseCollectionSerializable {
     public let id:    String
     public let label: String
 
@@ -22,8 +23,16 @@ public final class Tag: ResponseObjectSerializable, ResponseCollectionSerializab
         self.init(json: json)
     }
 
+    public var hashValue: Int {
+        get { return id.hashValue }
+    }
+
     public init(json: JSON) {
         self.id    = json["id"].stringValue
         self.label = json["label"].stringValue
     }
+}
+
+public func ==(lhs: Tag, rhs: Tag) -> Bool {
+    return lhs.id == rhs.id
 }

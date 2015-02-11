@@ -45,7 +45,7 @@ import SwiftyJSON
         title        = json["title"].string
         direction    = json["direction"].string
         alternate    = json["alternate"].isEmpty ? nil : Link(json: json["alternate"])
-        items        = json["items"].arrayValue.map( {String(json: $0)} )
+        items        = json["items"].arrayValue.map( { $0.stringValue } )
     }
 }
 
