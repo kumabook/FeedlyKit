@@ -15,7 +15,7 @@ extension CloudAPIClient {
     GET /v3/feeds/:feedId
     */
     public func fetchFeed(feedId: String, completionHandler: (NSURLRequest, NSHTTPURLResponse?, Feed?, NSError?) -> Void) -> Self {
-        Alamofire.request(Router.FetchFeed(feedId)).responseObject(completionHandler)
+        Alamofire.request(Router.FetchFeed(feedId)).validate().responseObject(completionHandler)
         return self
     }
     /**
@@ -23,7 +23,7 @@ extension CloudAPIClient {
     POST /v3/feeds/.mget
     */
     public func fetchFeeds(feedIds: [String], completionHandler: (NSURLRequest, NSHTTPURLResponse?, [Feed]?, NSError?) -> Void) -> Self {
-        Alamofire.request(Router.FetchFeeds(feedIds)).responseCollection(completionHandler)
+        Alamofire.request(Router.FetchFeeds(feedIds)).validate().responseCollection(completionHandler)
         return self
     }
 }

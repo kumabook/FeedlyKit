@@ -77,7 +77,9 @@ extension CloudAPIClient {
         TODO
     */
     public func fetchEntryIds(streamId: String, paginationParams: PaginationParams, completionHandler: (NSURLRequest, NSHTTPURLResponse?, PaginatedIdCollection?, NSError?) -> Void) -> Self {
-        Alamofire.request(Router.FetchEntryIds(streamId, paginationParams)).responseObject(completionHandler)
+        Alamofire.request(Router.FetchEntryIds(streamId, paginationParams))
+                 .validate()
+                 .responseObject(completionHandler)
         return self
     }
     
@@ -90,7 +92,9 @@ extension CloudAPIClient {
         TODO
     */
     public func fetchContents(streamId: String, paginationParams: PaginationParams, completionHandler: (NSURLRequest, NSHTTPURLResponse?, PaginatedEntryCollection?, NSError?) -> Void) -> Self {
-        Alamofire.request(Router.FetchContents(streamId, paginationParams)).responseObject(completionHandler)
+        Alamofire.request(Router.FetchContents(streamId, paginationParams))
+                 .validate()
+                 .responseObject(completionHandler)
         return self
     }
 }

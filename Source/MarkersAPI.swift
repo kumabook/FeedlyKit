@@ -18,7 +18,9 @@ extension CloudAPIClient {
                         completionHandler: (NSURLRequest, NSHTTPURLResponse?, Feed?, NSError?) -> Void) -> Self {
         Alamofire.request(Router.FetchUnreadCounts(autorefresh: info.autorefresh,
                                                      newerThan: info.newerThan,
-                                                      streamId: info.streamId)).responseObject(completionHandler)
+                                                      streamId: info.streamId))
+                 .validate()
+                 .responseObject(completionHandler)
         return self
     }
 

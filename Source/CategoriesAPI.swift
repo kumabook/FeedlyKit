@@ -17,7 +17,7 @@ extension CloudAPIClient {
         (Authorization is required)
     */
     public func fetchCategories(completionHandler: (NSURLRequest, NSHTTPURLResponse?, [Category]?, NSError?) -> Void) -> Self {
-        Alamofire.request(Router.FetchCategories).responseCollection(completionHandler)
+        Alamofire.request(Router.FetchCategories).validate().responseCollection(completionHandler)
         return self
     }
     
@@ -27,7 +27,7 @@ extension CloudAPIClient {
         (Authorization is required)
     */
     public func updateCategory(categoryId: String, label: String, completionHandler:(NSURLRequest, NSHTTPURLResponse?, NSError?) -> Void) -> Self {
-        Alamofire.request(Router.UpdateCategory(categoryId, label)).response(completionHandler)
+        Alamofire.request(Router.UpdateCategory(categoryId, label)).validate().response(completionHandler)
         return self
     }
     
@@ -37,7 +37,7 @@ extension CloudAPIClient {
         (Authorization is required)
     */
     public func deleteCategory(categoryId: String, completionHandler:(NSURLRequest, NSHTTPURLResponse?, NSError?) -> Void) -> Self {
-        Alamofire.request(Router.DeleteCategory(categoryId)).response(completionHandler)
+        Alamofire.request(Router.DeleteCategory(categoryId)).validate().response(completionHandler)
         return self
     }
 }

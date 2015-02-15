@@ -15,7 +15,7 @@ extension CloudAPIClient {
         GET /v3/profile
     */
     public func fetchProfile(completionHandler: (NSURLRequest, NSHTTPURLResponse?, Profile?, NSError?) -> Void) -> Self {
-        Alamofire.request(Router.FetchProfile).responseObject(completionHandler)
+        Alamofire.request(Router.FetchProfile).validate().responseObject(completionHandler)
         return self
     }
 
@@ -25,7 +25,7 @@ extension CloudAPIClient {
         POST /v3/profile
     */
     public func updateProfile(params: [String:String], completionHandler: (NSURLRequest, NSHTTPURLResponse?, Profile?, NSError?) -> Void) -> Self {
-        Alamofire.request(Router.UpdateProfile(params)).responseObject(completionHandler)
+        Alamofire.request(Router.UpdateProfile(params)).validate().responseObject(completionHandler)
         return self
     }
 }

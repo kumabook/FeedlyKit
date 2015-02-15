@@ -16,7 +16,7 @@ extension CloudAPIClient {
         (Authorization is optional)
     */
     public func fetchEntry(entryId: String, completionHandler: (NSURLRequest, NSHTTPURLResponse?, Entry?, NSError?) -> Void) -> Self {
-        Alamofire.request(Router.FetchEntry(entryId)).responseObject(completionHandler)
+        Alamofire.request(Router.FetchEntry(entryId)).validate().responseObject(completionHandler)
         return self
     }
     
@@ -26,7 +26,7 @@ extension CloudAPIClient {
         (Authorization is optional)
     */
     public func fetchEntries(entryIds: [String], completionHandler: (NSURLRequest, NSHTTPURLResponse?, [Entry]?, NSError?) -> Void) -> Self {
-        Alamofire.request(Router.FetchEntries(entryIds)).responseCollection(completionHandler)
+        Alamofire.request(Router.FetchEntries(entryIds)).validate().responseCollection(completionHandler)
         return self
     }
     
@@ -36,7 +36,7 @@ extension CloudAPIClient {
         (Authorization is required)
     */
     public func createEntry(entry: Entry, completionHandler: (NSURLRequest, NSHTTPURLResponse?, [String]?, NSError?) -> Void) -> Self {
-        Alamofire.request(Router.CreateEntry(entry)).response
+        Alamofire.request(Router.CreateEntry(entry)).validate().response
         return self
     }
 }

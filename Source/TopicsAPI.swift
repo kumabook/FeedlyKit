@@ -16,7 +16,7 @@ extension CloudAPIClient {
         (Authorization is required)
     */
     public func fetchTopics(completionHandler: (NSURLRequest, NSHTTPURLResponse?, [Topic]?, NSError?) -> Void) -> Self {
-        Alamofire.request(Router.FetchTopics).responseCollection(completionHandler)
+        Alamofire.request(Router.FetchTopics).validate().responseCollection(completionHandler)
         return self
     }
     
@@ -26,7 +26,7 @@ extension CloudAPIClient {
         (Authorization is required)
     */
     public func addTopic(interest: String, topicId: String, completionHandler: (NSURLRequest, NSHTTPURLResponse?, NSError?) -> Void) -> Self {
-        Alamofire.request(Router.AddTopic(interest, topicId)).response(completionHandler)
+        Alamofire.request(Router.AddTopic(interest, topicId)).validate().response(completionHandler)
         return self
     }
     
@@ -36,7 +36,7 @@ extension CloudAPIClient {
         (Authorization is required)
     */
     public func updateTopic(interest: String, topicId: String, completionHandler: (NSURLRequest, NSHTTPURLResponse?, NSError?) -> Void) -> Self {
-        Alamofire.request(Router.UpdateTopic(interest, topicId)).response(completionHandler)
+        Alamofire.request(Router.UpdateTopic(interest, topicId)).validate().response(completionHandler)
         return self
     }
     
@@ -46,7 +46,7 @@ extension CloudAPIClient {
         (Authorization is required)
     */
     public func removeTopic(topicId: String, completionHandler: (NSURLRequest, NSHTTPURLResponse?, NSError?) -> Void) -> Self {
-        Alamofire.request(Router.RemoveTopic(topicId)).response(completionHandler)
+        Alamofire.request(Router.RemoveTopic(topicId)).validate().response(completionHandler)
         return self
     }
 }

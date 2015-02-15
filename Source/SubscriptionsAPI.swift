@@ -27,7 +27,7 @@ extension CloudAPIClient {
         POST /v3/subscriptions
     */
     public func subscribeTo(subscription: Subscription, completionHandler: (NSURLRequest, NSHTTPURLResponse?, NSError?) -> Void) -> Self {
-        Alamofire.request(Router.SubscribeTo(subscription)).response(completionHandler)
+        Alamofire.request(Router.SubscribeTo(subscription)).validate().response(completionHandler)
         return self
     }
     /**
@@ -35,7 +35,7 @@ extension CloudAPIClient {
         POST /v3/subscriptions
     */
     public func updateSubscription(subscription: Subscription, completionHandler: (NSURLRequest, NSHTTPURLResponse?, NSError?) -> Void) -> Self {
-        Alamofire.request(Router.UpdateSubscription(subscription)).response(completionHandler)
+        Alamofire.request(Router.UpdateSubscription(subscription)).validate().response(completionHandler)
         return self
     }
     
@@ -44,7 +44,7 @@ extension CloudAPIClient {
         DELETE /v3/subscriptions/:feedId
     */
     public func unsubscripbeTo(feedId: String, completionHandler: (NSURLRequest, NSHTTPURLResponse?, NSError?) -> Void) -> Self {
-        Alamofire.request(Router.UnsubscripbeTo(feedId)).response(completionHandler)
+        Alamofire.request(Router.UnsubscripbeTo(feedId)).validate().response(completionHandler)
         return self
     }
 }
