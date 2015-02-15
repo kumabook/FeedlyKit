@@ -17,25 +17,6 @@ import Alamofire
     class func collection(#response: NSHTTPURLResponse, representation: AnyObject) -> [Self]
 }
 
-@objc public class PaginationParams: ParameterEncodable {
-    public var count:        Int?
-    public var ranked:       String?
-    public var unreadOnly:   Bool?
-    public var newerThan:    Int64?
-    public var continuation: String?
-    public init() {}
-    func toParameters() -> [String : AnyObject] {
-        var params: [String:AnyObject] = [:]
-        if let _count        = count        { params["count"]        = _count }
-        if let _count        = count        { params["count"]        = _count }
-        if let _unreadOnly   = unreadOnly   { params["unreadOnly"]   = _unreadOnly }
-        if let _newerThan    = newerThan    { params["newerThan"]    = NSNumber(longLong: newerThan!) }
-        if let _continuation = continuation { params["continuation"] = _continuation }
-        return params
-    }
-}
-
-
 extension Alamofire.Request {
     public func responseObject<T: ResponseObjectSerializable>(completionHandler: (NSURLRequest, NSHTTPURLResponse?, T?, NSError?) -> Void) -> Self {
         let serializer: Serializer = { (request, response, data) in

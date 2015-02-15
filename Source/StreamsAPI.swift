@@ -9,6 +9,24 @@
 import Alamofire
 import SwiftyJSON
 
+@objc public class PaginationParams: ParameterEncodable {
+    public var count:        Int?
+    public var ranked:       String?
+    public var unreadOnly:   Bool?
+    public var newerThan:    Int64?
+    public var continuation: String?
+    public init() {}
+    func toParameters() -> [String : AnyObject] {
+        var params: [String:AnyObject] = [:]
+        if let _count        = count        { params["count"]        = _count }
+        if let _count        = count        { params["count"]        = _count }
+        if let _unreadOnly   = unreadOnly   { params["unreadOnly"]   = _unreadOnly }
+        if let _newerThan    = newerThan    { params["newerThan"]    = NSNumber(longLong: newerThan!) }
+        if let _continuation = continuation { params["continuation"] = _continuation }
+        return params
+    }
+}
+
 @objc public class PaginatedEntryCollection: ResponseObjectSerializable {
     public let id:           String
     public let updated:      Int64?
@@ -48,7 +66,6 @@ import SwiftyJSON
         items        = json["items"].arrayValue.map( { $0.stringValue } )
     }
 }
-
 
 extension CloudAPIClient {
     /**
