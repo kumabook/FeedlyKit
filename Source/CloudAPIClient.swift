@@ -27,13 +27,14 @@ import Alamofire
     func toParameters() -> [String : AnyObject] {
         var params: [String:AnyObject] = [:]
         if let _count        = count        { params["count"]        = _count }
-        if let _ranked       = ranked       { params["ranked"]       = _ranked }
+        if let _count        = count        { params["count"]        = _count }
         if let _unreadOnly   = unreadOnly   { params["unreadOnly"]   = _unreadOnly }
         if let _newerThan    = newerThan    { params["newerThan"]    = NSNumber(longLong: newerThan!) }
         if let _continuation = continuation { params["continuation"] = _continuation }
         return params
     }
 }
+
 
 extension Alamofire.Request {
     public func responseObject<T: ResponseObjectSerializable>(completionHandler: (NSURLRequest, NSHTTPURLResponse?, T?, NSError?) -> Void) -> Self {
@@ -162,7 +163,10 @@ public class CloudAPIClient {
         // Profile API
         case FetchProfile
         case UpdateProfile([String:String])
-        //Streams API
+        // Search API
+        case SearchFeeds(SearchQueryOfFeed)
+        case SearchContentOfStream(String, String, SearchQueryOfContent)
+        // Streams API
         case FetchEntryIds(String, PaginationParams)
         case FetchContents(String, PaginationParams)
         // Subscriptions API
@@ -204,6 +208,9 @@ public class CloudAPIClient {
                 // Profile API
             case .FetchProfile:              return .GET
             case .UpdateProfile:             return .GET
+                //Search API
+            case .SearchFeeds:               return .GET
+            case .SearchContentOfStream:     return .GET
                 //Streams API
             case .FetchEntryIds:             return .GET
             case .FetchContents:             return .GET
@@ -248,12 +255,15 @@ public class CloudAPIClient {
                 // Profile API
             case .FetchProfile:                     return "/v3/profile"
             case .UpdateProfile:                    return "/v3/profile"
+                //Search API
+            case .SearchFeeds:                      return "/v3/search/feeds"
+            case .SearchContentOfStream(let streamId, let searchTerm, let query):
+                return "/v3/search/" + urlEncode(streamId) + "/contents?query=" + searchTerm
                 // Streams API
             case .FetchEntryIds(let streamId,  let paginationParams):
                 return "/v3/streams/" + urlEncode(streamId) + "/ids"
             case .FetchContents(let streamId, let paginationParams):
                 return "/v3/streams/" + urlEncode(streamId) + "/contents"
-
                 // Subscriptions API
             case .FetchSubscriptions:               return "/v3/subscriptions"
             case .SubscribeTo:                      return "/v3/subscriptions"
@@ -284,6 +294,7 @@ public class CloudAPIClient {
         // MARK: URLRequestConvertible
         public var URLRequest: NSURLRequest {
             let J = Alamofire.ParameterEncoding.JSON
+            let U = Alamofire.ParameterEncoding.URL
             let URL = NSURL(string: CloudAPIClient.baseURLString + path)!
             let req = NSMutableURLRequest(URL: URL)
 
@@ -333,6 +344,11 @@ public class CloudAPIClient {
             case .FetchProfile:       return req
             case .UpdateProfile(let params):
                 return J.encode(req, parameters: params).0
+                // Search API
+            case .SearchFeeds(let query):
+                return U.encode(req, parameters: query).0
+            case .SearchContentOfStream(let streamId, let searchTerm, let query):
+                return U.encode(req, parameters: query).0
                 //Streams API
             case .FetchEntryIds(let streamId, let params):
                 return J.encode(req, parameters: params).0

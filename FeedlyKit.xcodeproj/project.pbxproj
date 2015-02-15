@@ -111,6 +111,8 @@
 		67B5106B1A69F13000BB46B7 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B510521A69EBA200BB46B7 /* Profile.swift */; };
 		67B5106C1A69F13000BB46B7 /* Stream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B510531A69EBA200BB46B7 /* Stream.swift */; };
 		67B5106D1A69F13000BB46B7 /* Subscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B510541A69EBA200BB46B7 /* Subscription.swift */; };
+		67C810031A8B218500E4B18C /* SearchAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C810021A8B218500E4B18C /* SearchAPI.swift */; };
+		67C810041A8B218500E4B18C /* SearchAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C810021A8B218500E4B18C /* SearchAPI.swift */; };
 		67D9656E1A6F288200580BE4 /* Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6796477D1A6B50F500D133E6 /* Topic.swift */; };
 		67D9656F1A6F288200580BE4 /* Marker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67213E9B1A6B51300074471B /* Marker.swift */; };
 		67D965701A6F288800580BE4 /* Evernote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6796477A1A6B50F500D133E6 /* Evernote.swift */; };
@@ -230,6 +232,7 @@
 		67B510521A69EBA200BB46B7 /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Profile.swift; path = Source/Profile.swift; sourceTree = SOURCE_ROOT; };
 		67B510531A69EBA200BB46B7 /* Stream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Stream.swift; path = Source/Stream.swift; sourceTree = SOURCE_ROOT; };
 		67B510541A69EBA200BB46B7 /* Subscription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Subscription.swift; path = Source/Subscription.swift; sourceTree = SOURCE_ROOT; };
+		67C810021A8B218500E4B18C /* SearchAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchAPI.swift; path = Source/SearchAPI.swift; sourceTree = SOURCE_ROOT; };
 		67C9DE481A638E1900B73CCA /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		67C9DE491A638E1900B73CCA /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		67C9DE531A639C7800B73CCA /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
@@ -328,6 +331,7 @@
 				67B3703F1A6EA38C00B31D57 /* EntriesAPI.swift */,
 				67363B511A716077009F8FBC /* MarkersAPI.swift */,
 				67B370421A6EA3A500B31D57 /* ProfileAPI.swift */,
+				67C810021A8B218500E4B18C /* SearchAPI.swift */,
 				67B370361A6E10B100B31D57 /* StreamsAPI.swift */,
 				67B370391A6E10C100B31D57 /* SubscriptionsAPI.swift */,
 				67B370481A6EA3C800B31D57 /* TopicsAPI.swift */,
@@ -679,6 +683,7 @@
 				67B370411A6EA38C00B31D57 /* EntriesAPI.swift in Sources */,
 				67B370441A6EA3A500B31D57 /* ProfileAPI.swift in Sources */,
 				67B510671A69F13000BB46B7 /* Category.swift in Sources */,
+				67C810041A8B218500E4B18C /* SearchAPI.swift in Sources */,
 				67B510681A69F13000BB46B7 /* CloudAPIClient.swift in Sources */,
 				67B370381A6E10B100B31D57 /* StreamsAPI.swift in Sources */,
 				67363B571A73669C009F8FBC /* FeedsAPI.swift in Sources */,
@@ -726,6 +731,7 @@
 				67B5105A1A69EBA200BB46B7 /* Stream.swift in Sources */,
 				679CC12E1A6BD2D6003846D8 /* Content.swift in Sources */,
 				679647831A6B50F500D133E6 /* Twitter.swift in Sources */,
+				67C810031A8B218500E4B18C /* SearchAPI.swift in Sources */,
 				67B510571A69EBA200BB46B7 /* Entry.swift in Sources */,
 				679647811A6B50F500D133E6 /* Microsoft.swift in Sources */,
 				67363B561A73669C009F8FBC /* FeedsAPI.swift in Sources */,
