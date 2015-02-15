@@ -22,6 +22,7 @@ public final class Feed: Equatable, Hashable,
     public let status:      String?
     public let curated:     Bool?
     public let featured:    Bool?
+    public let lastUpdated: Int64?
 
     public class func collection(#response: NSHTTPURLResponse, representation: AnyObject) -> [Feed] {
         let json = JSON(representation)
@@ -52,6 +53,7 @@ public final class Feed: Equatable, Hashable,
 
         curated     = json["curated"].bool
         featured    = json["featured"].bool
+        lastUpdated = json["lastUpdated"].int64
     }
 
     public var hashValue: Int {

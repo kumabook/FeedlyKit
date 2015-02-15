@@ -18,8 +18,8 @@ public final class Subscription: Equatable, Hashable,
     public let website:    String
     public let visualUrl:  String?
     public let sortId:     String?
-    public let updated:    Int?
-    public let added:      Int?
+    public let updated:    Int64?
+    public let added:      Int64?
 
     public class func collection(#response: NSHTTPURLResponse, representation: AnyObject) -> [Subscription] {
         let json = JSON(representation)
@@ -38,8 +38,8 @@ public final class Subscription: Equatable, Hashable,
         self.categories = json["categories"].arrayValue.map({Category(json: $0)})
         self.visualUrl  = json["visualUrl"].string
         self.sortId     = json["sortid"].string
-        self.updated    = json["updated"].int
-        self.added      = json["added"].int
+        self.updated    = json["updated"].int64
+        self.added      = json["added"].int64
     }
 
     public var hashValue: Int {

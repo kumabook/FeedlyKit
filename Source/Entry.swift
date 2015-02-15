@@ -16,10 +16,10 @@ public final class Entry: Equatable, Hashable,
     public let content:         Content?
     public let summary:         String?
     public let author:          String?
-    public let crawled:         Int
-    public let recrawled:       Int
-    public let published:       Int
-    public let updated:         Int?
+    public let crawled:         Int64
+    public let recrawled:       Int64
+    public let published:       Int64
+    public let updated:         Int64?
     public let alternate:       [Link]?
     public let origin:          Origin?
     public let keywords:        [String]?
@@ -28,7 +28,7 @@ public final class Entry: Equatable, Hashable,
     public let tags:            [Tag]?
     public let categories:      [Category]
     public let engagement:      Int?
-    public let actionTimestamp: Int?
+    public let actionTimestamp: Int64?
     public let enclosure:       [Link]?
     public let fingerprint:     String?
     public let originId:        String?
@@ -50,10 +50,10 @@ public final class Entry: Equatable, Hashable,
         self.content         = Content(json: json["content"])
         self.summary         = json["summary"].string
         self.author          = json["author"].string
-        self.crawled         = json["crawled"].intValue
-        self.recrawled       = json["recrawled"].intValue
-        self.published       = json["published"].intValue
-        self.updated         = json["updated"].int
+        self.crawled         = json["crawled"].int64Value
+        self.recrawled       = json["recrawled"].int64Value
+        self.published       = json["published"].int64Value
+        self.updated         = json["updated"].int64
         self.origin          = Origin(json: json["origin"])
         self.keywords        = json["keywords"].array?.map({ $0.string! })
         self.visual          = Visual(json: json["dictionary"])
@@ -61,7 +61,7 @@ public final class Entry: Equatable, Hashable,
         self.tags            = json["tags"].array?.map({ Tag(json: $0) })
         self.categories      = json["categories"].arrayValue.map({ Category(json: $0) })
         self.engagement      = json["engagement"].int
-        self.actionTimestamp = json["actionTimestamp"].int
+        self.actionTimestamp = json["actionTimestamp"].int64
         self.fingerprint     = json["fingerprint"].string
         self.originId        = json["originId"].string
         if let alternates = json["alternate"].array? {
@@ -77,7 +77,7 @@ public final class Entry: Equatable, Hashable,
     }
 
     func toParameters() -> [String : AnyObject] {
-        var params: [String: AnyObject] = ["published": published]
+        var params: [String: AnyObject] = ["published": NSNumber(longLong: published)]
         if let _title     = title     { params["title"]     = _title }
         if let _content   = content   { params["content"]   = _content.toParameters() }
         if let _summary   = summary   { params["summary"]   = _summary }

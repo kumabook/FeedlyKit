@@ -12,8 +12,8 @@ public final class Topic: Equatable, Hashable,
                           ResponseObjectSerializable, ResponseCollectionSerializable {
     public let id:       String
     public let interest: String
-    public let created:  Int
-    public let updated:  Int
+    public let created:  Int64
+    public let updated:  Int64
 
     public class func collection(#response: NSHTTPURLResponse, representation: AnyObject) -> [Topic] {
         let json = JSON(representation)
@@ -28,8 +28,8 @@ public final class Topic: Equatable, Hashable,
     public init(json: JSON) {
         self.id       = json["id"].stringValue
         self.interest = json["interest"].stringValue
-        self.created  = json["created"].intValue
-        self.updated  = json["updated"].intValue
+        self.created  = json["created"].int64Value
+        self.updated  = json["updated"].int64Value
     }
 
     public var hashValue: Int {

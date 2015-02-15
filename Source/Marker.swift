@@ -38,7 +38,7 @@ public class Marker {
 
 public final class UnreadCount: ResponseObjectSerializable, ResponseCollectionSerializable {
     let id:      String
-    let updated: Int
+    let updated: Int64
     let count:   Int
     
     public class func collection(#response: NSHTTPURLResponse, representation: AnyObject) -> [UnreadCount] {
@@ -54,7 +54,7 @@ public final class UnreadCount: ResponseObjectSerializable, ResponseCollectionSe
     
     public init(json: JSON) {
         id      = json["id"].stringValue
-        updated = json["updated"].intValue
+        updated = json["updated"].int64Value
         count   = json["count"].intValue
     }
 }
