@@ -25,8 +25,8 @@ extension CloudAPIClient {
         Subscribe to a feed
         POST /v3/subscriptions
     */
-    public func subscribeTo(subscription: Subscription, completionHandler: (NSURLRequest, NSHTTPURLResponse?, NSError?) -> Void) -> Request {
-        return request(Router.SubscribeTo(subscription)).validate().response(completionHandler)
+    public func subscribeTo(feed: Feed, categories: [Category], completionHandler: (NSURLRequest, NSHTTPURLResponse?, NSError?) -> Void) -> Request {
+        return request(Router.SubscribeTo(feed, categories)).validate().response(completionHandler)
     }
     /**
         Update an existing subscription

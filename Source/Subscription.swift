@@ -15,7 +15,7 @@ public final class Subscription: Equatable, Hashable,
     public let id:         String
     public let title:      String
     public let categories: [Category]
-    public let website:    String
+    public let website:    String?
     public let visualUrl:  String?
     public let sortId:     String?
     public let updated:    Int64?
@@ -40,6 +40,12 @@ public final class Subscription: Equatable, Hashable,
         self.sortId     = json["sortid"].string
         self.updated    = json["updated"].int64
         self.added      = json["added"].int64
+    }
+
+    public init(feed: Feed, categories: [Category]) {
+        self.id         = feed.id
+        self.title      = feed.title
+        self.categories = categories
     }
 
     public var hashValue: Int {
