@@ -15,9 +15,8 @@ extension CloudAPIClient {
         GET /v3/topics
         (Authorization is required)
     */
-    public func fetchTopics(completionHandler: (NSURLRequest, NSHTTPURLResponse?, [Topic]?, NSError?) -> Void) -> Self {
-        Alamofire.request(Router.FetchTopics).validate().responseCollection(completionHandler)
-        return self
+    public func fetchTopics(completionHandler: (NSURLRequest, NSHTTPURLResponse?, [Topic]?, NSError?) -> Void) -> Request {
+        return request(Router.FetchTopics).validate().responseCollection(completionHandler)
     }
     
     /**
@@ -25,9 +24,8 @@ extension CloudAPIClient {
         POST /v3/topics
         (Authorization is required)
     */
-    public func addTopic(interest: String, topicId: String, completionHandler: (NSURLRequest, NSHTTPURLResponse?, NSError?) -> Void) -> Self {
-        Alamofire.request(Router.AddTopic(interest, topicId)).validate().response(completionHandler)
-        return self
+    public func addTopic(interest: String, topicId: String, completionHandler: (NSURLRequest, NSHTTPURLResponse?, NSError?) -> Void) -> Request {
+        return request(Router.AddTopic(interest, topicId)).validate().response(completionHandler)
     }
     
     /**
@@ -35,9 +33,8 @@ extension CloudAPIClient {
         POST /v3/topics
         (Authorization is required)
     */
-    public func updateTopic(interest: String, topicId: String, completionHandler: (NSURLRequest, NSHTTPURLResponse?, NSError?) -> Void) -> Self {
-        Alamofire.request(Router.UpdateTopic(interest, topicId)).validate().response(completionHandler)
-        return self
+    public func updateTopic(interest: String, topicId: String, completionHandler: (NSURLRequest, NSHTTPURLResponse?, NSError?) -> Void) -> Request {
+        return request(Router.UpdateTopic(interest, topicId)).validate().response(completionHandler)
     }
     
     /**
@@ -45,8 +42,7 @@ extension CloudAPIClient {
         DELETE /v3/topics/:topicId
         (Authorization is required)
     */
-    public func removeTopic(topicId: String, completionHandler: (NSURLRequest, NSHTTPURLResponse?, NSError?) -> Void) -> Self {
-        Alamofire.request(Router.RemoveTopic(topicId)).validate().response(completionHandler)
-        return self
+    public func removeTopic(topicId: String, completionHandler: (NSURLRequest, NSHTTPURLResponse?, NSError?) -> Void) -> Request {
+        return request(Router.RemoveTopic(topicId)).validate().response(completionHandler)
     }
 }

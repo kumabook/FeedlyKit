@@ -88,19 +88,17 @@ extension CloudAPIClient {
         Find feeds based on title, url or #topic
         GET /v3/search/feeds
     */
-    public func searchFeeds(query: SearchQueryOfFeed, completionHandler: (NSURLRequest, NSHTTPURLResponse?, SearchResultFeeds?, NSError?) -> Void) -> Self {
-        Alamofire.request(Router.SearchFeeds(query)).validate().responseObject(completionHandler)
-        return self
+    public func searchFeeds(query: SearchQueryOfFeed, completionHandler: (NSURLRequest, NSHTTPURLResponse?, SearchResultFeeds?, NSError?) -> Void) -> Request {
+        return request(Router.SearchFeeds(query)).validate().responseObject(completionHandler)
     }
 
     /**
         Search the content of a stream
         GET /v3/search/:streamId/contents?query=:searchTerm
     */
-    public func searchContentOfStream(streamId: String, searchTerm: String, query: SearchQueryOfContent, completionHandler: (NSURLRequest, NSHTTPURLResponse?, PaginatedEntryCollection?, NSError?) -> Void) -> Self {
-        Alamofire.request(Router.SearchContentOfStream(streamId, searchTerm, query))
+    public func searchContentOfStream(streamId: String, searchTerm: String, query: SearchQueryOfContent, completionHandler: (NSURLRequest, NSHTTPURLResponse?, PaginatedEntryCollection?, NSError?) -> Void) -> Request {
+        return request(Router.SearchContentOfStream(streamId, searchTerm, query))
                  .validate()
                  .responseObject(completionHandler)
-        return self
     }
 }

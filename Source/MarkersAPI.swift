@@ -15,13 +15,11 @@ extension CloudAPIClient {
         GET /v3/markers/counts
     */
     public func fetchUnreadCounts(info: (autorefresh: Bool?, newerThan: Int64?, streamId: String?),
-                        completionHandler: (NSURLRequest, NSHTTPURLResponse?, Feed?, NSError?) -> Void) -> Self {
-        Alamofire.request(Router.FetchUnreadCounts(autorefresh: info.autorefresh,
+                        completionHandler: (NSURLRequest, NSHTTPURLResponse?, Feed?, NSError?) -> Void) -> Request {
+        return request(Router.FetchUnreadCounts(autorefresh: info.autorefresh,
                                                      newerThan: info.newerThan,
                                                       streamId: info.streamId))
                  .validate()
                  .responseObject(completionHandler)
-        return self
     }
-
 }

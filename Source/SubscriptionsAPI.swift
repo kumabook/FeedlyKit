@@ -17,34 +17,30 @@ extension CloudAPIClient {
         @param completionHandler handler function
         @return self
     */
-    public func fetchSubscriptions(completionHandler: (NSURLRequest, NSHTTPURLResponse?, [Subscription]?, NSError?) -> Void) -> Self {
-        Alamofire.request(Router.FetchSubscriptions).responseCollection(completionHandler)
-        return self
+    public func fetchSubscriptions(completionHandler: (NSURLRequest, NSHTTPURLResponse?, [Subscription]?, NSError?) -> Void) -> Request {
+        return request(Router.FetchSubscriptions).responseCollection(completionHandler)
     }
     
     /**
         Subscribe to a feed
         POST /v3/subscriptions
     */
-    public func subscribeTo(subscription: Subscription, completionHandler: (NSURLRequest, NSHTTPURLResponse?, NSError?) -> Void) -> Self {
-        Alamofire.request(Router.SubscribeTo(subscription)).validate().response(completionHandler)
-        return self
+    public func subscribeTo(subscription: Subscription, completionHandler: (NSURLRequest, NSHTTPURLResponse?, NSError?) -> Void) -> Request {
+        return request(Router.SubscribeTo(subscription)).validate().response(completionHandler)
     }
     /**
         Update an existing subscription
         POST /v3/subscriptions
     */
-    public func updateSubscription(subscription: Subscription, completionHandler: (NSURLRequest, NSHTTPURLResponse?, NSError?) -> Void) -> Self {
-        Alamofire.request(Router.UpdateSubscription(subscription)).validate().response(completionHandler)
-        return self
+    public func updateSubscription(subscription: Subscription, completionHandler: (NSURLRequest, NSHTTPURLResponse?, NSError?) -> Void) -> Request {
+        return request(Router.UpdateSubscription(subscription)).validate().response(completionHandler)
     }
     
     /**
         Unsubscribe from a feed
         DELETE /v3/subscriptions/:feedId
     */
-    public func unsubscripbeTo(feedId: String, completionHandler: (NSURLRequest, NSHTTPURLResponse?, NSError?) -> Void) -> Self {
-        Alamofire.request(Router.UnsubscripbeTo(feedId)).validate().response(completionHandler)
-        return self
+    public func unsubscripbeTo(feedId: String, completionHandler: (NSURLRequest, NSHTTPURLResponse?, NSError?) -> Void) -> Request {
+        return request(Router.UnsubscripbeTo(feedId)).validate().response(completionHandler)
     }
 }

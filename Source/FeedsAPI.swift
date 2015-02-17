@@ -14,16 +14,14 @@ extension CloudAPIClient {
     Get the metadata about a specific feed
     GET /v3/feeds/:feedId
     */
-    public func fetchFeed(feedId: String, completionHandler: (NSURLRequest, NSHTTPURLResponse?, Feed?, NSError?) -> Void) -> Self {
-        Alamofire.request(Router.FetchFeed(feedId)).validate().responseObject(completionHandler)
-        return self
+    public func fetchFeed(feedId: String, completionHandler: (NSURLRequest, NSHTTPURLResponse?, Feed?, NSError?) -> Void) -> Request {
+        return request(Router.FetchFeed(feedId)).validate().responseObject(completionHandler)
     }
     /**
     Get the metadata for a list of feeds
     POST /v3/feeds/.mget
     */
-    public func fetchFeeds(feedIds: [String], completionHandler: (NSURLRequest, NSHTTPURLResponse?, [Feed]?, NSError?) -> Void) -> Self {
-        Alamofire.request(Router.FetchFeeds(feedIds)).validate().responseCollection(completionHandler)
-        return self
+    public func fetchFeeds(feedIds: [String], completionHandler: (NSURLRequest, NSHTTPURLResponse?, [Feed]?, NSError?) -> Void) -> Request {
+        return request(Router.FetchFeeds(feedIds)).validate().responseCollection(completionHandler)
     }
 }
