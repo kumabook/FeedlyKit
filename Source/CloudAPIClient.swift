@@ -154,7 +154,7 @@ public class CloudAPIClient {
         case FetchSubscriptions
         case SubscribeTo(Feed, [Category])
         case UpdateSubscription(Subscription)
-        case UnsubscripbeTo(String)
+        case UnsubscribeTo(String)
         // Tags API
         case FetchTags
         case TagEntry([String], String)
@@ -199,7 +199,7 @@ public class CloudAPIClient {
             case .FetchSubscriptions:        return .GET
             case .SubscribeTo:               return .POST
             case .UpdateSubscription:        return .POST
-            case .UnsubscripbeTo:            return .DELETE
+            case .UnsubscribeTo:             return .DELETE
                 // Tags API
             case .FetchTags:                 return .GET
             case .TagEntry:                  return .PUT
@@ -249,7 +249,7 @@ public class CloudAPIClient {
             case .FetchSubscriptions:               return "/v3/subscriptions"
             case .SubscribeTo:                      return "/v3/subscriptions"
             case .UpdateSubscription:               return "/v3/subscriptions"
-            case .UnsubscripbeTo(let feedId):       return "/v3/subscriptions/\(feedId)"
+            case .UnsubscribeTo(let feedId):        return "/v3/subscriptions/\(feedId)"
                 // Tags API
             case .FetchTags:                        return "/v3/tags"
             case .TagEntry(let tagIds, let entryId):
@@ -341,7 +341,7 @@ public class CloudAPIClient {
                 return J.encode(req, parameters: Subscription(feed: feed, categories: categories)).0
             case .UpdateSubscription(let subscription):
                 return J.encode(req, parameters: subscription).0
-            case .UnsubscripbeTo:     return req
+            case .UnsubscribeTo:      return req
                 // Tags API
             case .FetchTags:          return req
             case .TagEntry(let tagIds, let entryId):
