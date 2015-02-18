@@ -34,6 +34,11 @@ public final class Category: Equatable, Hashable,
         self.label = label
     }
 
+    public init(label: String, profile: Profile) {
+        self.id    = "user/\(profile.id)/category/\(label)"
+        self.label = label
+    }
+
     public var hashValue: Int {
         get { return id.hashValue }
     }
