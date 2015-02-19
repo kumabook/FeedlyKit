@@ -219,14 +219,15 @@ public class CloudAPIClient {
             switch self {
                 // Categories API
             case .FetchCategories:                  return "/v3/categories"
-            case .UpdateCategory(let categoryId):   return "/v3/categories/\(categoryId)"
-            case .DeleteCategory(let categoryId):   return "/v3/categories/\(categoryId)"
+            case .UpdateCategory(let categoryId, let label):
+                                                    return "/v3/categories/\(urlEncode(categoryId))"
+            case .DeleteCategory(let categoryId):   return "/v3/categories/\(urlEncode(categoryId))"
                 // Entries API
-            case .FetchEntry(let entryId):          return "/v3/entries/\(entryId)"
+            case .FetchEntry(let entryId):          return "/v3/entries/\(urlEncode(entryId))"
             case .FetchEntries:                     return "/v3/entries/.mget"
             case .CreateEntry:                      return "/v3/entries/"
                 // Feeds API
-            case .FetchFeed(let feedId):            return "/v3/feeds/\(feedId)"
+            case .FetchFeed(let feedId):            return "/v3/feeds/\(urlEncode(feedId))"
             case .FetchFeeds:                       return "/v3/feeds/.mget"
                 // Markers API
             case .FetchUnreadCounts:                return "/v3/markers/counts"
@@ -239,7 +240,7 @@ public class CloudAPIClient {
                 //Search API
             case .SearchFeeds:                      return "/v3/search/feeds"
             case .SearchContentOfStream(let streamId, let searchTerm, let query):
-                return "/v3/search/" + urlEncode(streamId) + "/contents?query=" + searchTerm
+                return "/v3/search/" + urlEncode(streamId) + "/contents?query=" + urlEncode(searchTerm)
                 // Streams API
             case .FetchEntryIds(let streamId,  let paginationParams):
                 return "/v3/streams/" + urlEncode(streamId) + "/ids"
@@ -249,27 +250,29 @@ public class CloudAPIClient {
             case .FetchSubscriptions:               return "/v3/subscriptions"
             case .SubscribeTo:                      return "/v3/subscriptions"
             case .UpdateSubscription:               return "/v3/subscriptions"
-            case .UnsubscribeTo(let feedId):        return "/v3/subscriptions/\(feedId)"
+            case .UnsubscribeTo(let feedId):        return "/v3/subscriptions/\(urlEncode(feedId))"
                 // Tags API
             case .FetchTags:                        return "/v3/tags"
             case .TagEntry(let tagIds, let entryId):
-                                                    return "/v3/tags/\(join(self.comma, tagIds))"
+                let tids = join(",", tagIds.map({ self.urlEncode($0) }))
+                                                    return "/v3/tags/\(tids))"
             case .TagEntries(let tagIds, let entryIds):
-                                                    return "/v3/tags/\(join(self.comma, tagIds))"
-            case .ChangeTagLabel(let tagId):        return "/v3/tags/:\(tagId)"
-            case .UntagEntries(let tagIds,
-                              let entryIds):
-                let tids = join(",", tagIds)
-                let eids = join(",", entryIds)
+                let tids = join(",", tagIds.map({ self.urlEncode($0) }))
+                                                    return "/v3/tags/\(tids)"
+            case .ChangeTagLabel(let tagId, let label):
+                                                    return "/v3/tags/\(urlEncode(tagId))"
+            case .UntagEntries(let tagIds, let entryIds):
+                let tids = join(",", tagIds.map({   self.urlEncode($0) }))
+                let eids = join(",", entryIds.map({ self.urlEncode($0) }))
                                                     return "/v3/tags/\(tids)/\(eids)"
             case .DeleteTags(let tagIds):
-                let ids = join(",", tagIds)
-                                                    return "/v3/tags/\(ids)"
+                let tids = join(",", tagIds.map({ self.urlEncode($0) }))
+                                                    return "/v3/tags/\(tids)"
                 // Topics API
             case .FetchTopics:                      return "/v3/topics"
             case .AddTopic:                         return "/v3/topics"
             case .UpdateTopic:                      return "/v3/topics"
-            case .RemoveTopic(let topicId):         return "/v3/topics/\(topicId)"
+            case .RemoveTopic(let topicId):         return "/v3/topics/\(urlEncode(topicId))"
             }
         }
         // MARK: URLRequestConvertible

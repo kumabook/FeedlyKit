@@ -41,6 +41,6 @@ extension CloudAPIClient {
         DELETE /v3/subscriptions/:feedId
     */
     public func unsubscribeTo(feedId: String, completionHandler: (NSURLRequest, NSHTTPURLResponse?, NSError?) -> Void) -> Request {
-        return request(Router.UnsubscripbeTo(feedId)).validate().response(completionHandler)
+        return request(Router.UnsubscribeTo(feedId)).validate().response(completionHandler)
     }
 }
