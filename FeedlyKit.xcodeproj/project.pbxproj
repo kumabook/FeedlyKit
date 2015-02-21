@@ -325,12 +325,12 @@
 			isa = PBXGroup;
 			children = (
 				67B5104F1A69EBA200BB46B7 /* CloudAPIClient.swift */,
-				67363B541A73669B009F8FBC /* FeedsAPI.swift */,
-				67363B551A73669B009F8FBC /* TagsAPI.swift */,
 				67B3703C1A6EA37800B31D57 /* CategoriesAPI.swift */,
 				67B3703F1A6EA38C00B31D57 /* EntriesAPI.swift */,
+				67363B541A73669B009F8FBC /* FeedsAPI.swift */,
 				67363B511A716077009F8FBC /* MarkersAPI.swift */,
 				67B370421A6EA3A500B31D57 /* ProfileAPI.swift */,
+				67363B551A73669B009F8FBC /* TagsAPI.swift */,
 				67C810021A8B218500E4B18C /* SearchAPI.swift */,
 				67B370361A6E10B100B31D57 /* StreamsAPI.swift */,
 				67B370391A6E10C100B31D57 /* SubscriptionsAPI.swift */,
