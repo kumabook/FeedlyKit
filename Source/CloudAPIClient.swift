@@ -138,8 +138,8 @@ public class CloudAPIClient {
         case FetchFeeds([String])
         // Markers API
         case FetchUnreadCounts((autorefresh: Bool?, newerThan: Int64?, streamId: String?))
-        case MarkAs(Marker.Action, [String], Marker.ItemType)
-        case FetchLatestRead(Int64?)
+        case MarkAs(MarkerParam)
+        case FetchLatestReadOperations(Int64?)
         case FetchLatestTaggedEntryIds(Int64?)
         // Profile API
         case FetchProfile
@@ -184,7 +184,7 @@ public class CloudAPIClient {
                 // Markers API
             case .FetchUnreadCounts:         return .GET
             case .MarkAs:                    return .POST
-            case .FetchLatestRead:           return .GET
+            case .FetchLatestReadOperations: return .GET
             case .FetchLatestTaggedEntryIds: return .GET
                 // Profile API
             case .FetchProfile:              return .GET
@@ -232,7 +232,7 @@ public class CloudAPIClient {
                 // Markers API
             case .FetchUnreadCounts:                return "/v3/markers/counts"
             case .MarkAs:                           return "/v3/markers"
-            case .FetchLatestRead:                  return "/v3/markers/reads"
+            case .FetchLatestReadOperations:        return "/v3/markers/reads"
             case .FetchLatestTaggedEntryIds:        return "/v3/markers/tags"
                 // Profile API
             case .FetchProfile:                     return "/v3/profile"
@@ -308,13 +308,8 @@ public class CloudAPIClient {
                 if newerThan   != nil { params["newerThan"]   =  NSNumber(longLong: newerThan!) }
                 if streamId    != nil { params["streamId"]    = streamId }
                 return J.encode(req, parameters: params).0
-            case .MarkAs(let action, let itemIds, let type):
-                var params: [String: AnyObject] = [:]
-                params[type.key] = itemIds
-                params["action"] = action.rawValue
-                params["type"]   = type.type
-                return J.encode(req, parameters: params).0
-            case .FetchLatestRead(let newerThan):
+            case .MarkAs(let params):         return J.encode(req, parameters: params).0
+            case .FetchLatestReadOperations(let newerThan):
                 if let n = newerThan {
                     return J.encode(req, parameters: ["newerThan": NSNumber(longLong: n)]).0
                 }

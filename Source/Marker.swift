@@ -1,5 +1,5 @@
 //
-//  MarkersCount.swift
+//  Marker.swift
 //  FeedlyKit
 //
 //  Created by Hiroki Kumamoto on 1/18/15.
@@ -8,12 +8,13 @@
 
 import SwiftyJSON
 
-public class Marker {
+public class Marker: ResponseObjectSerializable {
     public enum Action: String {
         case MarkAsRead     = "markAsRead"
         case KeepAsUnread   = "keepUnread"
         case UndoMarkAsRead = "undoMarkAsRead"
         case MarkAsSaved    = "markAsSaved"
+        case MarkAsUnsaved  = "markAsUnsaved"
     }
     public enum ItemType {
         case Entry
@@ -34,28 +35,92 @@ public class Marker {
             }
         }
     }
+
+    let asOf: Int64
+    let id:   String
+
+    required public convenience  init?(response: NSHTTPURLResponse, representation: AnyObject) {
+        let json = JSON(representation)
+        self.init(json: json)
+    }
+    public init(json: JSON) {
+        self.asOf = json["asOf"].int64Value
+        self.id   = json["id"].stringValue
+    }
 }
 
-public final class UnreadCount: ResponseObjectSerializable, ResponseCollectionSerializable {
-    let id:      String
-    let updated: Int64
-    let count:   Int
-    
-    public class func collection(#response: NSHTTPURLResponse, representation: AnyObject) -> [UnreadCount] {
-        let json = JSON(representation)
-
-        return json.arrayValue.map({ UnreadCount(json: $0) })
+public class MarkerParam: ParameterEncodable {
+    let action:   Marker.Action
+    let itemType: Marker.ItemType
+    let itemIds:  [String]
+    init(action: Marker.Action, itemType: Marker.ItemType, itemIds:[String]) {
+        self.action   = action
+        self.itemType = itemType
+        self.itemIds  = itemIds
     }
 
+    func toParameters() -> [String : AnyObject] {
+        return ["type": itemType.type,
+              "action": action.rawValue,
+          itemType.key: itemIds]
+    }
+}
+
+public class UnreadCounts: ResponseObjectSerializable {
+    let value: [UnreadCount]
     required public convenience init?(response: NSHTTPURLResponse, representation: AnyObject) {
         let json = JSON(representation)
         self.init(json: json)
     }
-    
     public init(json: JSON) {
-        id      = json["id"].stringValue
-        updated = json["updated"].int64Value
-        count   = json["count"].intValue
+        value = json["unreadcounts"].arrayValue.map({ UnreadCount(json:$0) })
+    }
+    public subscript(index: Int) -> UnreadCount {
+        get { return value[index] }
     }
 }
 
+public class UnreadCount {
+    public let updated: Int64
+    public let id:      String
+    public let count:   Int
+    public init(json: JSON) {
+        self.updated = json["updated"].int64Value
+        self.id      = json["id"].stringValue
+        self.count   = json["count"].intValue
+    }
+}
+
+public class ReadOperations: ResponseObjectSerializable {
+    let feeds:   [Marker]
+    let entries: [String]
+    let unreads:  [String]
+    required public convenience init?(response: NSHTTPURLResponse, representation: AnyObject) {
+        let json = JSON(representation)
+        self.init(json: json)
+    }
+    public init(json: JSON) {
+        feeds   = json["feeds"].arrayValue.map({ Marker(json: $0) })
+        entries = json["entries"].arrayValue.map({ $0.stringValue })
+        unreads = json["unreads"].arrayValue.map({ $0.stringValue })
+    }
+}
+
+public class TaggedEntryIds: ResponseObjectSerializable {
+    let value: [String: [String]]
+    required public convenience init?(response: NSHTTPURLResponse, representation: AnyObject) {
+        let json = JSON(representation)
+        self.init(json: json)
+    }
+    public init(json: JSON) {
+        value = [:]
+        if let dic = json["taggedEntries"].dictionary {
+            for key in dic.keys {
+                value[key] = dic[key]?.arrayValue.map( { $0.stringValue })
+            }
+        }
+    }
+    public subscript(key: String) -> [String]? {
+        get { return value[key] }
+    }
+}
