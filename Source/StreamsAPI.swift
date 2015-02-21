@@ -19,7 +19,7 @@ import SwiftyJSON
     func toParameters() -> [String : AnyObject] {
         var params: [String:AnyObject] = [:]
         if let _count        = count        { params["count"]        = _count }
-        if let _count        = count        { params["count"]        = _count }
+        if let _ranked       = ranked       { params["ranked"]       = _ranked }
         if let _unreadOnly   = unreadOnly   { params["unreadOnly"]   = _unreadOnly }
         if let _newerThan    = newerThan    { params["newerThan"]    = NSNumber(longLong: newerThan!) }
         if let _continuation = continuation { params["continuation"] = _continuation }
@@ -38,7 +38,7 @@ import SwiftyJSON
     required public init?(response: NSHTTPURLResponse, representation: AnyObject) {
         let json     = JSON(representation)
         id           = json["id"].stringValue
-        updated      = json["update"].int64
+        updated      = json["updated"].int64
         continuation = json["continuation"].string
         title        = json["title"].string
         direction    = json["direction"].string
@@ -48,22 +48,12 @@ import SwiftyJSON
 }
 
 @objc public class PaginatedIdCollection: ResponseObjectSerializable {
-    public let id:           String
-    public let updated:      Int64?
     public let continuation: String?
-    public let title:        String?
-    public let direction:    String?
-    public let alternate:    Link?
-    public let items:        [String]
+    public let ids:          [String]
     required public init?(response: NSHTTPURLResponse, representation: AnyObject) {
         let json     = JSON(representation)
-        id           = json["id"].stringValue
-        updated      = json["update"].int64
         continuation = json["continuation"].string
-        title        = json["title"].string
-        direction    = json["direction"].string
-        alternate    = json["alternate"].isEmpty ? nil : Link(json: json["alternate"])
-        items        = json["items"].arrayValue.map( { $0.stringValue } )
+        ids          = json["ids"].arrayValue.map( { $0.stringValue } )
     }
 }
 
