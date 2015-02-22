@@ -20,7 +20,7 @@ import SwiftyJSON
         var params: [String:AnyObject] = [:]
         if let _count        = count        { params["count"]        = _count }
         if let _ranked       = ranked       { params["ranked"]       = _ranked }
-        if let _unreadOnly   = unreadOnly   { params["unreadOnly"]   = _unreadOnly }
+        if let _unreadOnly   = unreadOnly   { params["unreadOnly"]   = _unreadOnly ? "true" : "false" }
         if let _newerThan    = newerThan    { params["newerThan"]    = NSNumber(longLong: newerThan!) }
         if let _continuation = continuation { params["continuation"] = _continuation }
         return params

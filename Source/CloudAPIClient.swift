@@ -304,7 +304,7 @@ public class CloudAPIClient {
                 // Markers API
             case .FetchUnreadCounts(let (autorefresh: autorefresh, newerThan: newerThan, streamId: streamId)):
                 var params: [String: AnyObject] = [:]
-                if autorefresh != nil { params["autorefresh"] = autorefresh! }
+                if autorefresh != nil { params["autorefresh"] = autorefresh! ? "true" : "false" }
                 if newerThan   != nil { params["newerThan"]   =  NSNumber(longLong: newerThan!) }
                 if streamId    != nil { params["streamId"]    = streamId }
                 return J.encode(req, parameters: params).0
