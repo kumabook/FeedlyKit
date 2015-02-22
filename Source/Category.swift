@@ -9,10 +9,12 @@
 import SwiftyJSON
 
 public final class Category: Equatable, Hashable,
+                             Stream,
                              ResponseObjectSerializable, ResponseCollectionSerializable,
                              ParameterEncodable {
     public let id:    String
     public let label: String
+    public var title: String { get { return label }}
 
     public class func collection(#response: NSHTTPURLResponse, representation: AnyObject) -> [Category] {
         let json = JSON(representation)

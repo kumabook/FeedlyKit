@@ -9,9 +9,11 @@
 import SwiftyJSON
 
 public final class Tag: Equatable, Hashable,
+                        Stream,
                         ResponseObjectSerializable, ResponseCollectionSerializable {
     public let id:    String
     public let label: String
+    public var title: String { get { return label }}
 
     public class func collection(#response: NSHTTPURLResponse, representation: AnyObject) -> [Tag] {
         let json = JSON(representation)
