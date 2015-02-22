@@ -56,7 +56,7 @@ public final class Entry: Equatable, Hashable,
         self.updated         = json["updated"].int64
         self.origin          = Origin(json: json["origin"])
         self.keywords        = json["keywords"].array?.map({ $0.string! })
-        self.visual          = Visual(json: json["dictionary"])
+        self.visual          = Visual(json: json["visual"])
         self.unread          = json["unread"].boolValue
         self.tags            = json["tags"].array?.map({ Tag(json: $0) })
         self.categories      = json["categories"].arrayValue.map({ Category(json: $0) })
