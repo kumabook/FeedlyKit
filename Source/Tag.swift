@@ -20,6 +20,14 @@ public final class Tag: Equatable, Hashable,
         return json.arrayValue.map({ Tag(json: $0) })
     }
 
+    public class func Read(userId: String) -> Category {
+        return Category(id: "user/\(userId)/tag/global.read", label: "Read")
+    }
+
+    public class func Saved(userId: String) -> Category {
+        return Category(id: "user/\(userId)/tag/global.saved", label: "Saved")
+    }
+
     required public convenience init?(response: NSHTTPURLResponse, representation: AnyObject) {
         let json = JSON(representation)
         self.init(json: json)

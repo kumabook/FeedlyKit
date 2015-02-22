@@ -26,6 +26,18 @@ public final class Category: Equatable, Hashable,
         self.init(json: json)
     }
 
+    public class func Must(userId: String) -> Category {
+        return Category(id: "user/\(userId)/category/global.must", label: "Must")
+    }
+
+    public class func All(userId: String) -> Category {
+        return Category(id: "user/\(userId)/category/global.all", label: "All")
+    }
+
+    public class func Uncategorized(userId: String) -> Category {
+        return Category(id: "user/\(userId)/category/global.uncategorized", label: "Uncategorized")
+    }
+
     public init(json: JSON) {
         id    = json["id"].stringValue
         label = json["label"].stringValue
