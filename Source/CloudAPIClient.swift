@@ -330,9 +330,9 @@ public class CloudAPIClient {
                 return U.encode(req, parameters: query).0
                 //Streams API
             case .FetchEntryIds(let streamId, let params):
-                return J.encode(req, parameters: params).0
+                return U.encode(req, parameters: params).0
             case .FetchContents(let streamId, let params):
-                return J.encode(req, parameters: params).0
+                return U.encode(req, parameters: params).0
                 // Subscriptions API
             case .FetchSubscriptions: return req
             case .SubscribeTo(let feed, let categories):
