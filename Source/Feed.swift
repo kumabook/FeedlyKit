@@ -8,8 +8,7 @@
 
 import SwiftyJSON
 
-public final class Feed: Equatable, Hashable,
-                         Stream,
+public final class Feed: Stream,
                          ResponseObjectSerializable, ResponseCollectionSerializable  {
     public let id:          String
     public let subscribers: Int
@@ -23,6 +22,13 @@ public final class Feed: Equatable, Hashable,
     public let curated:     Bool?
     public let featured:    Bool?
     public let lastUpdated: Int64?
+
+    public override var streamId: String {
+        return id
+    }
+    public override var streamTitle: String {
+        return title
+    }
 
     public class func collection(#response: NSHTTPURLResponse, representation: AnyObject) -> [Feed] {
         let json = JSON(representation)
@@ -54,10 +60,6 @@ public final class Feed: Equatable, Hashable,
         curated     = json["curated"].bool
         featured    = json["featured"].bool
         lastUpdated = json["lastUpdated"].int64
-    }
-
-    public var hashValue: Int {
-        get { return id.hashValue }
     }
 }
 

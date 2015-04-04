@@ -8,13 +8,18 @@
 
 import SwiftyJSON
 
-public final class Category: Equatable, Hashable,
-                             Stream,
+public final class Category: Stream,
                              ResponseObjectSerializable, ResponseCollectionSerializable,
                              ParameterEncodable {
     public let id:    String
     public let label: String
-    public var title: String { get { return label }}
+
+    public override var streamId: String {
+        return id
+    }
+    public override var streamTitle: String {
+        return label
+    }
 
     public class func collection(#response: NSHTTPURLResponse, representation: AnyObject) -> [Category] {
         let json = JSON(representation)
@@ -51,10 +56,6 @@ public final class Category: Equatable, Hashable,
     public init(label: String, profile: Profile) {
         self.id    = "user/\(profile.id)/category/\(label)"
         self.label = label
-    }
-
-    public var hashValue: Int {
-        get { return id.hashValue }
     }
 
     func toParameters() -> [String : AnyObject] {

@@ -8,12 +8,17 @@
 
 import SwiftyJSON
 
-public final class Tag: Equatable, Hashable,
-                        Stream,
+public final class Tag: Stream,
                         ResponseObjectSerializable, ResponseCollectionSerializable {
     public let id:    String
     public let label: String
-    public var title: String { get { return label }}
+
+    public override var streamId: String {
+        return id
+    }
+    public override var streamTitle: String {
+        return label
+    }
 
     public class func collection(#response: NSHTTPURLResponse, representation: AnyObject) -> [Tag] {
         let json = JSON(representation)
@@ -31,10 +36,6 @@ public final class Tag: Equatable, Hashable,
     required public convenience init?(response: NSHTTPURLResponse, representation: AnyObject) {
         let json = JSON(representation)
         self.init(json: json)
-    }
-
-    public var hashValue: Int {
-        get { return id.hashValue }
     }
 
     public init(json: JSON) {

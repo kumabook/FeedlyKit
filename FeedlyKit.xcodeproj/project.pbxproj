@@ -80,7 +80,6 @@
 		67B370441A6EA3A500B31D57 /* ProfileAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B370421A6EA3A500B31D57 /* ProfileAPI.swift */; };
 		67B370491A6EA3C800B31D57 /* TopicsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B370481A6EA3C800B31D57 /* TopicsAPI.swift */; };
 		67B3704A1A6EA3C800B31D57 /* TopicsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B370481A6EA3C800B31D57 /* TopicsAPI.swift */; };
-		67B510011A69929800BB46B7 /* FeedlyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67B50FF61A69929800BB46B7 /* FeedlyKit.framework */; };
 		67B510111A6992C700BB46B7 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67C9DE481A638E1900B73CCA /* Alamofire.framework */; };
 		67B510121A6992C700BB46B7 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67C9DE491A638E1900B73CCA /* SwiftyJSON.framework */; };
 		67B510241A69943D00BB46B7 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67C9DE531A639C7800B73CCA /* Nimble.framework */; };
@@ -130,7 +129,6 @@
 		67F606BE1A6B49A6002DEAC1 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F606BC1A6B49A6002DEAC1 /* Preferences.swift */; };
 		67F606C31A6B4B2F002DEAC1 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F606C21A6B4B2F002DEAC1 /* Tag.swift */; };
 		67F606C41A6B4B2F002DEAC1 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F606C21A6B4B2F002DEAC1 /* Tag.swift */; };
-		67F71BA31A698B9800D8A6BC /* FeedlyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67F71B981A698B9800D8A6BC /* FeedlyKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -262,7 +260,6 @@
 			files = (
 				67F606AA1A6ACECF002DEAC1 /* Alamofire.framework in Frameworks */,
 				67F606AB1A6ACECF002DEAC1 /* SwiftyJSON.framework in Frameworks */,
-				67B510011A69929800BB46B7 /* FeedlyKit.framework in Frameworks */,
 				67B510241A69943D00BB46B7 /* Nimble.framework in Frameworks */,
 				67B510251A69943D00BB46B7 /* Quick.framework in Frameworks */,
 			);
@@ -283,7 +280,6 @@
 			files = (
 				67F606AC1A6ACEE2002DEAC1 /* Alamofire.framework in Frameworks */,
 				67F606A91A6ACEB9002DEAC1 /* SwiftyJSON.framework in Frameworks */,
-				67F71BA31A698B9800D8A6BC /* FeedlyKit.framework in Frameworks */,
 				67B5102A1A6994AB00BB46B7 /* Nimble.framework in Frameworks */,
 				67B5102B1A6994AB00BB46B7 /* Quick.framework in Frameworks */,
 			);

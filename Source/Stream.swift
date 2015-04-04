@@ -6,7 +6,18 @@
 //  Copyright (c) 2015 Hiroki Kumamoto. All rights reserved.
 //
 
-@objc public protocol Stream {
-    var id:    String { get }
-    var title: String { get }
+public class Stream: Equatable, Hashable {
+    public var streamId: String {
+        return ""// must override at subclass
+    }
+    public var streamTitle: String {
+        return ""// must override at subclass
+    }
+    public var hashValue: Int {
+        return streamId.hashValue
+    }
+}
+
+public func ==(lhs: Stream, rhs: Stream) -> Bool {
+    return lhs.streamId == rhs.streamId
 }
