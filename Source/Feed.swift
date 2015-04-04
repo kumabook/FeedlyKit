@@ -62,7 +62,3 @@ public final class Feed: Stream,
         lastUpdated = json["lastUpdated"].int64
     }
 }
-
-public func ==(lhs: Feed, rhs: Feed) -> Bool {
-    return lhs.id == rhs.id
-}

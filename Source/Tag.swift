@@ -43,7 +43,3 @@ public final class Tag: Stream,
         self.label = json["label"].stringValue
     }
 }
-
-public func ==(lhs: Tag, rhs: Tag) -> Bool {
-    return lhs.id == rhs.id
-}

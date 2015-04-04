@@ -63,8 +63,4 @@ public final class Category: Stream,
     }
 }
 
-public func ==(lhs: Category, rhs: Category) -> Bool {
-    return lhs.id == rhs.id
-}
-
 

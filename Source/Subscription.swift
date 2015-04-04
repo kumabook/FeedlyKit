@@ -62,7 +62,3 @@ public final class Subscription: Stream,
             ]
     }
 }
-
-public func ==(lhs: Subscription, rhs: Subscription) -> Bool {
-    return lhs.id == rhs.id
-}
