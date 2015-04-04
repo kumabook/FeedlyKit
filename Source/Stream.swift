@@ -16,6 +16,7 @@ public class Stream: Equatable, Hashable {
     public var hashValue: Int {
         return streamId.hashValue
     }
+    public init() {}
 }
 
 public func ==(lhs: Stream, rhs: Stream) -> Bool {
