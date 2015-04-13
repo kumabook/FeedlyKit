@@ -54,6 +54,12 @@ public final class Subscription: Stream,
         self.categories = categories
     }
 
+    public init(id: String, title: String, categories: [Category]) {
+        self.id         = id
+        self.title      = title
+        self.categories = categories
+    }
+
     func toParameters() -> [String : AnyObject] {
         return [
                  "title": title,
