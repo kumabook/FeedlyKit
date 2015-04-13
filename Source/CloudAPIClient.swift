@@ -152,7 +152,7 @@ public class CloudAPIClient {
         case FetchContents(String, PaginationParams)
         // Subscriptions API
         case FetchSubscriptions
-        case SubscribeTo(Feed, [Category])
+        case SubscribeTo(Subscription)
         case UpdateSubscription(Subscription)
         case UnsubscribeTo(String)
         // Tags API
@@ -335,8 +335,8 @@ public class CloudAPIClient {
                 return U.encode(req, parameters: params).0
                 // Subscriptions API
             case .FetchSubscriptions: return req
-            case .SubscribeTo(let feed, let categories):
-                return J.encode(req, parameters: Subscription(feed: feed, categories: categories)).0
+            case .SubscribeTo(let subscription):
+                return J.encode(req, parameters: subscription).0
             case .UpdateSubscription(let subscription):
                 return J.encode(req, parameters: subscription).0
             case .UnsubscribeTo:      return req
