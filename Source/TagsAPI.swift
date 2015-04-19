@@ -16,7 +16,7 @@ extension CloudAPIClient {
         (Authorization is required)
     */
     public func fetchTags(completionHandler: (NSURLRequest, NSHTTPURLResponse?, [Tag]?, NSError?) -> Void) -> Request {
-        return request(Router.FetchTags).validate().responseCollection(completionHandler)
+        return manager.request(Router.FetchTags).validate().responseCollection(completionHandler)
     }
     /**
         Tag an existing entry
@@ -24,7 +24,7 @@ extension CloudAPIClient {
         (Authorization is required)
     */
     public func tagEntry(tagIds: [String], entryId: String, completionHandler:(NSURLRequest, NSHTTPURLResponse?, NSError?) -> Void) -> Request {
-        return request(Router.TagEntry(tagIds, entryId)).validate().response(completionHandler)
+        return manager.request(Router.TagEntry(tagIds, entryId)).validate().response(completionHandler)
     }
     
     /**
@@ -32,7 +32,7 @@ extension CloudAPIClient {
         PUT /v3/tags/:tagId1,:tagId2
     */
     public func tagEntries(tagIds: [String], entryIds: [String], completionHandler:(NSURLRequest, NSHTTPURLResponse?, NSError?) -> Void) -> Request {
-        return request(Router.TagEntries(tagIds, entryIds)).validate().response(completionHandler)
+        return manager.request(Router.TagEntries(tagIds, entryIds)).validate().response(completionHandler)
     }
     
     /**
@@ -40,7 +40,7 @@ extension CloudAPIClient {
         POST /v3/tags/:tagId
     */
     public func changeTagLabel(tagId: String, label: String, completionHandler:(NSURLRequest, NSHTTPURLResponse?, NSError?) -> Void) -> Request {
-        return request(Router.ChangeTagLabel(tagId, label)).validate().response(completionHandler)
+        return manager.request(Router.ChangeTagLabel(tagId, label)).validate().response(completionHandler)
     }
     /**
         Untag multiple entries
@@ -48,7 +48,7 @@ extension CloudAPIClient {
         (Authorization is required)
     */
     public func untagEntries(tagIds: [String], entryIds: [String], completionHandler:(NSURLRequest, NSHTTPURLResponse?, NSError?) -> Void) -> Request {
-        return request(Router.UntagEntries(tagIds, entryIds)).validate().response(completionHandler)
+        return manager.request(Router.UntagEntries(tagIds, entryIds)).validate().response(completionHandler)
     }
     
     /**
@@ -57,6 +57,6 @@ extension CloudAPIClient {
         (Authorization is required)
     */
     public func deleteTags(tagIds: [String], completionHandler:(NSURLRequest, NSHTTPURLResponse?, NSError?) -> Void) -> Request {
-        return request(Router.DeleteTags(tagIds)).validate().response(completionHandler)
+        return manager.request(Router.DeleteTags(tagIds)).validate().response(completionHandler)
     }
 }

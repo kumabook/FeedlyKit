@@ -17,6 +17,8 @@ import Alamofire
     class func collection(#response: NSHTTPURLResponse, representation: AnyObject) -> [Self]
 }
 
+public typealias AccessToken = String
+
 extension Alamofire.Request {
     public func responseObject<T: ResponseObjectSerializable>(completionHandler: (NSURLRequest, NSHTTPURLResponse?, T?, NSError?) -> Void) -> Self {
         let serializer: Serializer = { (request, response, data) in
@@ -90,8 +92,6 @@ extension NSMutableURLRequest {
 }
 
 public class CloudAPIClient {
-    public typealias AccessToken = String
-    
     public enum Target {
         static let sandboxBaseUrl    = "https://sandbox.feedly.com"
         static let productionBaseUrl = "http://cloud.feedly.com/"
@@ -108,17 +108,30 @@ public class CloudAPIClient {
         }
     }
     public struct Config {
-        public static var target:      Target  = Target.Sandbox
-        public static var accessToken: AccessToken?
+        public static var target: Target  = Target.Sandbox
         static var baseURLString: String  = Config.target.baseUrl
     }
 
-    public class var baseURLString: String       { get { return Config.target.baseUrl } }
-    public class var accessToken:   AccessToken? { get { return Config.accessToken } }
+    public class var baseURLString: String { return Config.target.baseUrl }
+
+    public var manager: Alamofire.Manager
 
     public init() {
+        manager = Alamofire.Manager(configuration: NSURLSessionConfiguration.ephemeralSessionConfiguration())
     }
-    
+
+    public func setAccessToken(accessToken: AccessToken?) {
+        let configuration = manager.session.configuration
+        var headers = configuration.HTTPAdditionalHeaders ?? [:]
+        if let token = accessToken {
+            headers["Authorization"] = "Bearer \(token)"
+        } else {
+            headers.removeValueForKey("Authorization")
+        }
+        configuration.HTTPAdditionalHeaders = headers
+        manager = Alamofire.Manager(configuration: configuration)
+    }
+
     public enum Router: URLRequestConvertible {
         var comma: String { return "," }
         func urlEncode(string: String) -> String {
@@ -283,11 +296,7 @@ public class CloudAPIClient {
             let req = NSMutableURLRequest(URL: URL)
 
             req.HTTPMethod = method.rawValue
-            
-            if let token = CloudAPIClient.accessToken {
-                req.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-            }
-            
+
             switch self {
                 // Categories API
             case .FetchCategories: return req

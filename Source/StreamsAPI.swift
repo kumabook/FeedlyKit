@@ -67,9 +67,9 @@ extension CloudAPIClient {
         TODO
     */
     public func fetchEntryIds(streamId: String, paginationParams: PaginationParams, completionHandler: (NSURLRequest, NSHTTPURLResponse?, PaginatedIdCollection?, NSError?) -> Void) -> Request {
-        return request(Router.FetchEntryIds(streamId, paginationParams))
-                 .validate()
-                 .responseObject(completionHandler)
+        return manager.request(Router.FetchEntryIds(streamId, paginationParams))
+                      .validate()
+                      .responseObject(completionHandler)
     }
     
     /**
@@ -81,8 +81,8 @@ extension CloudAPIClient {
         TODO
     */
     public func fetchContents(streamId: String, paginationParams: PaginationParams, completionHandler: (NSURLRequest, NSHTTPURLResponse?, PaginatedEntryCollection?, NSError?) -> Void) -> Request {
-        return request(Router.FetchContents(streamId, paginationParams))
-                 .validate()
-                 .responseObject(completionHandler)
+        return manager.request(Router.FetchContents(streamId, paginationParams))
+                      .validate()
+                      .responseObject(completionHandler)
     }
 }

@@ -15,13 +15,13 @@ extension CloudAPIClient {
     GET /v3/feeds/:feedId
     */
     public func fetchFeed(feedId: String, completionHandler: (NSURLRequest, NSHTTPURLResponse?, Feed?, NSError?) -> Void) -> Request {
-        return request(Router.FetchFeed(feedId)).validate().responseObject(completionHandler)
+        return manager.request(Router.FetchFeed(feedId)).validate().responseObject(completionHandler)
     }
     /**
     Get the metadata for a list of feeds
     POST /v3/feeds/.mget
     */
     public func fetchFeeds(feedIds: [String], completionHandler: (NSURLRequest, NSHTTPURLResponse?, [Feed]?, NSError?) -> Void) -> Request {
-        return request(Router.FetchFeeds(feedIds)).validate().responseCollection(completionHandler)
+        return manager.request(Router.FetchFeeds(feedIds)).validate().responseCollection(completionHandler)
     }
 }
