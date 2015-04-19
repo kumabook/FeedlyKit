@@ -16,7 +16,7 @@ extension CloudAPIClient {
         (Authorization is optional)
     */
     public func fetchEntry(entryId: String, completionHandler: (NSURLRequest, NSHTTPURLResponse?, Entry?, NSError?) -> Void) -> Request {
-        return manager.request(Router.FetchEntry(entryId)).validate().responseObject(completionHandler)
+        return manager.request(Router.FetchEntry(target, entryId)).validate().responseObject(completionHandler)
     }
     
     /**
@@ -25,7 +25,7 @@ extension CloudAPIClient {
         (Authorization is optional)
     */
     public func fetchEntries(entryIds: [String], completionHandler: (NSURLRequest, NSHTTPURLResponse?, [Entry]?, NSError?) -> Void) -> Request {
-        return manager.request(Router.FetchEntries(entryIds)).validate().responseCollection(completionHandler)
+        return manager.request(Router.FetchEntries(target, entryIds)).validate().responseCollection(completionHandler)
     }
     
     /**
@@ -34,6 +34,6 @@ extension CloudAPIClient {
         (Authorization is required)
     */
     public func createEntry(entry: Entry, completionHandler: (NSURLRequest, NSHTTPURLResponse?, [String]?, NSError?) -> Void) -> Request {
-        return manager.request(Router.CreateEntry(entry)).validate()
+        return manager.request(Router.CreateEntry(target, entry)).validate()
     }
 }

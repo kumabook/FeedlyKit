@@ -107,17 +107,13 @@ public class CloudAPIClient {
             }
         }
     }
-    public struct Config {
-        public static var target: Target  = Target.Sandbox
-        static var baseURLString: String  = Config.target.baseUrl
-    }
 
-    public class var baseURLString: String { return Config.target.baseUrl }
+    public var manager: Alamofire.Manager!
+    public var target: Target
 
-    public var manager: Alamofire.Manager
-
-    public init() {
-        manager = Alamofire.Manager(configuration: NSURLSessionConfiguration.ephemeralSessionConfiguration())
+    public init(target: Target) {
+        self.target = target
+        manager     = Alamofire.Manager(configuration: NSURLSessionConfiguration.ephemeralSessionConfiguration())
     }
 
     public func setAccessToken(accessToken: AccessToken?) {
@@ -139,47 +135,47 @@ public class CloudAPIClient {
                                 NSCharacterSet.URLHostAllowedCharacterSet())!
         }
         // Categories API
-        case FetchCategories
-        case UpdateCategory(String, String)
-        case DeleteCategory(String)
+        case FetchCategories(Target)
+        case UpdateCategory(Target, String, String)
+        case DeleteCategory(Target, String)
         // Entries API
-        case FetchEntry(String)
-        case FetchEntries([String])
-        case CreateEntry(Entry)
+        case FetchEntry(Target, String)
+        case FetchEntries(Target, [String])
+        case CreateEntry(Target, Entry)
         // Feeds API
-        case FetchFeed(String)
-        case FetchFeeds([String])
+        case FetchFeed(Target, String)
+        case FetchFeeds(Target, [String])
         // Markers API
-        case FetchUnreadCounts((autorefresh: Bool?, newerThan: Int64?, streamId: String?))
-        case MarkAs(MarkerParam)
-        case FetchLatestReadOperations(Int64?)
-        case FetchLatestTaggedEntryIds(Int64?)
+        case FetchUnreadCounts(Target, UnreadCountsParams)
+        case MarkAs(Target, MarkerParam)
+        case FetchLatestReadOperations(Target, Int64?)
+        case FetchLatestTaggedEntryIds(Target, Int64?)
         // Profile API
-        case FetchProfile
-        case UpdateProfile([String:String])
+        case FetchProfile(Target)
+        case UpdateProfile(Target, [String:String])
         // Search API
-        case SearchFeeds(SearchQueryOfFeed)
-        case SearchContentOfStream(String, String, SearchQueryOfContent)
+        case SearchFeeds(Target, SearchQueryOfFeed)
+        case SearchContentOfStream(Target, String, String, SearchQueryOfContent)
         // Streams API
-        case FetchEntryIds(String, PaginationParams)
-        case FetchContents(String, PaginationParams)
+        case FetchEntryIds(Target, String, PaginationParams)
+        case FetchContents(Target, String, PaginationParams)
         // Subscriptions API
-        case FetchSubscriptions
-        case SubscribeTo(Subscription)
-        case UpdateSubscription(Subscription)
-        case UnsubscribeTo(String)
+        case FetchSubscriptions(Target)
+        case SubscribeTo(Target, Subscription)
+        case UpdateSubscription(Target, Subscription)
+        case UnsubscribeTo(Target, String)
         // Tags API
-        case FetchTags
-        case TagEntry([String], String)
-        case TagEntries([String], [String])
-        case ChangeTagLabel(String, String)
-        case UntagEntries([String], [String])
-        case DeleteTags([String])
+        case FetchTags(Target)
+        case TagEntry(Target, [String], String)
+        case TagEntries(Target, [String], [String])
+        case ChangeTagLabel(Target, String, String)
+        case UntagEntries(Target, [String], [String])
+        case DeleteTags(Target, [String])
         // Topics API
-        case FetchTopics
-        case AddTopic(String, String)
-        case UpdateTopic(String, String)
-        case RemoveTopic(String)
+        case FetchTopics(Target)
+        case AddTopic(Target, String, String)
+        case UpdateTopic(Target, String, String)
+        case RemoveTopic(Target, String)
         
         var method: Alamofire.Method {
             switch self {
@@ -228,142 +224,162 @@ public class CloudAPIClient {
             }
         }
 
-        var path: String {
+        var url: String {
             switch self {
                 // Categories API
-            case .FetchCategories:                  return "/v3/categories"
-            case .UpdateCategory(let categoryId, let label):
-                                                    return "/v3/categories/\(urlEncode(categoryId))"
-            case .DeleteCategory(let categoryId):   return "/v3/categories/\(urlEncode(categoryId))"
+            case .FetchCategories(let target):
+                return target.baseUrl + "/v3/categories"
+            case .UpdateCategory(let target, let categoryId, let label):
+                return target.baseUrl + "/v3/categories/\(urlEncode(categoryId))"
+            case .DeleteCategory(let target, let categoryId):
+                return target.baseUrl + "/v3/categories/\(urlEncode(categoryId))"
                 // Entries API
-            case .FetchEntry(let entryId):          return "/v3/entries/\(urlEncode(entryId))"
-            case .FetchEntries:                     return "/v3/entries/.mget"
-            case .CreateEntry:                      return "/v3/entries/"
+            case .FetchEntry(let target, let entryId):
+                return target.baseUrl + "/v3/entries/\(urlEncode(entryId))"
+            case .FetchEntries(let target, let entryIds):
+                return target.baseUrl + "/v3/entries/.mget"
+            case .CreateEntry(let target, let entry):
+                return target.baseUrl + "/v3/entries/"
                 // Feeds API
-            case .FetchFeed(let feedId):            return "/v3/feeds/\(urlEncode(feedId))"
-            case .FetchFeeds:                       return "/v3/feeds/.mget"
+            case .FetchFeed(let target, let feedId):
+                return target.baseUrl + "/v3/feeds/\(urlEncode(feedId))"
+            case .FetchFeeds(let target, let feedIds):
+                return target.baseUrl + "/v3/feeds/.mget"
                 // Markers API
-            case .FetchUnreadCounts:                return "/v3/markers/counts"
-            case .MarkAs:                           return "/v3/markers"
-            case .FetchLatestReadOperations:        return "/v3/markers/reads"
-            case .FetchLatestTaggedEntryIds:        return "/v3/markers/tags"
+            case .FetchUnreadCounts(let target, let unreadCountsParams):
+                return target.baseUrl + "/v3/markers/counts"
+            case .MarkAs(let target, let params):
+                return target.baseUrl + "/v3/markers"
+            case .FetchLatestReadOperations(let target, let newerThan):
+                return target.baseUrl + "/v3/markers/reads"
+            case .FetchLatestTaggedEntryIds(let target, let newerThan):
+                return target.baseUrl + "/v3/markers/tags"
                 // Profile API
-            case .FetchProfile:                     return "/v3/profile"
-            case .UpdateProfile:                    return "/v3/profile"
+            case .FetchProfile(let target):
+                return target.baseUrl + "/v3/profile"
+            case .UpdateProfile(let target, let profile):
+                return target.baseUrl + "/v3/profile"
                 //Search API
-            case .SearchFeeds:                      return "/v3/search/feeds"
-            case .SearchContentOfStream(let streamId, let searchTerm, let query):
-                return "/v3/search/" + urlEncode(streamId) + "/contents?query=" + urlEncode(searchTerm)
+            case .SearchFeeds(let target, let query):
+                return target.baseUrl + "/v3/search/feeds"
+            case .SearchContentOfStream(let target, let streamId, let searchTerm, let query):
+                return target.baseUrl + "/v3/search/" + urlEncode(streamId) + "/contents?query=" + urlEncode(searchTerm)
                 // Streams API
-            case .FetchEntryIds(let streamId,  let paginationParams):
-                return "/v3/streams/" + urlEncode(streamId) + "/ids"
-            case .FetchContents(let streamId, let paginationParams):
-                return "/v3/streams/" + urlEncode(streamId) + "/contents"
+            case .FetchEntryIds(let target, let streamId,  let paginationParams):
+                return target.baseUrl + "/v3/streams/" + urlEncode(streamId) + "/ids"
+            case .FetchContents(let target, let streamId, let paginationParams):
+                return target.baseUrl + "/v3/streams/" + urlEncode(streamId) + "/contents"
                 // Subscriptions API
-            case .FetchSubscriptions:               return "/v3/subscriptions"
-            case .SubscribeTo:                      return "/v3/subscriptions"
-            case .UpdateSubscription:               return "/v3/subscriptions"
-            case .UnsubscribeTo(let feedId):        return "/v3/subscriptions/\(urlEncode(feedId))"
+            case .FetchSubscriptions(let target):
+                return target.baseUrl + "/v3/subscriptions"
+            case .SubscribeTo(let target, let subscription):
+                return target.baseUrl + "/v3/subscriptions"
+            case .UpdateSubscription(let target, let subscription):
+                return target.baseUrl + "/v3/subscriptions"
+            case .UnsubscribeTo(let target, let feedId):
+                return target.baseUrl + "/v3/subscriptions/\(urlEncode(feedId))"
                 // Tags API
-            case .FetchTags:                        return "/v3/tags"
-            case .TagEntry(let tagIds, let entryId):
+            case .FetchTags(let target):
+                return target.baseUrl + "/v3/tags"
+            case .TagEntry(let target, let tagIds, let entryId):
                 let tids = join(",", tagIds.map({ self.urlEncode($0) }))
-                                                    return "/v3/tags/\(tids))"
-            case .TagEntries(let tagIds, let entryIds):
+                return target.baseUrl + "/v3/tags/\(tids))"
+            case .TagEntries(let target, let tagIds, let entryIds):
                 let tids = join(",", tagIds.map({ self.urlEncode($0) }))
-                                                    return "/v3/tags/\(tids)"
-            case .ChangeTagLabel(let tagId, let label):
-                                                    return "/v3/tags/\(urlEncode(tagId))"
-            case .UntagEntries(let tagIds, let entryIds):
+                return target.baseUrl + "/v3/tags/\(tids)"
+            case .ChangeTagLabel(let target, let tagId, let label):
+                return target.baseUrl + "/v3/tags/\(urlEncode(tagId))"
+            case .UntagEntries(let target, let tagIds, let entryIds):
                 let tids = join(",", tagIds.map({   self.urlEncode($0) }))
                 let eids = join(",", entryIds.map({ self.urlEncode($0) }))
-                                                    return "/v3/tags/\(tids)/\(eids)"
-            case .DeleteTags(let tagIds):
+                return target.baseUrl + "/v3/tags/\(tids)/\(eids)"
+            case .DeleteTags(let target, let tagIds):
                 let tids = join(",", tagIds.map({ self.urlEncode($0) }))
-                                                    return "/v3/tags/\(tids)"
+                return target.baseUrl + "/v3/tags/\(tids)"
                 // Topics API
-            case .FetchTopics:                      return "/v3/topics"
-            case .AddTopic:                         return "/v3/topics"
-            case .UpdateTopic:                      return "/v3/topics"
-            case .RemoveTopic(let topicId):         return "/v3/topics/\(urlEncode(topicId))"
+            case .FetchTopics(let target):
+                return target.baseUrl + "/v3/topics"
+            case .AddTopic(let target, let id, let interest):
+                return target.baseUrl + "/v3/topics"
+            case .UpdateTopic(let target, let id, let interest):
+                return target.baseUrl + "/v3/topics"
+            case .RemoveTopic(let target, let topicId):
+                return target.baseUrl + "/v3/topics/\(urlEncode(topicId))"
             }
         }
         // MARK: URLRequestConvertible
         public var URLRequest: NSURLRequest {
             let J = Alamofire.ParameterEncoding.JSON
             let U = Alamofire.ParameterEncoding.URL
-            let URL = NSURL(string: CloudAPIClient.baseURLString + path)!
+            let URL = NSURL(string: url)!
             let req = NSMutableURLRequest(URL: URL)
 
             req.HTTPMethod = method.rawValue
 
             switch self {
                 // Categories API
-            case .FetchCategories: return req
-            case .UpdateCategory(let categoryId, let label):
+            case .FetchCategories:                        return req
+            case .UpdateCategory(let target, let categoryId, let label):
                 return J.encode(req, parameters: ["label": label]).0
-            case .DeleteCategory:  return req
+            case .DeleteCategory:                         return req
                 // Entries API
-            case .FetchEntry:                 return req
-            case .FetchEntries(let entryIds): return req.addParam(entryIds)
-            case .CreateEntry(let entry):     return J.encode(req, parameters: entry).0
+            case .FetchEntry:                             return req
+            case .FetchEntries(let target, let entryIds): return req.addParam(entryIds)
+            case .CreateEntry(let target, let entry):     return J.encode(req, parameters: entry).0
                 // Feeds API
             case .FetchFeed:                  return req
-            case .FetchFeeds(let feedIds):    return req.addParam(feedIds)
+            case .FetchFeeds(let target, let feedIds):    return req.addParam(feedIds)
                 // Markers API
-            case .FetchUnreadCounts(let (autorefresh: autorefresh, newerThan: newerThan, streamId: streamId)):
-                var params: [String: AnyObject] = [:]
-                if autorefresh != nil { params["autorefresh"] = autorefresh! ? "true" : "false" }
-                if newerThan   != nil { params["newerThan"]   =  NSNumber(longLong: newerThan!) }
-                if streamId    != nil { params["streamId"]    = streamId }
+            case .FetchUnreadCounts(let target, let unreadCountsParams):
+                return J.encode(req, parameters: unreadCountsParams).0
+            case .MarkAs(let target, let params):
                 return J.encode(req, parameters: params).0
-            case .MarkAs(let params):         return J.encode(req, parameters: params).0
-            case .FetchLatestReadOperations(let newerThan):
+            case .FetchLatestReadOperations(let target, let newerThan):
                 if let n = newerThan {
                     return J.encode(req, parameters: ["newerThan": NSNumber(longLong: n)]).0
                 }
                 return req
-            case .FetchLatestTaggedEntryIds(let newerThan):
+            case .FetchLatestTaggedEntryIds(let target, let newerThan):
                 if let n = newerThan {
                     return J.encode(req, parameters: ["newerThan": NSNumber(longLong: n)]).0
                 }
                 return req
                 // Profile API
             case .FetchProfile:       return req
-            case .UpdateProfile(let params):
+            case .UpdateProfile(let target, let params):
                 return J.encode(req, parameters: params).0
                 // Search API
-            case .SearchFeeds(let query):
+            case .SearchFeeds(let target, let query):
                 return U.encode(req, parameters: query).0
-            case .SearchContentOfStream(let streamId, let searchTerm, let query):
+            case .SearchContentOfStream(let target, let streamId, let searchTerm, let query):
                 return U.encode(req, parameters: query).0
                 //Streams API
-            case .FetchEntryIds(let streamId, let params):
+            case .FetchEntryIds(let target, let streamId, let params):
                 return U.encode(req, parameters: params).0
-            case .FetchContents(let streamId, let params):
+            case .FetchContents(let target, let streamId, let params):
                 return U.encode(req, parameters: params).0
                 // Subscriptions API
             case .FetchSubscriptions: return req
-            case .SubscribeTo(let subscription):
+            case .SubscribeTo(let target, let subscription):
                 return J.encode(req, parameters: subscription).0
-            case .UpdateSubscription(let subscription):
+            case .UpdateSubscription(let target, let subscription):
                 return J.encode(req, parameters: subscription).0
             case .UnsubscribeTo:      return req
                 // Tags API
             case .FetchTags:          return req
-            case .TagEntry(let tagIds, let entryId):
+            case .TagEntry(let target, let tagIds, let entryId):
                 return J.encode(req, parameters: ["entryId": entryId]).0
-            case .TagEntries(let tagIds, let entryIds):
+            case .TagEntries(let target, let tagIds, let entryIds):
                 return J.encode(req, parameters: ["entryIds": entryIds]).0
-            case .ChangeTagLabel(let tagId, let label):
+            case .ChangeTagLabel(let target, let tagId, let label):
                 return J.encode(req, parameters: ["label": label]).0
             case .UntagEntries:       return req
             case .DeleteTags:         return req
                 // Topics API
             case .FetchTopics:        return req
-            case .AddTopic(let id, let interest):
+            case .AddTopic(let target, let id, let interest):
                 return J.encode(req, parameters: ["id": id, "interest": interest]).0
-            case .UpdateTopic(let id, let interest):
+            case .UpdateTopic(let target, let id, let interest):
                 return J.encode(req, parameters: ["id": id, "interest": interest]).0
             case .RemoveTopic:        return req
             }

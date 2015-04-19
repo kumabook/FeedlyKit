@@ -18,7 +18,7 @@ extension CloudAPIClient {
         @return self
     */
     public func fetchSubscriptions(completionHandler: (NSURLRequest, NSHTTPURLResponse?, [Subscription]?, NSError?) -> Void) -> Request {
-        return manager.request(Router.FetchSubscriptions).responseCollection(completionHandler)
+        return manager.request(Router.FetchSubscriptions(target)).responseCollection(completionHandler)
     }
     
     /**
@@ -31,7 +31,7 @@ extension CloudAPIClient {
     }
 
     public func subscribeTo(subscription: Subscription, completionHandler: (NSURLRequest, NSHTTPURLResponse?, NSError?) -> Void) -> Request {
-        return manager.request(Router.SubscribeTo(subscription)).validate().response(completionHandler)
+        return manager.request(Router.SubscribeTo(target, subscription)).validate().response(completionHandler)
     }
 
     /**
@@ -39,7 +39,7 @@ extension CloudAPIClient {
         POST /v3/subscriptions
     */
     public func updateSubscription(subscription: Subscription, completionHandler: (NSURLRequest, NSHTTPURLResponse?, NSError?) -> Void) -> Request {
-        return manager.request(Router.UpdateSubscription(subscription)).validate().response(completionHandler)
+        return manager.request(Router.UpdateSubscription(target, subscription)).validate().response(completionHandler)
     }
     
     /**
@@ -47,6 +47,6 @@ extension CloudAPIClient {
         DELETE /v3/subscriptions/:feedId
     */
     public func unsubscribeTo(feedId: String, completionHandler: (NSURLRequest, NSHTTPURLResponse?, NSError?) -> Void) -> Request {
-        return manager.request(Router.UnsubscribeTo(feedId)).validate().response(completionHandler)
+        return manager.request(Router.UnsubscribeTo(target, feedId)).validate().response(completionHandler)
     }
 }
