@@ -9,11 +9,12 @@
 import SwiftyJSON
 
 public class Origin: ParameterEncodable {
-    public let streamId: String
-    public let title:    String
-    public let htmlUrl:  String
+    public let streamId: String!
+    public let title:    String!
+    public let htmlUrl:  String!
 
-    public init(json: JSON) {
+    public init?(json: JSON) {
+        if json == nil { return nil }
         self.streamId = json["streamId"].stringValue
         self.title    = json["title"].stringValue
         self.htmlUrl  = json["htmlUrl"].stringValue

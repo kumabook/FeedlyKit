@@ -9,10 +9,11 @@
 import SwiftyJSON
 
 public class Content: ParameterEncodable {
-    public let direction: String
-    public let content: String
+    public let direction: String!
+    public let content: String!
 
-    public init(json: JSON) {
+    public init?(json: JSON) {
+        if json == nil { return nil }
         self.direction = json["direction"].stringValue
         self.content   = json["content"].stringValue
     }
