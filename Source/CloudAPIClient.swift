@@ -98,7 +98,7 @@ public class CloudAPIClient {
 
         case Sandbox
         case Production
-        var baseUrl: String {
+        public var baseUrl: String {
             get {
                 switch self {
                 case .Sandbox:    return Target.sandboxBaseUrl
