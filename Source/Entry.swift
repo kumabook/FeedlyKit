@@ -14,7 +14,7 @@ public final class Entry: Equatable, Hashable,
     public let id:              String
     public let title:           String?
     public let content:         Content?
-    public let summary:         String?
+    public let summary:         Content?
     public let author:          String?
     public let crawled:         Int64
     public let recrawled:       Int64
@@ -48,7 +48,7 @@ public final class Entry: Equatable, Hashable,
         self.id              = json["id"].stringValue
         self.title           = json["title"].string
         self.content         = Content(json: json["content"])
-        self.summary         = json["summary"].string
+        self.summary         = Content(json: json["summary"])
         self.author          = json["author"].string
         self.crawled         = json["crawled"].int64Value
         self.recrawled       = json["recrawled"].int64Value
