@@ -94,7 +94,7 @@ extension NSMutableURLRequest {
 public class CloudAPIClient {
     public enum Target {
         static let sandboxBaseUrl    = "https://sandbox.feedly.com"
-        static let productionBaseUrl = "http://cloud.feedly.com/"
+        static let productionBaseUrl = "http://cloud.feedly.com"
 
         case Sandbox
         case Production
