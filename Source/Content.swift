@@ -9,8 +9,8 @@
 import SwiftyJSON
 
 public class Content: ParameterEncodable {
-    public let direction: String!
-    public let content: String!
+    public var direction: String!
+    public var content: String!
 
     public init?(json: JSON) {
         if json == nil { return nil }

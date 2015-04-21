@@ -42,18 +42,18 @@ public class Profile: NSObject, NSCoding, ResponseObjectSerializable {
         locale     = json["locale"].string
     }
     required public init(coder aDecoder: NSCoder) {
-        id         = aDecoder.decodeObjectForKey("id")         as String
-        email      = aDecoder.decodeObjectForKey("email")      as String?
-        reader     = aDecoder.decodeObjectForKey("reader")     as String?
-        gender     = aDecoder.decodeObjectForKey("gender")     as String?
-        wave       = aDecoder.decodeObjectForKey("wave")       as String?
-        google     = aDecoder.decodeObjectForKey("google")     as String?
-        facebook   = aDecoder.decodeObjectForKey("facebook")   as String?
-        familyName = aDecoder.decodeObjectForKey("familyName") as String?
-        picture    = aDecoder.decodeObjectForKey("picture")    as String?
-        twitter    = aDecoder.decodeObjectForKey("twitter")    as String?
-        givenName  = aDecoder.decodeObjectForKey("givenName")  as String?
-        locale     = aDecoder.decodeObjectForKey("locale")     as String?
+        id         = aDecoder.decodeObjectForKey("id")         as! String
+        email      = aDecoder.decodeObjectForKey("email")      as! String?
+        reader     = aDecoder.decodeObjectForKey("reader")     as! String?
+        gender     = aDecoder.decodeObjectForKey("gender")     as! String?
+        wave       = aDecoder.decodeObjectForKey("wave")       as! String?
+        google     = aDecoder.decodeObjectForKey("google")     as! String?
+        facebook   = aDecoder.decodeObjectForKey("facebook")   as! String?
+        familyName = aDecoder.decodeObjectForKey("familyName") as! String?
+        picture    = aDecoder.decodeObjectForKey("picture")    as! String?
+        twitter    = aDecoder.decodeObjectForKey("twitter")    as! String?
+        givenName  = aDecoder.decodeObjectForKey("givenName")  as! String?
+        locale     = aDecoder.decodeObjectForKey("locale")     as! String?
     }
     
     public func encodeWithCoder(aCoder: NSCoder) {

@@ -71,7 +71,7 @@ public class SearchResultFeeds: ResponseObjectSerializable {
     public let hint: String
     public let related: [String]
     public let results: [Feed]
-    required public convenience init?(response: NSHTTPURLResponse, representation: AnyObject) {
+    @objc required public convenience init?(response: NSHTTPURLResponse, representation: AnyObject) {
         let json = JSON(representation)
         self.init(json: json)
     }

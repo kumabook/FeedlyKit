@@ -10,7 +10,7 @@ import SwiftyJSON
 
 public class Prefereces: ResponseObjectSerializable {
     let values: [String:String]
-    required public convenience init?(response: NSHTTPURLResponse, representation: AnyObject) {
+    @objc required public convenience init?(response: NSHTTPURLResponse, representation: AnyObject) {
         let json = JSON(representation)
         self.init(json: json)
     }

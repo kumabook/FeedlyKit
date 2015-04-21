@@ -27,12 +27,12 @@ public final class Subscription: Stream,
         return title
     }
 
-    public class func collection(#response: NSHTTPURLResponse, representation: AnyObject) -> [Subscription] {
+    @objc public class func collection(#response: NSHTTPURLResponse, representation: AnyObject) -> [Subscription] {
         let json = JSON(representation)
         return json.arrayValue.map({ Subscription(json: $0) })
     }
 
-    required public convenience init?(response: NSHTTPURLResponse, representation: AnyObject) {
+    @objc required public convenience init?(response: NSHTTPURLResponse, representation: AnyObject) {
         let json = JSON(representation)
         self.init(json: json)
     }
@@ -51,13 +51,23 @@ public final class Subscription: Stream,
     public init(feed: Feed, categories: [Category]) {
         self.id         = feed.id
         self.title      = feed.title
+        self.website    = nil
         self.categories = categories
+        self.visualUrl  = nil
+        self.sortId     = nil
+        self.updated    = nil
+        self.added      = nil
     }
 
     public init(id: String, title: String, categories: [Category]) {
         self.id         = id
         self.title      = title
+        self.website    = nil
         self.categories = categories
+        self.visualUrl  = nil
+        self.sortId     = nil
+        self.updated    = nil
+        self.added      = nil
     }
 
     func toParameters() -> [String : AnyObject] {

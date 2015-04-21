@@ -21,12 +21,12 @@ public final class Category: Stream,
         return label
     }
 
-    public class func collection(#response: NSHTTPURLResponse, representation: AnyObject) -> [Category] {
+    @objc public class func collection(#response: NSHTTPURLResponse, representation: AnyObject) -> [Category] {
         let json = JSON(representation)
         return json.arrayValue.map({ Category(json: $0) })
     }
 
-    required public convenience init?(response: NSHTTPURLResponse, representation: AnyObject) {
+    @objc required public convenience init?(response: NSHTTPURLResponse, representation: AnyObject) {
         let json = JSON(representation)
         self.init(json: json)
     }

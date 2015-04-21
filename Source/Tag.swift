@@ -20,7 +20,7 @@ public final class Tag: Stream,
         return label
     }
 
-    public class func collection(#response: NSHTTPURLResponse, representation: AnyObject) -> [Tag] {
+    @objc public class func collection(#response: NSHTTPURLResponse, representation: AnyObject) -> [Tag] {
         let json = JSON(representation)
         return json.arrayValue.map({ Tag(json: $0) })
     }
@@ -33,7 +33,7 @@ public final class Tag: Stream,
         return Category(id: "user/\(userId)/tag/global.saved", label: "Saved")
     }
 
-    required public convenience init?(response: NSHTTPURLResponse, representation: AnyObject) {
+    @objc required public convenience init?(response: NSHTTPURLResponse, representation: AnyObject) {
         let json = JSON(representation)
         self.init(json: json)
     }

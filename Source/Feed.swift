@@ -30,12 +30,12 @@ public final class Feed: Stream,
         return title
     }
 
-    public class func collection(#response: NSHTTPURLResponse, representation: AnyObject) -> [Feed] {
+    @objc public class func collection(#response: NSHTTPURLResponse, representation: AnyObject) -> [Feed] {
         let json = JSON(representation)
         return json.arrayValue.map({ Feed(json: $0) })
     }
 
-    required public convenience init?(response: NSHTTPURLResponse, representation: AnyObject) {
+    @objc required public convenience init?(response: NSHTTPURLResponse, representation: AnyObject) {
         let json = JSON(representation)
         self.init(json: json)
     }

@@ -34,12 +34,12 @@ public final class Entry: Equatable, Hashable,
     public let originId:        String?
     public let sid:             String?
 
-    public class func collection(#response: NSHTTPURLResponse, representation: AnyObject) -> [Entry] {
+    @objc public class func collection(#response: NSHTTPURLResponse, representation: AnyObject) -> [Entry] {
         let json = JSON(representation)
         return json.arrayValue.map({ Entry(json: $0) })
     }
 
-    required public convenience init?(response: NSHTTPURLResponse, representation: AnyObject) {
+    @objc required public convenience init?(response: NSHTTPURLResponse, representation: AnyObject) {
         let json = JSON(representation)
         self.init(json: json)
     }
@@ -64,11 +64,16 @@ public final class Entry: Equatable, Hashable,
         self.actionTimestamp = json["actionTimestamp"].int64
         self.fingerprint     = json["fingerprint"].string
         self.originId        = json["originId"].string
-        if let alternates = json["alternate"].array? {
+        self.sid             = json["sid"].string
+        if let alternates = json["alternate"].array {
             self.alternate   = alternates.map({ Link(json: $0) })
+        } else {
+            self.alternate   = nil
         }
         if let enclosures = json["enclosure"].array {
             self.enclosure   = enclosures.map({ Link(json: $0) })
+        } else {
+            self.enclosure   = nil
         }
     }
 

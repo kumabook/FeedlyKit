@@ -16,7 +16,7 @@ public class Link: NSObject, ParameterEncodable {
     init(json:JSON) {
         self.href   = json["href"].stringValue
         self.type   = json["type"].stringValue
-        self.length = json["length"].int?
+        self.length = json["length"].int
     }
     func toParameters() -> [String : AnyObject] {
         return ["href": href, "type": type]

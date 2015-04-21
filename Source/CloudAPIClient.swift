@@ -14,7 +14,7 @@ import Alamofire
 }
 
 @objc public protocol ResponseCollectionSerializable {
-    class func collection(#response: NSHTTPURLResponse, representation: AnyObject) -> [Self]
+    static func collection(#response: NSHTTPURLResponse, representation: AnyObject) -> [Self]
 }
 
 public typealias AccessToken = String
@@ -66,13 +66,13 @@ extension Alamofire.Request {
         })
     }
     public func response(completionHandler: (NSURLRequest, NSHTTPURLResponse?, NSError?) -> Void) -> Self {
-        return responseString({ (request, response, representation, error) -> Void in
+        return responseString(encoding: NSUTF8StringEncoding, completionHandler: { (request, response, representation, error) -> Void in
             completionHandler(request, response, error)
         })
     }
 }
 
-@objc protocol ParameterEncodable {
+protocol ParameterEncodable {
     func toParameters() -> [String: AnyObject]
 }
 

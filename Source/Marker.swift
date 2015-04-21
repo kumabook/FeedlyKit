@@ -39,7 +39,7 @@ public class Marker: ResponseObjectSerializable {
     let asOf: Int64
     let id:   String
 
-    required public convenience  init?(response: NSHTTPURLResponse, representation: AnyObject) {
+    @objc required public convenience  init?(response: NSHTTPURLResponse, representation: AnyObject) {
         let json = JSON(representation)
         self.init(json: json)
     }
@@ -68,7 +68,7 @@ public class MarkerParam: ParameterEncodable {
 
 public class UnreadCounts: ResponseObjectSerializable {
     let value: [UnreadCount]
-    required public convenience init?(response: NSHTTPURLResponse, representation: AnyObject) {
+    @objc required public convenience init?(response: NSHTTPURLResponse, representation: AnyObject) {
         let json = JSON(representation)
         self.init(json: json)
     }
@@ -95,7 +95,7 @@ public class ReadOperations: ResponseObjectSerializable {
     let feeds:   [Marker]
     let entries: [String]
     let unreads:  [String]
-    required public convenience init?(response: NSHTTPURLResponse, representation: AnyObject) {
+    @objc required public convenience init?(response: NSHTTPURLResponse, representation: AnyObject) {
         let json = JSON(representation)
         self.init(json: json)
     }
@@ -107,8 +107,8 @@ public class ReadOperations: ResponseObjectSerializable {
 }
 
 public class TaggedEntryIds: ResponseObjectSerializable {
-    let value: [String: [String]]
-    required public convenience init?(response: NSHTTPURLResponse, representation: AnyObject) {
+    var value: [String: [String]]
+    @objc required public convenience init?(response: NSHTTPURLResponse, representation: AnyObject) {
         let json = JSON(representation)
         self.init(json: json)
     }

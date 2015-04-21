@@ -15,12 +15,12 @@ public final class Topic: Equatable, Hashable,
     public let created:  Int64
     public let updated:  Int64
 
-    public class func collection(#response: NSHTTPURLResponse, representation: AnyObject) -> [Topic] {
+    @objc public class func collection(#response: NSHTTPURLResponse, representation: AnyObject) -> [Topic] {
         let json = JSON(representation)
         return json.arrayValue.map({ Topic(json: $0) })
     }
 
-    required public convenience init?(response: NSHTTPURLResponse, representation: AnyObject) {
+    @objc required public convenience init?(response: NSHTTPURLResponse, representation: AnyObject) {
         let json = JSON(representation)
         self.init(json: json)
     }
