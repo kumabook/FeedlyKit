@@ -1,4 +1,2 @@
 github "SwiftyJSON/SwiftyJSON" >= 2.2.0
 github "Alamofire/Alamofire"   >= 1.2.0
-github "Quick/Quick"           >= 0.3.1
-github "Quick/Nimble"
