@@ -7,6 +7,7 @@
 //
 
 import SwiftyJSON
+import Breit
 
 public final class Entry: Equatable, Hashable,
                           ResponseObjectSerializable, ResponseCollectionSerializable,
@@ -94,6 +95,45 @@ public final class Entry: Equatable, Hashable,
         if let _origin    = origin    { params["origin"]    = _origin.toParameters() }
 
         return params
+    }
+
+    public var thumbnailURL: NSURL? {
+        if let v = visual, url = v.url.toURL() {
+            if url.scheme != nil { return url }
+        }
+        if let links = enclosure {
+            for link in links {
+                if let url = link.href.toURL() {
+                    if link.type.contains("image") { return url }
+                }
+            }
+        }
+        if let url = extractImgSrc() {
+            return url
+        }
+        return nil
+    }
+
+    func extractImgSrc() -> NSURL? {
+        if let html = content?.content {
+            var regex = NSRegularExpression(pattern: "<img.*src\\s*=\\s*[\"\'](.*?)[\"\'].*>",
+                options: NSRegularExpressionOptions.allZeros,
+                error: nil)
+            if let r = regex {
+                let length = html.lengthOfBytesUsingEncoding(NSString.defaultCStringEncoding())
+                if let result  = r.firstMatchInString(html, options: NSMatchingOptions.allZeros, range: NSMakeRange(0, count(html))) {
+                    let str = html as NSString
+                    for i in 0...result.numberOfRanges - 1 {
+                        let range = result.rangeAtIndex(i)
+                        let str = html as NSString
+                        if let url = str.substringWithRange(range).toURL() {
+                            return url
+                        }
+                    }
+                }
+            }
+        }
+        return nil
     }
 }
 
