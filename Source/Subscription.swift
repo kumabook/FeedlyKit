@@ -77,4 +77,11 @@ public final class Subscription: Stream,
             "categories": categories.map( { $0.toParameters() })
             ]
     }
+
+    public override var thumbnailURL: NSURL? {
+             if let url = visualUrl { return NSURL(string: url) }
+        else if let url = coverUrl  { return NSURL(string: url) }
+        else if let url = iconUrl   { return NSURL(string: url) }
+        else                        { return nil }
+    }
 }
