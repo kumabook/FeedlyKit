@@ -23,6 +23,25 @@ public final class Feed: Stream,
     public let featured:    Bool?
     public let lastUpdated: Int64?
 
+    public let visualUrl:   String?
+    public let iconUrl:     String?
+    public let coverUrl:    String?
+
+    public let facebookUsername:    String?
+    public let facebookLikes:       Int?
+    public let twitterScreenName:   String?
+    public let twitterFollowers:    String?
+    public let contentType:         String?
+    public let coverColor:          String?
+    public let partial:             Bool?
+    public let hint:                String?
+    public let score:               Float?
+    public let scheme:              String?
+    public let estimatedEngagement: Int?
+    public let websiteTitle:        String?
+
+    public let deliciousTags:       [String]?
+
     public override var streamId: String {
         return id
     }
@@ -60,6 +79,27 @@ public final class Feed: Stream,
         curated     = json["curated"].bool
         featured    = json["featured"].bool
         lastUpdated = json["lastUpdated"].int64
+
+        visualUrl   = json["visualUrl"].string
+        iconUrl     = json["iconUrl"].string
+        coverUrl    = json["coverUrl"].string
+
+        facebookUsername    = json["facebookUsername"].string
+        facebookLikes       = json["facebookLikes"].int
+
+        twitterScreenName   = json["twitterScreenName"].string
+        twitterFollowers    = json["twitterFollowers"].string
+
+        contentType         = json["contentType"].string
+        coverColor          = json["coverColor"].string
+        partial             = json["partial"].bool
+        hint                = json["hint"].string
+        score               = json["score"].float
+        scheme              = json["scheme"].string
+        estimatedEngagement = json["estimatedEngagement"].int
+        websiteTitle        = json["websiteTitle"].string
+        deliciousTags       = json["deliciousTags"].array?.map({ $0.stringValue })
+    }
 
     public override var thumbnailURL: NSURL? {
              if let url = visualUrl { return NSURL(string: url) }
