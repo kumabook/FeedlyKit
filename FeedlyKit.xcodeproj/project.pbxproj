@@ -22,6 +22,8 @@
 		67363B631A7366DB009F8FBC /* CloudAPISpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67363B601A7366DB009F8FBC /* CloudAPISpec.swift */; };
 		67363B641A7366DB009F8FBC /* EntrySpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67363B611A7366DB009F8FBC /* EntrySpec.swift */; };
 		67363B651A7366DB009F8FBC /* EntrySpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67363B611A7366DB009F8FBC /* EntrySpec.swift */; };
+		67428D461B80B2BA002FFA1A /* Breit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67428D451B80B2BA002FFA1A /* Breit.framework */; };
+		67428D481B80B331002FFA1A /* Breit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67428D471B80B331002FFA1A /* Breit.framework */; };
 		674A5B161A6A3F3B00F7B534 /* create_tag.json in Resources */ = {isa = PBXBuildFile; fileRef = 674A5AFE1A6A3F1100F7B534 /* create_tag.json */; };
 		674A5B171A6A3F3B00F7B534 /* entries.json in Resources */ = {isa = PBXBuildFile; fileRef = 674A5AFF1A6A3F1100F7B534 /* entries.json */; };
 		674A5B181A6A3F3B00F7B534 /* entry.json in Resources */ = {isa = PBXBuildFile; fileRef = 674A5B001A6A3F1100F7B534 /* entry.json */; };
@@ -186,6 +188,8 @@
 		67363B5B1A7366AA009F8FBC /* Visual.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Visual.swift; path = Source/Visual.swift; sourceTree = SOURCE_ROOT; };
 		67363B601A7366DB009F8FBC /* CloudAPISpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CloudAPISpec.swift; path = Spec/CloudAPISpec.swift; sourceTree = "<group>"; };
 		67363B611A7366DB009F8FBC /* EntrySpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EntrySpec.swift; path = Spec/EntrySpec.swift; sourceTree = "<group>"; };
+		67428D451B80B2BA002FFA1A /* Breit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Breit.framework; path = Carthage/Build/iOS/Breit.framework; sourceTree = "<group>"; };
+		67428D471B80B331002FFA1A /* Breit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Breit.framework; path = Carthage/Build/Mac/Breit.framework; sourceTree = "<group>"; };
 		674A5AFE1A6A3F1100F7B534 /* create_tag.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = create_tag.json; path = Fixture/Response/create_tag.json; sourceTree = "<group>"; };
 		674A5AFF1A6A3F1100F7B534 /* entries.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = entries.json; path = Fixture/Response/entries.json; sourceTree = "<group>"; };
 		674A5B001A6A3F1100F7B534 /* entry.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = entry.json; path = Fixture/Response/entry.json; sourceTree = "<group>"; };
@@ -249,6 +253,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67428D461B80B2BA002FFA1A /* Breit.framework in Frameworks */,
 				67B510111A6992C700BB46B7 /* Alamofire.framework in Frameworks */,
 				67B510121A6992C700BB46B7 /* SwiftyJSON.framework in Frameworks */,
 			);
@@ -269,6 +274,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67428D481B80B331002FFA1A /* Breit.framework in Frameworks */,
 				67B510381A69E67D00BB46B7 /* SwiftyJSON.framework in Frameworks */,
 				67B510311A69963600BB46B7 /* Alamofire.framework in Frameworks */,
 			);
@@ -436,6 +442,8 @@
 		67C9DE4C1A638E3C00B73CCA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				67428D471B80B331002FFA1A /* Breit.framework */,
+				67428D451B80B2BA002FFA1A /* Breit.framework */,
 				67B5102D1A6994CF00BB46B7 /* Mac */,
 				67B5102C1A6994C600BB46B7 /* iOS */,
 			);
