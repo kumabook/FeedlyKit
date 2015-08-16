@@ -5,6 +5,7 @@
 //  Created by Hiroki Kumamoto on 1/12/15.
 //  Copyright (c) 2015 Hiroki Kumamoto. All rights reserved.
 //
+import Foundation
 
 public class Stream: Equatable, Hashable {
     public var streamId: String {
@@ -12,6 +13,9 @@ public class Stream: Equatable, Hashable {
     }
     public var streamTitle: String {
         return ""// must override at subclass
+    }
+    public var thumbnailURL: NSURL? {
+        return nil// should be override at subclass
     }
     public var hashValue: Int {
         return streamId.hashValue
