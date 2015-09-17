@@ -15,7 +15,7 @@ import Nimble
 class CloudAPISpec: QuickSpec {
     override func spec() {
         describe("a profile") {
-            var profile: Profile? = nil
+            let profile: Profile? = nil
             expect(profile).to(beNil())
         }
     }

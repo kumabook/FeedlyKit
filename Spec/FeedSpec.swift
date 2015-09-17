@@ -17,7 +17,7 @@ class FeedSpec: QuickSpec {
             it ("should be constructed with json") {
                 let json = JSON(SpecHelper.fixtureJSONObject(fixtureNamed: "feed")!)
 
-                var feed: Feed = Feed(json: json)
+                let feed: Feed = Feed(json: json)
                 expect(feed).notTo(beNil())
             }
         }

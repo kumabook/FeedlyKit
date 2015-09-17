@@ -20,7 +20,7 @@ class SubscriptionSpec: QuickSpec {
             it ("should be constructed with json") {
                 let json = JSON(SpecHelper.fixtureJSONObject(fixtureNamed: "subscription")!)
 
-                var feed: Subscription = Subscription(json: json)
+                let feed: Subscription = Subscription(json: json)
                 expect(feed).notTo(beNil())
                 
                 expect(feed.id).notTo(beNil())

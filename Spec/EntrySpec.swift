@@ -17,7 +17,7 @@ class EntrySpec: QuickSpec {
             it ("should be constructed with json") {
                 let json = JSON(SpecHelper.fixtureJSONObject(fixtureNamed: "entry")!)
 
-                var entry: Entry = Entry(json: json)
+                let entry: Entry = Entry(json: json)
                 expect(entry).notTo(beNil())
                 
                 expect(entry.id).notTo(beNil())

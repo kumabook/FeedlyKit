@@ -52,6 +52,16 @@
                ReferencedContainer = "container:FeedlyKit.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "67F71BA11A698B9800D8A6BC"
+               BuildableName = "FeedlyKit-MacTests.xctest"
+               BlueprintName = "FeedlyKit-MacTests"
+               ReferencedContainer = "container:FeedlyKit.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

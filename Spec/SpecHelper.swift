@@ -9,11 +9,11 @@
 import Foundation
 
 public class SpecHelper {
-    public class func fixtureJSONObject(#fixtureNamed: String) -> AnyObject? {
+    public class func fixtureJSONObject(fixtureNamed fixtureNamed: String) -> AnyObject? {
         let bundle   = NSBundle(forClass: SpecHelper.self)
         let filePath = bundle.pathForResource(fixtureNamed, ofType: "json")
         let data     = NSData(contentsOfFile: filePath!)
-        let jsonObject : AnyObject? = NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers, error: nil)
+        let jsonObject : AnyObject? = try! NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers)
         return jsonObject
     }
 }
