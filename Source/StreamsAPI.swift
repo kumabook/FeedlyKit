@@ -9,7 +9,7 @@
 import Alamofire
 import SwiftyJSON
 
-@objc public class PaginationParams: ParameterEncodable {
+public class PaginationParams: ParameterEncodable {
     public var count:        Int?
     public var ranked:       String?
     public var unreadOnly:   Bool?
@@ -21,13 +21,13 @@ import SwiftyJSON
         if let _count        = count        { params["count"]        = _count }
         if let _ranked       = ranked       { params["ranked"]       = _ranked }
         if let _unreadOnly   = unreadOnly   { params["unreadOnly"]   = _unreadOnly ? "true" : "false" }
-        if let _newerThan    = newerThan    { params["newerThan"]    = NSNumber(longLong: newerThan!) }
+        if let _newerThan    = newerThan    { params["newerThan"]    = NSNumber(longLong: _newerThan) }
         if let _continuation = continuation { params["continuation"] = _continuation }
         return params
     }
 }
 
-@objc public class PaginatedEntryCollection: ResponseObjectSerializable {
+public class PaginatedEntryCollection: ResponseObjectSerializable {
     public let id:           String
     public let updated:      Int64?
     public let continuation: String?
@@ -47,7 +47,7 @@ import SwiftyJSON
     }
 }
 
-@objc public class PaginatedIdCollection: ResponseObjectSerializable {
+public class PaginatedIdCollection: ResponseObjectSerializable {
     public let continuation: String?
     public let ids:          [String]
     required public init?(response: NSHTTPURLResponse, representation: AnyObject) {
@@ -66,7 +66,7 @@ extension CloudAPIClient {
         (Authorization is optional; it is required for category and tag streams)
         TODO
     */
-    public func fetchEntryIds(streamId: String, paginationParams: PaginationParams, completionHandler: (NSURLRequest, NSHTTPURLResponse?, PaginatedIdCollection?, NSError?) -> Void) -> Request {
+    public func fetchEntryIds(streamId: String, paginationParams: PaginationParams, completionHandler: (NSURLRequest?, NSHTTPURLResponse?, Result<PaginatedIdCollection>) -> Void) -> Request {
         return manager.request(Router.FetchEntryIds(target, streamId, paginationParams))
                       .validate()
                       .responseObject(completionHandler)
@@ -80,7 +80,7 @@ extension CloudAPIClient {
         (Authorization is optional; it is required for category and tag streams)
         TODO
     */
-    public func fetchContents(streamId: String, paginationParams: PaginationParams, completionHandler: (NSURLRequest, NSHTTPURLResponse?, PaginatedEntryCollection?, NSError?) -> Void) -> Request {
+    public func fetchContents(streamId: String, paginationParams: PaginationParams, completionHandler: (NSURLRequest?, NSHTTPURLResponse?, Result<PaginatedEntryCollection>) -> Void) -> Request {
         return manager.request(Router.FetchContents(target, streamId, paginationParams))
                       .validate()
                       .responseObject(completionHandler)

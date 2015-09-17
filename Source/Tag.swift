@@ -20,7 +20,7 @@ public final class Tag: Stream,
         return label
     }
 
-    @objc public class func collection(#response: NSHTTPURLResponse, representation: AnyObject) -> [Tag] {
+    public class func collection(response response: NSHTTPURLResponse, representation: AnyObject) -> [Tag]? {
         let json = JSON(representation)
         return json.arrayValue.map({ Tag(json: $0) })
     }

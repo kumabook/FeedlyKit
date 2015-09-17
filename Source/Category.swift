@@ -21,7 +21,7 @@ public final class Category: Stream,
         return label
     }
 
-    @objc public class func collection(#response: NSHTTPURLResponse, representation: AnyObject) -> [Category] {
+    public class func collection(response response: NSHTTPURLResponse, representation: AnyObject) -> [Category]? {
         let json = JSON(representation)
         return json.arrayValue.map({ Category(json: $0) })
     }

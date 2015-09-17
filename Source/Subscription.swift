@@ -37,7 +37,7 @@ public final class Subscription: Stream,
         return title
     }
 
-    @objc public class func collection(#response: NSHTTPURLResponse, representation: AnyObject) -> [Subscription] {
+    public class func collection(response response: NSHTTPURLResponse, representation: AnyObject) -> [Subscription]? {
         let json = JSON(representation)
         return json.arrayValue.map({ Subscription(json: $0) })
     }

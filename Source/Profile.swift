@@ -41,7 +41,7 @@ public class Profile: NSObject, NSCoding, ResponseObjectSerializable {
         givenName  = json["givenName"].string
         locale     = json["locale"].string
     }
-    required public init(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         id         = aDecoder.decodeObjectForKey("id")         as! String
         email      = aDecoder.decodeObjectForKey("email")      as! String?
         reader     = aDecoder.decodeObjectForKey("reader")     as! String?

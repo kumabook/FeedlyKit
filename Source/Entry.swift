@@ -35,7 +35,7 @@ public final class Entry: Equatable, Hashable,
     public let originId:        String?
     public let sid:             String?
 
-    @objc public class func collection(#response: NSHTTPURLResponse, representation: AnyObject) -> [Entry] {
+    public class func collection(response response: NSHTTPURLResponse, representation: AnyObject) -> [Entry]? {
         let json = JSON(representation)
         return json.arrayValue.map({ Entry(json: $0) })
     }
@@ -99,7 +99,7 @@ public final class Entry: Equatable, Hashable,
 
     public var thumbnailURL: NSURL? {
         if let v = visual, url = v.url.toURL() {
-            if url.scheme != nil { return url }
+            return url
         }
         if let links = enclosure {
             for link in links {
@@ -116,13 +116,10 @@ public final class Entry: Equatable, Hashable,
 
     func extractImgSrc() -> NSURL? {
         if let html = content?.content {
-            var regex = NSRegularExpression(pattern: "<img.*src\\s*=\\s*[\"\'](.*?)[\"\'].*>",
-                options: NSRegularExpressionOptions.allZeros,
-                error: nil)
+            let regex = try? NSRegularExpression(pattern: "<img.*src\\s*=\\s*[\"\'](.*?)[\"\'].*>",
+                options: NSRegularExpressionOptions())
             if let r = regex {
-                let length = html.lengthOfBytesUsingEncoding(NSString.defaultCStringEncoding())
-                if let result  = r.firstMatchInString(html, options: NSMatchingOptions.allZeros, range: NSMakeRange(0, count(html))) {
-                    let str = html as NSString
+                if let result  = r.firstMatchInString(html, options: NSMatchingOptions(), range: NSMakeRange(0, html.characters.count)) {
                     for i in 0...result.numberOfRanges - 1 {
                         let range = result.rangeAtIndex(i)
                         let str = html as NSString

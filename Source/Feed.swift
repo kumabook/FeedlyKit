@@ -49,7 +49,7 @@ public final class Feed: Stream,
         return title
     }
 
-    @objc public class func collection(#response: NSHTTPURLResponse, representation: AnyObject) -> [Feed] {
+    public class func collection(response response: NSHTTPURLResponse, representation: AnyObject) -> [Feed]? {
         let json = JSON(representation)
         return json.arrayValue.map({ Feed(json: $0) })
     }

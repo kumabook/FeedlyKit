@@ -1,3 +1,4 @@
+
 //
 //  FeedlyAPIClient.swift
 //  MusicFav
@@ -9,66 +10,71 @@
 import SwiftyJSON
 import Alamofire
 
-@objc public protocol ResponseObjectSerializable {
+public protocol ResponseObjectSerializable {
     init?(response: NSHTTPURLResponse, representation: AnyObject)
 }
 
-@objc public protocol ResponseCollectionSerializable {
-    static func collection(#response: NSHTTPURLResponse, representation: AnyObject) -> [Self]
+public protocol ResponseCollectionSerializable {
+    static func collection(response response: NSHTTPURLResponse, representation: AnyObject) -> [Self]?
 }
 
 public typealias AccessToken = String
 
 extension Alamofire.Request {
-    public func responseObject<T: ResponseObjectSerializable>(completionHandler: (NSURLRequest, NSHTTPURLResponse?, T?, NSError?) -> Void) -> Self {
-        let serializer: Serializer = { (request, response, data) in
+    public func responseObject<T: ResponseObjectSerializable>(completionHandler: (NSURLRequest?, NSHTTPURLResponse?, Result<T>) -> Void) -> Self {
+        let responseSerializer = GenericResponseSerializer<T> { request, response, data in
             let JSONSerializer = Request.JSONResponseSerializer(options: .AllowFragments)
-            let (JSON: AnyObject?, serializationError) = JSONSerializer(request, response, data)
-            if response != nil && JSON != nil {
-                return (T(response: response!, representation: JSON!), nil)
-            } else {
-                return (nil, serializationError)
+            let result = JSONSerializer.serializeResponse(request, response, data)
+            switch result {
+            case .Success(let value):
+                if let
+                    response = response,
+                    responseObject = T(response: response, representation: value)
+                {
+                    return .Success(responseObject)
+                } else {
+                    let failureReason = "JSON could not be serialized into response object: \(value)"
+                    let error = Error.errorWithCode(.JSONSerializationFailed, failureReason: failureReason)
+                    return .Failure(data, error)
+                }
+            case .Failure(let data, let error):
+                return .Failure(data, error)
             }
         }
-        
-        return response(serializer: serializer, completionHandler: { (request, response, object, error) in
-            completionHandler(request, response, object as? T, error)
-        })
+        return response(responseSerializer: responseSerializer, completionHandler: completionHandler)
     }
-    public func responseCollection<T: ResponseCollectionSerializable>(completionHandler: (NSURLRequest, NSHTTPURLResponse?, [T]?, NSError?) -> Void) -> Self {
-        let serializer: Serializer = { (request, response, data) in
-            let JSONSerializer = Request.JSONResponseSerializer(options: .AllowFragments)
-            let (JSON: AnyObject?, serializationError) = JSONSerializer(request, response, data)
-            if response != nil && JSON != nil {
-                return (T.collection(response: response!, representation: JSON!), nil)
-            } else {
-                return (nil, serializationError)
-            }
-        }
-        
-        return response(serializer: serializer, completionHandler: { (request, response, object, error) in
-            completionHandler(request, response, object as? [T], error)
-        })
-    }
-    public func responseStringList(completionHandler: (NSURLRequest, NSHTTPURLResponse?, [String]?, NSError?) -> Void) -> Self {
-        let serializer: Serializer = { (request, response, data) in
-            let JSONSerializer = Request.JSONResponseSerializer(options: .AllowFragments)
-            let (JSON: AnyObject?, serializationError) = JSONSerializer(request, response, data)
-            if response != nil && JSON != nil {
-                return (JSON!.array.map({$0.stringValue}), nil)
-            } else {
-                return (nil, serializationError)
-            }
-        }
 
-        return response(serializer: serializer, completionHandler: { (request, response, object, error) in
-            completionHandler(request, response, object as? [String], error)
-        })
+    public func responseCollection<T: ResponseCollectionSerializable>(completionHandler: (NSURLRequest?, NSHTTPURLResponse?, Result<[T]>) -> Void) -> Self {
+        let responseSerializer = GenericResponseSerializer<[T]> { request, response, data in
+            let JSONSerializer = Request.JSONResponseSerializer(options: .AllowFragments)
+            let result = JSONSerializer.serializeResponse(request, response, data)
+            switch result {
+            case .Success(let value):
+                if let
+                    response = response,
+                    responseObject = T.collection(response: response, representation: value)
+                {
+                    return .Success(responseObject)
+                } else {
+                    let failureReason = "JSON could not be serialized into response object: \(value)"
+                    let error = Error.errorWithCode(.JSONSerializationFailed, failureReason: failureReason)
+                    return .Failure(data, error)
+                }
+            case .Failure(let data, let error):
+                return .Failure(data, error)
+            }
+        }
+        return response(responseSerializer: responseSerializer, completionHandler: completionHandler)
     }
-    public func response(completionHandler: (NSURLRequest, NSHTTPURLResponse?, NSError?) -> Void) -> Self {
-        return responseString(encoding: NSUTF8StringEncoding, completionHandler: { (request, response, representation, error) -> Void in
-            completionHandler(request, response, error)
-        })
+
+    public func response(completionHandler: (NSURLRequest?, NSHTTPURLResponse?, Result<Void>) -> Void) -> Self {
+        return responseString(encoding: NSUTF8StringEncoding) {
+            if $2.isSuccess {
+                completionHandler($0, $1, Result.Success())
+            } else {
+                completionHandler($0, $1, Result.Failure($2.data, $2.error!))
+            }
+        }
     }
 }
 
@@ -77,14 +83,14 @@ protocol ParameterEncodable {
 }
 
 extension Alamofire.ParameterEncoding {
-    func encode(URLRequest: URLRequestConvertible, parameters: ParameterEncodable?) -> (NSURLRequest, NSError?) {
+    func encode(URLRequest: URLRequestConvertible, parameters: ParameterEncodable?) -> (NSMutableURLRequest, NSError?) {
         return encode(URLRequest, parameters: parameters?.toParameters())
     }
 }
 
 extension NSMutableURLRequest {
-    func addParam(params: AnyObject) -> NSURLRequest {
-        let data = NSJSONSerialization.dataWithJSONObject(params, options: NSJSONWritingOptions.PrettyPrinted, error: nil)
+    func addParam(params: AnyObject) -> NSMutableURLRequest {
+        let data = try? NSJSONSerialization.dataWithJSONObject(params, options: NSJSONWritingOptions.PrettyPrinted)
         self.HTTPBody = data
         self.setValue("application/json", forHTTPHeaderField: "Content-Type")
         return self
@@ -131,8 +137,7 @@ public class CloudAPIClient {
     public enum Router: URLRequestConvertible {
         var comma: String { return "," }
         func urlEncode(string: String) -> String {
-            return string.stringByAddingPercentEncodingWithAllowedCharacters(
-                                NSCharacterSet.URLHostAllowedCharacterSet())!
+            return string.stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet())!
         }
         // Categories API
         case FetchCategories(Target)
@@ -227,88 +232,62 @@ public class CloudAPIClient {
         var url: String {
             switch self {
                 // Categories API
-            case .FetchCategories(let target):
-                return target.baseUrl + "/v3/categories"
-            case .UpdateCategory(let target, let categoryId, let label):
-                return target.baseUrl + "/v3/categories/\(urlEncode(categoryId))"
-            case .DeleteCategory(let target, let categoryId):
-                return target.baseUrl + "/v3/categories/\(urlEncode(categoryId))"
+            case .FetchCategories(let target):                   return target.baseUrl + "/v3/categories"
+            case .UpdateCategory(let target, let categoryId, _): return target.baseUrl + "/v3/categories/\(urlEncode(categoryId))"
+            case .DeleteCategory(let target, let categoryId):    return target.baseUrl + "/v3/categories/\(urlEncode(categoryId))"
                 // Entries API
-            case .FetchEntry(let target, let entryId):
-                return target.baseUrl + "/v3/entries/\(urlEncode(entryId))"
-            case .FetchEntries(let target, let entryIds):
-                return target.baseUrl + "/v3/entries/.mget"
-            case .CreateEntry(let target, let entry):
-                return target.baseUrl + "/v3/entries/"
+            case .FetchEntry(let target, let entryId):           return target.baseUrl + "/v3/entries/\(urlEncode(entryId))"
+            case .FetchEntries(let target, _):                   return target.baseUrl + "/v3/entries/.mget"
+            case .CreateEntry(let target, _):                    return target.baseUrl + "/v3/entries/"
                 // Feeds API
-            case .FetchFeed(let target, let feedId):
-                return target.baseUrl + "/v3/feeds/\(urlEncode(feedId))"
-            case .FetchFeeds(let target, let feedIds):
-                return target.baseUrl + "/v3/feeds/.mget"
+            case .FetchFeed(let target, let feedId):             return target.baseUrl + "/v3/feeds/\(urlEncode(feedId))"
+            case .FetchFeeds(let target, _):                     return target.baseUrl + "/v3/feeds/.mget"
                 // Markers API
-            case .FetchUnreadCounts(let target, let unreadCountsParams):
-                return target.baseUrl + "/v3/markers/counts"
-            case .MarkAs(let target, let params):
-                return target.baseUrl + "/v3/markers"
-            case .FetchLatestReadOperations(let target, let newerThan):
-                return target.baseUrl + "/v3/markers/reads"
-            case .FetchLatestTaggedEntryIds(let target, let newerThan):
-                return target.baseUrl + "/v3/markers/tags"
+            case .FetchUnreadCounts(let target, _):              return target.baseUrl + "/v3/markers/counts"
+            case .MarkAs(let target, _):                         return target.baseUrl + "/v3/markers"
+       
+            case .FetchLatestReadOperations(let target, _):      return target.baseUrl + "/v3/markers/reads"
+            case .FetchLatestTaggedEntryIds(let target, _):      return target.baseUrl + "/v3/markers/tags"
                 // Profile API
-            case .FetchProfile(let target):
-                return target.baseUrl + "/v3/profile"
-            case .UpdateProfile(let target, let profile):
-                return target.baseUrl + "/v3/profile"
+            case .FetchProfile(let target):                      return target.baseUrl + "/v3/profile"
+            case .UpdateProfile(let target, _):                  return target.baseUrl + "/v3/profile"
                 //Search API
-            case .SearchFeeds(let target, let query):
-                return target.baseUrl + "/v3/search/feeds"
-            case .SearchContentOfStream(let target, let streamId, let searchTerm, let query):
-                return target.baseUrl + "/v3/search/" + urlEncode(streamId) + "/contents?query=" + urlEncode(searchTerm)
+            case .SearchFeeds(let target, _):                    return target.baseUrl + "/v3/search/feeds"
+            case .SearchContentOfStream(let target, let streamId, let searchTerm, _):
+                                                                 return target.baseUrl + "/v3/search/" + urlEncode(streamId) + "/contents?query=" + urlEncode(searchTerm)
                 // Streams API
-            case .FetchEntryIds(let target, let streamId,  let paginationParams):
-                return target.baseUrl + "/v3/streams/" + urlEncode(streamId) + "/ids"
-            case .FetchContents(let target, let streamId, let paginationParams):
-                return target.baseUrl + "/v3/streams/" + urlEncode(streamId) + "/contents"
+            case .FetchEntryIds(let target, let streamId,  _):   return target.baseUrl + "/v3/streams/" + urlEncode(streamId) + "/ids"
+            case .FetchContents(let target, let streamId, _):    return target.baseUrl + "/v3/streams/" + urlEncode(streamId) + "/contents"
                 // Subscriptions API
-            case .FetchSubscriptions(let target):
-                return target.baseUrl + "/v3/subscriptions"
-            case .SubscribeTo(let target, let subscription):
-                return target.baseUrl + "/v3/subscriptions"
-            case .UpdateSubscription(let target, let subscription):
-                return target.baseUrl + "/v3/subscriptions"
-            case .UnsubscribeTo(let target, let feedId):
-                return target.baseUrl + "/v3/subscriptions/\(urlEncode(feedId))"
+            case .FetchSubscriptions(let target):                return target.baseUrl + "/v3/subscriptions"
+            case .SubscribeTo(let target, _):                    return target.baseUrl + "/v3/subscriptions"
+            case .UpdateSubscription(let target, _):             return target.baseUrl + "/v3/subscriptions"
+            case .UnsubscribeTo(let target, let feedId):         return target.baseUrl + "/v3/subscriptions/\(urlEncode(feedId))"
                 // Tags API
-            case .FetchTags(let target):
-                return target.baseUrl + "/v3/tags"
-            case .TagEntry(let target, let tagIds, let entryId):
-                let tids = join(",", tagIds.map({ self.urlEncode($0) }))
-                return target.baseUrl + "/v3/tags/\(tids))"
-            case .TagEntries(let target, let tagIds, let entryIds):
-                let tids = join(",", tagIds.map({ self.urlEncode($0) }))
-                return target.baseUrl + "/v3/tags/\(tids)"
-            case .ChangeTagLabel(let target, let tagId, let label):
-                return target.baseUrl + "/v3/tags/\(urlEncode(tagId))"
+            case .FetchTags(let target):                         return target.baseUrl + "/v3/tags"
+            case .TagEntry(let target, let tagIds, _):
+                let tids = tagIds.map({ self.urlEncode($0) }).joinWithSeparator(",")
+                                                                 return target.baseUrl + "/v3/tags/\(tids))"
+            case .TagEntries(let target, let tagIds, _):
+                let tids = tagIds.map({ self.urlEncode($0) }).joinWithSeparator(",")
+                                                                 return target.baseUrl + "/v3/tags/\(tids)"
+            case .ChangeTagLabel(let target, let tagId, _):      return target.baseUrl + "/v3/tags/\(urlEncode(tagId))"
             case .UntagEntries(let target, let tagIds, let entryIds):
-                let tids = join(",", tagIds.map({   self.urlEncode($0) }))
-                let eids = join(",", entryIds.map({ self.urlEncode($0) }))
-                return target.baseUrl + "/v3/tags/\(tids)/\(eids)"
+                let tids = tagIds.map({   self.urlEncode($0) }).joinWithSeparator(",")
+                let eids = entryIds.map({ self.urlEncode($0) }).joinWithSeparator(",")
+                                                                 return target.baseUrl + "/v3/tags/\(tids)/\(eids)"
             case .DeleteTags(let target, let tagIds):
-                let tids = join(",", tagIds.map({ self.urlEncode($0) }))
-                return target.baseUrl + "/v3/tags/\(tids)"
+                let tids = tagIds.map({ self.urlEncode($0) }).joinWithSeparator(",")
+                                                                 return target.baseUrl + "/v3/tags/\(tids)"
                 // Topics API
-            case .FetchTopics(let target):
-                return target.baseUrl + "/v3/topics"
-            case .AddTopic(let target, let id, let interest):
-                return target.baseUrl + "/v3/topics"
-            case .UpdateTopic(let target, let id, let interest):
-                return target.baseUrl + "/v3/topics"
-            case .RemoveTopic(let target, let topicId):
-                return target.baseUrl + "/v3/topics/\(urlEncode(topicId))"
+            case .FetchTopics(let target):                       return target.baseUrl + "/v3/topics"
+            case .AddTopic(let target, _, _):                    return target.baseUrl + "/v3/topics"
+            case .UpdateTopic(let target, _, _):                 return target.baseUrl + "/v3/topics"
+            case .RemoveTopic(let target, let topicId):          return target.baseUrl + "/v3/topics/\(urlEncode(topicId))"
             }
         }
         // MARK: URLRequestConvertible
-        public var URLRequest: NSURLRequest {
+        public var URLRequest: NSMutableURLRequest {
             let J = Alamofire.ParameterEncoding.JSON
             let U = Alamofire.ParameterEncoding.URL
             let URL = NSURL(string: url)!
@@ -318,70 +297,55 @@ public class CloudAPIClient {
 
             switch self {
                 // Categories API
-            case .FetchCategories:                        return req
-            case .UpdateCategory(let target, let categoryId, let label):
-                return J.encode(req, parameters: ["label": label]).0
-            case .DeleteCategory:                         return req
+            case .FetchCategories:                              return req
+            case .UpdateCategory(_, _, let label):              return J.encode(req, parameters: ["label": label]).0
+            case .DeleteCategory:                               return req
                 // Entries API
-            case .FetchEntry:                             return req
-            case .FetchEntries(let target, let entryIds): return req.addParam(entryIds)
-            case .CreateEntry(let target, let entry):     return J.encode(req, parameters: entry).0
+            case .FetchEntry:                                   return req
+            case .FetchEntries(_, let entryIds):                return req.addParam(entryIds)
+            case .CreateEntry(_, let entry):                    return J.encode(req, parameters: entry).0
                 // Feeds API
-            case .FetchFeed:                  return req
-            case .FetchFeeds(let target, let feedIds):    return req.addParam(feedIds)
+            case .FetchFeed:                                    return req
+            case .FetchFeeds(_, let feedIds):                   return req.addParam(feedIds)
                 // Markers API
-            case .FetchUnreadCounts(let target, let unreadCountsParams):
-                return J.encode(req, parameters: unreadCountsParams).0
-            case .MarkAs(let target, let params):
-                return J.encode(req, parameters: params).0
-            case .FetchLatestReadOperations(let target, let newerThan):
+            case .FetchUnreadCounts(_, let unreadCountsParams): return J.encode(req, parameters: unreadCountsParams).0
+            case .MarkAs(_, let params):                        return J.encode(req, parameters: params).0
+            case .FetchLatestReadOperations(_, let newerThan):
                 if let n = newerThan {
                     return J.encode(req, parameters: ["newerThan": NSNumber(longLong: n)]).0
                 }
                 return req
-            case .FetchLatestTaggedEntryIds(let target, let newerThan):
+            case .FetchLatestTaggedEntryIds(_, let newerThan):
                 if let n = newerThan {
                     return J.encode(req, parameters: ["newerThan": NSNumber(longLong: n)]).0
                 }
                 return req
                 // Profile API
-            case .FetchProfile:       return req
-            case .UpdateProfile(let target, let params):
-                return J.encode(req, parameters: params).0
+            case .FetchProfile:                              return req
+            case .UpdateProfile(_, let params):              return J.encode(req, parameters: params).0
                 // Search API
-            case .SearchFeeds(let target, let query):
-                return U.encode(req, parameters: query).0
-            case .SearchContentOfStream(let target, let streamId, let searchTerm, let query):
-                return U.encode(req, parameters: query).0
+            case .SearchFeeds(_, let query):                 return U.encode(req, parameters: query).0
+            case .SearchContentOfStream(_, _, _, let query): return U.encode(req, parameters: query).0
                 //Streams API
-            case .FetchEntryIds(let target, let streamId, let params):
-                return U.encode(req, parameters: params).0
-            case .FetchContents(let target, let streamId, let params):
-                return U.encode(req, parameters: params).0
+            case .FetchEntryIds(_, _, let params):           return U.encode(req, parameters: params).0
+            case .FetchContents(_, _, let params):           return U.encode(req, parameters: params).0
                 // Subscriptions API
-            case .FetchSubscriptions: return req
-            case .SubscribeTo(let target, let subscription):
-                return J.encode(req, parameters: subscription).0
-            case .UpdateSubscription(let target, let subscription):
-                return J.encode(req, parameters: subscription).0
-            case .UnsubscribeTo:      return req
+            case .FetchSubscriptions:                        return req
+            case .SubscribeTo(_, let subscription):          return J.encode(req, parameters: subscription).0
+            case .UpdateSubscription(_, let subscription):   return J.encode(req, parameters: subscription).0
+            case .UnsubscribeTo:                             return req
                 // Tags API
-            case .FetchTags:          return req
-            case .TagEntry(let target, let tagIds, let entryId):
-                return J.encode(req, parameters: ["entryId": entryId]).0
-            case .TagEntries(let target, let tagIds, let entryIds):
-                return J.encode(req, parameters: ["entryIds": entryIds]).0
-            case .ChangeTagLabel(let target, let tagId, let label):
-                return J.encode(req, parameters: ["label": label]).0
-            case .UntagEntries:       return req
-            case .DeleteTags:         return req
+            case .FetchTags:                                 return req
+            case .TagEntry(_, _, let entryId):               return J.encode(req, parameters: ["entryId": entryId]).0
+            case .TagEntries(_, _, let entryIds):            return J.encode(req, parameters: ["entryIds": entryIds]).0
+            case .ChangeTagLabel(_, _, let label):           return J.encode(req, parameters: ["label": label]).0
+            case .UntagEntries:                              return req
+            case .DeleteTags:                                return req
                 // Topics API
-            case .FetchTopics:        return req
-            case .AddTopic(let target, let id, let interest):
-                return J.encode(req, parameters: ["id": id, "interest": interest]).0
-            case .UpdateTopic(let target, let id, let interest):
-                return J.encode(req, parameters: ["id": id, "interest": interest]).0
-            case .RemoveTopic:        return req
+            case .FetchTopics:                               return req
+            case .AddTopic(_, let id, let interest):         return J.encode(req, parameters: ["id": id, "interest": interest]).0
+            case .UpdateTopic(_, let id, let interest):      return J.encode(req, parameters: ["id": id, "interest": interest]).0
+            case .RemoveTopic:                               return req
             }
         }
     }

@@ -15,7 +15,7 @@ public final class Topic: Equatable, Hashable,
     public let created:  Int64
     public let updated:  Int64
 
-    @objc public class func collection(#response: NSHTTPURLResponse, representation: AnyObject) -> [Topic] {
+    public class func collection(response response: NSHTTPURLResponse, representation: AnyObject) -> [Topic]? {
         let json = JSON(representation)
         return json.arrayValue.map({ Topic(json: $0) })
     }

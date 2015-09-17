@@ -9,7 +9,7 @@
 import Alamofire
 import SwiftyJSON
 
-@objc public class UnreadCountsParams: ParameterEncodable {
+public class UnreadCountsParams: ParameterEncodable {
     public var autoRefresh: Bool?
     public var newerThan: Int64?
     public var streamId: String?
@@ -32,7 +32,7 @@ extension CloudAPIClient {
         Get the list of unread counts
         GET /v3/markers/counts
     */
-    public func fetchUnreadCounts(params: UnreadCountsParams, completionHandler: (NSURLRequest, NSHTTPURLResponse?, UnreadCounts?, NSError?) -> Void) -> Request {
+    public func fetchUnreadCounts(params: UnreadCountsParams, completionHandler: (NSURLRequest?, NSHTTPURLResponse?, Result<UnreadCounts>) -> Void) -> Request {
         return manager.request(Router.FetchUnreadCounts(target, params))
                       .validate()
                       .responseObject(completionHandler)
@@ -42,7 +42,7 @@ extension CloudAPIClient {
         Mark one or multiple articles as read
         POST /v3/markers
     */
-    public func markEntriesAsRead(itemIds: [String], completionHandler: (NSURLRequest, NSHTTPURLResponse?, NSError?) -> Void) -> Request {
+    public func markEntriesAsRead(itemIds: [String], completionHandler: (NSURLRequest?, NSHTTPURLResponse?, Result<Void>) -> Void) -> Request {
         let marker = MarkerParam(action: .MarkAsRead, itemType: .Entry, itemIds: itemIds)
         return manager.request(Router.MarkAs(target, marker)).validate().response(completionHandler)
     }
@@ -51,7 +51,7 @@ extension CloudAPIClient {
         Keep one or multiple articles as unread
         POST /v3/markers
     */
-    public func keepEntriesAsUnread(itemIds: [String], completionHandler: (NSURLRequest, NSHTTPURLResponse?, NSError?) -> Void) -> Request {
+    public func keepEntriesAsUnread(itemIds: [String], completionHandler: (NSURLRequest?, NSHTTPURLResponse?, Result<Void>) -> Void) -> Request {
         let marker = MarkerParam(action: .KeepAsUnread, itemType: .Entry, itemIds: itemIds)
         return manager.request(Router.MarkAs(target, marker)).validate().response(completionHandler)
     }
@@ -60,7 +60,7 @@ extension CloudAPIClient {
         Mark a feed as read
         POST /v3/markers
     */
-    public func markFeedsAsRead(itemIds: [String], completionHandler: (NSURLRequest, NSHTTPURLResponse?, NSError?) -> Void) -> Request {
+    public func markFeedsAsRead(itemIds: [String], completionHandler: (NSURLRequest?, NSHTTPURLResponse?, Result<Void>) -> Void) -> Request {
         let marker = MarkerParam(action: .MarkAsRead, itemType: .Feed, itemIds: itemIds)
         return manager.request(Router.MarkAs(target, marker)).validate().response(completionHandler)
     }
@@ -69,7 +69,7 @@ extension CloudAPIClient {
         Mark a category as read
         POST /v3/markers
     */
-    public func markCategoriesAsRead(itemIds: [String], completionHandler: (NSURLRequest, NSHTTPURLResponse?, NSError?) -> Void) -> Request {
+    public func markCategoriesAsRead(itemIds: [String], completionHandler: (NSURLRequest?, NSHTTPURLResponse?, Result<Void>) -> Void) -> Request {
         let marker = MarkerParam(action: .MarkAsRead, itemType: .Category, itemIds: itemIds)
         return manager.request(Router.MarkAs(target, marker)).validate().response(completionHandler)
     }
@@ -78,7 +78,7 @@ extension CloudAPIClient {
         Undo mark as read
         POST /v3/markers
     */
-    public func undoMarkAsRead(itemType: Marker.ItemType, itemIds: [String], completionHandler: (NSURLRequest, NSHTTPURLResponse?, NSError?) -> Void) -> Request {
+    public func undoMarkAsRead(itemType: Marker.ItemType, itemIds: [String], completionHandler: (NSURLRequest?, NSHTTPURLResponse?, Result<Void>) -> Void) -> Request {
         let marker = MarkerParam(action: .UndoMarkAsRead, itemType: itemType, itemIds: itemIds)
         return manager.request(Router.MarkAs(target, marker)).validate().response(completionHandler)
     }
@@ -87,7 +87,7 @@ extension CloudAPIClient {
         Mark one or multiple articles as saved
         POST /v3/markers
     */
-    public func markEntriesAsSaved(itemIds: [String], completionHandler: (NSURLRequest, NSHTTPURLResponse?, NSError?) -> Void) -> Request {
+    public func markEntriesAsSaved(itemIds: [String], completionHandler: (NSURLRequest?, NSHTTPURLResponse?, Result<Void>) -> Void) -> Request {
         let marker = MarkerParam(action: .MarkAsSaved, itemType: .Entry, itemIds: itemIds)
         return manager.request(Router.MarkAs(target, marker)).validate().response(completionHandler)
     }
@@ -96,7 +96,7 @@ extension CloudAPIClient {
         Mark one or multiple articles as unsaved
         POST /v3/markers
     */
-    public func markEntriesAsUnsaved(itemIds: [String], completionHandler: (NSURLRequest, NSHTTPURLResponse?, NSError?) -> Void) -> Request {
+    public func markEntriesAsUnsaved(itemIds: [String], completionHandler: (NSURLRequest?, NSHTTPURLResponse?, Result<Void>) -> Void) -> Request {
         let marker = MarkerParam(action: .MarkAsUnsaved, itemType: .Entry, itemIds: itemIds)
         return manager.request(Router.MarkAs(target, marker)).validate().response(completionHandler)
     }
@@ -105,7 +105,7 @@ extension CloudAPIClient {
         Get the latest read operations (to sync local cache)
         GET /v3/markers/reads
     */
-    public func fetchLatestReadOperations(newerThan: Int64?, completionHandler: (NSURLRequest, NSHTTPURLResponse?, ReadOperations?, NSError?) -> Void) -> Request {
+    public func fetchLatestReadOperations(newerThan: Int64?, completionHandler: (NSURLRequest?, NSHTTPURLResponse?, Result<ReadOperations>) -> Void) -> Request {
         return manager.request(Router.FetchLatestReadOperations(target, newerThan)).validate().responseObject(completionHandler)
     }
 
@@ -113,7 +113,7 @@ extension CloudAPIClient {
         Get the latest tagged entry ids
         GET /v3/markers/tags
     */
-    public func fetchLatestTaggedEntryIds(newerThan: Int64?, completionHandler: (NSURLRequest, NSHTTPURLResponse?, TaggedEntryIds?, NSError?) -> Void) -> Request {
+    public func fetchLatestTaggedEntryIds(newerThan: Int64?, completionHandler: (NSURLRequest?, NSHTTPURLResponse?, Result<TaggedEntryIds>) -> Void) -> Request {
         return manager.request(Router.FetchLatestTaggedEntryIds(target, newerThan)).validate().responseObject(completionHandler)
     }
 }

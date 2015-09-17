@@ -11,7 +11,7 @@ import SwiftyJSON
 
 public typealias Locale = String
 
-@objc public class SearchQueryOfFeed: ParameterEncodable {
+public class SearchQueryOfFeed: ParameterEncodable {
     public var query:  String
     public var count:  Int?
     public var locale: Locale?
@@ -26,7 +26,7 @@ public typealias Locale = String
     }
 }
 
-@objc public class SearchQueryOfContent: ParameterEncodable {
+public class SearchQueryOfContent: ParameterEncodable {
     public enum Field: String {
         case All      = "all"
         case Title    = "title"
@@ -59,7 +59,7 @@ public typealias Locale = String
         if let _count        = count        { params["count"]      = _count }
         if let _newerThan    = newerThan    { params["newerThan"]  = _newerThan }
         if let _continuation = continuation { params["count"]      = _continuation }
-        if let _fields       = fields       { params["fields"]     = ",".join(_fields.map({ $0.rawValue })) }
+        if let _fields       = fields       { params["fields"]     = _fields.map({ $0.rawValue }).joinWithSeparator(",") }
         if let _embedded     = embedded     { params["embedded"]   = _embedded.rawValue }
         if let _engagement   = engagement   { params["engagement"] = _engagement.rawValue }
         if let _locale       = locale       { params["locale"]     = _locale }
@@ -88,7 +88,7 @@ extension CloudAPIClient {
         Find feeds based on title, url or #topic
         GET /v3/search/feeds
     */
-    public func searchFeeds(query: SearchQueryOfFeed, completionHandler: (NSURLRequest, NSHTTPURLResponse?, SearchResultFeeds?, NSError?) -> Void) -> Request {
+    public func searchFeeds(query: SearchQueryOfFeed, completionHandler: (NSURLRequest?, NSHTTPURLResponse?, Result<SearchResultFeeds>) -> Void) -> Request {
         return manager.request(Router.SearchFeeds(target, query)).validate().responseObject(completionHandler)
     }
 
@@ -96,7 +96,7 @@ extension CloudAPIClient {
         Search the content of a stream
         GET /v3/search/:streamId/contents?query=:searchTerm
     */
-    public func searchContentOfStream(streamId: String, searchTerm: String, query: SearchQueryOfContent, completionHandler: (NSURLRequest, NSHTTPURLResponse?, PaginatedEntryCollection?, NSError?) -> Void) -> Request {
+    public func searchContentOfStream(streamId: String, searchTerm: String, query: SearchQueryOfContent, completionHandler: (NSURLRequest?, NSHTTPURLResponse?, Result<PaginatedEntryCollection>) -> Void) -> Request {
         return manager.request(Router.SearchContentOfStream(target, streamId, searchTerm, query))
                       .validate()
                       .responseObject(completionHandler)
