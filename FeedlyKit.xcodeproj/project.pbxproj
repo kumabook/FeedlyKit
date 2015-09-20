@@ -60,6 +60,10 @@
 		676491141A6BE31400AD505D /* preferences.json in Resources */ = {isa = PBXBuildFile; fileRef = 67F606BF1A6B4A00002DEAC1 /* preferences.json */; };
 		676491161A6BE52700AD505D /* SubscriptionSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676491151A6BE52700AD505D /* SubscriptionSpec.swift */; };
 		676491171A6BE52700AD505D /* SubscriptionSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676491151A6BE52700AD505D /* SubscriptionSpec.swift */; };
+		67916DA51BAEB195004419B0 /* Breit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67428D451B80B2BA002FFA1A /* Breit.framework */; };
+		67916DA61BAEB198004419B0 /* Breit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 67428D451B80B2BA002FFA1A /* Breit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		67916DA71BAEB1A0004419B0 /* Breit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67428D471B80B331002FFA1A /* Breit.framework */; };
+		67916DA81BAEB1A2004419B0 /* Breit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 67428D471B80B331002FFA1A /* Breit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6796477F1A6B50F500D133E6 /* Evernote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6796477A1A6B50F500D133E6 /* Evernote.swift */; };
 		679647811A6B50F500D133E6 /* Microsoft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6796477C1A6B50F500D133E6 /* Microsoft.swift */; };
 		679647821A6B50F500D133E6 /* Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6796477D1A6B50F500D133E6 /* Topic.swift */; };
@@ -160,6 +164,7 @@
 				67B5103B1A69E7EB00BB46B7 /* SwiftyJSON.framework in CopyFiles */,
 				67B5103C1A69E7EB00BB46B7 /* Nimble.framework in CopyFiles */,
 				67B5103D1A69E7EB00BB46B7 /* Quick.framework in CopyFiles */,
+				67916DA81BAEB1A2004419B0 /* Breit.framework in CopyFiles */,
 				67B5103E1A69E7EB00BB46B7 /* Alamofire.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -173,6 +178,7 @@
 				67B510441A69E83A00BB46B7 /* SwiftyJSON.framework in CopyFiles */,
 				67B510451A69E83A00BB46B7 /* Alamofire.framework in CopyFiles */,
 				67B510461A69E83A00BB46B7 /* Nimble.framework in CopyFiles */,
+				67916DA61BAEB198004419B0 /* Breit.framework in CopyFiles */,
 				67B510471A69E83A00BB46B7 /* Quick.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -266,6 +272,7 @@
 				67F606AA1A6ACECF002DEAC1 /* Alamofire.framework in Frameworks */,
 				67F606AB1A6ACECF002DEAC1 /* SwiftyJSON.framework in Frameworks */,
 				67B510241A69943D00BB46B7 /* Nimble.framework in Frameworks */,
+				67916DA51BAEB195004419B0 /* Breit.framework in Frameworks */,
 				67B510251A69943D00BB46B7 /* Quick.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -286,6 +293,7 @@
 			files = (
 				67F606AC1A6ACEE2002DEAC1 /* Alamofire.framework in Frameworks */,
 				67F606A91A6ACEB9002DEAC1 /* SwiftyJSON.framework in Frameworks */,
+				67916DA71BAEB1A0004419B0 /* Breit.framework in Frameworks */,
 				67B5102A1A6994AB00BB46B7 /* Nimble.framework in Frameworks */,
 				67B5102B1A6994AB00BB46B7 /* Quick.framework in Frameworks */,
 			);
@@ -344,6 +352,7 @@
 		67B5102C1A6994C600BB46B7 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
+				67428D451B80B2BA002FFA1A /* Breit.framework */,
 				67C9DE491A638E1900B73CCA /* SwiftyJSON.framework */,
 				67C9DE481A638E1900B73CCA /* Alamofire.framework */,
 				67C9DE531A639C7800B73CCA /* Nimble.framework */,
@@ -355,6 +364,7 @@
 		67B5102D1A6994CF00BB46B7 /* Mac */ = {
 			isa = PBXGroup;
 			children = (
+				67428D471B80B331002FFA1A /* Breit.framework */,
 				67B510371A69E67D00BB46B7 /* SwiftyJSON.framework */,
 				67B510281A6994AB00BB46B7 /* Nimble.framework */,
 				67B510291A6994AB00BB46B7 /* Quick.framework */,
@@ -442,8 +452,6 @@
 		67C9DE4C1A638E3C00B73CCA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				67428D471B80B331002FFA1A /* Breit.framework */,
-				67428D451B80B2BA002FFA1A /* Breit.framework */,
 				67B5102D1A6994CF00BB46B7 /* Mac */,
 				67B5102C1A6994C600BB46B7 /* iOS */,
 			);
@@ -839,7 +847,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
