@@ -13,6 +13,12 @@ public class Origin: ParameterEncodable {
     public var title:    String!
     public var htmlUrl:  String!
 
+    public init(streamId: String, title: String, htmlUrl: String) {
+        self.streamId = streamId
+        self.title    = title
+        self.htmlUrl  = htmlUrl
+    }
+
     public init?(json: JSON) {
         if json == nil { return nil }
         self.streamId = json["streamId"].stringValue
