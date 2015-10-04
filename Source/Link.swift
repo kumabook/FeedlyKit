@@ -13,7 +13,13 @@ public class Link: NSObject, ParameterEncodable {
     public let type:   String
     public let length: Int?
     
-    init(json:JSON) {
+    public init(href: String, type: String, length: Int?) {
+        self.href   = href
+        self.type   = type
+        self.length = length
+    }
+
+    public init(json:JSON) {
         self.href   = json["href"].stringValue
         self.type   = json["type"].stringValue
         self.length = json["length"].int
