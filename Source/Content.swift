@@ -12,6 +12,11 @@ public class Content: ParameterEncodable {
     public var direction: String!
     public var content: String!
 
+    public init(direction: String, content: String) {
+        self.direction = direction
+        self.content   = content
+    }
+
     public init?(json: JSON) {
         if json == nil { return nil }
         self.direction = json["direction"].stringValue
