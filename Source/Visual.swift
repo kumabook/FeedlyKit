@@ -13,6 +13,13 @@ public class Visual {
     public let width:       Int
     public let height:      Int
     public let contentType: String
+
+    public init(url: String, width: Int, height: Int, contentType: String) {
+        self.url         = url
+        self.width       = width
+        self.height      = height
+        self.contentType = contentType
+    }
     
     public init(json: JSON) {
         self.url         = json["url"].stringValue
