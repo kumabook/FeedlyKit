@@ -12,28 +12,28 @@ import Breit
 public final class Entry: Equatable, Hashable,
                           ResponseObjectSerializable, ResponseCollectionSerializable,
                           ParameterEncodable {
-    public let id:              String
-    public let title:           String?
-    public let content:         Content?
-    public let summary:         Content?
-    public let author:          String?
-    public let crawled:         Int64
-    public let recrawled:       Int64
-    public let published:       Int64
-    public let updated:         Int64?
-    public let alternate:       [Link]?
-    public let origin:          Origin?
-    public let keywords:        [String]?
-    public let visual:          Visual?
-    public let unread:          Bool
-    public let tags:            [Tag]?
-    public let categories:      [Category]
-    public let engagement:      Int?
-    public let actionTimestamp: Int64?
-    public let enclosure:       [Link]?
-    public let fingerprint:     String?
-    public let originId:        String?
-    public let sid:             String?
+    public var id:              String
+    public var title:           String?
+    public var content:         Content?
+    public var summary:         Content?
+    public var author:          String?
+    public var crawled:         Int64 = 0
+    public var recrawled:       Int64 = 0
+    public var published:       Int64 = 0
+    public var updated:         Int64?
+    public var alternate:       [Link]?
+    public var origin:          Origin?
+    public var keywords:        [String]?
+    public var visual:          Visual?
+    public var unread:          Bool = true
+    public var tags:            [Tag]?
+    public var categories:      [Category] = []
+    public var engagement:      Int?
+    public var actionTimestamp: Int64?
+    public var enclosure:       [Link]?
+    public var fingerprint:     String?
+    public var originId:        String?
+    public var sid:             String?
 
     public class func collection(response response: NSHTTPURLResponse, representation: AnyObject) -> [Entry]? {
         let json = JSON(representation)
@@ -43,6 +43,10 @@ public final class Entry: Equatable, Hashable,
     @objc required public convenience init?(response: NSHTTPURLResponse, representation: AnyObject) {
         let json = JSON(representation)
         self.init(json: json)
+    }
+
+    public init(id: String) {
+        self.id = id
     }
 
     public init(json: JSON) {
