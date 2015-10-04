@@ -38,6 +38,11 @@ public final class Tag: Stream,
         self.init(json: json)
     }
 
+    public init(id: String, label: String) {
+        self.id    = id
+        self.label = label
+    }
+
     public init(json: JSON) {
         self.id    = json["id"].stringValue
         self.label = json["label"].stringValue
