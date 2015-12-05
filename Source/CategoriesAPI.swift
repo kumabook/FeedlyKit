@@ -16,7 +16,7 @@ extension CloudAPIClient {
         GET /v3/categories
         (Authorization is required)
     */
-    public func fetchCategories(completionHandler: (NSURLRequest?, NSHTTPURLResponse?, Result<[Category]>) -> Void) -> Request {
+    public func fetchCategories(completionHandler: (Response<[Category], NSError>) -> Void) -> Request {
         return manager.request(Router.FetchCategories(target)).validate().responseCollection(completionHandler)
     }
     
@@ -25,7 +25,7 @@ extension CloudAPIClient {
         POST /v3/categories/:categoryId
         (Authorization is required)
     */
-    public func updateCategory(categoryId: String, label: String, completionHandler:(NSURLRequest?, NSHTTPURLResponse?, Result<Void>) -> Void) -> Request {
+    public func updateCategory(categoryId: String, label: String, completionHandler:(Response<Void, NSError>) -> Void) -> Request {
         return manager.request(Router.UpdateCategory(target, categoryId, label)).validate().response(completionHandler)
     }
     
@@ -34,7 +34,7 @@ extension CloudAPIClient {
         DELETE /v3/categories/:categoryId
         (Authorization is required)
     */
-    public func deleteCategory(categoryId: String, completionHandler:(NSURLRequest?, NSHTTPURLResponse?, Result<Void>) -> Void) -> Request {
+    public func deleteCategory(categoryId: String, completionHandler:(Response<Void, NSError>) -> Void) -> Request {
         return manager.request(Router.DeleteCategory(target, categoryId)).validate().response(completionHandler)
     }
 }

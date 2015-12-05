@@ -21,10 +21,11 @@ public protocol ResponseCollectionSerializable {
 public typealias AccessToken = String
 
 extension Alamofire.Request {
-    public func responseObject<T: ResponseObjectSerializable>(completionHandler: (NSURLRequest?, NSHTTPURLResponse?, Result<T>) -> Void) -> Self {
-        let responseSerializer = GenericResponseSerializer<T> { request, response, data in
+    public func responseObject<T: ResponseObjectSerializable>(completionHandler: (Response<T, NSError>) -> Void) -> Self {
+        let responseSerializer = ResponseSerializer<T, NSError> { request, response, data, error in
+            guard error == nil else { return .Failure(error!) }
             let JSONSerializer = Request.JSONResponseSerializer(options: .AllowFragments)
-            let result = JSONSerializer.serializeResponse(request, response, data)
+            let result = JSONSerializer.serializeResponse(request, response, data, error)
             switch result {
             case .Success(let value):
                 if let
@@ -35,19 +36,20 @@ extension Alamofire.Request {
                 } else {
                     let failureReason = "JSON could not be serialized into response object: \(value)"
                     let error = Error.errorWithCode(.JSONSerializationFailed, failureReason: failureReason)
-                    return .Failure(data, error)
+                    return .Failure(error)
                 }
-            case .Failure(let data, let error):
-                return .Failure(data, error)
+            case .Failure(let error):
+                return .Failure(error)
             }
         }
         return response(responseSerializer: responseSerializer, completionHandler: completionHandler)
     }
 
-    public func responseCollection<T: ResponseCollectionSerializable>(completionHandler: (NSURLRequest?, NSHTTPURLResponse?, Result<[T]>) -> Void) -> Self {
-        let responseSerializer = GenericResponseSerializer<[T]> { request, response, data in
+    public func responseCollection<T: ResponseCollectionSerializable>(completionHandler: (Response<[T], NSError>) -> Void) -> Self {
+        let responseSerializer = ResponseSerializer<[T], NSError> { request, response, data, error in
+            guard error == nil else { return .Failure(error!) }
             let JSONSerializer = Request.JSONResponseSerializer(options: .AllowFragments)
-            let result = JSONSerializer.serializeResponse(request, response, data)
+            let result = JSONSerializer.serializeResponse(request, response, data, error)
             switch result {
             case .Success(let value):
                 if let
@@ -58,21 +60,27 @@ extension Alamofire.Request {
                 } else {
                     let failureReason = "JSON could not be serialized into response object: \(value)"
                     let error = Error.errorWithCode(.JSONSerializationFailed, failureReason: failureReason)
-                    return .Failure(data, error)
+                    return .Failure(error)
                 }
-            case .Failure(let data, let error):
-                return .Failure(data, error)
+            case .Failure(let error):
+                return .Failure(error)
             }
         }
         return response(responseSerializer: responseSerializer, completionHandler: completionHandler)
     }
 
-    public func response(completionHandler: (NSURLRequest?, NSHTTPURLResponse?, Result<Void>) -> Void) -> Self {
-        return responseString(encoding: NSUTF8StringEncoding) {
-            if $2.isSuccess {
-                completionHandler($0, $1, Result.Success())
+    public func response(completionHandler: (Response<Void, NSError>) -> Void) -> Self {
+        return responseString(encoding: NSUTF8StringEncoding) { response in
+            if response.result.isSuccess {
+                completionHandler(Response<Void, NSError>(request: response.request,
+                                                         response: response.response,
+                                                             data: response.data,
+                                                           result: Result.Success()))
             } else {
-                completionHandler($0, $1, Result.Failure($2.data, $2.error!))
+                completionHandler(Response<Void, NSError>(request: response.request,
+                                                         response: response.response,
+                                                             data: response.data,
+                                                           result: Result.Failure(response.result.error!)))
             }
         }
     }

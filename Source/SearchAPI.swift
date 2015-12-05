@@ -88,7 +88,7 @@ extension CloudAPIClient {
         Find feeds based on title, url or #topic
         GET /v3/search/feeds
     */
-    public func searchFeeds(query: SearchQueryOfFeed, completionHandler: (NSURLRequest?, NSHTTPURLResponse?, Result<SearchResultFeeds>) -> Void) -> Request {
+    public func searchFeeds(query: SearchQueryOfFeed, completionHandler: (Response<SearchResultFeeds, NSError>) -> Void) -> Request {
         return manager.request(Router.SearchFeeds(target, query)).validate().responseObject(completionHandler)
     }
 
@@ -96,7 +96,7 @@ extension CloudAPIClient {
         Search the content of a stream
         GET /v3/search/:streamId/contents?query=:searchTerm
     */
-    public func searchContentOfStream(streamId: String, searchTerm: String, query: SearchQueryOfContent, completionHandler: (NSURLRequest?, NSHTTPURLResponse?, Result<PaginatedEntryCollection>) -> Void) -> Request {
+    public func searchContentOfStream(streamId: String, searchTerm: String, query: SearchQueryOfContent, completionHandler: (Response<PaginatedEntryCollection, NSError>) -> Void) -> Request {
         return manager.request(Router.SearchContentOfStream(target, streamId, searchTerm, query))
                       .validate()
                       .responseObject(completionHandler)

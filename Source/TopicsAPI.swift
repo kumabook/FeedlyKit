@@ -15,7 +15,7 @@ extension CloudAPIClient {
         GET /v3/topics
         (Authorization is required)
     */
-    public func fetchTopics(completionHandler: (NSURLRequest?, NSHTTPURLResponse?, Result<[Topic]>) -> Void) -> Request {
+    public func fetchTopics(completionHandler: (Response<[Topic], NSError>) -> Void) -> Request {
         return manager.request(Router.FetchTopics(target)).validate().responseCollection(completionHandler)
     }
     
@@ -24,7 +24,7 @@ extension CloudAPIClient {
         POST /v3/topics
         (Authorization is required)
     */
-    public func addTopic(interest: String, topicId: String, completionHandler: (NSURLRequest?, NSHTTPURLResponse?, Result<Void>) -> Void) -> Request {
+    public func addTopic(interest: String, topicId: String, completionHandler: (Response<Void, NSError>) -> Void) -> Request {
         return manager.request(Router.AddTopic(target, interest, topicId)).validate().response(completionHandler)
     }
     
@@ -33,7 +33,7 @@ extension CloudAPIClient {
         POST /v3/topics
         (Authorization is required)
     */
-    public func updateTopic(interest: String, topicId: String, completionHandler: (NSURLRequest?, NSHTTPURLResponse?, Result<Void>) -> Void) -> Request {
+    public func updateTopic(interest: String, topicId: String, completionHandler: (Response<Void, NSError>) -> Void) -> Request {
         return manager.request(Router.UpdateTopic(target, interest, topicId)).validate().response(completionHandler)
     }
     
@@ -42,7 +42,7 @@ extension CloudAPIClient {
         DELETE /v3/topics/:topicId
         (Authorization is required)
     */
-    public func removeTopic(topicId: String, completionHandler: (NSURLRequest?, NSHTTPURLResponse?, Result<Void>) -> Void) -> Request {
+    public func removeTopic(topicId: String, completionHandler: (Response<Void, NSError>) -> Void) -> Request {
         return manager.request(Router.RemoveTopic(target, topicId)).validate().response(completionHandler)
     }
 }

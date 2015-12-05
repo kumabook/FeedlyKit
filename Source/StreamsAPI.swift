@@ -66,7 +66,7 @@ extension CloudAPIClient {
         (Authorization is optional; it is required for category and tag streams)
         TODO
     */
-    public func fetchEntryIds(streamId: String, paginationParams: PaginationParams, completionHandler: (NSURLRequest?, NSHTTPURLResponse?, Result<PaginatedIdCollection>) -> Void) -> Request {
+    public func fetchEntryIds(streamId: String, paginationParams: PaginationParams, completionHandler: (Response<PaginatedIdCollection, NSError>) -> Void) -> Request {
         return manager.request(Router.FetchEntryIds(target, streamId, paginationParams))
                       .validate()
                       .responseObject(completionHandler)
@@ -80,7 +80,7 @@ extension CloudAPIClient {
         (Authorization is optional; it is required for category and tag streams)
         TODO
     */
-    public func fetchContents(streamId: String, paginationParams: PaginationParams, completionHandler: (NSURLRequest?, NSHTTPURLResponse?, Result<PaginatedEntryCollection>) -> Void) -> Request {
+    public func fetchContents(streamId: String, paginationParams: PaginationParams, completionHandler: (Response<PaginatedEntryCollection, NSError>) -> Void) -> Request {
         return manager.request(Router.FetchContents(target, streamId, paginationParams))
                       .validate()
                       .responseObject(completionHandler)

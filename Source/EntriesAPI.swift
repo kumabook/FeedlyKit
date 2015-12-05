@@ -15,7 +15,8 @@ extension CloudAPIClient {
         GET /v3/entries/:entryId
         (Authorization is optional)
     */
-    public func fetchEntry(entryId: String, completionHandler: (NSURLRequest?, NSHTTPURLResponse?, Result<Entry>) -> Void) -> Request {
+//    public func fetchEntry(entryId: String, completionHandler: (NSURLRequest?, NSHTTPURLResponse?, Result<Entry, NSError>) -> Void) -> Request {
+    public func fetchEntry(entryId: String, completionHandler: (Response<Entry, NSError>) -> Void) -> Request {
         return manager.request(Router.FetchEntry(target, entryId)).validate().responseObject(completionHandler)
     }
     
@@ -24,7 +25,7 @@ extension CloudAPIClient {
         POST /v3/entries/.mget
         (Authorization is optional)
     */
-    public func fetchEntries(entryIds: [String], completionHandler: (NSURLRequest?, NSHTTPURLResponse?, Result<[Entry]>) -> Void) -> Request {
+    public func fetchEntries(entryIds: [String], completionHandler: (Response<[Entry], NSError>) -> Void) -> Request {
         return manager.request(Router.FetchEntries(target, entryIds)).validate().responseCollection(completionHandler)
     }
     
@@ -33,7 +34,7 @@ extension CloudAPIClient {
         POST /v3/entries/
         (Authorization is required)
     */
-    public func createEntry(entry: Entry, completionHandler: (NSURLRequest?, NSHTTPURLResponse?, Result<[String]>) -> Void) -> Request {
+    public func createEntry(entry: Entry, completionHandler: (Response<[String], NSError>) -> Void) -> Request {
         return manager.request(Router.CreateEntry(target, entry)).validate()
     }
 }
