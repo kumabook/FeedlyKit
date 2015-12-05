@@ -66,7 +66,7 @@ Currently, FeedlyKit partially support feedly cloud apis.
     let client                    = CloudAPIClient()
     client.fetchContents(streamId,
                        paginationParams: paginationParams,
-                      completionHandler: { (req, res, entries, error) -> Void in
+                      completionHandler: { (response) -> Void in
                 ....
     })
     ```
