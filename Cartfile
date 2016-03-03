@@ -1,3 +1,2 @@
 github "SwiftyJSON/SwiftyJSON" "master"
 github "Alamofire/Alamofire"
-github "kumabook/Breit"

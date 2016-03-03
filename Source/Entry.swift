@@ -7,7 +7,6 @@
 //
 
 import SwiftyJSON
-import Breit
 
 public final class Entry: Equatable, Hashable,
                           ResponseObjectSerializable, ResponseCollectionSerializable,
