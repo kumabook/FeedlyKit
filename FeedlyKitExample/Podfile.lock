@@ -1,0 +1,26 @@
+PODS:
+  - Alamofire (3.2.1)
+  - FeedlyKit (0.5.1):
+    - Alamofire (~> 3.2)
+    - SwiftyJSON (~> 2.3)
+  - Nimble (3.0.0)
+  - Quick (0.8.0)
+  - SwiftyJSON (2.3.2)
+
+DEPENDENCIES:
+  - FeedlyKit (from `../`)
+  - Nimble (= 3.0.0)
+  - Quick (~> 0.8.0)
+
+EXTERNAL SOURCES:
+  FeedlyKit:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  Alamofire: f11d8624a05f5d39e0c99309b3e600a3ba64298a
+  FeedlyKit: 0b2b3e19393a041593505dd567bc0860859211b1
+  Nimble: 4c353d43735b38b545cbb4cb91504588eb5de926
+  Quick: 563d0f6ec5f72e394645adb377708639b7dd38ab
+  SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
+
+COCOAPODS: 0.39.0
