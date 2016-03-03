@@ -1,2 +1,2 @@
-github "SwiftyJSON/SwiftyJSON" "master"
+github "SwiftyJSON/SwiftyJSON"
 github "Alamofire/Alamofire"
