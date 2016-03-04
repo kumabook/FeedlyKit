@@ -15,8 +15,10 @@ github "kumabook/FeedlyKit"
 And run `carthage update` and setup your xcode project.
 
 ### Cocoapods
-
-Comming soon.
+You can also use [Cocoapods][] to install FeedlyKit by adding it to your Podfile:
+```Podfile
+pod 'FeedlyKit', '~> 0.5'
+```
 
 ## Support API
 Currently, FeedlyKit partially support feedly cloud apis.
@@ -80,6 +82,7 @@ Here is the libraies that FeedlyKit uses. Thanks for the developers.
 
 [Feedly Cloud API]: http://developer.feedly.com/
 [Carthage]:         https://github.com/Carthage/Carthage
+[CocoaPods]:        https://cocoapods.org/
 [NXOAuth2Client]:   https://github.com/nxtbgthng/OAuth2Client
 [Alamofire]:        https://github.com/Alamofire/Alamofire
 [SwiftyJSON]:       https://github.com/SwiftyJSON/SwiftyJSON
