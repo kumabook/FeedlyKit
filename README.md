@@ -6,7 +6,7 @@
 
 ## Installation
 ### Carthage
-You can use [Carthage][] to install Feedly by adding it to your Cartfile:
+You can use [Carthage][] to install FeedlyKit by adding it to your Cartfile:
 
 ```
 github "kumabook/FeedlyKit"
