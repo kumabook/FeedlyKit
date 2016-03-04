@@ -1,16 +1,18 @@
 XCODEBUILD:=xctool
 
-default: test
+default: test example
 
 test:
 	$(XCODEBUILD) -scheme FeedlyKit-iOS test -sdk iphonesimulator
 	$(XCODEBUILD) -scheme FeedlyKit-Mac test
 
-
-#	$(XCODEBUILD) -sdk iphonesimulator -arch i386 -scheme FeedlyKit-iOS test
+example:
+	pod setup
+	pod install --project-directory=Example
+	$(XCODEBUILD) -scheme FeedlyKitExample -sdk iphonesimulator -workspace Example/FeedlyKitExample.xcworkspace/
 
 clean:
 	$(XCODEBUILD) -scheme FeedlyKit-iOS clean -sdk iphonesimulator
 	$(XCODEBUILD) -scheme FeedlyKit-Mac clean
 
-.PHONY: test clean default
+.PHONY: test example clean default
