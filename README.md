@@ -72,6 +72,7 @@ Currently, FeedlyKit partially support feedly cloud apis.
                 ....
     })
     ```
+    You can also refer to [a example project](./Example/).
 
 ## Dependencies
 Here is the libraies that FeedlyKit uses. Thanks for the developers.
