@@ -10,7 +10,6 @@ import UIKit
 import Alamofire
 import FeedlyKit
 import Alamofire
-import ReactiveCocoa
 
 
 class ViewController: UITableViewController {
