@@ -191,6 +191,8 @@ public class CloudAPIClient {
         case AddTopic(Target, String, String)
         case UpdateTopic(Target, String, String)
         case RemoveTopic(Target, String)
+        // Custom
+        case Api(API)
         
         var method: Alamofire.Method {
             switch self {
@@ -236,6 +238,7 @@ public class CloudAPIClient {
             case .AddTopic:                  return .POST
             case .UpdateTopic:               return .POST
             case .RemoveTopic:               return .DELETE
+            case .Api(let api):              return api.method
             }
         }
 
@@ -294,6 +297,7 @@ public class CloudAPIClient {
             case .AddTopic(let target, _, _):                    return target.baseUrl + "/v3/topics"
             case .UpdateTopic(let target, _, _):                 return target.baseUrl + "/v3/topics"
             case .RemoveTopic(let target, let topicId):          return target.baseUrl + "/v3/topics/\(urlEncode(topicId))"
+            case .Api(let api):                                  return api.url
             }
         }
         // MARK: URLRequestConvertible
@@ -356,6 +360,7 @@ public class CloudAPIClient {
             case .AddTopic(_, let id, let interest):         return J.encode(req, parameters: ["id": id, "interest": interest]).0
             case .UpdateTopic(_, let id, let interest):      return J.encode(req, parameters: ["id": id, "interest": interest]).0
             case .RemoveTopic:                               return req
+            case .Api(let api):                              return api.URLRequest
             }
         }
     }

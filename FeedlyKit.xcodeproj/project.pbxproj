@@ -62,6 +62,7 @@
 		676491171A6BE52700AD505D /* SubscriptionSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676491151A6BE52700AD505D /* SubscriptionSpec.swift */; };
 		678EAF331C908571006F7FDD /* StreamsAPISpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678EAF321C908571006F7FDD /* StreamsAPISpec.swift */; };
 		678EAF341C908571006F7FDD /* StreamsAPISpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678EAF321C908571006F7FDD /* StreamsAPISpec.swift */; };
+		678EAF361C9191D9006F7FDD /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678EAF351C9191D9006F7FDD /* API.swift */; };
 		6796477F1A6B50F500D133E6 /* Evernote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6796477A1A6B50F500D133E6 /* Evernote.swift */; };
 		679647811A6B50F500D133E6 /* Microsoft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6796477C1A6B50F500D133E6 /* Microsoft.swift */; };
 		679647821A6B50F500D133E6 /* Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6796477D1A6B50F500D133E6 /* Topic.swift */; };
@@ -209,6 +210,7 @@
 		676491061A6BE2E400AD505D /* topics.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = topics.json; path = Fixture/Response/topics.json; sourceTree = "<group>"; };
 		676491151A6BE52700AD505D /* SubscriptionSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SubscriptionSpec.swift; path = Spec/SubscriptionSpec.swift; sourceTree = "<group>"; };
 		678EAF321C908571006F7FDD /* StreamsAPISpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StreamsAPISpec.swift; path = Spec/StreamsAPISpec.swift; sourceTree = "<group>"; };
+		678EAF351C9191D9006F7FDD /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = API.swift; path = Source/API.swift; sourceTree = SOURCE_ROOT; };
 		6796477A1A6B50F500D133E6 /* Evernote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Evernote.swift; path = Source/Evernote.swift; sourceTree = SOURCE_ROOT; };
 		6796477C1A6B50F500D133E6 /* Microsoft.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Microsoft.swift; path = Source/Microsoft.swift; sourceTree = SOURCE_ROOT; };
 		6796477D1A6B50F500D133E6 /* Topic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Topic.swift; path = Source/Topic.swift; sourceTree = SOURCE_ROOT; };
@@ -366,6 +368,7 @@
 				67B370361A6E10B100B31D57 /* StreamsAPI.swift */,
 				67B370391A6E10C100B31D57 /* SubscriptionsAPI.swift */,
 				67B370481A6EA3C800B31D57 /* TopicsAPI.swift */,
+				678EAF351C9191D9006F7FDD /* API.swift */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -758,6 +761,7 @@
 				67B5105B1A69EBA200BB46B7 /* Subscription.swift in Sources */,
 				6796477F1A6B50F500D133E6 /* Evernote.swift in Sources */,
 				67B510591A69EBA200BB46B7 /* Profile.swift in Sources */,
+				678EAF361C9191D9006F7FDD /* API.swift in Sources */,
 				67F606C31A6B4B2F002DEAC1 /* Tag.swift in Sources */,
 				67363B5C1A7366AA009F8FBC /* Link.swift in Sources */,
 				67B5105A1A69EBA200BB46B7 /* Stream.swift in Sources */,
