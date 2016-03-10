@@ -60,6 +60,8 @@
 		676491141A6BE31400AD505D /* preferences.json in Resources */ = {isa = PBXBuildFile; fileRef = 67F606BF1A6B4A00002DEAC1 /* preferences.json */; };
 		676491161A6BE52700AD505D /* SubscriptionSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676491151A6BE52700AD505D /* SubscriptionSpec.swift */; };
 		676491171A6BE52700AD505D /* SubscriptionSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676491151A6BE52700AD505D /* SubscriptionSpec.swift */; };
+		678EAF331C908571006F7FDD /* StreamsAPISpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678EAF321C908571006F7FDD /* StreamsAPISpec.swift */; };
+		678EAF341C908571006F7FDD /* StreamsAPISpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678EAF321C908571006F7FDD /* StreamsAPISpec.swift */; };
 		6796477F1A6B50F500D133E6 /* Evernote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6796477A1A6B50F500D133E6 /* Evernote.swift */; };
 		679647811A6B50F500D133E6 /* Microsoft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6796477C1A6B50F500D133E6 /* Microsoft.swift */; };
 		679647821A6B50F500D133E6 /* Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6796477D1A6B50F500D133E6 /* Topic.swift */; };
@@ -206,6 +208,7 @@
 		676491051A6BE2E400AD505D /* tags.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = tags.json; path = Fixture/Response/tags.json; sourceTree = "<group>"; };
 		676491061A6BE2E400AD505D /* topics.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = topics.json; path = Fixture/Response/topics.json; sourceTree = "<group>"; };
 		676491151A6BE52700AD505D /* SubscriptionSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SubscriptionSpec.swift; path = Spec/SubscriptionSpec.swift; sourceTree = "<group>"; };
+		678EAF321C908571006F7FDD /* StreamsAPISpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StreamsAPISpec.swift; path = Spec/StreamsAPISpec.swift; sourceTree = "<group>"; };
 		6796477A1A6B50F500D133E6 /* Evernote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Evernote.swift; path = Source/Evernote.swift; sourceTree = SOURCE_ROOT; };
 		6796477C1A6B50F500D133E6 /* Microsoft.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Microsoft.swift; path = Source/Microsoft.swift; sourceTree = SOURCE_ROOT; };
 		6796477D1A6B50F500D133E6 /* Topic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Topic.swift; path = Source/Topic.swift; sourceTree = SOURCE_ROOT; };
@@ -328,6 +331,27 @@
 			name = Sub;
 			sourceTree = "<group>";
 		};
+		678EAF2D1C908507006F7FDD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				67363B611A7366DB009F8FBC /* EntrySpec.swift */,
+				67F606A61A6ACDBA002DEAC1 /* SpecHelper.swift */,
+				67F6069B1A6AB868002DEAC1 /* ProfileSpec.swift */,
+				679CC1331A6BD9BB003846D8 /* FeedSpec.swift */,
+				676491151A6BE52700AD505D /* SubscriptionSpec.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		678EAF2E1C908516006F7FDD /* API */ = {
+			isa = PBXGroup;
+			children = (
+				67363B601A7366DB009F8FBC /* CloudAPISpec.swift */,
+				678EAF321C908571006F7FDD /* StreamsAPISpec.swift */,
+			);
+			name = API;
+			sourceTree = "<group>";
+		};
 		67B370321A6E000900B31D57 /* API */ = {
 			isa = PBXGroup;
 			children = (
@@ -371,12 +395,8 @@
 		67B5102F1A6995C400BB46B7 /* Spec */ = {
 			isa = PBXGroup;
 			children = (
-				67363B601A7366DB009F8FBC /* CloudAPISpec.swift */,
-				67363B611A7366DB009F8FBC /* EntrySpec.swift */,
-				67F606A61A6ACDBA002DEAC1 /* SpecHelper.swift */,
-				67F6069B1A6AB868002DEAC1 /* ProfileSpec.swift */,
-				679CC1331A6BD9BB003846D8 /* FeedSpec.swift */,
-				676491151A6BE52700AD505D /* SubscriptionSpec.swift */,
+				678EAF2D1C908507006F7FDD /* Model */,
+				678EAF2E1C908516006F7FDD /* API */,
 			);
 			name = Spec;
 			sourceTree = "<group>";
@@ -723,6 +743,7 @@
 				67363B631A7366DB009F8FBC /* CloudAPISpec.swift in Sources */,
 				67F606A21A6AB9A3002DEAC1 /* ProfileSpec.swift in Sources */,
 				676491171A6BE52700AD505D /* SubscriptionSpec.swift in Sources */,
+				678EAF341C908571006F7FDD /* StreamsAPISpec.swift in Sources */,
 				67363B651A7366DB009F8FBC /* EntrySpec.swift in Sources */,
 				679CC1351A6BD9BB003846D8 /* FeedSpec.swift in Sources */,
 				67F606A81A6ACDBA002DEAC1 /* SpecHelper.swift in Sources */,
@@ -772,6 +793,7 @@
 				67363B621A7366DB009F8FBC /* CloudAPISpec.swift in Sources */,
 				67F606A01A6AB978002DEAC1 /* ProfileSpec.swift in Sources */,
 				676491161A6BE52700AD505D /* SubscriptionSpec.swift in Sources */,
+				678EAF331C908571006F7FDD /* StreamsAPISpec.swift in Sources */,
 				67363B641A7366DB009F8FBC /* EntrySpec.swift in Sources */,
 				67F606A71A6ACDBA002DEAC1 /* SpecHelper.swift in Sources */,
 				679CC1341A6BD9BB003846D8 /* FeedSpec.swift in Sources */,

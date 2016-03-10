@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import FeedlyKit
 
 public class SpecHelper {
     public class func fixtureJSONObject(fixtureNamed fixtureNamed: String) -> AnyObject? {
@@ -15,6 +16,9 @@ public class SpecHelper {
         let data     = NSData(contentsOfFile: filePath!)
         let jsonObject : AnyObject? = try! NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers)
         return jsonObject
+    }
+    public class var target: CloudAPIClient.Target {
+        return .Production
     }
 }
 
