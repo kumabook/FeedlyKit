@@ -167,7 +167,7 @@ public class CloudAPIClient {
         case FetchLatestTaggedEntryIds(Target, Int64?)
         // Profile API
         case FetchProfile(Target)
-        case UpdateProfile(Target, [String:String])
+        case UpdateProfile(Target, [String:AnyObject])
         // Search API
         case SearchFeeds(Target, SearchQueryOfFeed)
         case SearchContentOfStream(Target, String, String, SearchQueryOfContent)
