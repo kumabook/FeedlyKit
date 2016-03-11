@@ -10,37 +10,37 @@ import SwiftyJSON
 
 public final class Feed: Stream,
                          ResponseObjectSerializable, ResponseCollectionSerializable  {
-    public let id:          String
-    public let subscribers: Int
-    public let title:       String
-    public let description: String?
-    public let language:    String?
-    public let velocity:    Float?
-    public let website:     String?
-    public let topics:      [String]?
-    public let status:      String?
-    public let curated:     Bool?
-    public let featured:    Bool?
-    public let lastUpdated: Int64?
+    public var id:          String
+    public var subscribers: Int
+    public var title:       String
+    public var description: String?
+    public var language:    String?
+    public var velocity:    Float?
+    public var website:     String?
+    public var topics:      [String]?
+    public var status:      String?
+    public var curated:     Bool?
+    public var featured:    Bool?
+    public var lastUpdated: Int64?
 
-    public let visualUrl:   String?
-    public let iconUrl:     String?
-    public let coverUrl:    String?
+    public var visualUrl:   String?
+    public var iconUrl:     String?
+    public var coverUrl:    String?
 
-    public let facebookUsername:    String?
-    public let facebookLikes:       Int?
-    public let twitterScreenName:   String?
-    public let twitterFollowers:    String?
-    public let contentType:         String?
-    public let coverColor:          String?
-    public let partial:             Bool?
-    public let hint:                String?
-    public let score:               Float?
-    public let scheme:              String?
-    public let estimatedEngagement: Int?
-    public let websiteTitle:        String?
+    public var facebookUsername:    String?
+    public var facebookLikes:       Int?
+    public var twitterScreenName:   String?
+    public var twitterFollowers:    String?
+    public var contentType:         String?
+    public var coverColor:          String?
+    public var partial:             Bool?
+    public var hint:                String?
+    public var score:               Float?
+    public var scheme:              String?
+    public var estimatedEngagement: Int?
+    public var websiteTitle:        String?
 
-    public let deliciousTags:       [String]?
+    public var deliciousTags:       [String]?
 
     public override var streamId: String {
         return id
@@ -57,6 +57,13 @@ public final class Feed: Stream,
     @objc required public convenience init?(response: NSHTTPURLResponse, representation: AnyObject) {
         let json = JSON(representation)
         self.init(json: json)
+    }
+
+    public init(id: String, title: String, description: String, subscribers: Int) {
+        self.id          = id
+        self.title       = title
+        self.description = description
+        self.subscribers = subscribers
     }
 
     public init(json: JSON) {
