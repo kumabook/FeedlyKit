@@ -72,6 +72,8 @@
 		678EAF401C91CFF0006F7FDD /* SubscriptionsAPISpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678EAF3E1C91CFF0006F7FDD /* SubscriptionsAPISpec.swift */; };
 		678EAF421C930689006F7FDD /* ProfileAPISpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678EAF411C930689006F7FDD /* ProfileAPISpec.swift */; };
 		678EAF431C930689006F7FDD /* ProfileAPISpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678EAF411C930689006F7FDD /* ProfileAPISpec.swift */; };
+		678EAF451C9381EF006F7FDD /* CategoriesAPISPec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678EAF441C9381EF006F7FDD /* CategoriesAPISPec.swift */; };
+		678EAF461C9381EF006F7FDD /* CategoriesAPISPec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678EAF441C9381EF006F7FDD /* CategoriesAPISPec.swift */; };
 		6796477F1A6B50F500D133E6 /* Evernote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6796477A1A6B50F500D133E6 /* Evernote.swift */; };
 		679647811A6B50F500D133E6 /* Microsoft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6796477C1A6B50F500D133E6 /* Microsoft.swift */; };
 		679647821A6B50F500D133E6 /* Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6796477D1A6B50F500D133E6 /* Topic.swift */; };
@@ -224,6 +226,7 @@
 		678EAF3B1C91C483006F7FDD /* EntriesAPISpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EntriesAPISpec.swift; path = Spec/EntriesAPISpec.swift; sourceTree = "<group>"; };
 		678EAF3E1C91CFF0006F7FDD /* SubscriptionsAPISpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SubscriptionsAPISpec.swift; path = Spec/SubscriptionsAPISpec.swift; sourceTree = "<group>"; };
 		678EAF411C930689006F7FDD /* ProfileAPISpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileAPISpec.swift; path = Spec/ProfileAPISpec.swift; sourceTree = "<group>"; };
+		678EAF441C9381EF006F7FDD /* CategoriesAPISPec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CategoriesAPISPec.swift; path = Spec/CategoriesAPISPec.swift; sourceTree = "<group>"; };
 		6796477A1A6B50F500D133E6 /* Evernote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Evernote.swift; path = Source/Evernote.swift; sourceTree = SOURCE_ROOT; };
 		6796477C1A6B50F500D133E6 /* Microsoft.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Microsoft.swift; path = Source/Microsoft.swift; sourceTree = SOURCE_ROOT; };
 		6796477D1A6B50F500D133E6 /* Topic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Topic.swift; path = Source/Topic.swift; sourceTree = SOURCE_ROOT; };
@@ -367,6 +370,7 @@
 				678EAF3B1C91C483006F7FDD /* EntriesAPISpec.swift */,
 				678EAF3E1C91CFF0006F7FDD /* SubscriptionsAPISpec.swift */,
 				678EAF411C930689006F7FDD /* ProfileAPISpec.swift */,
+				678EAF441C9381EF006F7FDD /* CategoriesAPISPec.swift */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -766,6 +770,7 @@
 				678EAF401C91CFF0006F7FDD /* SubscriptionsAPISpec.swift in Sources */,
 				67F606A21A6AB9A3002DEAC1 /* ProfileSpec.swift in Sources */,
 				678EAF431C930689006F7FDD /* ProfileAPISpec.swift in Sources */,
+				678EAF461C9381EF006F7FDD /* CategoriesAPISPec.swift in Sources */,
 				678EAF3D1C91C483006F7FDD /* EntriesAPISpec.swift in Sources */,
 				676491171A6BE52700AD505D /* SubscriptionSpec.swift in Sources */,
 				678EAF341C908571006F7FDD /* StreamsAPISpec.swift in Sources */,
@@ -821,6 +826,7 @@
 				678EAF3F1C91CFF0006F7FDD /* SubscriptionsAPISpec.swift in Sources */,
 				67F606A01A6AB978002DEAC1 /* ProfileSpec.swift in Sources */,
 				678EAF421C930689006F7FDD /* ProfileAPISpec.swift in Sources */,
+				678EAF451C9381EF006F7FDD /* CategoriesAPISPec.swift in Sources */,
 				678EAF3C1C91C483006F7FDD /* EntriesAPISpec.swift in Sources */,
 				676491161A6BE52700AD505D /* SubscriptionSpec.swift in Sources */,
 				678EAF331C908571006F7FDD /* StreamsAPISpec.swift in Sources */,
