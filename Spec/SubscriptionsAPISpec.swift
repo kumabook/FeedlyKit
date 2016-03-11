@@ -41,7 +41,7 @@ class SubscriptionAPISpec: QuickSpec {
                 }
             }
             it ("fetches a specified feed") {
-                expect(statusCode).toEventually(equal(200))
+                expect(statusCode).toFinally(equal(200))
             }
         }
         describe("subscribeTo") {
@@ -61,8 +61,8 @@ class SubscriptionAPISpec: QuickSpec {
                 }
             }
             it ("subscribes to a feed") {
-                expect(statusCode).toEventually(equal(200))
-                expect(isFinish).toEventually(beTrue())
+                expect(statusCode).toFinally(equal(200))
+                expect(isFinish).toFinally(beTrue())
                 expect(self.subscriptions.map { $0.id }).to(contain(self.feed.id))
             }
         }
@@ -78,7 +78,7 @@ class SubscriptionAPISpec: QuickSpec {
                 }
             }
             it ("update a subscription") {
-                expect(statusCode).toEventually(equal(200))
+                expect(statusCode).toFinally(equal(200))
             }
         }
 
@@ -97,8 +97,8 @@ class SubscriptionAPISpec: QuickSpec {
                 }
             }
             it ("unsubscribes to a feed") {
-                expect(statusCode).toEventually(equal(200))
-                expect(isFinish).toEventually(beTrue())
+                expect(statusCode).toFinally(equal(200))
+                expect(isFinish).toFinally(beTrue())
                 expect(self.subscriptions.map { $0.id }).notTo(contain(self.feed.id))
             }
         }

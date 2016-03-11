@@ -7,7 +7,6 @@
 //
 
 import Foundation
-
 import FeedlyKit
 import Quick
 import Nimble
@@ -32,8 +31,8 @@ class FeedsAPISpec: QuickSpec {
                 }
             }
             it ("fetches a specified feed") {
-                expect(self.statusCode).toEventually(equal(200))
-                expect(self.feed).toEventuallyNot(beNil())
+                expect(self.statusCode).toFinally(equal(200))
+                expect(self.feed).toFinallyNot(beNil())
             }
         }
         describe("fetchFeeds") {
@@ -47,8 +46,8 @@ class FeedsAPISpec: QuickSpec {
                 }
             }
             it ("fetches specified feeds") {
-                expect(self.statusCode).toEventually(equal(200))
-                expect(self.feeds.count).toEventually(equal(2))
+                expect(self.statusCode).toFinally(equal(200))
+                expect(self.feeds.count).toFinally(equal(2))
             }
         }
     }

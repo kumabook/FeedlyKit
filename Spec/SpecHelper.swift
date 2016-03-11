@@ -8,6 +8,7 @@
 
 import Foundation
 import FeedlyKit
+import Nimble
 
 public class SpecHelper {
     public class func fixtureJSONObject(fixtureNamed fixtureNamed: String) -> AnyObject? {
@@ -19,6 +20,16 @@ public class SpecHelper {
     }
     public class var target: CloudAPIClient.Target {
         return .Production
+    }
+}
+
+extension Expectation {
+    public func toFinally<U where U : Matcher, U.ValueType == T>(matcher: U) {
+        self.toEventually(matcher, timeout: 10)
+    }
+
+    public func toFinallyNot<U where U : Matcher, U.ValueType == T>(matcher: U) {
+        self.toEventuallyNot(matcher, timeout: 10)
     }
 }
 

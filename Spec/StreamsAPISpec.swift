@@ -33,8 +33,8 @@ class StreamsAPISpec: QuickSpec {
                 }
             }
             it ("fetch entries ids") {
-                expect(self.statusCode).toEventually(equal(200))
-                expect(self.entryIds.count).toEventually(equal(self.perPage))
+                expect(self.statusCode).toFinally(equal(200))
+                expect(self.entryIds.count).toFinally(equal(self.perPage))
             }
         }
 
@@ -50,8 +50,8 @@ class StreamsAPISpec: QuickSpec {
                 }
             }
             it ("fetches entries contents") {
-                expect(self.statusCode).toEventually(equal(200))
-                expect(self.entries.count).toEventually(equal(self.perPage))
+                expect(self.statusCode).toFinally(equal(200))
+                expect(self.entries.count).toFinally(equal(self.perPage))
             }
         }
 
@@ -82,8 +82,8 @@ class StreamsAPISpec: QuickSpec {
                     fetchIds(params, times: 1)
                 }
                 it ("fetch return first page") {
-                    expect(self.statusCode).toEventually(equal(200))
-                    expect(self.entryIds.count).toEventually(equal(self.perPage))
+                    expect(self.statusCode).toFinally(equal(200))
+                    expect(self.entryIds.count).toFinally(equal(self.perPage))
                 }
             }
             context("second page") {
@@ -92,8 +92,8 @@ class StreamsAPISpec: QuickSpec {
                     fetchIds(params, times: 2)
                 }
                 it ("fetch return first page") {
-                    expect(self.statusCode).toEventually(equal(200))
-                    expect(self.entryIds.count).toEventually(equal(self.perPage * 2))
+                    expect(self.statusCode).toFinally(equal(200))
+                    expect(self.entryIds.count).toFinally(equal(self.perPage * 2))
                 }
             }
             context("last page") {
