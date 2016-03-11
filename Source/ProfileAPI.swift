@@ -23,7 +23,7 @@ extension CloudAPIClient {
         Update the profile of the user
         POST /v3/profile
     */
-    public func updateProfile(params: [String:String], completionHandler: (Response<Profile, NSError>) -> Void) -> Request {
+    public func updateProfile(params: [String:AnyObject], completionHandler: (Response<Profile, NSError>) -> Void) -> Request {
         return manager.request(Router.UpdateProfile(target, params)).validate().responseObject(completionHandler)
     }
 }
