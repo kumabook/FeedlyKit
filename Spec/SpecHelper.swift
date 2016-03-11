@@ -21,6 +21,9 @@ public class SpecHelper {
     public class var target: CloudAPIClient.Target {
         return .Production
     }
+    public class var accessToken: String? {
+        return nil
+    }
 }
 
 extension Expectation {
