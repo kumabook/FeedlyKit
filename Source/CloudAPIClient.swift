@@ -336,7 +336,7 @@ public class CloudAPIClient {
                 return req
                 // Profile API
             case .FetchProfile:                              return req
-            case .UpdateProfile(_, let params):              return J.encode(req, parameters: params).0
+            case .UpdateProfile(_, let params):              return U.encode(req, parameters: params).0
                 // Search API
             case .SearchFeeds(_, let query):                 return U.encode(req, parameters: query).0
             case .SearchContentOfStream(_, _, _, let query): return U.encode(req, parameters: query).0
