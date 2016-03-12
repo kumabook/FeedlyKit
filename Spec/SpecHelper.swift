@@ -8,9 +8,11 @@
 
 import Foundation
 import FeedlyKit
+import Quick
 import Nimble
 
 public class SpecHelper {
+    public static let perPage = 5
     public class func fixtureJSONObject(fixtureNamed fixtureNamed: String) -> AnyObject? {
         let bundle   = NSBundle(forClass: SpecHelper.self)
         let filePath = bundle.pathForResource(fixtureNamed, ofType: "json")

@@ -24,5 +24,16 @@ class CloudAPISpec: QuickSpec {
             callback()
         }
     }
+
+    func fetchLatestEntries(callback: ([Entry]) -> ()) {
+        fetchProfile() {
+            guard let p = self.profile else { return }
+            let params = PaginationParams()
+            params.count = SpecHelper.perPage
+            self.client.fetchContents(p.allCategory.id, paginationParams: params) {
+                callback($0.result.value!.items)
+            }
+        }
+    }
 }
 

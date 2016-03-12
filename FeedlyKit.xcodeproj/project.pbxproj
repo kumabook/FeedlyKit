@@ -74,6 +74,8 @@
 		678EAF431C930689006F7FDD /* ProfileAPISpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678EAF411C930689006F7FDD /* ProfileAPISpec.swift */; };
 		678EAF451C9381EF006F7FDD /* CategoriesAPISPec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678EAF441C9381EF006F7FDD /* CategoriesAPISPec.swift */; };
 		678EAF461C9381EF006F7FDD /* CategoriesAPISPec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678EAF441C9381EF006F7FDD /* CategoriesAPISPec.swift */; };
+		678EAF481C938D3C006F7FDD /* TagsAPISpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678EAF471C938D3C006F7FDD /* TagsAPISpec.swift */; };
+		678EAF491C938D3C006F7FDD /* TagsAPISpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678EAF471C938D3C006F7FDD /* TagsAPISpec.swift */; };
 		6796477F1A6B50F500D133E6 /* Evernote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6796477A1A6B50F500D133E6 /* Evernote.swift */; };
 		679647811A6B50F500D133E6 /* Microsoft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6796477C1A6B50F500D133E6 /* Microsoft.swift */; };
 		679647831A6B50F500D133E6 /* Twitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6796477E1A6B50F500D133E6 /* Twitter.swift */; };
@@ -223,6 +225,7 @@
 		678EAF3E1C91CFF0006F7FDD /* SubscriptionsAPISpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SubscriptionsAPISpec.swift; path = Spec/SubscriptionsAPISpec.swift; sourceTree = "<group>"; };
 		678EAF411C930689006F7FDD /* ProfileAPISpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileAPISpec.swift; path = Spec/ProfileAPISpec.swift; sourceTree = "<group>"; };
 		678EAF441C9381EF006F7FDD /* CategoriesAPISPec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CategoriesAPISPec.swift; path = Spec/CategoriesAPISPec.swift; sourceTree = "<group>"; };
+		678EAF471C938D3C006F7FDD /* TagsAPISpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TagsAPISpec.swift; path = Spec/TagsAPISpec.swift; sourceTree = "<group>"; };
 		6796477A1A6B50F500D133E6 /* Evernote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Evernote.swift; path = Source/Evernote.swift; sourceTree = SOURCE_ROOT; };
 		6796477C1A6B50F500D133E6 /* Microsoft.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Microsoft.swift; path = Source/Microsoft.swift; sourceTree = SOURCE_ROOT; };
 		6796477E1A6B50F500D133E6 /* Twitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Twitter.swift; path = Source/Twitter.swift; sourceTree = SOURCE_ROOT; };
@@ -364,6 +367,7 @@
 				678EAF3E1C91CFF0006F7FDD /* SubscriptionsAPISpec.swift */,
 				678EAF411C930689006F7FDD /* ProfileAPISpec.swift */,
 				678EAF441C9381EF006F7FDD /* CategoriesAPISPec.swift */,
+				678EAF471C938D3C006F7FDD /* TagsAPISpec.swift */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -765,6 +769,7 @@
 				676491171A6BE52700AD505D /* SubscriptionSpec.swift in Sources */,
 				678EAF341C908571006F7FDD /* StreamsAPISpec.swift in Sources */,
 				67363B651A7366DB009F8FBC /* EntrySpec.swift in Sources */,
+				678EAF491C938D3C006F7FDD /* TagsAPISpec.swift in Sources */,
 				679CC1351A6BD9BB003846D8 /* FeedSpec.swift in Sources */,
 				67F606A81A6ACDBA002DEAC1 /* SpecHelper.swift in Sources */,
 			);
@@ -819,6 +824,7 @@
 				676491161A6BE52700AD505D /* SubscriptionSpec.swift in Sources */,
 				678EAF331C908571006F7FDD /* StreamsAPISpec.swift in Sources */,
 				67363B641A7366DB009F8FBC /* EntrySpec.swift in Sources */,
+				678EAF481C938D3C006F7FDD /* TagsAPISpec.swift in Sources */,
 				67F606A71A6ACDBA002DEAC1 /* SpecHelper.swift in Sources */,
 				679CC1341A6BD9BB003846D8 /* FeedSpec.swift in Sources */,
 			);
