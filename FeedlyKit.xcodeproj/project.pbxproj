@@ -76,7 +76,6 @@
 		678EAF461C9381EF006F7FDD /* CategoriesAPISPec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678EAF441C9381EF006F7FDD /* CategoriesAPISPec.swift */; };
 		6796477F1A6B50F500D133E6 /* Evernote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6796477A1A6B50F500D133E6 /* Evernote.swift */; };
 		679647811A6B50F500D133E6 /* Microsoft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6796477C1A6B50F500D133E6 /* Microsoft.swift */; };
-		679647821A6B50F500D133E6 /* Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6796477D1A6B50F500D133E6 /* Topic.swift */; };
 		679647831A6B50F500D133E6 /* Twitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6796477E1A6B50F500D133E6 /* Twitter.swift */; };
 		679CC12B1A6BCF7B003846D8 /* Origin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679CC12A1A6BCF7B003846D8 /* Origin.swift */; };
 		679CC12C1A6BCF7B003846D8 /* Origin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679CC12A1A6BCF7B003846D8 /* Origin.swift */; };
@@ -94,8 +93,6 @@
 		67B370411A6EA38C00B31D57 /* EntriesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B3703F1A6EA38C00B31D57 /* EntriesAPI.swift */; };
 		67B370431A6EA3A500B31D57 /* ProfileAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B370421A6EA3A500B31D57 /* ProfileAPI.swift */; };
 		67B370441A6EA3A500B31D57 /* ProfileAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B370421A6EA3A500B31D57 /* ProfileAPI.swift */; };
-		67B370491A6EA3C800B31D57 /* TopicsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B370481A6EA3C800B31D57 /* TopicsAPI.swift */; };
-		67B3704A1A6EA3C800B31D57 /* TopicsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B370481A6EA3C800B31D57 /* TopicsAPI.swift */; };
 		67B510111A6992C700BB46B7 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67C9DE481A638E1900B73CCA /* Alamofire.framework */; };
 		67B510121A6992C700BB46B7 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67C9DE491A638E1900B73CCA /* SwiftyJSON.framework */; };
 		67B510241A69943D00BB46B7 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67C9DE531A639C7800B73CCA /* Nimble.framework */; };
@@ -128,7 +125,6 @@
 		67B5106D1A69F13000BB46B7 /* Subscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B510541A69EBA200BB46B7 /* Subscription.swift */; };
 		67C810031A8B218500E4B18C /* SearchAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C810021A8B218500E4B18C /* SearchAPI.swift */; };
 		67C810041A8B218500E4B18C /* SearchAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C810021A8B218500E4B18C /* SearchAPI.swift */; };
-		67D9656E1A6F288200580BE4 /* Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6796477D1A6B50F500D133E6 /* Topic.swift */; };
 		67D9656F1A6F288200580BE4 /* Marker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67213E9B1A6B51300074471B /* Marker.swift */; };
 		67D965701A6F288800580BE4 /* Evernote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6796477A1A6B50F500D133E6 /* Evernote.swift */; };
 		67D965711A6F288800580BE4 /* Microsoft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6796477C1A6B50F500D133E6 /* Microsoft.swift */; };
@@ -229,7 +225,6 @@
 		678EAF441C9381EF006F7FDD /* CategoriesAPISPec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CategoriesAPISPec.swift; path = Spec/CategoriesAPISPec.swift; sourceTree = "<group>"; };
 		6796477A1A6B50F500D133E6 /* Evernote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Evernote.swift; path = Source/Evernote.swift; sourceTree = SOURCE_ROOT; };
 		6796477C1A6B50F500D133E6 /* Microsoft.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Microsoft.swift; path = Source/Microsoft.swift; sourceTree = SOURCE_ROOT; };
-		6796477D1A6B50F500D133E6 /* Topic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Topic.swift; path = Source/Topic.swift; sourceTree = SOURCE_ROOT; };
 		6796477E1A6B50F500D133E6 /* Twitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Twitter.swift; path = Source/Twitter.swift; sourceTree = SOURCE_ROOT; };
 		679CC1271A6BA91F003846D8 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		679CC12A1A6BCF7B003846D8 /* Origin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Origin.swift; path = Source/Origin.swift; sourceTree = SOURCE_ROOT; };
@@ -240,7 +235,6 @@
 		67B3703C1A6EA37800B31D57 /* CategoriesAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CategoriesAPI.swift; path = Source/CategoriesAPI.swift; sourceTree = SOURCE_ROOT; };
 		67B3703F1A6EA38C00B31D57 /* EntriesAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EntriesAPI.swift; path = Source/EntriesAPI.swift; sourceTree = SOURCE_ROOT; };
 		67B370421A6EA3A500B31D57 /* ProfileAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileAPI.swift; path = Source/ProfileAPI.swift; sourceTree = SOURCE_ROOT; };
-		67B370481A6EA3C800B31D57 /* TopicsAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TopicsAPI.swift; path = Source/TopicsAPI.swift; sourceTree = SOURCE_ROOT; };
 		67B50FF61A69929800BB46B7 /* FeedlyKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FeedlyKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		67B510001A69929800BB46B7 /* FeedlyKit-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "FeedlyKit-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		67B510261A69949B00BB46B7 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/Mac/Alamofire.framework; sourceTree = "<group>"; };
@@ -331,7 +325,6 @@
 				67B510541A69EBA200BB46B7 /* Subscription.swift */,
 				67F606BC1A6B49A6002DEAC1 /* Preferences.swift */,
 				67F606C21A6B4B2F002DEAC1 /* Tag.swift */,
-				6796477D1A6B50F500D133E6 /* Topic.swift */,
 				67213E9B1A6B51300074471B /* Marker.swift */,
 				676491191A6C9C4D00AD505D /* Sub */,
 			);
@@ -388,7 +381,6 @@
 				67C810021A8B218500E4B18C /* SearchAPI.swift */,
 				67B370361A6E10B100B31D57 /* StreamsAPI.swift */,
 				67B370391A6E10C100B31D57 /* SubscriptionsAPI.swift */,
-				67B370481A6EA3C800B31D57 /* TopicsAPI.swift */,
 				678EAF351C9191D9006F7FDD /* API.swift */,
 			);
 			name = API;
@@ -731,7 +723,6 @@
 				67D965701A6F288800580BE4 /* Evernote.swift in Sources */,
 				67D965711A6F288800580BE4 /* Microsoft.swift in Sources */,
 				67D965721A6F288800580BE4 /* Twitter.swift in Sources */,
-				67D9656E1A6F288200580BE4 /* Topic.swift in Sources */,
 				67D9656F1A6F288200580BE4 /* Marker.swift in Sources */,
 				67363B5D1A7366AA009F8FBC /* Link.swift in Sources */,
 				67B370411A6EA38C00B31D57 /* EntriesAPI.swift in Sources */,
@@ -755,7 +746,6 @@
 				67363B591A73669C009F8FBC /* TagsAPI.swift in Sources */,
 				67B5106D1A69F13000BB46B7 /* Subscription.swift in Sources */,
 				67F606BE1A6B49A6002DEAC1 /* Preferences.swift in Sources */,
-				67B3704A1A6EA3C800B31D57 /* TopicsAPI.swift in Sources */,
 				678EAF371C91C024006F7FDD /* API.swift in Sources */,
 				679CC12C1A6BCF7B003846D8 /* Origin.swift in Sources */,
 			);
@@ -810,8 +800,6 @@
 				67B3703D1A6EA37800B31D57 /* CategoriesAPI.swift in Sources */,
 				67F606BD1A6B49A6002DEAC1 /* Preferences.swift in Sources */,
 				67363B581A73669C009F8FBC /* TagsAPI.swift in Sources */,
-				67B370491A6EA3C800B31D57 /* TopicsAPI.swift in Sources */,
-				679647821A6B50F500D133E6 /* Topic.swift in Sources */,
 				67213E9C1A6B51300074471B /* Marker.swift in Sources */,
 				679CC12B1A6BCF7B003846D8 /* Origin.swift in Sources */,
 			);

@@ -39,7 +39,6 @@ Currently, FeedlyKit partially support feedly cloud apis.
 - [x] Streams API
 - [x] Subscriptions API
 - [x] Tags API
-- [x] Topics API
 - [ ] Twitter API
 - [ ] URL Shortener API
 

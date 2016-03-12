@@ -186,11 +186,6 @@ public class CloudAPIClient {
         case ChangeTagLabel(Target, String, String)
         case UntagEntries(Target, [String], [String])
         case DeleteTags(Target, [String])
-        // Topics API
-        case FetchTopics(Target)
-        case AddTopic(Target, String, String)
-        case UpdateTopic(Target, String, String)
-        case RemoveTopic(Target, String)
         // Custom
         case Api(API)
         
@@ -233,11 +228,7 @@ public class CloudAPIClient {
             case .ChangeTagLabel:            return .POST
             case .UntagEntries:              return .DELETE
             case .DeleteTags:                return .DELETE
-                // Topics API
-            case .FetchTopics:               return .GET
-            case .AddTopic:                  return .POST
-            case .UpdateTopic:               return .POST
-            case .RemoveTopic:               return .DELETE
+                // Custom
             case .Api(let api):              return api.method
             }
         }
@@ -292,11 +283,7 @@ public class CloudAPIClient {
             case .DeleteTags(let target, let tagIds):
                 let tids = tagIds.map({ self.urlEncode($0) }).joinWithSeparator(",")
                                                                  return target.baseUrl + "/v3/tags/\(tids)"
-                // Topics API
-            case .FetchTopics(let target):                       return target.baseUrl + "/v3/topics"
-            case .AddTopic(let target, _, _):                    return target.baseUrl + "/v3/topics"
-            case .UpdateTopic(let target, _, _):                 return target.baseUrl + "/v3/topics"
-            case .RemoveTopic(let target, let topicId):          return target.baseUrl + "/v3/topics/\(urlEncode(topicId))"
+                // Custom
             case .Api(let api):                                  return api.url
             }
         }
@@ -355,11 +342,7 @@ public class CloudAPIClient {
             case .ChangeTagLabel(_, _, let label):           return J.encode(req, parameters: ["label": label]).0
             case .UntagEntries:                              return req
             case .DeleteTags:                                return req
-                // Topics API
-            case .FetchTopics:                               return req
-            case .AddTopic(_, let id, let interest):         return J.encode(req, parameters: ["id": id, "interest": interest]).0
-            case .UpdateTopic(_, let id, let interest):      return J.encode(req, parameters: ["id": id, "interest": interest]).0
-            case .RemoveTopic:                               return req
+                // Custom
             case .Api(let api):                              return api.URLRequest
             }
         }
