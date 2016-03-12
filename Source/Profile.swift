@@ -70,4 +70,45 @@ public class Profile: NSObject, NSCoding, ResponseObjectSerializable {
         aCoder.encodeObject(givenName,  forKey: "givenName")
         aCoder.encodeObject(locale,     forKey: "locale")
     }
+
+    enum GlobalResource {
+        case Must
+        case All
+        case Uncategorized
+        case Read
+        case Saved
+        static func values() -> [GlobalResource] { return [.Must, .All, .Uncategorized, .Read, .Saved] }
+
+        var label: String {
+            switch self {
+            case Must:          return "must"
+            case All:           return "all"
+            case Uncategorized: return "uncategorized"
+            case Read:          return "read"
+            case Saved:         return "saved"
+            }
+        }
+
+        func asCategory(profile: Profile) -> Category {
+            return FeedlyKit.Category(id: "user/\(profile.id)/category/global.\(label)", label: "global.\(label)")
+        }
+
+        func asTag(profile: Profile) -> Tag {
+            return FeedlyKit.Tag(id: "user/\(profile.id)/tag/global.\(label)", label: "global.\(label)")
+        }
+    }
+
+    public var mustCategory:          FeedlyKit.Category   { return GlobalResource.Must.asCategory(self) }
+    public var allCategory:           FeedlyKit.Category   { return GlobalResource.All.asCategory(self)  }
+    public var uncategorizedCategory: FeedlyKit.Category   { return GlobalResource.Uncategorized.asCategory(self) }
+    public var readTag:               FeedlyKit.Tag        { return GlobalResource.Read.asTag(self) }
+    public var savedTag:              FeedlyKit.Tag        { return GlobalResource.Saved.asTag(self) }
+
+    public func category(label: String) -> Category {
+        return FeedlyKit.Category(label: label, profile: self)
+    }
+
+    public func tag(label: String) -> Tag {
+        return FeedlyKit.Tag(label: label, profile: self)
+    }
 }

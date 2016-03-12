@@ -47,4 +47,9 @@ public final class Tag: Stream,
         self.id    = json["id"].stringValue
         self.label = json["label"].stringValue
     }
+
+    public init(label: String, profile: Profile) {
+        self.id    = "user/\(profile.id)/tag/\(label)"
+        self.label = label
+    }
 }
