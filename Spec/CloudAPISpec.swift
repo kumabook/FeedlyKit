@@ -13,10 +13,15 @@ import Quick
 import Nimble
 
 class CloudAPISpec: QuickSpec {
-    override func spec() {
-        describe("a profile") {
-            let profile: Profile? = nil
-            expect(profile).to(beNil())
+    internal let client: CloudAPIClient = CloudAPIClient(target: SpecHelper.target)
+    var profile: Profile?
+
+    func fetchProfile(callback: () -> ()) {
+        self.client.fetchProfile {
+            guard let _ = $0.response?.statusCode,
+                  let profile = $0.result.value else { return }
+            self.profile = profile
+            callback()
         }
     }
 }
