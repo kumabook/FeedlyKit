@@ -35,6 +35,16 @@ extension CloudAPIClient {
         (Authorization is required)
     */
     public func createEntry(entry: Entry, completionHandler: (Response<[String], NSError>) -> Void) -> Request {
-        return manager.request(Router.CreateEntry(target, entry)).validate()
+        return manager.request(Router.CreateEntry(target, entry)).validate().responseJSON {
+            var result: Result<[String], NSError>
+            switch $0.result {
+            case .Success:
+                var json: JSON = JSON($0.result.value!)
+                result = Result.Success(Array(1..<json.count).map { json[$0].stringValue })
+            case .Failure:
+                result = Result.Failure($0.result.error!)
+            }
+            completionHandler(Response(request: $0.request, response: $0.response, data: $0.data, result: result))
+        }
     }
 }

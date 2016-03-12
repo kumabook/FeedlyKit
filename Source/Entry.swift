@@ -85,16 +85,16 @@ public final class Entry: Equatable, Hashable,
         get { return id.hashValue }
     }
 
-    func toParameters() -> [String : AnyObject] {
+    public func toParameters() -> [String : AnyObject] {
         var params: [String: AnyObject] = ["published": NSNumber(longLong: published)]
         if let _title     = title     { params["title"]     = _title }
         if let _content   = content   { params["content"]   = _content.toParameters() }
-        if let _summary   = summary   { params["summary"]   = _summary }
+        if let _summary   = summary   { params["summary"]   = _summary.toParameters() }
         if let _author    = author    { params["author"]    = _author }
         if let _enclosure = enclosure { params["enclosure"] = _enclosure.map({ $0.toParameters() }) }
         if let _alternate = alternate { params["alternate"] = _alternate.map({ $0.toParameters() }) }
         if let _keywords  = keywords  { params["keywords"]  = _keywords }
-        if let _tags      = tags      { params["tags"]      = _tags }
+        if let _tags      = tags      { params["tags"]      = _tags.map { $0.toParameters() }}
         if let _origin    = origin    { params["origin"]    = _origin.toParameters() }
 
         return params

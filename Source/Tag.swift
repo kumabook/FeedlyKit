@@ -9,7 +9,8 @@
 import SwiftyJSON
 
 public final class Tag: Stream,
-                        ResponseObjectSerializable, ResponseCollectionSerializable {
+                        ResponseObjectSerializable, ResponseCollectionSerializable,
+                        ParameterEncodable {
     public let id:    String
     public let label: String
 
@@ -51,5 +52,9 @@ public final class Tag: Stream,
     public init(label: String, profile: Profile) {
         self.id    = "user/\(profile.id)/tag/\(label)"
         self.label = label
+    }
+
+    func toParameters() -> [String : AnyObject] {
+        return ["id":id, "label":label]
     }
 }
