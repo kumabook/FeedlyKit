@@ -26,12 +26,12 @@ public final class Tag: Stream,
         return json.arrayValue.map({ Tag(json: $0) })
     }
 
-    public class func Read(userId: String) -> Category {
-        return Category(id: "user/\(userId)/tag/global.read", label: "Read")
+    public class func Read(userId: String) -> Tag {
+        return Tag(id: "user/\(userId)/tag/global.read", label: "Read")
     }
 
-    public class func Saved(userId: String) -> Category {
-        return Category(id: "user/\(userId)/tag/global.saved", label: "Saved")
+    public class func Saved(userId: String) -> Tag {
+        return Tag(id: "user/\(userId)/tag/global.saved", label: "Saved")
     }
 
     @objc required public convenience init?(response: NSHTTPURLResponse, representation: AnyObject) {
