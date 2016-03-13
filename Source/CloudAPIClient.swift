@@ -276,10 +276,9 @@ public class CloudAPIClient {
                 let tids = tagIds.map({ self.urlEncode($0) }).joinWithSeparator(",")
                                                                  return target.baseUrl + "/v3/tags/\(tids)"
             case .ChangeTagLabel(let target, let tagId, _):      return target.baseUrl + "/v3/tags/\(urlEncode(tagId))"
-            case .UntagEntries(let target, let tagIds, let entryIds):
+            case .UntagEntries(let target, let tagIds, _):
                 let tids = tagIds.map({   self.urlEncode($0) }).joinWithSeparator(",")
-                let eids = entryIds.map({ self.urlEncode($0) }).joinWithSeparator(",")
-                                                                 return target.baseUrl + "/v3/tags/\(tids)/\(eids)"
+                                                                 return target.baseUrl + "/v3/tags/\(tids)"
             case .DeleteTags(let target, let tagIds):
                 let tids = tagIds.map({ self.urlEncode($0) }).joinWithSeparator(",")
                                                                  return target.baseUrl + "/v3/tags/\(tids)"
@@ -340,7 +339,7 @@ public class CloudAPIClient {
             case .TagEntry(_, _, let entryId):               return J.encode(req, parameters: ["entryId": entryId]).0
             case .TagEntries(_, _, let entryIds):            return J.encode(req, parameters: ["entryIds": entryIds]).0
             case .ChangeTagLabel(_, _, let label):           return J.encode(req, parameters: ["label": label]).0
-            case .UntagEntries:                              return req
+            case .UntagEntries(_, _, let entryIds):          return J.encode(req, parameters: ["entryIds": entryIds]).0
             case .DeleteTags:                                return req
                 // Custom
             case .Api(let api):                              return api.URLRequest
