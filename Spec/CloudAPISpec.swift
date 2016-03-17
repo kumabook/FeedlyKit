@@ -17,6 +17,10 @@ class CloudAPISpec: QuickSpec {
     var profile: Profile?
 
     func fetchProfile(callback: () -> ()) {
+        if let _ = profile {
+            callback()
+            return
+        }
         self.client.fetchProfile {
             guard let _ = $0.response?.statusCode,
                   let profile = $0.result.value else { return }
