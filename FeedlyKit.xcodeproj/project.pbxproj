@@ -76,6 +76,8 @@
 		678EAF461C9381EF006F7FDD /* CategoriesAPISPec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678EAF441C9381EF006F7FDD /* CategoriesAPISPec.swift */; };
 		678EAF481C938D3C006F7FDD /* TagsAPISpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678EAF471C938D3C006F7FDD /* TagsAPISpec.swift */; };
 		678EAF491C938D3C006F7FDD /* TagsAPISpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678EAF471C938D3C006F7FDD /* TagsAPISpec.swift */; };
+		678EAF4B1C940851006F7FDD /* MarkersAPISpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678EAF4A1C940851006F7FDD /* MarkersAPISpec.swift */; };
+		678EAF4C1C940851006F7FDD /* MarkersAPISpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678EAF4A1C940851006F7FDD /* MarkersAPISpec.swift */; };
 		6796477F1A6B50F500D133E6 /* Evernote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6796477A1A6B50F500D133E6 /* Evernote.swift */; };
 		679647811A6B50F500D133E6 /* Microsoft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6796477C1A6B50F500D133E6 /* Microsoft.swift */; };
 		679647831A6B50F500D133E6 /* Twitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6796477E1A6B50F500D133E6 /* Twitter.swift */; };
@@ -226,6 +228,7 @@
 		678EAF411C930689006F7FDD /* ProfileAPISpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileAPISpec.swift; path = Spec/ProfileAPISpec.swift; sourceTree = "<group>"; };
 		678EAF441C9381EF006F7FDD /* CategoriesAPISPec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CategoriesAPISPec.swift; path = Spec/CategoriesAPISPec.swift; sourceTree = "<group>"; };
 		678EAF471C938D3C006F7FDD /* TagsAPISpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TagsAPISpec.swift; path = Spec/TagsAPISpec.swift; sourceTree = "<group>"; };
+		678EAF4A1C940851006F7FDD /* MarkersAPISpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MarkersAPISpec.swift; path = Spec/MarkersAPISpec.swift; sourceTree = "<group>"; };
 		6796477A1A6B50F500D133E6 /* Evernote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Evernote.swift; path = Source/Evernote.swift; sourceTree = SOURCE_ROOT; };
 		6796477C1A6B50F500D133E6 /* Microsoft.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Microsoft.swift; path = Source/Microsoft.swift; sourceTree = SOURCE_ROOT; };
 		6796477E1A6B50F500D133E6 /* Twitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Twitter.swift; path = Source/Twitter.swift; sourceTree = SOURCE_ROOT; };
@@ -361,12 +364,14 @@
 			isa = PBXGroup;
 			children = (
 				67363B601A7366DB009F8FBC /* CloudAPISpec.swift */,
-				678EAF321C908571006F7FDD /* StreamsAPISpec.swift */,
-				678EAF381C91C044006F7FDD /* FeedsAPISpec.swift */,
+				678EAF441C9381EF006F7FDD /* CategoriesAPISPec.swift */,
 				678EAF3B1C91C483006F7FDD /* EntriesAPISpec.swift */,
-				678EAF3E1C91CFF0006F7FDD /* SubscriptionsAPISpec.swift */,
+				678EAF381C91C044006F7FDD /* FeedsAPISpec.swift */,
+				678EAF4A1C940851006F7FDD /* MarkersAPISpec.swift */,
 				678EAF411C930689006F7FDD /* ProfileAPISpec.swift */,
 				678EAF441C9381EF006F7FDD /* CategoriesAPISPec.swift */,
+				678EAF321C908571006F7FDD /* StreamsAPISpec.swift */,
+				678EAF3E1C91CFF0006F7FDD /* SubscriptionsAPISpec.swift */,
 				678EAF471C938D3C006F7FDD /* TagsAPISpec.swift */,
 			);
 			name = API;
@@ -760,6 +765,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				67363B631A7366DB009F8FBC /* CloudAPISpec.swift in Sources */,
+				678EAF4C1C940851006F7FDD /* MarkersAPISpec.swift in Sources */,
 				678EAF3A1C91C044006F7FDD /* FeedsAPISpec.swift in Sources */,
 				678EAF401C91CFF0006F7FDD /* SubscriptionsAPISpec.swift in Sources */,
 				67F606A21A6AB9A3002DEAC1 /* ProfileSpec.swift in Sources */,
@@ -815,6 +821,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				67363B621A7366DB009F8FBC /* CloudAPISpec.swift in Sources */,
+				678EAF4B1C940851006F7FDD /* MarkersAPISpec.swift in Sources */,
 				678EAF391C91C044006F7FDD /* FeedsAPISpec.swift in Sources */,
 				678EAF3F1C91CFF0006F7FDD /* SubscriptionsAPISpec.swift in Sources */,
 				67F606A01A6AB978002DEAC1 /* ProfileSpec.swift in Sources */,
