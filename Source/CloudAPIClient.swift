@@ -308,7 +308,7 @@ public class CloudAPIClient {
             case .FetchFeed:                                    return req
             case .FetchFeeds(_, let feedIds):                   return req.addParam(feedIds)
                 // Markers API
-            case .FetchUnreadCounts(_, let unreadCountsParams): return J.encode(req, parameters: unreadCountsParams).0
+            case .FetchUnreadCounts(_, let unreadCountsParams): return U.encode(req, parameters: unreadCountsParams).0
             case .MarkAs(_, let params):                        return J.encode(req, parameters: params).0
             case .FetchLatestReadOperations(_, let newerThan):
                 if let n = newerThan {
