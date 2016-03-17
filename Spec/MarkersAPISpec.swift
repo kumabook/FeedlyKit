@@ -20,6 +20,7 @@ class MarkersAPISpec: CloudAPISpec {
         }
 
         describe("fetchUnreadCounts") {
+            if SpecHelper.accessToken == nil { return }
             var statusCode = 0
             var unreadCounts: UnreadCounts?
             let params = UnreadCountsParams(autoRefresh: nil, newerThan: nil, streamId: self.feedId2)
@@ -39,6 +40,7 @@ class MarkersAPISpec: CloudAPISpec {
 
         var entries: [Entry]?
         describe("markEntriesAsRead") {
+            if SpecHelper.accessToken == nil { return }
             var statusCode = 0
             beforeEach {
                 self.fetchLatestEntries() { _entries in
@@ -56,6 +58,7 @@ class MarkersAPISpec: CloudAPISpec {
         }
 
         describe("keepEntriesAsUnread") {
+            if SpecHelper.accessToken == nil { return }
             var statusCode = 0
             beforeEach {
                 self.client.keepEntriesAsUnread(entries!.map { $0.id }) {
@@ -69,6 +72,7 @@ class MarkersAPISpec: CloudAPISpec {
         }
 
         describe("markFeedsAsRead") {
+            if SpecHelper.accessToken == nil { return }
             var statusCode = 0
             beforeEach {
                 self.client.markFeedsAsRead([self.feedId]) {
@@ -82,6 +86,7 @@ class MarkersAPISpec: CloudAPISpec {
         }
 
         describe("markCategoriesAsRead") {
+            if SpecHelper.accessToken == nil { return }
             var statusCode = 0
             beforeEach {
                 self.fetchProfile() {
@@ -97,6 +102,7 @@ class MarkersAPISpec: CloudAPISpec {
         }
 
         describe("undoMarkAsRead") {
+            if SpecHelper.accessToken == nil { return }
             var statusCode = 0
             beforeEach {
                 self.client.undoMarkAsRead(Marker.ItemType.Feed, itemIds: [self.feedId]) {
@@ -110,6 +116,7 @@ class MarkersAPISpec: CloudAPISpec {
         }
 
         describe("markEntriesAsSaved") {
+            if SpecHelper.accessToken == nil { return }
             var statusCode = 0
             beforeEach {
                 self.client.markEntriesAsSaved(entries!.map { $0.id }) {
@@ -123,6 +130,7 @@ class MarkersAPISpec: CloudAPISpec {
         }
 
         describe("markEntriesAsUnsaved") {
+            if SpecHelper.accessToken == nil { return }
             var statusCode = 0
             beforeEach {
                 self.client.markEntriesAsUnsaved(entries!.map { $0.id }) {
@@ -136,6 +144,7 @@ class MarkersAPISpec: CloudAPISpec {
         }
 
         describe("fetchLatestReadOperations") {
+            if SpecHelper.accessToken == nil { return }
             var statusCode = 0
             var operations: ReadOperations?
             beforeEach {
@@ -153,6 +162,7 @@ class MarkersAPISpec: CloudAPISpec {
         }
 
         describe("fetchLatestTaggedEntryIds") {
+            if SpecHelper.accessToken == nil { return }
             var statusCode = 0
             var entryIds: TaggedEntryIds?
             beforeEach {
