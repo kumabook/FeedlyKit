@@ -60,6 +60,8 @@
 		676491141A6BE31400AD505D /* preferences.json in Resources */ = {isa = PBXBuildFile; fileRef = 67F606BF1A6B4A00002DEAC1 /* preferences.json */; };
 		676491161A6BE52700AD505D /* SubscriptionSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676491151A6BE52700AD505D /* SubscriptionSpec.swift */; };
 		676491171A6BE52700AD505D /* SubscriptionSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676491151A6BE52700AD505D /* SubscriptionSpec.swift */; };
+		67649EED1C9AE656001B3250 /* access_token.json in Resources */ = {isa = PBXBuildFile; fileRef = 67649EEB1C9AE5E8001B3250 /* access_token.json */; };
+		67649EEE1C9AE65D001B3250 /* access_token.json in Resources */ = {isa = PBXBuildFile; fileRef = 67649EEB1C9AE5E8001B3250 /* access_token.json */; };
 		678EAF331C908571006F7FDD /* StreamsAPISpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678EAF321C908571006F7FDD /* StreamsAPISpec.swift */; };
 		678EAF341C908571006F7FDD /* StreamsAPISpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678EAF321C908571006F7FDD /* StreamsAPISpec.swift */; };
 		678EAF361C9191D9006F7FDD /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678EAF351C9191D9006F7FDD /* API.swift */; };
@@ -220,6 +222,7 @@
 		676491051A6BE2E400AD505D /* tags.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = tags.json; path = Fixture/Response/tags.json; sourceTree = "<group>"; };
 		676491061A6BE2E400AD505D /* topics.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = topics.json; path = Fixture/Response/topics.json; sourceTree = "<group>"; };
 		676491151A6BE52700AD505D /* SubscriptionSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SubscriptionSpec.swift; path = Spec/SubscriptionSpec.swift; sourceTree = "<group>"; };
+		67649EEB1C9AE5E8001B3250 /* access_token.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = access_token.json; path = Fixture/access_token.json; sourceTree = "<group>"; };
 		678EAF321C908571006F7FDD /* StreamsAPISpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StreamsAPISpec.swift; path = Spec/StreamsAPISpec.swift; sourceTree = "<group>"; };
 		678EAF351C9191D9006F7FDD /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = API.swift; path = Source/API.swift; sourceTree = SOURCE_ROOT; };
 		678EAF381C91C044006F7FDD /* FeedsAPISpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedsAPISpec.swift; path = Spec/FeedsAPISpec.swift; sourceTree = "<group>"; };
@@ -352,7 +355,6 @@
 			isa = PBXGroup;
 			children = (
 				67363B611A7366DB009F8FBC /* EntrySpec.swift */,
-				67F606A61A6ACDBA002DEAC1 /* SpecHelper.swift */,
 				67F6069B1A6AB868002DEAC1 /* ProfileSpec.swift */,
 				679CC1331A6BD9BB003846D8 /* FeedSpec.swift */,
 				676491151A6BE52700AD505D /* SubscriptionSpec.swift */,
@@ -364,7 +366,6 @@
 			isa = PBXGroup;
 			children = (
 				67363B601A7366DB009F8FBC /* CloudAPISpec.swift */,
-				678EAF441C9381EF006F7FDD /* CategoriesAPISPec.swift */,
 				678EAF3B1C91C483006F7FDD /* EntriesAPISpec.swift */,
 				678EAF381C91C044006F7FDD /* FeedsAPISpec.swift */,
 				678EAF4A1C940851006F7FDD /* MarkersAPISpec.swift */,
@@ -420,6 +421,7 @@
 		67B5102F1A6995C400BB46B7 /* Spec */ = {
 			isa = PBXGroup;
 			children = (
+				67F606A61A6ACDBA002DEAC1 /* SpecHelper.swift */,
 				678EAF2D1C908507006F7FDD /* Model */,
 				678EAF2E1C908516006F7FDD /* API */,
 			);
@@ -431,6 +433,7 @@
 			children = (
 				67B5105D1A69EE2500BB46B7 /* Response */,
 				67B5105C1A69EE1B00BB46B7 /* Request */,
+				67649EEB1C9AE5E8001B3250 /* access_token.json */,
 			);
 			name = Fixture;
 			sourceTree = "<group>";
@@ -671,6 +674,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67649EEE1C9AE65D001B3250 /* access_token.json in Resources */,
 				676491101A6BE31400AD505D /* subscription.json in Resources */,
 				676491111A6BE31400AD505D /* subscriptions.json in Resources */,
 				676491121A6BE31400AD505D /* tags.json in Resources */,
@@ -702,6 +706,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67649EED1C9AE656001B3250 /* access_token.json in Resources */,
 				6764910B1A6BE30400AD505D /* subscription.json in Resources */,
 				6764910C1A6BE30400AD505D /* subscriptions.json in Resources */,
 				6764910D1A6BE30400AD505D /* tags.json in Resources */,

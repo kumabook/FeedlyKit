@@ -10,6 +10,7 @@ import Foundation
 import FeedlyKit
 import Quick
 import Nimble
+import SwiftyJSON
 
 public class SpecHelper {
     public static let perPage = 5
@@ -21,10 +22,16 @@ public class SpecHelper {
         return jsonObject
     }
     public class var target: CloudAPIClient.Target {
-        return .Production
+        let json = JSON(SpecHelper.fixtureJSONObject(fixtureNamed: "access_token")!)
+        if json["target"].stringValue == "production" {
+            return .Production
+        } else {
+            return .Sandbox
+        }
     }
     public class var accessToken: String? {
-        return nil
+        let json = JSON(SpecHelper.fixtureJSONObject(fixtureNamed: "access_token")!)
+        return json["access_token"].string
     }
 }
 
