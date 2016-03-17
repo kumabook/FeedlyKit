@@ -15,39 +15,43 @@ class FeedsAPISpec: QuickSpec {
     let feedId  = "feed/http://kumabook.github.io/feed.xml"
     let feedId2 = "feed/https://news.ycombinator.com/rss"
     let client: CloudAPIClient = CloudAPIClient(target: SpecHelper.target)
-    var statusCode: Int = 0
-    var feed:  Feed?    = nil
-    var feeds: [Feed]   = []
     
     override func spec() {
+        beforeEach {
+            sleep(1)
+        }
         describe("fetchFeed") {
+            var statusCode = 0
+            var feed: Feed?
             beforeEach {
-                self.feed = nil
                 self.client.fetchFeed(self.feedId) {
-                    guard let code = $0.response?.statusCode,
-                          let feed = $0.result.value else { return }
-                    self.statusCode = code
-                    self.feed       = feed
+                    guard let code  = $0.response?.statusCode,
+                          let _feed = $0.result.value else { return }
+                    statusCode = code
+                    feed       = _feed
                 }
             }
             it ("fetches a specified feed") {
-                expect(self.statusCode).toFinally(equal(200))
-                expect(self.feed).toFinallyNot(beNil())
+                expect(statusCode).toFinally(equal(200))
+                expect(feed).toFinallyNot(beNil())
             }
         }
         describe("fetchFeeds") {
+            var statusCode = 0
+            var feeds: [Feed]?
             beforeEach {
-                self.feeds = []
+                feeds = []
                 self.client.fetchFeeds([self.feedId, self.feedId2]) {
-                    guard let code  = $0.response?.statusCode,
-                          let feeds = $0.result.value else { return }
-                    self.statusCode = code
-                    self.feeds      = feeds
+                    guard let code   = $0.response?.statusCode,
+                          let _feeds = $0.result.value else { return }
+                    statusCode = code
+                    feeds      = _feeds
                 }
             }
             it ("fetches specified feeds") {
-                expect(self.statusCode).toFinally(equal(200))
-                expect(self.feeds.count).toFinally(equal(2))
+                expect(statusCode).toFinally(equal(200))
+                expect(feeds).toFinallyNot(beNil())
+                expect(feeds!.count).toFinally(equal(2))
             }
         }
     }
