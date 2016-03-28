@@ -7,41 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		07297F3A9F0FC95228BFF4B6 /* Pods_FeedlyKitExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BE6E2BC4E66E38C62115A5B /* Pods_FeedlyKitExample.framework */; };
 		67E671401C886C200048BDBC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E6713F1C886C200048BDBC /* AppDelegate.swift */; };
 		67E671421C886C200048BDBC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E671411C886C200048BDBC /* ViewController.swift */; };
 		67E671471C886C210048BDBC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 67E671461C886C210048BDBC /* Assets.xcassets */; };
 		67E6714A1C886C210048BDBC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67E671481C886C210048BDBC /* LaunchScreen.storyboard */; };
-		67E671551C886C210048BDBC /* FeedlyKitExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E671541C886C210048BDBC /* FeedlyKitExampleTests.swift */; };
-		963EE6D49B0CF133580AEE8E /* Pods_FeedlyKitExampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A91528B7E27DEF90DC038A4D /* Pods_FeedlyKitExampleTests.framework */; };
-		AF5B1DB154BD613E00242A2E /* Pods_FeedlyKitExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E26B4170D49F0A3DB0CDC734 /* Pods_FeedlyKitExample.framework */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		67E671511C886C210048BDBC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 67E671341C886C200048BDBC /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 67E6713B1C886C200048BDBC;
-			remoteInfo = FeedlyKitExample;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
-		0B6316E642A426E0C00A1687 /* Pods-FeedlyKitExampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeedlyKitExampleTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FeedlyKitExampleTests/Pods-FeedlyKitExampleTests.debug.xcconfig"; sourceTree = "<group>"; };
-		476FC3C4AF893A1EEC3CB66F /* Pods-FeedlyKitExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeedlyKitExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FeedlyKitExample/Pods-FeedlyKitExample.debug.xcconfig"; sourceTree = "<group>"; };
-		48BA060E392B7266301CB7AF /* Pods-FeedlyKitExampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeedlyKitExampleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FeedlyKitExampleTests/Pods-FeedlyKitExampleTests.release.xcconfig"; sourceTree = "<group>"; };
-		57C3CDBF330807D5FA8CF881 /* Pods-FeedlyKitExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeedlyKitExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-FeedlyKitExample/Pods-FeedlyKitExample.release.xcconfig"; sourceTree = "<group>"; };
+		4D6F056581DF72851AC86A19 /* Pods-FeedlyKitExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeedlyKitExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-FeedlyKitExample/Pods-FeedlyKitExample.release.xcconfig"; sourceTree = "<group>"; };
 		67E6713C1C886C200048BDBC /* FeedlyKitExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FeedlyKitExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		67E6713F1C886C200048BDBC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		67E671411C886C200048BDBC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		67E671461C886C210048BDBC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		67E671491C886C210048BDBC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		67E6714B1C886C210048BDBC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		67E671501C886C210048BDBC /* FeedlyKitExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FeedlyKitExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		67E671541C886C210048BDBC /* FeedlyKitExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedlyKitExampleTests.swift; sourceTree = "<group>"; };
-		67E671561C886C210048BDBC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A91528B7E27DEF90DC038A4D /* Pods_FeedlyKitExampleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FeedlyKitExampleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E26B4170D49F0A3DB0CDC734 /* Pods_FeedlyKitExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FeedlyKitExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6BE6E2BC4E66E38C62115A5B /* Pods_FeedlyKitExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FeedlyKitExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E19094650B30963C5ECFE103 /* Pods-FeedlyKitExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeedlyKitExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FeedlyKitExample/Pods-FeedlyKitExample.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,49 +31,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AF5B1DB154BD613E00242A2E /* Pods_FeedlyKitExample.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		67E6714D1C886C210048BDBC /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				963EE6D49B0CF133580AEE8E /* Pods_FeedlyKitExampleTests.framework in Frameworks */,
+				07297F3A9F0FC95228BFF4B6 /* Pods_FeedlyKitExample.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		09035AC78CE8F250D2CED73A /* Frameworks */ = {
+		218AA3B0659701224E667F0D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				E26B4170D49F0A3DB0CDC734 /* Pods_FeedlyKitExample.framework */,
-				A91528B7E27DEF90DC038A4D /* Pods_FeedlyKitExampleTests.framework */,
+				6BE6E2BC4E66E38C62115A5B /* Pods_FeedlyKitExample.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		14DAD1D177B46D564039C9AE /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				476FC3C4AF893A1EEC3CB66F /* Pods-FeedlyKitExample.debug.xcconfig */,
-				57C3CDBF330807D5FA8CF881 /* Pods-FeedlyKitExample.release.xcconfig */,
-				0B6316E642A426E0C00A1687 /* Pods-FeedlyKitExampleTests.debug.xcconfig */,
-				48BA060E392B7266301CB7AF /* Pods-FeedlyKitExampleTests.release.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 		67E671331C886C200048BDBC = {
 			isa = PBXGroup;
 			children = (
 				67E6713E1C886C200048BDBC /* FeedlyKitExample */,
-				67E671531C886C210048BDBC /* FeedlyKitExampleTests */,
 				67E6713D1C886C200048BDBC /* Products */,
-				14DAD1D177B46D564039C9AE /* Pods */,
-				09035AC78CE8F250D2CED73A /* Frameworks */,
+				C65A609494AB933A845AE8A5 /* Pods */,
+				218AA3B0659701224E667F0D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,7 +60,6 @@
 			isa = PBXGroup;
 			children = (
 				67E6713C1C886C200048BDBC /* FeedlyKitExample.app */,
-				67E671501C886C210048BDBC /* FeedlyKitExampleTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -116,13 +76,13 @@
 			path = FeedlyKitExample;
 			sourceTree = "<group>";
 		};
-		67E671531C886C210048BDBC /* FeedlyKitExampleTests */ = {
+		C65A609494AB933A845AE8A5 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				67E671541C886C210048BDBC /* FeedlyKitExampleTests.swift */,
-				67E671561C886C210048BDBC /* Info.plist */,
+				E19094650B30963C5ECFE103 /* Pods-FeedlyKitExample.debug.xcconfig */,
+				4D6F056581DF72851AC86A19 /* Pods-FeedlyKitExample.release.xcconfig */,
 			);
-			path = FeedlyKitExampleTests;
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -132,12 +92,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 67E671591C886C210048BDBC /* Build configuration list for PBXNativeTarget "FeedlyKitExample" */;
 			buildPhases = (
-				9643CC5362A7410E24EEFBE9 /* Check Pods Manifest.lock */,
+				126943B8B973B8DDD75D41D5 /* 📦 Check Pods Manifest.lock */,
 				67E671381C886C200048BDBC /* Sources */,
 				67E671391C886C200048BDBC /* Frameworks */,
 				67E6713A1C886C200048BDBC /* Resources */,
-				2187C63F752307D3E7A3C304 /* Embed Pods Frameworks */,
-				F61417D4508FC9B321AFAF6A /* Copy Pods Resources */,
+				3315E12671930ED956F12BA7 /* 📦 Embed Pods Frameworks */,
+				2A2BABE1CB12082416422A87 /* 📦 Copy Pods Resources */,
+				CA1BE14335A6681AC4CA587C /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -147,27 +108,6 @@
 			productName = FeedlyKitExample;
 			productReference = 67E6713C1C886C200048BDBC /* FeedlyKitExample.app */;
 			productType = "com.apple.product-type.application";
-		};
-		67E6714F1C886C210048BDBC /* FeedlyKitExampleTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 67E6715C1C886C210048BDBC /* Build configuration list for PBXNativeTarget "FeedlyKitExampleTests" */;
-			buildPhases = (
-				CED15215345BC287B66E2AD2 /* Check Pods Manifest.lock */,
-				67E6714C1C886C210048BDBC /* Sources */,
-				67E6714D1C886C210048BDBC /* Frameworks */,
-				67E6714E1C886C210048BDBC /* Resources */,
-				597279C606B0545D4983909A /* Embed Pods Frameworks */,
-				1A98602B1DB0B14AAFD06796 /* Copy Pods Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				67E671521C886C210048BDBC /* PBXTargetDependency */,
-			);
-			name = FeedlyKitExampleTests;
-			productName = FeedlyKitExampleTests;
-			productReference = 67E671501C886C210048BDBC /* FeedlyKitExampleTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -181,10 +121,6 @@
 				TargetAttributes = {
 					67E6713B1C886C200048BDBC = {
 						CreatedOnToolsVersion = 7.2.1;
-					};
-					67E6714F1C886C210048BDBC = {
-						CreatedOnToolsVersion = 7.2.1;
-						TestTargetID = 67E6713B1C886C200048BDBC;
 					};
 				};
 			};
@@ -202,7 +138,6 @@
 			projectRoot = "";
 			targets = (
 				67E6713B1C886C200048BDBC /* FeedlyKitExample */,
-				67E6714F1C886C210048BDBC /* FeedlyKitExampleTests */,
 			);
 		};
 /* End PBXProject section */
@@ -217,32 +152,55 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		67E6714E1C886C210048BDBC /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1A98602B1DB0B14AAFD06796 /* Copy Pods Resources */ = {
+		126943B8B973B8DDD75D41D5 /* 📦 Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "📦 Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FeedlyKitExampleTests/Pods-FeedlyKitExampleTests-resources.sh\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		2187C63F752307D3E7A3C304 /* Embed Pods Frameworks */ = {
+		2A2BABE1CB12082416422A87 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FeedlyKitExample/Pods-FeedlyKitExample-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3315E12671930ED956F12BA7 /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FeedlyKitExample/Pods-FeedlyKitExample-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CA1BE14335A6681AC4CA587C /* Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -257,66 +215,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FeedlyKitExample/Pods-FeedlyKitExample-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		597279C606B0545D4983909A /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FeedlyKitExampleTests/Pods-FeedlyKitExampleTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		9643CC5362A7410E24EEFBE9 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		CED15215345BC287B66E2AD2 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		F61417D4508FC9B321AFAF6A /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FeedlyKitExample/Pods-FeedlyKitExample-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -329,23 +227,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		67E6714C1C886C210048BDBC /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				67E671551C886C210048BDBC /* FeedlyKitExampleTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		67E671521C886C210048BDBC /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 67E6713B1C886C200048BDBC /* FeedlyKitExample */;
-			targetProxy = 67E671511C886C210048BDBC /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		67E671481C886C210048BDBC /* LaunchScreen.storyboard */ = {
@@ -444,7 +326,7 @@
 		};
 		67E6715A1C886C210048BDBC /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 476FC3C4AF893A1EEC3CB66F /* Pods-FeedlyKitExample.debug.xcconfig */;
+			baseConfigurationReference = E19094650B30963C5ECFE103 /* Pods-FeedlyKitExample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = FeedlyKitExample/Info.plist;
@@ -456,39 +338,13 @@
 		};
 		67E6715B1C886C210048BDBC /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 57C3CDBF330807D5FA8CF881 /* Pods-FeedlyKitExample.release.xcconfig */;
+			baseConfigurationReference = 4D6F056581DF72851AC86A19 /* Pods-FeedlyKitExample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = FeedlyKitExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.kumabook.FeedlyKitExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
-		67E6715D1C886C210048BDBC /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0B6316E642A426E0C00A1687 /* Pods-FeedlyKitExampleTests.debug.xcconfig */;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = FeedlyKitExampleTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = io.kumabook.FeedlyKitExampleTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FeedlyKitExample.app/FeedlyKitExample";
-			};
-			name = Debug;
-		};
-		67E6715E1C886C210048BDBC /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 48BA060E392B7266301CB7AF /* Pods-FeedlyKitExampleTests.release.xcconfig */;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = FeedlyKitExampleTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = io.kumabook.FeedlyKitExampleTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FeedlyKitExample.app/FeedlyKitExample";
 			};
 			name = Release;
 		};
@@ -509,15 +365,6 @@
 			buildConfigurations = (
 				67E6715A1C886C210048BDBC /* Debug */,
 				67E6715B1C886C210048BDBC /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		67E6715C1C886C210048BDBC /* Build configuration list for PBXNativeTarget "FeedlyKitExampleTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				67E6715D1C886C210048BDBC /* Debug */,
-				67E6715E1C886C210048BDBC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

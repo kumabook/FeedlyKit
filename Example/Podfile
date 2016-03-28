@@ -1,12 +1,6 @@
 source 'https://github.com/CocoaPods/Specs.git'
 use_frameworks!
 
-target 'FeedlyKitExample', :exclusive => true do
+target 'FeedlyKitExample' do
   pod 'FeedlyKit', :path => '../'
-end
-
-target 'FeedlyKitExampleTests', :exclusive => true do
-  pod 'FeedlyKit', :path => '../'
-  pod 'Quick', '~> 0.8.0'
-  pod 'Nimble', '3.0.0'
 end
