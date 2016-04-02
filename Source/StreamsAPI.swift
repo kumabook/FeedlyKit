@@ -28,13 +28,13 @@ public class PaginationParams: ParameterEncodable {
 }
 
 public class PaginatedEntryCollection: ResponseObjectSerializable {
-    public let id:           String
-    public let updated:      Int64?
-    public let continuation: String?
-    public let title:        String?
-    public let direction:    String?
-    public let alternate:    Link?
-    public let items:        [Entry]
+    public private(set) var id:           String
+    public private(set) var updated:      Int64?
+    public private(set) var continuation: String?
+    public private(set) var title:        String?
+    public private(set) var direction:    String?
+    public private(set) var alternate:    Link?
+    public private(set) var items:        [Entry]
     required public init?(response: NSHTTPURLResponse, representation: AnyObject) {
         let json     = JSON(representation)
         id           = json["id"].stringValue
