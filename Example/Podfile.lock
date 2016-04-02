@@ -1,6 +1,6 @@
 PODS:
   - Alamofire (3.2.1)
-  - FeedlyKit (0.5.1):
+  - FeedlyKit (0.5.3):
     - Alamofire (~> 3.2.1)
     - SwiftyJSON (~> 2.3)
   - SwiftyJSON (2.3.2)
