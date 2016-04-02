@@ -117,7 +117,7 @@ public final class Subscription: Stream,
         self.topic       = nil
     }
 
-    func toParameters() -> [String : AnyObject] {
+    public func toParameters() -> [String : AnyObject] {
         return [
                  "title": title,
                     "id": id,

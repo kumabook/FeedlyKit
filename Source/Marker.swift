@@ -59,7 +59,7 @@ public class MarkerParam: ParameterEncodable {
         self.itemIds  = itemIds
     }
 
-    func toParameters() -> [String : AnyObject] {
+    public func toParameters() -> [String : AnyObject] {
         return ["type": itemType.type,
               "action": action.rawValue,
           itemType.key: itemIds]

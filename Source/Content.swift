@@ -23,7 +23,7 @@ public class Content: ParameterEncodable {
         self.content   = json["content"].stringValue
     }
 
-    func toParameters() -> [String : AnyObject] {
+    public func toParameters() -> [String : AnyObject] {
         return ["direction": direction,
                   "content": content]
     }

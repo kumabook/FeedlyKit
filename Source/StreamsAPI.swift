@@ -16,7 +16,7 @@ public class PaginationParams: ParameterEncodable {
     public var newerThan:    Int64?
     public var continuation: String?
     public init() {}
-    func toParameters() -> [String : AnyObject] {
+    public func toParameters() -> [String : AnyObject] {
         var params: [String:AnyObject] = [:]
         if let _count        = count        { params["count"]        = _count }
         if let _ranked       = ranked       { params["ranked"]       = _ranked }

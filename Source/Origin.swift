@@ -25,7 +25,7 @@ public class Origin: ParameterEncodable {
         self.title    = json["title"].stringValue
         self.htmlUrl  = json["htmlUrl"].stringValue
     }
-    func toParameters() -> [String : AnyObject] {
+    public func toParameters() -> [String : AnyObject] {
         return ["title": title, "htmlUrl": htmlUrl]
     }
 }

@@ -18,7 +18,7 @@ public class UnreadCountsParams: ParameterEncodable {
         self.newerThan   = newerThan
         self.streamId    = streamId
     }
-    func toParameters() -> [String: AnyObject] {
+    public func toParameters() -> [String: AnyObject] {
         var params: [String:AnyObject] = [:]
         if autoRefresh != nil { params["autorefresh"] = autoRefresh! ? "true" : "false" }
         if newerThan   != nil { params["newerThan"]   = NSNumber(longLong: newerThan!) }

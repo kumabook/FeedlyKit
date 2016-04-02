@@ -18,7 +18,7 @@ public class SearchQueryOfFeed: ParameterEncodable {
     public init(query: String) {
         self.query = query
     }
-    func toParameters() -> [String : AnyObject] {
+    public func toParameters() -> [String : AnyObject] {
         var params: [String:AnyObject] = ["query":query]
         if let _count  = count  { params["count"]  = _count }
         if let _locale = locale { params["locale"] = _locale }
@@ -54,7 +54,7 @@ public class SearchQueryOfContent: ParameterEncodable {
     public init(query: String) {
         self.query = query
     }
-    func toParameters() -> [String : AnyObject] {
+    public func toParameters() -> [String : AnyObject] {
         var params: [String:AnyObject] = ["query":query]
         if let _count        = count        { params["count"]      = _count }
         if let _newerThan    = newerThan    { params["newerThan"]  = _newerThan }

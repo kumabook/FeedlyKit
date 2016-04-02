@@ -86,11 +86,11 @@ extension Alamofire.Request {
     }
 }
 
-protocol ParameterEncodable {
+public protocol ParameterEncodable {
     func toParameters() -> [String: AnyObject]
 }
 
-extension Alamofire.ParameterEncoding {
+public extension Alamofire.ParameterEncoding {
     func encode(URLRequest: URLRequestConvertible, parameters: ParameterEncodable?) -> (NSMutableURLRequest, NSError?) {
         return encode(URLRequest, parameters: parameters?.toParameters())
     }

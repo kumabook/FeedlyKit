@@ -58,7 +58,7 @@ public final class Category: Stream,
         self.label = label
     }
 
-    func toParameters() -> [String : AnyObject] {
+    public func toParameters() -> [String : AnyObject] {
         return ["id": id, "label": label]
     }
 }
