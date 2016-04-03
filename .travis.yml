@@ -4,5 +4,5 @@ before_script:
     - brew update
     - brew install xctool
     - brew install carthage
-    - carthage bootstrap --verbose --platform iOS,Mac
+    - carthage bootstrap --platform iOS,Mac
 script: make
