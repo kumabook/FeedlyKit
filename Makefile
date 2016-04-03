@@ -3,7 +3,7 @@ XCODEBUILD:=xctool
 default: test example
 
 test:
-	$(XCODEBUILD) -scheme FeedlyKit-iOS test -sdk iphonesimulator
+#	$(XCODEBUILD) -scheme FeedlyKit-iOS test -sdk iphonesimulator # wait for xctool update
 	$(XCODEBUILD) -scheme FeedlyKit-Mac test
 
 example:
