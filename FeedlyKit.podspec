@@ -3,8 +3,8 @@ Pod::Spec.new do |s|
   url                     = "https://github.com/kumabook/FeedlyKit"
   source_url              = "#{url}.git"
   s.name                  = "FeedlyKit"
-  s.version               = "0.5.3"
-  s.summary               = "Feedly Cloud API client library with Swift"
+  s.version               = "0.6.0"
+  s.summary               = "Feedly Cloud API client library in Swift"
   s.homepage              = url
   s.license               = { :type => "MIT", :file => "LICENSE" }
   s.author                = { "Hiroki Kumamoto" => "kumabook@live.jp" }
