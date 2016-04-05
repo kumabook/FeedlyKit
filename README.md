@@ -18,7 +18,7 @@ And run `carthage update` and setup your xcode project.
 ### Cocoapods
 You can also use [Cocoapods][] to install FeedlyKit by adding it to your Podfile:
 ```Podfile
-pod 'FeedlyKit', '~> 0.5'
+pod 'FeedlyKit', '~> 0.6'
 ```
 
 ## Support API
