@@ -9,7 +9,7 @@
 import SwiftyJSON
 
 public class Preferences: ResponseObjectSerializable {
-    let values: [String:String]
+    public private(set) var values: [String:String]
     @objc required public convenience init?(response: NSHTTPURLResponse, representation: AnyObject) {
         let json = JSON(representation)
         self.init(json: json)

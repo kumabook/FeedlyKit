@@ -24,6 +24,10 @@
 		67363B631A7366DB009F8FBC /* CloudAPISpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67363B601A7366DB009F8FBC /* CloudAPISpec.swift */; };
 		67363B641A7366DB009F8FBC /* EntrySpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67363B611A7366DB009F8FBC /* EntrySpec.swift */; };
 		67363B651A7366DB009F8FBC /* EntrySpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67363B611A7366DB009F8FBC /* EntrySpec.swift */; };
+		673B417D1CB4084900F66433 /* PreferencesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673B417C1CB4084900F66433 /* PreferencesAPI.swift */; };
+		673B417E1CB4084900F66433 /* PreferencesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673B417C1CB4084900F66433 /* PreferencesAPI.swift */; };
+		673B41801CB40AFC00F66433 /* PreferencesAPISpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673B417F1CB40AFC00F66433 /* PreferencesAPISpec.swift */; };
+		673B41811CB40AFC00F66433 /* PreferencesAPISpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673B417F1CB40AFC00F66433 /* PreferencesAPISpec.swift */; };
 		674A5B161A6A3F3B00F7B534 /* create_tag.json in Resources */ = {isa = PBXBuildFile; fileRef = 674A5AFE1A6A3F1100F7B534 /* create_tag.json */; };
 		674A5B171A6A3F3B00F7B534 /* entries.json in Resources */ = {isa = PBXBuildFile; fileRef = 674A5AFF1A6A3F1100F7B534 /* entries.json */; };
 		674A5B181A6A3F3B00F7B534 /* entry.json in Resources */ = {isa = PBXBuildFile; fileRef = 674A5B001A6A3F1100F7B534 /* entry.json */; };
@@ -205,6 +209,8 @@
 		67363B5B1A7366AA009F8FBC /* Visual.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Visual.swift; path = Source/Visual.swift; sourceTree = SOURCE_ROOT; };
 		67363B601A7366DB009F8FBC /* CloudAPISpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CloudAPISpec.swift; path = Spec/CloudAPISpec.swift; sourceTree = "<group>"; };
 		67363B611A7366DB009F8FBC /* EntrySpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EntrySpec.swift; path = Spec/EntrySpec.swift; sourceTree = "<group>"; };
+		673B417C1CB4084900F66433 /* PreferencesAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PreferencesAPI.swift; path = Source/PreferencesAPI.swift; sourceTree = SOURCE_ROOT; };
+		673B417F1CB40AFC00F66433 /* PreferencesAPISpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PreferencesAPISpec.swift; path = Spec/PreferencesAPISpec.swift; sourceTree = "<group>"; };
 		674A5AFE1A6A3F1100F7B534 /* create_tag.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = create_tag.json; path = Fixture/Response/create_tag.json; sourceTree = "<group>"; };
 		674A5AFF1A6A3F1100F7B534 /* entries.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = entries.json; path = Fixture/Response/entries.json; sourceTree = "<group>"; };
 		674A5B001A6A3F1100F7B534 /* entry.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = entry.json; path = Fixture/Response/entry.json; sourceTree = "<group>"; };
@@ -374,6 +380,7 @@
 				678EAF321C908571006F7FDD /* StreamsAPISpec.swift */,
 				678EAF3E1C91CFF0006F7FDD /* SubscriptionsAPISpec.swift */,
 				678EAF471C938D3C006F7FDD /* TagsAPISpec.swift */,
+				673B417F1CB40AFC00F66433 /* PreferencesAPISpec.swift */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -391,6 +398,7 @@
 				67C810021A8B218500E4B18C /* SearchAPI.swift */,
 				67B370361A6E10B100B31D57 /* StreamsAPI.swift */,
 				67B370391A6E10C100B31D57 /* SubscriptionsAPI.swift */,
+				673B417C1CB4084900F66433 /* PreferencesAPI.swift */,
 				678EAF351C9191D9006F7FDD /* API.swift */,
 			);
 			name = API;
@@ -758,6 +766,7 @@
 				679CC12F1A6BD2D6003846D8 /* Content.swift in Sources */,
 				67B5106C1A69F13000BB46B7 /* Stream.swift in Sources */,
 				67363B591A73669C009F8FBC /* TagsAPI.swift in Sources */,
+				673B417E1CB4084900F66433 /* PreferencesAPI.swift in Sources */,
 				67B5106D1A69F13000BB46B7 /* Subscription.swift in Sources */,
 				67F606BE1A6B49A6002DEAC1 /* Preferences.swift in Sources */,
 				678EAF371C91C024006F7FDD /* API.swift in Sources */,
@@ -771,6 +780,7 @@
 			files = (
 				67363B631A7366DB009F8FBC /* CloudAPISpec.swift in Sources */,
 				678EAF4C1C940851006F7FDD /* MarkersAPISpec.swift in Sources */,
+				673B41811CB40AFC00F66433 /* PreferencesAPISpec.swift in Sources */,
 				678EAF3A1C91C044006F7FDD /* FeedsAPISpec.swift in Sources */,
 				678EAF401C91CFF0006F7FDD /* SubscriptionsAPISpec.swift in Sources */,
 				67F606A21A6AB9A3002DEAC1 /* ProfileSpec.swift in Sources */,
@@ -814,6 +824,7 @@
 				67363B521A716077009F8FBC /* MarkersAPI.swift in Sources */,
 				67B510551A69EBA200BB46B7 /* Category.swift in Sources */,
 				67B3703D1A6EA37800B31D57 /* CategoriesAPI.swift in Sources */,
+				673B417D1CB4084900F66433 /* PreferencesAPI.swift in Sources */,
 				67F606BD1A6B49A6002DEAC1 /* Preferences.swift in Sources */,
 				67363B581A73669C009F8FBC /* TagsAPI.swift in Sources */,
 				67213E9C1A6B51300074471B /* Marker.swift in Sources */,
@@ -827,6 +838,7 @@
 			files = (
 				67363B621A7366DB009F8FBC /* CloudAPISpec.swift in Sources */,
 				678EAF4B1C940851006F7FDD /* MarkersAPISpec.swift in Sources */,
+				673B41801CB40AFC00F66433 /* PreferencesAPISpec.swift in Sources */,
 				678EAF391C91C044006F7FDD /* FeedsAPISpec.swift in Sources */,
 				678EAF3F1C91CFF0006F7FDD /* SubscriptionsAPISpec.swift in Sources */,
 				67F606A01A6AB978002DEAC1 /* ProfileSpec.swift in Sources */,

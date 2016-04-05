@@ -165,6 +165,9 @@ public class CloudAPIClient {
         case MarkAs(Target, MarkerParam)
         case FetchLatestReadOperations(Target, Int64?)
         case FetchLatestTaggedEntryIds(Target, Int64?)
+        // Preferences API
+        case FetchPreferences(Target)
+        case UpdatePreferences(Target, [String:String])
         // Profile API
         case FetchProfile(Target)
         case UpdateProfile(Target, [String:AnyObject])
@@ -207,6 +210,9 @@ public class CloudAPIClient {
             case .MarkAs:                    return .POST
             case .FetchLatestReadOperations: return .GET
             case .FetchLatestTaggedEntryIds: return .GET
+            // Preferences API
+            case FetchPreferences:           return .GET
+            case UpdatePreferences:          return .POST
                 // Profile API
             case .FetchProfile:              return .GET
             case .UpdateProfile:             return .GET
@@ -252,6 +258,9 @@ public class CloudAPIClient {
        
             case .FetchLatestReadOperations(let target, _):      return target.baseUrl + "/v3/markers/reads"
             case .FetchLatestTaggedEntryIds(let target, _):      return target.baseUrl + "/v3/markers/tags"
+            // Preferences API
+            case FetchPreferences(let target):                   return target.baseUrl + "/v3/preferences"
+            case UpdatePreferences(let target, _):               return target.baseUrl + "/v3/preferences"
                 // Profile API
             case .FetchProfile(let target):                      return target.baseUrl + "/v3/profile"
             case .UpdateProfile(let target, _):                  return target.baseUrl + "/v3/profile"
@@ -320,6 +329,9 @@ public class CloudAPIClient {
                     return J.encode(req, parameters: ["newerThan": NSNumber(longLong: n)]).0
                 }
                 return req
+                // Preferences API
+            case FetchPreferences:                           return req
+            case UpdatePreferences(_, let params):           return J.encode(req, parameters: params).0
                 // Profile API
             case .FetchProfile:                              return req
             case .UpdateProfile(_, let params):              return U.encode(req, parameters: params).0
