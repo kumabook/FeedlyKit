@@ -33,7 +33,7 @@ Currently, FeedlyKit partially support feedly cloud apis.
 - [ ] Microsoft API
 - [ ] Mixes API
 - [ ] OPML API
-- [ ] Preferences API
+- [x] Preferences API
 - [x] Profile API
 - [x] Search API
 - [x] Streams API
