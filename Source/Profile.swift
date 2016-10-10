@@ -9,22 +9,26 @@
 import SwiftyJSON
 
 public class Profile: NSObject, NSCoding, ResponseObjectSerializable {
-    public let id:         String
-    public let email:      String?
-    public let reader:     String?
-    public let gender:     String?
-    public let wave:       String?
-    public let google:     String?
-    public let facebook:   String?
-    public let familyName: String?
-    public let picture:    String?
-    public let twitter:    String?
-    public let givenName:  String?
-    public let locale:     String?
+    public var id:         String
+    public var email:      String?
+    public var reader:     String?
+    public var gender:     String?
+    public var wave:       String?
+    public var google:     String?
+    public var facebook:   String?
+    public var familyName: String?
+    public var picture:    String?
+    public var twitter:    String?
+    public var givenName:  String?
+    public var locale:     String?
 
     required public convenience init?(response: NSHTTPURLResponse, representation: AnyObject) {
         let json = JSON(representation)
         self.init(json: json)
+    }
+
+    public init(id: String) {
+        self.id = id
     }
 
     public init(json: JSON) {
