@@ -14,23 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "67F71B971A698B9800D8A6BC"
+               BlueprintIdentifier = "67CCD6161DC97E2400606C32"
                BuildableName = "FeedlyKit.framework"
-               BlueprintName = "FeedlyKit-Mac"
-               ReferencedContainer = "container:FeedlyKit.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "NO"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "67F71BA11A698B9800D8A6BC"
-               BuildableName = "FeedlyKit-MacTests.xctest"
-               BlueprintName = "FeedlyKit-MacTests"
+               BlueprintName = "FeedlyKit-tvOS"
                ReferencedContainer = "container:FeedlyKit.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -46,9 +32,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "67F71BA11A698B9800D8A6BC"
-               BuildableName = "FeedlyKit-MacTests.xctest"
-               BlueprintName = "FeedlyKit-MacTests"
+               BlueprintIdentifier = "67CCD61E1DC97E2400606C32"
+               BuildableName = "FeedlyKit-tvOSTests.xctest"
+               BlueprintName = "FeedlyKit-tvOSTests"
                ReferencedContainer = "container:FeedlyKit.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -56,9 +42,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "67F71B971A698B9800D8A6BC"
+            BlueprintIdentifier = "67CCD6161DC97E2400606C32"
             BuildableName = "FeedlyKit.framework"
-            BlueprintName = "FeedlyKit-Mac"
+            BlueprintName = "FeedlyKit-tvOS"
             ReferencedContainer = "container:FeedlyKit.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -78,9 +64,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "67F71B971A698B9800D8A6BC"
+            BlueprintIdentifier = "67CCD6161DC97E2400606C32"
             BuildableName = "FeedlyKit.framework"
-            BlueprintName = "FeedlyKit-Mac"
+            BlueprintName = "FeedlyKit-tvOS"
             ReferencedContainer = "container:FeedlyKit.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -96,9 +82,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "67F71B971A698B9800D8A6BC"
+            BlueprintIdentifier = "67CCD6161DC97E2400606C32"
             BuildableName = "FeedlyKit.framework"
-            BlueprintName = "FeedlyKit-Mac"
+            BlueprintName = "FeedlyKit-tvOS"
             ReferencedContainer = "container:FeedlyKit.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
