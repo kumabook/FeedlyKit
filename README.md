@@ -5,6 +5,14 @@
 
 [Feedly Cloud API][] client library with Swift
 
+## Requirements
+
+- iOS 9.0+ / macOS 10.11+ / tvOS 9.0+ / watchOS 2.0+
+- Xcode 8.0+
+- Swift 3.0+
+
+If you use swift 2.x, use 0.*
+
 ## Installation
 ### Carthage
 You can use [Carthage][] to install FeedlyKit by adding it to your Cartfile:
