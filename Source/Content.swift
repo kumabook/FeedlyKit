@@ -8,9 +8,9 @@
 
 import SwiftyJSON
 
-public class Content: ParameterEncodable {
-    public var direction: String!
-    public var content: String!
+open class Content: ParameterEncodable {
+    open var direction: String!
+    open var content: String!
 
     public init(direction: String, content: String) {
         self.direction = direction
@@ -23,7 +23,7 @@ public class Content: ParameterEncodable {
         self.content   = json["content"].stringValue
     }
 
-    public func toParameters() -> [String : AnyObject] {
+    open func toParameters() -> [String : Any] {
         return ["direction": direction,
                   "content": content]
     }

@@ -18,16 +18,16 @@ extension CloudAPIClient {
      @param completionHandler handler function
      @return self
      */
-    public func fetchPreferences(completionHandler: (Response<Preferences, NSError>) -> Void) -> Request {
-        return manager.request(Router.FetchPreferences(target)).validate().responseObject(completionHandler)
+    public func fetchPreferences(_ completionHandler: @escaping (DataResponse<Preferences>) -> Void) -> Request {
+        return manager.request(Router.fetchPreferences(target)).validate().responseObject(completionHandler: completionHandler)
     }
     
     /**
      Update the preferences of the user
      POST /v3/preferences
      */
-    public func updatePreferences(preferences: [String:String], completionHandler: (Response<Void, NSError>) -> Void) -> Request {
-        return manager.request(Router.UpdatePreferences(target, preferences)).validate().response(completionHandler)
+    public func updatePreferences(_ preferences: [String:String], completionHandler: @escaping (DefaultDataResponse) -> Void) -> Request {
+        return manager.request(Router.updatePreferences(target, preferences)).validate().response(completionHandler: completionHandler)
     }
 }
 

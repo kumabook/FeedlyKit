@@ -23,7 +23,7 @@ class PreferencesAPISpec: QuickSpec {
             var statusCode = 0
             var preferences: Preferences?
             beforeEach {
-                self.client.fetchPreferences {
+                let _ = self.client.fetchPreferences {
                     guard let code = $0.response?.statusCode else { return }
                     statusCode = code
                     preferences = $0.result.value!
@@ -47,23 +47,23 @@ class PreferencesAPISpec: QuickSpec {
             let params1: [String:String] = ["key1": "xxxxxx", "key2": "value2"]
             let params2: [String:String] = ["key1": "value1", "key2": "==DELETE=="]
             beforeEach {
-                self.client.updatePreferences(params1) {
+                let _ = self.client.updatePreferences(params1) {
                     guard let code = $0.response?.statusCode else { return }
                     statusCode1 = code
                 }
                 sleep(1)
-                self.client.fetchPreferences {
+                let _ = self.client.fetchPreferences {
                     guard let code = $0.response?.statusCode else { return }
                     statusCode2  = code
                     preferences1 = $0.result.value!
                 }
                 sleep(1)
-                self.client.updatePreferences(params2 ) {
+                let _ = self.client.updatePreferences(params2 ) {
                     guard let code = $0.response?.statusCode else { return }
                     statusCode3 = code
                 }
                 sleep(1)
-                self.client.fetchPreferences {
+                let _ = self.client.fetchPreferences {
                     guard let code = $0.response?.statusCode else { return }
                     statusCode4  = code
                     preferences2 = $0.result.value!

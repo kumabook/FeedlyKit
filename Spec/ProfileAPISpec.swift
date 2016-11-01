@@ -22,7 +22,7 @@ class ProfileAPISpec: QuickSpec {
             var statusCode = 0
             var profile: Profile?
             beforeEach {
-                self.client.fetchProfile {
+                let _ = self.client.fetchProfile {
                     guard let code = $0.response?.statusCode else { return }
                     statusCode = code
                     profile = $0.result.value
@@ -38,9 +38,9 @@ class ProfileAPISpec: QuickSpec {
             if SpecHelper.accessToken == nil { return }
             var statusCode = 0
             var profile: Profile?
-            let params: [String:AnyObject] = ["givenName": "hiroki", "gender": "male"]
+            let params: [String:Any] = ["givenName": "hiroki", "gender": "male"]
             beforeEach {
-                self.client.updateProfile(params) {
+                let _ = self.client.updateProfile(params) {
                     guard let code = $0.response?.statusCode else { return }
                     statusCode = code
                     profile = $0.result.value

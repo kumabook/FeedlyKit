@@ -14,17 +14,17 @@ import Nimble
 class CategoriesAPISpec: CloudAPISpec {
     let feedId = "feed/https://news.ycombinator.com/rss"
     let categoryLabel = "test"
-    func fetchCategories(callback: (Int, [FeedlyKit.Category]) -> ()) {
-        self.client.fetchCategories {
+    func fetchCategories(callback: @escaping (Int, [FeedlyKit.Category]) -> ()) {
+        let _ = self.client.fetchCategories {
             guard let code = $0.response?.statusCode,
                   let categories = $0.result.value else { return }
             callback(code, categories)
         }
     }
 
-    func createCategory(callback: () -> ()) {
+    func createCategory(callback: @escaping () -> ()) {
         let feed = Feed(id: feedId, title: "", description: "", subscribers: 0)
-        self.client.subscribeTo(feed, categories: [self.profile!.category(categoryLabel)]) { _ in
+        let _ = self.client.subscribeTo(feed, categories: [self.profile!.category(categoryLabel)]) { _ in
             callback()
         }
     }
@@ -58,7 +58,7 @@ class CategoriesAPISpec: CloudAPISpec {
             beforeEach {
                 self.fetchProfile {
                     self.createCategory {
-                        self.client.updateCategory(self.profile!.category(label).id, label: label) {
+                        let _ = self.client.updateCategory(self.profile!.category(label).id, label: label) {
                             guard let code = $0.response?.statusCode else { return }
                             statusCode = code
                             self.fetchCategories {
@@ -87,7 +87,7 @@ class CategoriesAPISpec: CloudAPISpec {
                 self.fetchCategories { code, _categories in
                     if _categories.count == 0 { return }
                     deletedCategory = _categories[0]
-                    self.client.deleteCategory(deletedCategory!.id) {
+                    let _ = self.client.deleteCategory(deletedCategory!.id) {
                         guard let code = $0.response?.statusCode else { return }
                         statusCode = code
                         self.fetchCategories {

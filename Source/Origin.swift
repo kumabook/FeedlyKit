@@ -8,10 +8,10 @@
 
 import SwiftyJSON
 
-public class Origin: ParameterEncodable {
-    public var streamId: String!
-    public var title:    String!
-    public var htmlUrl:  String!
+open class Origin: ParameterEncodable {
+    open var streamId: String!
+    open var title:    String!
+    open var htmlUrl:  String!
 
     public init(streamId: String, title: String, htmlUrl: String) {
         self.streamId = streamId
@@ -25,7 +25,7 @@ public class Origin: ParameterEncodable {
         self.title    = json["title"].stringValue
         self.htmlUrl  = json["htmlUrl"].stringValue
     }
-    public func toParameters() -> [String : AnyObject] {
+    open func toParameters() -> [String : Any] {
         return ["title": title, "htmlUrl": htmlUrl]
     }
 }

@@ -24,7 +24,7 @@ class FeedsAPISpec: QuickSpec {
             var statusCode = 0
             var feed: Feed?
             beforeEach {
-                self.client.fetchFeed(self.feedId) {
+                let _ = self.client.fetchFeed(self.feedId) {
                     guard let code  = $0.response?.statusCode,
                           let _feed = $0.result.value else { return }
                     statusCode = code
@@ -41,7 +41,7 @@ class FeedsAPISpec: QuickSpec {
             var feeds: [Feed]?
             beforeEach {
                 feeds = []
-                self.client.fetchFeeds([self.feedId, self.feedId2]) {
+                let _ = self.client.fetchFeeds([self.feedId, self.feedId2]) {
                     guard let code   = $0.response?.statusCode,
                           let _feeds = $0.result.value else { return }
                     statusCode = code

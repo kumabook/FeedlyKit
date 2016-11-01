@@ -26,7 +26,7 @@ class StreamsAPISpec: QuickSpec {
             beforeEach {
                 let params = PaginationParams()
                 params.count = self.perPage
-                self.client.fetchEntryIds(self.feedId, paginationParams: params) {
+                let _ = self.client.fetchEntryIds(self.feedId, paginationParams: params) {
                     guard let code = $0.response?.statusCode,
                           let val  = $0.result.value else { return }
                     statusCode    = code
@@ -44,7 +44,7 @@ class StreamsAPISpec: QuickSpec {
             beforeEach {
                 let params = PaginationParams()
                 params.count = self.perPage
-                self.client.fetchContents(self.feedId, paginationParams: params) {
+                let _ = self.client.fetchContents(self.feedId, paginationParams: params) {
                     guard let code = $0.response?.statusCode,
                           let val  = $0.result.value else { return }
                     statusCode   = code
@@ -66,14 +66,14 @@ class StreamsAPISpec: QuickSpec {
                 self.entryIds       = []
                 params.continuation = ""
             }
-            func fetchIds(params: PaginationParams, times: Int) {
+            func fetchIds(_ params: PaginationParams, times: Int) {
                 if times == 0 { return }
                 sleep(1);
-                self.client.fetchEntryIds(self.feedId, paginationParams: params) {
+                let _ = self.client.fetchEntryIds(self.feedId, paginationParams: params) {
                     guard let code = $0.response?.statusCode,
                           let val  = $0.result.value else { return }
                     statusCode     = code
-                    self.entryIds.appendContentsOf(val.ids)
+                    self.entryIds.append(contentsOf: val.ids)
                     params.continuation = val.continuation
                     if times > 0 && params.continuation != nil {
                         fetchIds(params, times: times - 1)

@@ -49,12 +49,12 @@ public final class Feed: Stream,
         return title
     }
 
-    public class func collection(response response: NSHTTPURLResponse, representation: AnyObject) -> [Feed]? {
+    public class func collection(_ response: HTTPURLResponse, representation: Any) -> [Feed]? {
         let json = JSON(representation)
         return json.arrayValue.map({ Feed(json: $0) })
     }
 
-    @objc required public convenience init?(response: NSHTTPURLResponse, representation: AnyObject) {
+    @objc required public convenience init?(response: HTTPURLResponse, representation: Any) {
         let json = JSON(representation)
         self.init(json: json)
     }
@@ -108,10 +108,10 @@ public final class Feed: Stream,
         deliciousTags       = json["deliciousTags"].array?.map({ $0.stringValue })
     }
 
-    public override var thumbnailURL: NSURL? {
-             if let url = visualUrl { return NSURL(string: url) }
-        else if let url = coverUrl  { return NSURL(string: url) }
-        else if let url = iconUrl   { return NSURL(string: url) }
+    public override var thumbnailURL: URL? {
+             if let url = visualUrl { return URL(string: url) }
+        else if let url = coverUrl  { return URL(string: url) }
+        else if let url = iconUrl   { return URL(string: url) }
         else                        { return nil }
     }
 }

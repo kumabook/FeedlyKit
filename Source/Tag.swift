@@ -21,20 +21,20 @@ public final class Tag: Stream,
         return label
     }
 
-    public class func collection(response response: NSHTTPURLResponse, representation: AnyObject) -> [Tag]? {
+    public class func collection(_ response: HTTPURLResponse, representation: Any) -> [Tag]? {
         let json = JSON(representation)
         return json.arrayValue.map({ Tag(json: $0) })
     }
 
-    public class func Read(userId: String) -> Tag {
+    public class func Read(_ userId: String) -> Tag {
         return Tag(id: "user/\(userId)/tag/global.read", label: "Read")
     }
 
-    public class func Saved(userId: String) -> Tag {
+    public class func Saved(_ userId: String) -> Tag {
         return Tag(id: "user/\(userId)/tag/global.saved", label: "Saved")
     }
 
-    @objc required public convenience init?(response: NSHTTPURLResponse, representation: AnyObject) {
+    @objc required public convenience init?(response: HTTPURLResponse, representation: Any) {
         let json = JSON(representation)
         self.init(json: json)
     }
@@ -54,7 +54,7 @@ public final class Tag: Stream,
         self.label = label
     }
 
-    public func toParameters() -> [String : AnyObject] {
+    public func toParameters() -> [String : Any] {
         return ["id":id, "label":label]
     }
 }

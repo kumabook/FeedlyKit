@@ -8,11 +8,11 @@
 
 import SwiftyJSON
 
-public class Visual {
-    public let url:         String
-    public let width:       Int
-    public let height:      Int
-    public let contentType: String
+open class Visual {
+    open let url:         String
+    open let width:       Int
+    open let height:      Int
+    open let contentType: String
 
     public init(url: String, width: Int, height: Int, contentType: String) {
         self.url         = url

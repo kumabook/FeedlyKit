@@ -16,12 +16,12 @@ class CloudAPISpec: QuickSpec {
     internal let client: CloudAPIClient = CloudAPIClient(target: SpecHelper.target)
     var profile: Profile?
 
-    func fetchProfile(callback: () -> ()) {
+    func fetchProfile(callback: @escaping () -> ()) {
         if let _ = profile {
             callback()
             return
         }
-        self.client.fetchProfile {
+        let _ = self.client.fetchProfile {
             guard let _ = $0.response?.statusCode,
                   let profile = $0.result.value else { return }
             self.profile = profile
@@ -29,12 +29,12 @@ class CloudAPISpec: QuickSpec {
         }
     }
 
-    func fetchLatestEntries(callback: ([Entry]) -> ()) {
+    func fetchLatestEntries(callback: @escaping ([Entry]) -> ()) {
         fetchProfile() {
             guard let p = self.profile else { return }
             let params = PaginationParams()
             params.count = SpecHelper.perPage
-            self.client.fetchContents(p.allCategory.id, paginationParams: params) {
+            let _ = self.client.fetchContents(p.allCategory.id, paginationParams: params) {
                 callback($0.result.value!.items)
             }
         }

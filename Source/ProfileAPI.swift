@@ -14,8 +14,8 @@ extension CloudAPIClient {
         Get the profile of the user
         GET /v3/profile
     */
-    public func fetchProfile(completionHandler: (Response<Profile, NSError>) -> Void) -> Request {
-        return manager.request(Router.FetchProfile(target)).validate().responseObject(completionHandler)
+    public func fetchProfile(_ completionHandler: @escaping (DataResponse<Profile>) -> Void) -> Request {
+        return manager.request(Router.fetchProfile(target)).validate().responseObject(completionHandler: completionHandler)
     }
 
 
@@ -23,7 +23,7 @@ extension CloudAPIClient {
         Update the profile of the user
         POST /v3/profile
     */
-    public func updateProfile(params: [String:AnyObject], completionHandler: (Response<Profile, NSError>) -> Void) -> Request {
-        return manager.request(Router.UpdateProfile(target, params)).validate().responseObject(completionHandler)
+    public func updateProfile(_ params: [String:Any], completionHandler: @escaping (DataResponse<Profile>) -> Void) -> Request {
+        return manager.request(Router.updateProfile(target, params)).validate().responseObject(completionHandler: completionHandler)
     }
 }

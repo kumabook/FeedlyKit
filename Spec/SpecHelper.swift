@@ -12,35 +12,35 @@ import Quick
 import Nimble
 import SwiftyJSON
 
-public class SpecHelper {
-    public static let perPage = 5
-    public class func fixtureJSONObject(fixtureNamed fixtureNamed: String) -> AnyObject? {
-        let bundle   = NSBundle(forClass: SpecHelper.self)
-        let filePath = bundle.pathForResource(fixtureNamed, ofType: "json")
-        let data     = NSData(contentsOfFile: filePath!)
-        let jsonObject : AnyObject? = try! NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers)
+open class SpecHelper {
+    open static let perPage = 5
+    open class func fixtureJSONObject(fixtureNamed: String) -> AnyObject? {
+        let bundle   = Bundle(for: SpecHelper.self)
+        let filePath = bundle.path(forResource: fixtureNamed, ofType: "json")
+        let data     = try? Data(contentsOf: URL(fileURLWithPath: filePath!))
+        let jsonObject : AnyObject? = try! JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as AnyObject?
         return jsonObject
     }
-    public class var target: CloudAPIClient.Target {
+    open class var target: CloudAPIClient.Target {
         let json = JSON(SpecHelper.fixtureJSONObject(fixtureNamed: "access_token")!)
         if json["target"].stringValue == "production" {
-            return .Production
+            return .production
         } else {
-            return .Sandbox
+            return .sandbox
         }
     }
-    public class var accessToken: String? {
+    open class var accessToken: String? {
         let json = JSON(SpecHelper.fixtureJSONObject(fixtureNamed: "access_token")!)
         return json["access_token"].string
     }
 }
 
 extension Expectation {
-    public func toFinally<U where U : Matcher, U.ValueType == T>(matcher: U) {
+    public func toFinally<U>(_ matcher: U) where U : Matcher, U.ValueType == T {
         self.toEventually(matcher, timeout: 10)
     }
 
-    public func toFinallyNot<U where U : Matcher, U.ValueType == T>(matcher: U) {
+    public func toFinallyNot<U>(_ matcher: U) where U : Matcher, U.ValueType == T {
         self.toEventuallyNot(matcher, timeout: 10)
     }
 }

@@ -8,30 +8,30 @@
 
 import SwiftyJSON
 
-public class Marker: ResponseObjectSerializable {
+open class Marker: ResponseObjectSerializable {
     public enum Action: String {
-        case MarkAsRead     = "markAsRead"
-        case KeepAsUnread   = "keepUnread"
-        case UndoMarkAsRead = "undoMarkAsRead"
-        case MarkAsSaved    = "markAsSaved"
-        case MarkAsUnsaved  = "markAsUnsaved"
+        case markAsRead     = "markAsRead"
+        case keepAsUnread   = "keepUnread"
+        case undoMarkAsRead = "undoMarkAsRead"
+        case markAsSaved    = "markAsSaved"
+        case markAsUnsaved  = "markAsUnsaved"
     }
     public enum ItemType {
-        case Entry
-        case Feed
-        case Category
+        case entry
+        case feed
+        case category
         var type: String {
             switch self {
-            case Entry:    return "entries"
-            case Feed:     return "feeds"
-            case Category: return "categories"
+            case .entry:    return "entries"
+            case .feed:     return "feeds"
+            case .category: return "categories"
             }
         }
         var key: String {
             switch self {
-            case Entry:     return "entryIds"
-            case Feed:      return "feedIds"
-            case Category:  return "categoryIds"
+            case .entry:     return "entryIds"
+            case .feed:      return "feedIds"
+            case .category:  return "categoryIds"
             }
         }
     }
@@ -39,7 +39,7 @@ public class Marker: ResponseObjectSerializable {
     let asOf: Int64
     let id:   String
 
-    @objc required public convenience  init?(response: NSHTTPURLResponse, representation: AnyObject) {
+    public convenience  required init?(response: HTTPURLResponse, representation: Any) {
         let json = JSON(representation)
         self.init(json: json)
     }
@@ -49,7 +49,7 @@ public class Marker: ResponseObjectSerializable {
     }
 }
 
-public class MarkerParam: ParameterEncodable {
+open class MarkerParam: ParameterEncodable {
     let action:   Marker.Action
     let itemType: Marker.ItemType
     let itemIds:  [String]
@@ -59,31 +59,31 @@ public class MarkerParam: ParameterEncodable {
         self.itemIds  = itemIds
     }
 
-    public func toParameters() -> [String : AnyObject] {
+    open func toParameters() -> [String : Any] {
         return ["type": itemType.type,
               "action": action.rawValue,
           itemType.key: itemIds]
     }
 }
 
-public class UnreadCounts: ResponseObjectSerializable {
+open class UnreadCounts: ResponseObjectSerializable {
     let value: [UnreadCount]
-    @objc required public convenience init?(response: NSHTTPURLResponse, representation: AnyObject) {
+    public convenience required init?(response: HTTPURLResponse, representation: Any) {
         let json = JSON(representation)
         self.init(json: json)
     }
     public init(json: JSON) {
         value = json["unreadcounts"].arrayValue.map({ UnreadCount(json:$0) })
     }
-    public subscript(index: Int) -> UnreadCount {
+    open subscript(index: Int) -> UnreadCount {
         get { return value[index] }
     }
 }
 
-public class UnreadCount {
-    public let updated: Int64
-    public let id:      String
-    public let count:   Int
+open class UnreadCount {
+    open let updated: Int64
+    open let id:      String
+    open let count:   Int
     public init(json: JSON) {
         self.updated = json["updated"].int64Value
         self.id      = json["id"].stringValue
@@ -91,11 +91,11 @@ public class UnreadCount {
     }
 }
 
-public class ReadOperations: ResponseObjectSerializable {
+open class ReadOperations: ResponseObjectSerializable {
     let feeds:   [Marker]
     let entries: [String]
     let unreads:  [String]
-    @objc required public convenience init?(response: NSHTTPURLResponse, representation: AnyObject) {
+    public convenience required init?(response: HTTPURLResponse, representation: Any) {
         let json = JSON(representation)
         self.init(json: json)
     }
@@ -106,9 +106,9 @@ public class ReadOperations: ResponseObjectSerializable {
     }
 }
 
-public class TaggedEntryIds: ResponseObjectSerializable {
+open class TaggedEntryIds: ResponseObjectSerializable {
     var value: [String: [String]]
-    @objc required public convenience init?(response: NSHTTPURLResponse, representation: AnyObject) {
+    public convenience required init?(response: HTTPURLResponse, representation: Any) {
         let json = JSON(representation)
         self.init(json: json)
     }
@@ -120,7 +120,7 @@ public class TaggedEntryIds: ResponseObjectSerializable {
             }
         }
     }
-    public subscript(key: String) -> [String]? {
+    open subscript(key: String) -> [String]? {
         get { return value[key] }
     }
 }

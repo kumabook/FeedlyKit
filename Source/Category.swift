@@ -21,25 +21,25 @@ public final class Category: Stream,
         return label
     }
 
-    public class func collection(response response: NSHTTPURLResponse, representation: AnyObject) -> [Category]? {
+    public class func collection(_ response: HTTPURLResponse, representation: Any) -> [Category]? {
         let json = JSON(representation)
         return json.arrayValue.map({ Category(json: $0) })
     }
 
-    @objc required public convenience init?(response: NSHTTPURLResponse, representation: AnyObject) {
+    public convenience init?(response: HTTPURLResponse, representation: Any) {
         let json = JSON(representation)
         self.init(json: json)
     }
 
-    public class func Must(userId: String) -> Category {
+    public class func Must(_ userId: String) -> Category {
         return Category(id: "user/\(userId)/category/global.must", label: "Must")
     }
 
-    public class func All(userId: String) -> Category {
+    public class func All(_ userId: String) -> Category {
         return Category(id: "user/\(userId)/category/global.all", label: "All")
     }
 
-    public class func Uncategorized(userId: String) -> Category {
+    public class func Uncategorized(_ userId: String) -> Category {
         return Category(id: "user/\(userId)/category/global.uncategorized", label: "Uncategorized")
     }
 
@@ -58,7 +58,7 @@ public final class Category: Stream,
         self.label = label
     }
 
-    public func toParameters() -> [String : AnyObject] {
+    public func toParameters() -> [String : Any] {
         return ["id": id, "label": label]
     }
 }

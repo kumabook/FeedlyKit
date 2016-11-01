@@ -9,7 +9,7 @@
 import Alamofire
 
 public protocol API {
-    var url:        String              { get }
-    var URLRequest: NSMutableURLRequest { get }
-    var method:     Alamofire.Method    { get }
+    var url:        String               { get }
+    var URLRequest: URLRequest           { get }
+    var method:     Alamofire.HTTPMethod { get }
 }

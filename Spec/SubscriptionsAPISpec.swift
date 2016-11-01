@@ -18,8 +18,8 @@ class SubscriptionAPISpec: QuickSpec {
     var feed:  Feed!    = nil
     var subscriptions: [Subscription] = []
 
-    func fetchSubscriptions(callback: (Int, [Subscription]) -> ()) {
-        self.client.fetchSubscriptions {
+    func fetchSubscriptions(callback: @escaping (Int, [Subscription]) -> ()) {
+        let _ = self.client.fetchSubscriptions {
             guard let code = $0.response?.statusCode,
                 let subscriptions = $0.result.value else { return }
                 callback(code, subscriptions)
@@ -50,7 +50,7 @@ class SubscriptionAPISpec: QuickSpec {
             var statusCode = 0
             beforeEach {
                 self.fetchSubscriptions { _, _ in
-                    self.client.subscribeTo(self.feed, categories: []) {
+                    let _ = self.client.subscribeTo(self.feed, categories: []) {
                         guard let code = $0.response?.statusCode else { return }
                         statusCode = code
                         self.fetchSubscriptions {
@@ -72,7 +72,7 @@ class SubscriptionAPISpec: QuickSpec {
             let s = Subscription(id: self.feedId, title: "kumabook_test", categories: [])
             var statusCode = 0
             beforeEach {
-                self.client.updateSubscription(s) {
+                let _ = self.client.updateSubscription(s) {
                     guard let code = $0.response?.statusCode else { return }
                     statusCode = code
                 }
@@ -87,7 +87,7 @@ class SubscriptionAPISpec: QuickSpec {
             var isFinish = false
             var statusCode = 0
             beforeEach {
-                self.client.unsubscribeTo(self.feedId) {
+                let _ = self.client.unsubscribeTo(self.feedId) {
                     guard let code = $0.response?.statusCode else { return }
                     statusCode = code
                     self.fetchSubscriptions {

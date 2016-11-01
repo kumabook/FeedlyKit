@@ -8,21 +8,21 @@
 
 import SwiftyJSON
 
-public class Profile: NSObject, NSCoding, ResponseObjectSerializable {
-    public var id:         String
-    public var email:      String?
-    public var reader:     String?
-    public var gender:     String?
-    public var wave:       String?
-    public var google:     String?
-    public var facebook:   String?
-    public var familyName: String?
-    public var picture:    String?
-    public var twitter:    String?
-    public var givenName:  String?
-    public var locale:     String?
+open class Profile: NSObject, NSCoding, ResponseObjectSerializable {
+    open var id:         String
+    open var email:      String?
+    open var reader:     String?
+    open var gender:     String?
+    open var wave:       String?
+    open var google:     String?
+    open var facebook:   String?
+    open var familyName: String?
+    open var picture:    String?
+    open var twitter:    String?
+    open var givenName:  String?
+    open var locale:     String?
 
-    required public convenience init?(response: NSHTTPURLResponse, representation: AnyObject) {
+    required public convenience init?(response: HTTPURLResponse, representation: Any) {
         let json = JSON(representation)
         self.init(json: json)
     }
@@ -46,73 +46,73 @@ public class Profile: NSObject, NSCoding, ResponseObjectSerializable {
         locale     = json["locale"].string
     }
     required public init?(coder aDecoder: NSCoder) {
-        id         = aDecoder.decodeObjectForKey("id")         as! String
-        email      = aDecoder.decodeObjectForKey("email")      as! String?
-        reader     = aDecoder.decodeObjectForKey("reader")     as! String?
-        gender     = aDecoder.decodeObjectForKey("gender")     as! String?
-        wave       = aDecoder.decodeObjectForKey("wave")       as! String?
-        google     = aDecoder.decodeObjectForKey("google")     as! String?
-        facebook   = aDecoder.decodeObjectForKey("facebook")   as! String?
-        familyName = aDecoder.decodeObjectForKey("familyName") as! String?
-        picture    = aDecoder.decodeObjectForKey("picture")    as! String?
-        twitter    = aDecoder.decodeObjectForKey("twitter")    as! String?
-        givenName  = aDecoder.decodeObjectForKey("givenName")  as! String?
-        locale     = aDecoder.decodeObjectForKey("locale")     as! String?
+        id         = aDecoder.decodeObject(forKey: "id")         as! String
+        email      = aDecoder.decodeObject(forKey: "email")      as! String?
+        reader     = aDecoder.decodeObject(forKey: "reader")     as! String?
+        gender     = aDecoder.decodeObject(forKey: "gender")     as! String?
+        wave       = aDecoder.decodeObject(forKey: "wave")       as! String?
+        google     = aDecoder.decodeObject(forKey: "google")     as! String?
+        facebook   = aDecoder.decodeObject(forKey: "facebook")   as! String?
+        familyName = aDecoder.decodeObject(forKey: "familyName") as! String?
+        picture    = aDecoder.decodeObject(forKey: "picture")    as! String?
+        twitter    = aDecoder.decodeObject(forKey: "twitter")    as! String?
+        givenName  = aDecoder.decodeObject(forKey: "givenName")  as! String?
+        locale     = aDecoder.decodeObject(forKey: "locale")     as! String?
     }
     
-    public func encodeWithCoder(aCoder: NSCoder) {
-        aCoder.encodeObject(id,         forKey: "id")
-        aCoder.encodeObject(email,      forKey: "email")
-        aCoder.encodeObject(reader,     forKey: "reader")
-        aCoder.encodeObject(gender,     forKey: "gender")
-        aCoder.encodeObject(wave,       forKey: "wave")
-        aCoder.encodeObject(google,     forKey: "google")
-        aCoder.encodeObject(facebook,   forKey: "facebook")
-        aCoder.encodeObject(familyName, forKey: "familyName")
-        aCoder.encodeObject(picture,    forKey: "picture")
-        aCoder.encodeObject(twitter,    forKey: "twitter")
-        aCoder.encodeObject(givenName,  forKey: "givenName")
-        aCoder.encodeObject(locale,     forKey: "locale")
+    open func encode(with aCoder: NSCoder) {
+        aCoder.encode(id,         forKey: "id")
+        aCoder.encode(email,      forKey: "email")
+        aCoder.encode(reader,     forKey: "reader")
+        aCoder.encode(gender,     forKey: "gender")
+        aCoder.encode(wave,       forKey: "wave")
+        aCoder.encode(google,     forKey: "google")
+        aCoder.encode(facebook,   forKey: "facebook")
+        aCoder.encode(familyName, forKey: "familyName")
+        aCoder.encode(picture,    forKey: "picture")
+        aCoder.encode(twitter,    forKey: "twitter")
+        aCoder.encode(givenName,  forKey: "givenName")
+        aCoder.encode(locale,     forKey: "locale")
     }
 
     enum GlobalResource {
-        case Must
-        case All
-        case Uncategorized
-        case Read
-        case Saved
-        static func values() -> [GlobalResource] { return [.Must, .All, .Uncategorized, .Read, .Saved] }
+        case must
+        case all
+        case uncategorized
+        case read
+        case saved
+        static func values() -> [GlobalResource] { return [.must, .all, .uncategorized, .read, .saved] }
 
         var label: String {
             switch self {
-            case Must:          return "must"
-            case All:           return "all"
-            case Uncategorized: return "uncategorized"
-            case Read:          return "read"
-            case Saved:         return "saved"
+            case .must:          return "must"
+            case .all:           return "all"
+            case .uncategorized: return "uncategorized"
+            case .read:          return "read"
+            case .saved:         return "saved"
             }
         }
 
-        func asCategory(profile: Profile) -> Category {
+        func asCategory(_ profile: Profile) -> Category {
             return FeedlyKit.Category(id: "user/\(profile.id)/category/global.\(label)", label: "global.\(label)")
         }
 
-        func asTag(profile: Profile) -> Tag {
+        func asTag(_ profile: Profile) -> Tag {
             return FeedlyKit.Tag(id: "user/\(profile.id)/tag/global.\(label)", label: "global.\(label)")
         }
     }
 
-    public var mustCategory:          FeedlyKit.Category   { return GlobalResource.Must.asCategory(self) }
-    public var allCategory:           FeedlyKit.Category   { return GlobalResource.All.asCategory(self)  }
-    public var uncategorizedCategory: FeedlyKit.Category   { return GlobalResource.Uncategorized.asCategory(self) }
-    public var readTag:               FeedlyKit.Tag        { return GlobalResource.Read.asTag(self) }
-    public var savedTag:              FeedlyKit.Tag        { return GlobalResource.Saved.asTag(self) }
+    open var mustCategory:          FeedlyKit.Category   { return GlobalResource.must.asCategory(self) }
+    open var allCategory:           FeedlyKit.Category   { return GlobalResource.all.asCategory(self)  }
+    open var uncategorizedCategory: FeedlyKit.Category   { return GlobalResource.uncategorized.asCategory(self) }
+    open var readTag:               FeedlyKit.Tag        { return GlobalResource.read.asTag(self) }
+    open var savedTag:              FeedlyKit.Tag        { return GlobalResource.saved.asTag(self) }
 
-    public func category(label: String) -> Category {
+    open func category(_ label: String) -> Category {
         return FeedlyKit.Category(label: label, profile: self)
     }
 
-    public func tag(label: String) -> Tag {
+    open func tag(_ label: String) -> Tag {
         return FeedlyKit.Tag(label: label, profile: self)
     }
 }

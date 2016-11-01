@@ -9,33 +9,33 @@
 import Alamofire
 import SwiftyJSON
 
-public class PaginationParams: ParameterEncodable {
-    public var count:        Int?
-    public var ranked:       String?
-    public var unreadOnly:   Bool?
-    public var newerThan:    Int64?
-    public var continuation: String?
+open class PaginationParams: ParameterEncodable {
+    open var count:        Int?
+    open var ranked:       String?
+    open var unreadOnly:   Bool?
+    open var newerThan:    Int64?
+    open var continuation: String?
     public init() {}
-    public func toParameters() -> [String : AnyObject] {
+    open func toParameters() -> [String : Any] {
         var params: [String:AnyObject] = [:]
-        if let _count        = count        { params["count"]        = _count }
-        if let _ranked       = ranked       { params["ranked"]       = _ranked }
-        if let _unreadOnly   = unreadOnly   { params["unreadOnly"]   = _unreadOnly ? "true" : "false" }
-        if let _newerThan    = newerThan    { params["newerThan"]    = NSNumber(longLong: _newerThan) }
-        if let _continuation = continuation { params["continuation"] = _continuation }
+        if let _count        = count        { params["count"]        = _count as AnyObject? }
+        if let _ranked       = ranked       { params["ranked"]       = _ranked as AnyObject? }
+        if let _unreadOnly   = unreadOnly   { params["unreadOnly"]   = _unreadOnly ? "true" as AnyObject? : "false" as AnyObject? }
+        if let _newerThan    = newerThan    { params["newerThan"]    = NSNumber(value: _newerThan as Int64) }
+        if let _continuation = continuation { params["continuation"] = _continuation as AnyObject? }
         return params
     }
 }
 
-public class PaginatedEntryCollection: ResponseObjectSerializable {
-    public private(set) var id:           String
-    public private(set) var updated:      Int64?
-    public private(set) var continuation: String?
-    public private(set) var title:        String?
-    public private(set) var direction:    String?
-    public private(set) var alternate:    Link?
-    public private(set) var items:        [Entry]
-    required public init?(response: NSHTTPURLResponse, representation: AnyObject) {
+open class PaginatedEntryCollection: ResponseObjectSerializable {
+    open fileprivate(set) var id:           String
+    open fileprivate(set) var updated:      Int64?
+    open fileprivate(set) var continuation: String?
+    open fileprivate(set) var title:        String?
+    open fileprivate(set) var direction:    String?
+    open fileprivate(set) var alternate:    Link?
+    open fileprivate(set) var items:        [Entry]
+    required public init?(response: HTTPURLResponse, representation: Any) {
         let json     = JSON(representation)
         id           = json["id"].stringValue
         updated      = json["updated"].int64
@@ -47,10 +47,10 @@ public class PaginatedEntryCollection: ResponseObjectSerializable {
     }
 }
 
-public class PaginatedIdCollection: ResponseObjectSerializable {
-    public let continuation: String?
-    public let ids:          [String]
-    required public init?(response: NSHTTPURLResponse, representation: AnyObject) {
+open class PaginatedIdCollection: ResponseObjectSerializable {
+    open let continuation: String?
+    open let ids:          [String]
+    required public init?(response: HTTPURLResponse, representation: Any) {
         let json     = JSON(representation)
         continuation = json["continuation"].string
         ids          = json["ids"].arrayValue.map( { $0.stringValue } )
@@ -66,10 +66,10 @@ extension CloudAPIClient {
         (Authorization is optional; it is required for category and tag streams)
         TODO
     */
-    public func fetchEntryIds(streamId: String, paginationParams: PaginationParams, completionHandler: (Response<PaginatedIdCollection, NSError>) -> Void) -> Request {
-        return manager.request(Router.FetchEntryIds(target, streamId, paginationParams))
+    public func fetchEntryIds(_ streamId: String, paginationParams: PaginationParams, completionHandler: @escaping (DataResponse<PaginatedIdCollection>) -> Void) -> Request {
+        return manager.request(Router.fetchEntryIds(target, streamId, paginationParams))
                       .validate()
-                      .responseObject(completionHandler)
+                      .responseObject(completionHandler: completionHandler)
     }
     
     /**
@@ -80,9 +80,9 @@ extension CloudAPIClient {
         (Authorization is optional; it is required for category and tag streams)
         TODO
     */
-    public func fetchContents(streamId: String, paginationParams: PaginationParams, completionHandler: (Response<PaginatedEntryCollection, NSError>) -> Void) -> Request {
-        return manager.request(Router.FetchContents(target, streamId, paginationParams))
+    public func fetchContents(_ streamId: String, paginationParams: PaginationParams, completionHandler: @escaping (DataResponse<PaginatedEntryCollection>) -> Void) -> Request {
+        return manager.request(Router.fetchContents(target, streamId, paginationParams))
                       .validate()
-                      .responseObject(completionHandler)
+                      .responseObject(completionHandler: completionHandler)
     }
 }

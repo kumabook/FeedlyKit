@@ -7,17 +7,17 @@
 //
 import Foundation
 
-public class Stream: Equatable, Hashable {
-    public var streamId: String {
+open class Stream: Equatable, Hashable {
+    open var streamId: String {
         return ""// must override at subclass
     }
-    public var streamTitle: String {
+    open var streamTitle: String {
         return ""// must override at subclass
     }
-    public var thumbnailURL: NSURL? {
+    open var thumbnailURL: URL? {
         return nil// should be override at subclass
     }
-    public var hashValue: Int {
+    open var hashValue: Int {
         return streamId.hashValue
     }
     public init() {}

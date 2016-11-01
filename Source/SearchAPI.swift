@@ -11,67 +11,67 @@ import SwiftyJSON
 
 public typealias Locale = String
 
-public class SearchQueryOfFeed: ParameterEncodable {
-    public var query:  String
-    public var count:  Int?
-    public var locale: Locale?
+open class SearchQueryOfFeed: ParameterEncodable {
+    open var query:  String
+    open var count:  Int?
+    open var locale: Locale?
     public init(query: String) {
         self.query = query
     }
-    public func toParameters() -> [String : AnyObject] {
-        var params: [String:AnyObject] = ["query":query]
+    open func toParameters() -> [String : Any] {
+        var params: [String: Any] = ["query":query]
         if let _count  = count  { params["count"]  = _count }
         if let _locale = locale { params["locale"] = _locale }
         return params
     }
 }
 
-public class SearchQueryOfContent: ParameterEncodable {
+open class SearchQueryOfContent: ParameterEncodable {
     public enum Field: String {
-        case All      = "all"
-        case Title    = "title"
-        case Author   = "author"
-        case Keywords = "keywords"
+        case all      = "all"
+        case title    = "title"
+        case author   = "author"
+        case keywords = "keywords"
     }
     public enum Embedded: String {
-        case Audio = "audio"
-        case Video = "video"
-        case Doc   = "doc"
-        case Any   = "any"
+        case audio    = "audio"
+        case video    = "video"
+        case doc      = "doc"
+        case any      = "any"
     }
     public enum Engagement: String {
-        case Medium = "medium"
-        case High   = "high"
+        case medium = "medium"
+        case high   = "high"
     }
-    public var query:        String
-    public var count:        Int?
-    public var newerThan:    Int?
-    public var continuation: String?
-    public var fields:       [Field]?
-    public var embedded:     Embedded?
-    public var engagement:   Engagement?
-    public var locale:       Locale?
+    open var query:        String
+    open var count:        Int?
+    open var newerThan:    Int?
+    open var continuation: String?
+    open var fields:       [Field]?
+    open var embedded:     Embedded?
+    open var engagement:   Engagement?
+    open var locale:       Locale?
     public init(query: String) {
         self.query = query
     }
-    public func toParameters() -> [String : AnyObject] {
-        var params: [String:AnyObject] = ["query":query]
-        if let _count        = count        { params["count"]      = _count }
-        if let _newerThan    = newerThan    { params["newerThan"]  = _newerThan }
-        if let _continuation = continuation { params["count"]      = _continuation }
-        if let _fields       = fields       { params["fields"]     = _fields.map({ $0.rawValue }).joinWithSeparator(",") }
-        if let _embedded     = embedded     { params["embedded"]   = _embedded.rawValue }
-        if let _engagement   = engagement   { params["engagement"] = _engagement.rawValue }
-        if let _locale       = locale       { params["locale"]     = _locale }
+    open func toParameters() -> [String : Any] {
+        var params: [String:AnyObject] = ["query":query as AnyObject]
+        if let _count        = count        { params["count"]      = _count as AnyObject? }
+        if let _newerThan    = newerThan    { params["newerThan"]  = _newerThan as AnyObject? }
+        if let _continuation = continuation { params["count"]      = _continuation as AnyObject? }
+        if let _fields       = fields       { params["fields"]     = _fields.map({ $0.rawValue }).joined(separator: ",") as AnyObject? }
+        if let _embedded     = embedded     { params["embedded"]   = _embedded.rawValue as AnyObject? }
+        if let _engagement   = engagement   { params["engagement"] = _engagement.rawValue as AnyObject? }
+        if let _locale       = locale       { params["locale"]     = _locale as AnyObject? }
         return params
     }
 }
 
-public class SearchResultFeeds: ResponseObjectSerializable {
-    public let hint: String
-    public let related: [String]
-    public let results: [Feed]
-    @objc required public convenience init?(response: NSHTTPURLResponse, representation: AnyObject) {
+open class SearchResultFeeds: ResponseObjectSerializable {
+    open let hint: String
+    open let related: [String]
+    open let results: [Feed]
+    @objc required public convenience init?(response: HTTPURLResponse, representation: Any) {
         let json = JSON(representation)
         self.init(json: json)
     }
@@ -88,17 +88,17 @@ extension CloudAPIClient {
         Find feeds based on title, url or #topic
         GET /v3/search/feeds
     */
-    public func searchFeeds(query: SearchQueryOfFeed, completionHandler: (Response<SearchResultFeeds, NSError>) -> Void) -> Request {
-        return manager.request(Router.SearchFeeds(target, query)).validate().responseObject(completionHandler)
+    public func searchFeeds(_ query: SearchQueryOfFeed, completionHandler: @escaping (DataResponse<SearchResultFeeds>) -> Void) -> Request {
+        return manager.request(Router.searchFeeds(target, query)).validate().responseObject(completionHandler: completionHandler)
     }
 
     /**
         Search the content of a stream
         GET /v3/search/:streamId/contents?query=:searchTerm
     */
-    public func searchContentOfStream(streamId: String, searchTerm: String, query: SearchQueryOfContent, completionHandler: (Response<PaginatedEntryCollection, NSError>) -> Void) -> Request {
-        return manager.request(Router.SearchContentOfStream(target, streamId, searchTerm, query))
+    public func searchContentOfStream(_ streamId: String, searchTerm: String, query: SearchQueryOfContent, completionHandler: @escaping (DataResponse<PaginatedEntryCollection>) -> Void) -> Request {
+        return manager.request(Router.searchContentOfStream(target, streamId, searchTerm, query))
                       .validate()
-                      .responseObject(completionHandler)
+                      .responseObject(completionHandler: completionHandler)
     }
 }

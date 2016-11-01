@@ -16,10 +16,10 @@ class EntriesAPISpec: QuickSpec {
     let feedId  = "feed/http://kumabook.github.io/feed.xml"
     let client: CloudAPIClient = CloudAPIClient(target: SpecHelper.target)
     
-    func fetchEntryIds(callback: ([String]) -> ()) {
+    func fetchEntryIds(_ callback: @escaping ([String]) -> ()) {
         let params = PaginationParams()
         params.count = self.perPage
-        self.client.fetchEntryIds(self.feedId, paginationParams: params) {
+        let _ = self.client.fetchEntryIds(self.feedId, paginationParams: params) {
             guard let val  = $0.result.value else {
                 return
             }
@@ -34,7 +34,7 @@ class EntriesAPISpec: QuickSpec {
             var entry: Entry?
             beforeEach {
                 self.fetchEntryIds { entryIds in
-                    self.client.fetchEntry(entryIds[0]) {
+                    let _ = self.client.fetchEntry(entryIds[0]) {
                         guard let code   = $0.response?.statusCode,
                               let _entry = $0.result.value else { return }
                         statusCode = code
@@ -53,7 +53,7 @@ class EntriesAPISpec: QuickSpec {
             var entries: [Entry]?
             beforeEach {
                 self.fetchEntryIds { entryIds in
-                    self.client.fetchEntries(entryIds) {
+                    let _ = self.client.fetchEntries(entryIds) {
                         guard let code  = $0.response?.statusCode,
                               let items = $0.result.value else { return }
                         statusCode = code

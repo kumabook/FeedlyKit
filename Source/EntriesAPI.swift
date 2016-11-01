@@ -16,8 +16,8 @@ extension CloudAPIClient {
         (Authorization is optional)
     */
 //    public func fetchEntry(entryId: String, completionHandler: (NSURLRequest?, NSHTTPURLResponse?, Result<Entry, NSError>) -> Void) -> Request {
-    public func fetchEntry(entryId: String, completionHandler: (Response<Entry, NSError>) -> Void) -> Request {
-        return manager.request(Router.FetchEntry(target, entryId)).validate().responseObject(completionHandler)
+    public func fetchEntry(_ entryId: String, completionHandler: @escaping (DataResponse<Entry>) -> Void) -> Request {
+        return manager.request(Router.fetchEntry(target, entryId)).responseObject(completionHandler: completionHandler)
     }
     
     /**
@@ -25,8 +25,8 @@ extension CloudAPIClient {
         POST /v3/entries/.mget
         (Authorization is optional)
     */
-    public func fetchEntries(entryIds: [String], completionHandler: (Response<[Entry], NSError>) -> Void) -> Request {
-        return manager.request(Router.FetchEntries(target, entryIds)).validate().responseCollection(completionHandler)
+    public func fetchEntries(_ entryIds: [String], completionHandler: @escaping (DataResponse<[Entry]>) -> Void) -> Request {
+        return manager.request(Router.fetchEntries(target, entryIds)).validate().responseCollection(completionHandler: completionHandler)
     }
     
     /**
@@ -34,17 +34,17 @@ extension CloudAPIClient {
         POST /v3/entries/
         (Authorization is required)
     */
-    public func createEntry(entry: Entry, completionHandler: (Response<[String], NSError>) -> Void) -> Request {
-        return manager.request(Router.CreateEntry(target, entry)).validate().responseJSON {
-            var result: Result<[String], NSError>
+    public func createEntry(_ entry: Entry, completionHandler: @escaping (DataResponse<[String]>) -> Void) -> Request {
+        return manager.request(Router.createEntry(target, entry)).validate().responseJSON {
+            var result: Result<[String]>
             switch $0.result {
-            case .Success:
+            case .success:
                 var json: JSON = JSON($0.result.value!)
-                result = Result.Success(Array(1..<json.count).map { json[$0].stringValue })
-            case .Failure:
-                result = Result.Failure($0.result.error!)
+                result = Result.success(Array(1..<json.count).map { json[$0].stringValue })
+            case .failure:
+                result = Result.failure($0.result.error!)
             }
-            completionHandler(Response(request: $0.request, response: $0.response, data: $0.data, result: result))
+            completionHandler(DataResponse(request: $0.request, response: $0.response, data: $0.data, result: result))
         }
     }
 }

@@ -34,12 +34,12 @@ public final class Entry: Equatable, Hashable,
     public var originId:        String?
     public var sid:             String?
 
-    public class func collection(response response: NSHTTPURLResponse, representation: AnyObject) -> [Entry]? {
+    public class func collection(_ response: HTTPURLResponse, representation: Any) -> [Entry]? {
         let json = JSON(representation)
         return json.arrayValue.map({ Entry(json: $0) })
     }
 
-    @objc required public convenience init?(response: NSHTTPURLResponse, representation: AnyObject) {
+    @objc required public convenience init?(response: HTTPURLResponse, representation: Any) {
         let json = JSON(representation)
         self.init(json: json)
     }
@@ -85,23 +85,23 @@ public final class Entry: Equatable, Hashable,
         get { return id.hashValue }
     }
 
-    public func toParameters() -> [String : AnyObject] {
-        var params: [String: AnyObject] = ["published": NSNumber(longLong: published)]
-        if let _title     = title     { params["title"]     = _title }
-        if let _content   = content   { params["content"]   = _content.toParameters() }
-        if let _summary   = summary   { params["summary"]   = _summary.toParameters() }
-        if let _author    = author    { params["author"]    = _author }
+    public func toParameters() -> [String : Any] {
+        var params: [String: Any] = ["published": NSNumber(value: published)]
+        if let _title     = title     { params["title"]     = _title as AnyObject? }
+        if let _content   = content   { params["content"]   = _content.toParameters() as AnyObject? }
+        if let _summary   = summary   { params["summary"]   = _summary.toParameters() as AnyObject? }
+        if let _author    = author    { params["author"]    = _author as AnyObject? }
         if let _enclosure = enclosure { params["enclosure"] = _enclosure.map({ $0.toParameters() }) }
         if let _alternate = alternate { params["alternate"] = _alternate.map({ $0.toParameters() }) }
-        if let _keywords  = keywords  { params["keywords"]  = _keywords }
+        if let _keywords  = keywords  { params["keywords"]  = _keywords as AnyObject? }
         if let _tags      = tags      { params["tags"]      = _tags.map { $0.toParameters() }}
-        if let _origin    = origin    { params["origin"]    = _origin.toParameters() }
+        if let _origin    = origin    { params["origin"]    = _origin.toParameters() as AnyObject? }
 
         return params
     }
 
-    public var thumbnailURL: NSURL? {
-        if let v = visual, url = v.url.toURL() {
+    public var thumbnailURL: URL? {
+        if let v = visual, let url = v.url.toURL() {
             return url
         }
         if let links = enclosure {
@@ -117,16 +117,16 @@ public final class Entry: Equatable, Hashable,
         return nil
     }
 
-    func extractImgSrc() -> NSURL? {
+    func extractImgSrc() -> URL? {
         if let html = content?.content {
             let regex = try? NSRegularExpression(pattern: "<img.*src\\s*=\\s*[\"\'](.*?)[\"\'].*>",
-                options: NSRegularExpressionOptions())
+                options: NSRegularExpression.Options())
             if let r = regex {
-                if let result  = r.firstMatchInString(html, options: NSMatchingOptions(), range: NSMakeRange(0, html.characters.count)) {
+                if let result  = r.firstMatch(in: html, options: NSRegularExpression.MatchingOptions(), range: NSMakeRange(0, html.characters.count)) {
                     for i in 0...result.numberOfRanges - 1 {
-                        let range = result.rangeAtIndex(i)
+                        let range = result.rangeAt(i)
                         let str = html as NSString
-                        if let url = str.substringWithRange(range).toURL() {
+                        if let url = str.substring(with: range).toURL() {
                             return url
                         }
                     }

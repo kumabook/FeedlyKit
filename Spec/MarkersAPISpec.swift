@@ -25,7 +25,7 @@ class MarkersAPISpec: CloudAPISpec {
             var unreadCounts: UnreadCounts?
             let params = UnreadCountsParams(autoRefresh: nil, newerThan: nil, streamId: self.feedId2)
             beforeEach {
-                self.client.fetchUnreadCounts(params) {
+                let _ = self.client.fetchUnreadCounts(params) {
                     guard let code = $0.response?.statusCode,
                           let counts = $0.result.value else { return }
                     statusCode   = code
@@ -45,7 +45,7 @@ class MarkersAPISpec: CloudAPISpec {
             beforeEach {
                 self.fetchLatestEntries() { _entries in
                     entries = _entries
-                    self.client.markEntriesAsRead(entries!.map { $0.id }) {
+                    let _ = self.client.markEntriesAsRead(entries!.map { $0.id }) {
                         guard let code = $0.response?.statusCode else { return }
                         statusCode = code
                     }
@@ -61,7 +61,7 @@ class MarkersAPISpec: CloudAPISpec {
             if SpecHelper.accessToken == nil { return }
             var statusCode = 0
             beforeEach {
-                self.client.keepEntriesAsUnread(entries!.map { $0.id }) {
+                let _ = self.client.keepEntriesAsUnread(entries!.map { $0.id }) {
                     guard let code = $0.response?.statusCode else { return }
                     statusCode = code
                 }
@@ -75,7 +75,7 @@ class MarkersAPISpec: CloudAPISpec {
             if SpecHelper.accessToken == nil { return }
             var statusCode = 0
             beforeEach {
-                self.client.markFeedsAsRead([self.feedId]) {
+                let _ = self.client.markFeedsAsRead([self.feedId]) {
                     guard let code = $0.response?.statusCode else { return }
                     statusCode = code
                 }
@@ -90,7 +90,7 @@ class MarkersAPISpec: CloudAPISpec {
             var statusCode = 0
             beforeEach {
                 self.fetchProfile() {
-                    self.client.markCategoriesAsRead([self.profile!.category("test").id]) {
+                    let _ = self.client.markCategoriesAsRead([self.profile!.category("test").id]) {
                         guard let code = $0.response?.statusCode else { return }
                         statusCode = code
                     }
@@ -105,7 +105,7 @@ class MarkersAPISpec: CloudAPISpec {
             if SpecHelper.accessToken == nil { return }
             var statusCode = 0
             beforeEach {
-                self.client.undoMarkAsRead(Marker.ItemType.Feed, itemIds: [self.feedId]) {
+               let _ =  self.client.undoMarkAsRead(Marker.ItemType.feed, itemIds: [self.feedId]) {
                     guard let code = $0.response?.statusCode else { return }
                     statusCode = code
                 }
@@ -119,7 +119,7 @@ class MarkersAPISpec: CloudAPISpec {
             if SpecHelper.accessToken == nil { return }
             var statusCode = 0
             beforeEach {
-                self.client.markEntriesAsSaved(entries!.map { $0.id }) {
+                let _ = self.client.markEntriesAsSaved(entries!.map { $0.id }) {
                     guard let code = $0.response?.statusCode else { return }
                     statusCode = code
                 }
@@ -133,7 +133,7 @@ class MarkersAPISpec: CloudAPISpec {
             if SpecHelper.accessToken == nil { return }
             var statusCode = 0
             beforeEach {
-                self.client.markEntriesAsUnsaved(entries!.map { $0.id }) {
+                let _ = self.client.markEntriesAsUnsaved(entries!.map { $0.id }) {
                     guard let code = $0.response?.statusCode else { return }
                     statusCode = code
                 }
@@ -148,7 +148,7 @@ class MarkersAPISpec: CloudAPISpec {
             var statusCode = 0
             var operations: ReadOperations?
             beforeEach {
-                self.client.fetchLatestReadOperations(nil) {
+                let _ = self.client.fetchLatestReadOperations(nil) {
                     guard let code = $0.response?.statusCode,
                           let items = $0.result.value else { return }
                     statusCode = code
@@ -166,7 +166,7 @@ class MarkersAPISpec: CloudAPISpec {
             var statusCode = 0
             var entryIds: TaggedEntryIds?
             beforeEach {
-                self.client.fetchLatestTaggedEntryIds(nil) {
+                let _ = self.client.fetchLatestTaggedEntryIds(nil) {
                     guard let code = $0.response?.statusCode,
                         let ids = $0.result.value else { return }
                     statusCode = code
