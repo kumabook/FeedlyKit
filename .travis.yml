@@ -1,8 +1,8 @@
-osx_image: xcode7.3
+osx_image: xcode8
 language: objective-c
 before_script:
     - brew update
     - brew install xctool || true
     - brew install carthage || true
-    - carthage bootstrap --platform iOS,Mac
+    - carthage bootstrap --platform all
 script: make
