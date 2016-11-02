@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
   s.author                = { "Hiroki Kumamoto" => "kumabook@live.jp" }
   s.social_media_url      = "http://twitter.com/kumabook"
   s.ios.deployment_target = "9.0"
-  s.osx.deployment_target = "11.0"
+  s.osx.deployment_target = "10.11"
   s.source                = { git: source_url, tag: s.version }
   s.framework             = 'Foundation'
   s.source_files          = "Source/*.swift"
