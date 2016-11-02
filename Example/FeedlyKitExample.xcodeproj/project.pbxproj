@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		07297F3A9F0FC95228BFF4B6 /* Pods_FeedlyKitExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BE6E2BC4E66E38C62115A5B /* Pods_FeedlyKitExample.framework */; };
+		11B6BD7AC1EDAB1E13FDC362 /* Pods_FeedlyKitExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F915F649C99024929A4E39E8 /* Pods_FeedlyKitExample.framework */; };
 		67E671401C886C200048BDBC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E6713F1C886C200048BDBC /* AppDelegate.swift */; };
 		67E671421C886C200048BDBC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E671411C886C200048BDBC /* ViewController.swift */; };
 		67E671471C886C210048BDBC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 67E671461C886C210048BDBC /* Assets.xcassets */; };
@@ -15,15 +15,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4D6F056581DF72851AC86A19 /* Pods-FeedlyKitExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeedlyKitExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-FeedlyKitExample/Pods-FeedlyKitExample.release.xcconfig"; sourceTree = "<group>"; };
+		28125BDB01B6F753DD087F13 /* Pods-FeedlyKitExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeedlyKitExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FeedlyKitExample/Pods-FeedlyKitExample.debug.xcconfig"; sourceTree = "<group>"; };
 		67E6713C1C886C200048BDBC /* FeedlyKitExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FeedlyKitExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		67E6713F1C886C200048BDBC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		67E671411C886C200048BDBC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		67E671461C886C210048BDBC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		67E671491C886C210048BDBC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		67E6714B1C886C210048BDBC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6BE6E2BC4E66E38C62115A5B /* Pods_FeedlyKitExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FeedlyKitExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E19094650B30963C5ECFE103 /* Pods-FeedlyKitExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeedlyKitExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FeedlyKitExample/Pods-FeedlyKitExample.debug.xcconfig"; sourceTree = "<group>"; };
+		8A8215357383D5B7ECC6F703 /* Pods-FeedlyKitExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeedlyKitExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-FeedlyKitExample/Pods-FeedlyKitExample.release.xcconfig"; sourceTree = "<group>"; };
+		F915F649C99024929A4E39E8 /* Pods_FeedlyKitExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FeedlyKitExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,28 +31,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				07297F3A9F0FC95228BFF4B6 /* Pods_FeedlyKitExample.framework in Frameworks */,
+				11B6BD7AC1EDAB1E13FDC362 /* Pods_FeedlyKitExample.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		218AA3B0659701224E667F0D /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				6BE6E2BC4E66E38C62115A5B /* Pods_FeedlyKitExample.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		67E671331C886C200048BDBC = {
 			isa = PBXGroup;
 			children = (
 				67E6713E1C886C200048BDBC /* FeedlyKitExample */,
 				67E6713D1C886C200048BDBC /* Products */,
-				C65A609494AB933A845AE8A5 /* Pods */,
-				218AA3B0659701224E667F0D /* Frameworks */,
+				FC5BF094CF13AFE258359981 /* Pods */,
+				8DE556D817F3BD542A441A36 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -76,11 +68,19 @@
 			path = FeedlyKitExample;
 			sourceTree = "<group>";
 		};
-		C65A609494AB933A845AE8A5 /* Pods */ = {
+		8DE556D817F3BD542A441A36 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				E19094650B30963C5ECFE103 /* Pods-FeedlyKitExample.debug.xcconfig */,
-				4D6F056581DF72851AC86A19 /* Pods-FeedlyKitExample.release.xcconfig */,
+				F915F649C99024929A4E39E8 /* Pods_FeedlyKitExample.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FC5BF094CF13AFE258359981 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				28125BDB01B6F753DD087F13 /* Pods-FeedlyKitExample.debug.xcconfig */,
+				8A8215357383D5B7ECC6F703 /* Pods-FeedlyKitExample.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -92,13 +92,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 67E671591C886C210048BDBC /* Build configuration list for PBXNativeTarget "FeedlyKitExample" */;
 			buildPhases = (
-				126943B8B973B8DDD75D41D5 /* 📦 Check Pods Manifest.lock */,
+				832BBA0F4083D3F127EE9E64 /* [CP] Check Pods Manifest.lock */,
 				67E671381C886C200048BDBC /* Sources */,
 				67E671391C886C200048BDBC /* Frameworks */,
 				67E6713A1C886C200048BDBC /* Resources */,
-				3315E12671930ED956F12BA7 /* 📦 Embed Pods Frameworks */,
-				2A2BABE1CB12082416422A87 /* 📦 Copy Pods Resources */,
-				CA1BE14335A6681AC4CA587C /* Embed Pods Frameworks */,
+				CBD82905148709F7AE7DE451 /* [CP] Embed Pods Frameworks */,
+				4E9C20E7C38226BB52EE36AB /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -116,11 +115,13 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = kumabook;
 				TargetAttributes = {
 					67E6713B1C886C200048BDBC = {
 						CreatedOnToolsVersion = 7.2.1;
+						LastSwiftMigration = 0810;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -155,29 +156,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		126943B8B973B8DDD75D41D5 /* 📦 Check Pods Manifest.lock */ = {
+		4E9C20E7C38226BB52EE36AB /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		2A2BABE1CB12082416422A87 /* 📦 Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -185,29 +171,29 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FeedlyKitExample/Pods-FeedlyKitExample-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		3315E12671930ED956F12BA7 /* 📦 Embed Pods Frameworks */ = {
+		832BBA0F4083D3F127EE9E64 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FeedlyKitExample/Pods-FeedlyKitExample-frameworks.sh\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		CA1BE14335A6681AC4CA587C /* Embed Pods Frameworks */ = {
+		CBD82905148709F7AE7DE451 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -254,8 +240,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -277,7 +265,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -299,8 +287,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -316,9 +306,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -326,25 +317,31 @@
 		};
 		67E6715A1C886C210048BDBC /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E19094650B30963C5ECFE103 /* Pods-FeedlyKitExample.debug.xcconfig */;
+			baseConfigurationReference = 28125BDB01B6F753DD087F13 /* Pods-FeedlyKitExample.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = FeedlyKitExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.kumabook.FeedlyKitExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		67E6715B1C886C210048BDBC /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4D6F056581DF72851AC86A19 /* Pods-FeedlyKitExample.release.xcconfig */;
+			baseConfigurationReference = 8A8215357383D5B7ECC6F703 /* Pods-FeedlyKitExample.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = FeedlyKitExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.kumabook.FeedlyKitExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

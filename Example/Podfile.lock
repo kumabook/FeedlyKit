@@ -1,9 +1,9 @@
 PODS:
-  - Alamofire (3.3.0)
-  - FeedlyKit (0.6.0):
-    - Alamofire (~> 3.3)
-    - SwiftyJSON (~> 2.3)
-  - SwiftyJSON (2.3.2)
+  - Alamofire (4.0.1)
+  - FeedlyKit (1.0.0):
+    - Alamofire (~> 4.0)
+    - SwiftyJSON (~> 3.0)
+  - SwiftyJSON (3.1.1)
 
 DEPENDENCIES:
   - FeedlyKit (from `../`)
@@ -13,8 +13,10 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Alamofire: 9054db4a1b1ca9e363223183e01cea380159a27c
-  FeedlyKit: 9c3f62d65785c7abab7cf51874514bdb2db47355
-  SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
+  Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
+  FeedlyKit: fb84749502ecbf2d3fb0b42c35927bd1630b26bd
+  SwiftyJSON: f0be2e604f83e8405a624e9f891898bf6ed4e019
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: fcc50ddc80129dcc43fdc50c02a17cef3acaaf3e
+
+COCOAPODS: 1.1.1

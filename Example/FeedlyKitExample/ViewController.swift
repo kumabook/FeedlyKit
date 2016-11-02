@@ -13,20 +13,20 @@ import Alamofire
 
 
 class ViewController: UITableViewController {
-    private let reuseIdentifier = "UITableViewCell"
-    private let feedUrl         = "feed/https://news.ycombinator.com/rss"
-    private let apiClient       = CloudAPIClient(target: .Production)
-    private var pagination      = PaginationParams()
-    private var entries:[Entry] = []
-    private let indicator       = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
-    private enum State {
-        case Init
-        case Fetching
-        case Normal
-        case Complete
+    fileprivate let reuseIdentifier = "UITableViewCell"
+    fileprivate let feedUrl         = "feed/https://news.ycombinator.com/rss"
+    fileprivate let apiClient       = CloudAPIClient(target: .production)
+    fileprivate var pagination      = PaginationParams()
+    fileprivate var entries:[Entry] = []
+    fileprivate let indicator       = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+    fileprivate enum State {
+        case `init`
+        case fetching
+        case normal
+        case complete
     }
-    private var state: State = .Init
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+    fileprivate var state: State = .init
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         title = "Hacker News"
     }
@@ -37,11 +37,11 @@ class ViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
         tableView.tableFooterView = indicator
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         fetchEntries()
     }
@@ -50,51 +50,51 @@ class ViewController: UITableViewController {
         super.didReceiveMemoryWarning()
     }
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return entries.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .Subtitle, reuseIdentifier: reuseIdentifier)
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: reuseIdentifier)
         let entry = entries[indexPath.item]
         cell.textLabel?.text       = entry.title
-        cell.detailTextLabel?.text = dateString(NSDate(timeIntervalSince1970: NSTimeInterval(Double(entry.published)/1000)))
+        cell.detailTextLabel?.text = dateString(Date(timeIntervalSince1970: TimeInterval(Double(entry.published)/1000)))
         return cell
     }
 
-    override func scrollViewDidScroll(scrollView: UIScrollView) {
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let tv = tableView
-        if tv.contentOffset.y >= tv.contentSize.height - tv.bounds.size.height && state == .Normal {
+        if (tv?.contentOffset.y)! >= (tv?.contentSize.height)! - (tv?.bounds.size.height)! && state == .normal {
             fetchEntries()
         }
     }
 
-    private func fetchEntries() {
-        if state == .Fetching { return }
+    fileprivate func fetchEntries() {
+        if state == .fetching { return }
         indicator.startAnimating()
-        state = .Fetching
-        apiClient.fetchContents(feedUrl, paginationParams: pagination) {
+        state = .fetching
+        let _ = apiClient.fetchContents(feedUrl, paginationParams: pagination) {
             if let es = $0.result.value {
-                self.entries.appendContentsOf(es.items)
+                self.entries.append(contentsOf: es.items)
                 
                 self.tableView.reloadData()
                 self.indicator.stopAnimating()
                 if let c = es.continuation {
                     self.pagination.continuation = c
-                    self.state = .Normal
+                    self.state = .normal
                 } else {
-                    self.state = .Complete
+                    self.state = .complete
                 }
             }
         }
     }
-    private func dateString(date: NSDate) -> String {
-        let now           = NSDate()
-        let passed        = now.timeIntervalSinceDate(date)
+    fileprivate func dateString(_ date: Date) -> String {
+        let now           = Date()
+        let passed        = now.timeIntervalSince(date)
         let minute: Int   = Int(passed) / 60
         if minute <= 1 {
             return "1 minute ago"
