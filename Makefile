@@ -1,10 +1,10 @@
-XCODEBUILD:=xctool
+XCODEBUILD:=xcodebuild
 
 default: test example
 
 test:
-#	$(XCODEBUILD) -scheme FeedlyKit-iOS test -sdk iphonesimulator # wait for xctool update
-	$(XCODEBUILD) -scheme FeedlyKit-Mac test
+#	$(XCODEBUILD) -scheme FeedlyKit-iOS test -sdk iphonesimulator
+	$(XCODEBUILD) -scheme FeedlyKit-macOS test
 
 example:
 	pod setup
@@ -13,6 +13,6 @@ example:
 
 clean:
 	$(XCODEBUILD) -scheme FeedlyKit-iOS clean -sdk iphonesimulator
-	$(XCODEBUILD) -scheme FeedlyKit-Mac clean
+	$(XCODEBUILD) -scheme FeedlyKit-macOS clean
 
 .PHONY: test example clean default
