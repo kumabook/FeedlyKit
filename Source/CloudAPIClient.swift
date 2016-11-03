@@ -351,7 +351,7 @@ open class CloudAPIClient {
             case .untagEntries(_, _, let entryIds):          return try J.encode(req, with: ["entryIds": entryIds])
             case .deleteTags:                                return req
                 // Custom
-            case .api(let api):                              return api.URLRequest
+            case .api(let api):                              return try api.asURLRequest()
             }
         }
     }

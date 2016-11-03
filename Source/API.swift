@@ -10,6 +10,6 @@ import Alamofire
 
 public protocol API {
     var url:        String               { get }
-    var URLRequest: URLRequest           { get }
     var method:     Alamofire.HTTPMethod { get }
+    func asURLRequest() throws -> URLRequest
 }
