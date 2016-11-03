@@ -1,9 +1,14 @@
 XCODEBUILD:=xcodebuild
 
-default: test example
+default: build test example
+
+build:
+	$(XCODEBUILD) -scheme FeedlyKit-iOS
+	$(XCODEBUILD) -scheme FeedlyKit-macOS
+	$(XCODEBUILD) -scheme FeedlyKit-tvOS
+	$(XCODEBUILD) -scheme FeedlyKit-watchOS
 
 test:
-#	$(XCODEBUILD) -scheme FeedlyKit-iOS test -sdk iphonesimulator
 	$(XCODEBUILD) -scheme FeedlyKit-macOS test
 
 example:
@@ -14,5 +19,7 @@ example:
 clean:
 	$(XCODEBUILD) -scheme FeedlyKit-iOS clean -sdk iphonesimulator
 	$(XCODEBUILD) -scheme FeedlyKit-macOS clean
+	$(XCODEBUILD) -scheme FeedlyKit-tvOS clean
+	$(XCODEBUILD) -scheme FeedlyKit-watchOS clean
 
 .PHONY: test example clean default
