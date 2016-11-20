@@ -6,12 +6,11 @@
 //  Copyright © 2016 Hiroki Kumamoto. All rights reserved.
 //
 
-
 import Alamofire
 import SwiftyJSON
 
 extension CloudAPIClient {
-    
+
     /**
      Get the preferences of the user
      GET /v3/preferences
@@ -21,7 +20,7 @@ extension CloudAPIClient {
     public func fetchPreferences(_ completionHandler: @escaping (DataResponse<Preferences>) -> Void) -> Request {
         return manager.request(Router.fetchPreferences(target)).validate().responseObject(completionHandler: completionHandler)
     }
-    
+
     /**
      Update the preferences of the user
      POST /v3/preferences
@@ -30,4 +29,3 @@ extension CloudAPIClient {
         return manager.request(Router.updatePreferences(target, preferences)).validate().response(completionHandler: completionHandler)
     }
 }
-

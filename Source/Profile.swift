@@ -59,7 +59,7 @@ open class Profile: NSObject, NSCoding, ResponseObjectSerializable {
         givenName  = aDecoder.decodeObject(forKey: "givenName")  as! String?
         locale     = aDecoder.decodeObject(forKey: "locale")     as! String?
     }
-    
+
     open func encode(with aCoder: NSCoder) {
         aCoder.encode(id,         forKey: "id")
         aCoder.encode(email,      forKey: "email")

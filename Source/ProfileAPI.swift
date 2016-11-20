@@ -18,7 +18,6 @@ extension CloudAPIClient {
         return manager.request(Router.fetchProfile(target)).validate().responseObject(completionHandler: completionHandler)
     }
 
-
     /**
         Update the profile of the user
         POST /v3/profile

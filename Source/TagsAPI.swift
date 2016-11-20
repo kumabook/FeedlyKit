@@ -26,7 +26,7 @@ extension CloudAPIClient {
     public func tagEntry(_ tagIds: [String], entryId: String, completionHandler: @escaping (DefaultDataResponse) -> Void) -> Request {
         return manager.request(Router.tagEntry(target, tagIds, entryId)).validate().response(completionHandler: completionHandler)
     }
-    
+
     /**
         Tag multiple entries
         PUT /v3/tags/:tagId1,:tagId2
@@ -34,7 +34,7 @@ extension CloudAPIClient {
     public func tagEntries(_ tagIds: [String], entryIds: [String], completionHandler: @escaping (DefaultDataResponse) -> Void) -> Request {
         return manager.request(Router.tagEntries(target, tagIds, entryIds)).validate().response(completionHandler: completionHandler)
     }
-    
+
     /**
         Change a tag label
         POST /v3/tags/:tagId
@@ -50,7 +50,7 @@ extension CloudAPIClient {
     public func untagEntries(_ tagIds: [String], entryIds: [String], completionHandler: @escaping (DefaultDataResponse) -> Void) -> Request {
         return manager.request(Router.untagEntries(target, tagIds, entryIds)).validate().response(completionHandler: completionHandler)
     }
-    
+
     /**
         Delete tags
         DELETE /v3/tags/:tagId1,:tagId2

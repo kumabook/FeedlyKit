@@ -20,7 +20,7 @@ extension CloudAPIClient {
     public func fetchSubscriptions(_ completionHandler: @escaping (DataResponse<[Subscription]>) -> Void) -> Request {
         return manager.request(Router.fetchSubscriptions(target)).responseCollection(completionHandler: completionHandler)
     }
-    
+
     /**
         Subscribe to a feed
         POST /v3/subscriptions
@@ -41,7 +41,7 @@ extension CloudAPIClient {
     public func updateSubscription(_ subscription: Subscription, completionHandler: @escaping (DefaultDataResponse) -> Void) -> Request {
         return manager.request(Router.updateSubscription(target, subscription)).validate().response(completionHandler: completionHandler)
     }
-    
+
     /**
         Unsubscribe from a feed
         DELETE /v3/subscriptions/:feedId

@@ -71,7 +71,7 @@ extension CloudAPIClient {
                       .validate()
                       .responseObject(completionHandler: completionHandler)
     }
-    
+
     /**
         Get the content of a stream
         GET /v3/streams/:streamId/contents

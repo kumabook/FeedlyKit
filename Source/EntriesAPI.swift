@@ -19,7 +19,7 @@ extension CloudAPIClient {
     public func fetchEntry(_ entryId: String, completionHandler: @escaping (DataResponse<Entry>) -> Void) -> Request {
         return manager.request(Router.fetchEntry(target, entryId)).responseObject(completionHandler: completionHandler)
     }
-    
+
     /**
         Get the content for a dynamic list of entries
         POST /v3/entries/.mget
@@ -28,7 +28,7 @@ extension CloudAPIClient {
     public func fetchEntries(_ entryIds: [String], completionHandler: @escaping (DataResponse<[Entry]>) -> Void) -> Request {
         return manager.request(Router.fetchEntries(target, entryIds)).validate().responseCollection(completionHandler: completionHandler)
     }
-    
+
     /**
         Create and tag an entry
         POST /v3/entries/

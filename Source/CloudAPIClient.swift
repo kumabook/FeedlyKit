@@ -1,4 +1,3 @@
-
 //
 //  FeedlyAPIClient.swift
 //  MusicFav
@@ -32,18 +31,18 @@ extension DataRequest {
     public func responseObject<T: ResponseObjectSerializable>(_ queue: DispatchQueue? = nil, completionHandler: @escaping (DataResponse<T>) -> Void) -> Self {
         let responseSerializer = DataResponseSerializer<T> { request, response, data, error in
             guard error == nil else { return .failure(APIError.network(error: error!)) }
-            
+
             let jsonResponseSerializer = DataRequest.jsonResponseSerializer(options: .allowFragments)
             let result = jsonResponseSerializer.serializeResponse(request, response, data, nil)
-            
+
             guard case let .success(jsonObject) = result else {
                 return .failure(APIError.jsonSerialization(error: result.error!))
             }
-            
+
             guard let response = response, let responseObject = T(response: response, representation: jsonObject) else {
                 return .failure(APIError.objectSerialization(reason: "JSON could not be serialized: \(jsonObject)"))
             }
-            
+
             return .success(responseObject)
         }
         return response(queue: queue, responseSerializer: responseSerializer, completionHandler: completionHandler)
@@ -58,7 +57,7 @@ extension DataRequest {
             guard case let .success(value) = result else {
                 return .failure(APIError.jsonSerialization(error: result.error!))
             }
-            
+
             guard let response = response, let responseObject = T.collection(response, representation: value) else {
                 return .failure(APIError.objectSerialization(reason: "JSON could not be serialized: \(value)"))
             }
@@ -189,7 +188,7 @@ open class CloudAPIClient {
         case deleteTags(Target, [String])
         // Custom
         case api(API)
-        
+
         var method: Alamofire.HTTPMethod {
             switch self {
                 // Categories API
@@ -253,7 +252,7 @@ open class CloudAPIClient {
                 // Markers API
             case .fetchUnreadCounts(let target, _):              return target.baseUrl + "/v3/markers/counts"
             case .markAs(let target, _):                         return target.baseUrl + "/v3/markers"
-       
+
             case .fetchLatestReadOperations(let target, _):      return target.baseUrl + "/v3/markers/reads"
             case .fetchLatestTaggedEntryIds(let target, _):      return target.baseUrl + "/v3/markers/tags"
             // Preferences API
@@ -356,4 +355,3 @@ open class CloudAPIClient {
         }
     }
 }
-

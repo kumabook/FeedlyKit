@@ -62,5 +62,3 @@ public final class Category: Stream,
         return ["id": id, "label": label]
     }
 }
-
-

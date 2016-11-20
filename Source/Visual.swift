@@ -20,7 +20,7 @@ open class Visual {
         self.height      = height
         self.contentType = contentType
     }
-    
+
     public init(json: JSON) {
         self.url         = json["url"].stringValue
         self.width       = json["width"].intValue
