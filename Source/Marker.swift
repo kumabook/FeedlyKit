@@ -116,7 +116,7 @@ open class TaggedEntryIds: ResponseObjectSerializable {
         value = [:]
         if let dic = json["taggedEntries"].dictionary {
             for key in dic.keys {
-                value[key] = dic[key]?.arrayValue.map( { $0.stringValue })
+                value[key] = dic[key]?.arrayValue.map({ $0.stringValue })
             }
         }
     }

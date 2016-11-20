@@ -43,7 +43,7 @@ open class PaginatedEntryCollection: ResponseObjectSerializable {
         title        = json["title"].string
         direction    = json["direction"].string
         alternate    = json["alternate"].isEmpty ? nil : Link(json: json["alternate"])
-        items        = json["items"].arrayValue.map( {Entry(json: $0)} )
+        items        = json["items"].arrayValue.map({Entry(json: $0)})
     }
 }
 
@@ -53,7 +53,7 @@ open class PaginatedIdCollection: ResponseObjectSerializable {
     required public init?(response: HTTPURLResponse, representation: Any) {
         let json     = JSON(representation)
         continuation = json["continuation"].string
-        ids          = json["ids"].arrayValue.map( { $0.stringValue } )
+        ids          = json["ids"].arrayValue.map({ $0.stringValue })
     }
 }
 

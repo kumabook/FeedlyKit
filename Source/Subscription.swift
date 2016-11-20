@@ -121,7 +121,7 @@ public final class Subscription: Stream,
         return [
                  "title": title,
                     "id": id,
-            "categories": categories.map( { $0.toParameters() })
+            "categories": categories.map({ $0.toParameters() })
             ]
     }
 

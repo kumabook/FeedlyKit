@@ -9,7 +9,7 @@
 import SwiftyJSON
 
 public final class Feed: Stream,
-                         ResponseObjectSerializable, ResponseCollectionSerializable  {
+                         ResponseObjectSerializable, ResponseCollectionSerializable {
     public var id:          String
     public var subscribers: Int
     public var title:       String
