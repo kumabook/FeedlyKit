@@ -46,18 +46,18 @@ open class Profile: NSObject, NSCoding, ResponseObjectSerializable {
         locale     = json["locale"].string
     }
     required public init?(coder aDecoder: NSCoder) {
-        id         = aDecoder.decodeObject(forKey: "id")         as! String
-        email      = aDecoder.decodeObject(forKey: "email")      as! String?
-        reader     = aDecoder.decodeObject(forKey: "reader")     as! String?
-        gender     = aDecoder.decodeObject(forKey: "gender")     as! String?
-        wave       = aDecoder.decodeObject(forKey: "wave")       as! String?
-        google     = aDecoder.decodeObject(forKey: "google")     as! String?
-        facebook   = aDecoder.decodeObject(forKey: "facebook")   as! String?
-        familyName = aDecoder.decodeObject(forKey: "familyName") as! String?
-        picture    = aDecoder.decodeObject(forKey: "picture")    as! String?
-        twitter    = aDecoder.decodeObject(forKey: "twitter")    as! String?
-        givenName  = aDecoder.decodeObject(forKey: "givenName")  as! String?
-        locale     = aDecoder.decodeObject(forKey: "locale")     as! String?
+        id         = aDecoder.decodeObject(forKey: "id")         as? String ?? ""
+        email      = aDecoder.decodeObject(forKey: "email")      as? String
+        reader     = aDecoder.decodeObject(forKey: "reader")     as? String
+        gender     = aDecoder.decodeObject(forKey: "gender")     as? String
+        wave       = aDecoder.decodeObject(forKey: "wave")       as? String
+        google     = aDecoder.decodeObject(forKey: "google")     as? String
+        facebook   = aDecoder.decodeObject(forKey: "facebook")   as? String
+        familyName = aDecoder.decodeObject(forKey: "familyName") as? String
+        picture    = aDecoder.decodeObject(forKey: "picture")    as? String
+        twitter    = aDecoder.decodeObject(forKey: "twitter")    as? String
+        givenName  = aDecoder.decodeObject(forKey: "givenName")  as? String
+        locale     = aDecoder.decodeObject(forKey: "locale")     as? String
     }
 
     open func encode(with aCoder: NSCoder) {
