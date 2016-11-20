@@ -22,4 +22,7 @@ clean:
 	$(XCODEBUILD) -scheme FeedlyKit-tvOS clean
 	$(XCODEBUILD) -scheme FeedlyKit-watchOS clean
 
+lint:
+	swiftlint
+
 .PHONY: test example clean default
