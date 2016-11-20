@@ -22,6 +22,12 @@ clean:
 	$(XCODEBUILD) -scheme FeedlyKit-tvOS clean
 	$(XCODEBUILD) -scheme FeedlyKit-watchOS clean
 
+doc:
+	jazzy \
+		--author Hiroki Kumamoto \
+		--author_url https://kumabook.github.io \
+		--github_url https://github.com/kumabook/FeedlyKit
+
 lint:
 	swiftlint
 
