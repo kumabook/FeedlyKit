@@ -3,5 +3,6 @@ language: objective-c
 before_script:
     - brew update
     - brew install carthage || true
+    - brew install swiftlint || true
     - carthage bootstrap --platform all
 script: make

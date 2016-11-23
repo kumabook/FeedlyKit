@@ -31,4 +31,4 @@ doc:
 lint:
 	swiftlint
 
-.PHONY: test example clean default
+.PHONY: lint test example clean default
