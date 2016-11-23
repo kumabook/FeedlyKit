@@ -297,13 +297,12 @@ open class CloudAPIClient {
         public func asURLRequest() throws -> URLRequest {
             let U =  URLEncoding.default
             let J = JSONEncoding.default
-            var req = try URLRequest(url:  URL(string: url)!, method: HTTPMethod(rawValue: method.rawValue)!)
 
+            var req = try URLRequest(url:  URL(string: url)!, method: HTTPMethod(rawValue: method.rawValue)!)
             switch self {
                 // Categories API
-            case .fetchCategories:                              return req
+            case .fetchCategories, .deleteCategory:             return req
             case .updateCategory(_, _, let label):              return try J.encode(req, with: ["label": label])
-            case .deleteCategory:                               return req
                 // Entries API
             case .fetchEntry:                                   return req
             case .fetchEntries(_, let entryIds):                return req.addParam(entryIds)
@@ -325,8 +324,8 @@ open class CloudAPIClient {
                 }
                 return req
                 // Preferences API
-            case .fetchPreferences:                           return req
-            case .updatePreferences(_, let params):           return try J.encode(req, with: params)
+            case .fetchPreferences:                          return req
+            case .updatePreferences(_, let params):          return try J.encode(req, with: params)
                 // Profile API
             case .fetchProfile:                              return req
             case .updateProfile(_, let params):              return try U.encode(req, with: params)
@@ -337,17 +336,15 @@ open class CloudAPIClient {
             case .fetchEntryIds(_, _, let params):           return try U.encode(req, with: params)
             case .fetchContents(_, _, let params):           return try U.encode(req, with: params)
                 // Subscriptions API
-            case .fetchSubscriptions:                        return req
+            case .fetchSubscriptions, .unsubscribeTo:        return req
             case .subscribeTo(_, let subscription):          return try J.encode(req, with: subscription)
             case .updateSubscription(_, let subscription):   return try J.encode(req, with: subscription)
-            case .unsubscribeTo:                             return req
                 // Tags API
-            case .fetchTags:                                 return req
+            case .fetchTags, .deleteTags:                    return req
             case .tagEntry(_, _, let entryId):               return try J.encode(req, with: ["entryId": entryId])
             case .tagEntries(_, _, let entryIds):            return try J.encode(req, with: ["entryIds": entryIds])
             case .changeTagLabel(_, _, let label):           return try J.encode(req, with: ["label": label])
             case .untagEntries(_, _, let entryIds):          return try J.encode(req, with: ["entryIds": entryIds])
-            case .deleteTags:                                return req
                 // Custom
             case .api(let api):                              return try api.asURLRequest()
             }
