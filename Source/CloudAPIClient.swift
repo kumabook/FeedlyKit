@@ -293,6 +293,7 @@ open class CloudAPIClient {
             }
         }
         // MARK: URLRequestConvertible
+        // swiftlint:disable cyclomatic_complexity
         public func asURLRequest() throws -> URLRequest {
             let U =  URLEncoding.default
             let J = JSONEncoding.default
