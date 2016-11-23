@@ -109,9 +109,9 @@ public final class Feed: Stream,
     }
 
     public override var thumbnailURL: URL? {
-             if let url = visualUrl { return URL(string: url) }
-        else if let url = coverUrl  { return URL(string: url) }
-        else if let url = iconUrl   { return URL(string: url) }
-        else                        { return nil }
+        if let url = visualUrl { return URL(string: url) } else
+        if let url = coverUrl  { return URL(string: url) } else
+        if let url = iconUrl   { return URL(string: url) } else
+                               { return nil }
     }
 }

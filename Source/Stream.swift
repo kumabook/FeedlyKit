@@ -23,6 +23,6 @@ open class Stream: Equatable, Hashable {
     public init() {}
 }
 
-public func ==(lhs: Stream, rhs: Stream) -> Bool {
+public func == (lhs: Stream, rhs: Stream) -> Bool {
     return lhs.streamId == rhs.streamId
 }

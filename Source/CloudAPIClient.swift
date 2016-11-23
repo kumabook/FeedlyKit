@@ -296,9 +296,7 @@ open class CloudAPIClient {
         public func asURLRequest() throws -> URLRequest {
             let U =  URLEncoding.default
             let J = JSONEncoding.default
-            var req = URLRequest(url:  URL(string: url)!)
-
-            req.httpMethod = method.rawValue
+            var req = try URLRequest(url:  URL(string: url)!, method: HTTPMethod(rawValue: method.rawValue)!)
 
             switch self {
                 // Categories API

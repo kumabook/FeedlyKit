@@ -122,7 +122,8 @@ public final class Entry: Equatable, Hashable,
             let regex = try? NSRegularExpression(pattern: "<img.*src\\s*=\\s*[\"\'](.*?)[\"\'].*>",
                 options: NSRegularExpression.Options())
             if let r = regex {
-                if let result  = r.firstMatch(in: html, options: NSRegularExpression.MatchingOptions(), range: NSMakeRange(0, html.characters.count)) {
+                let range = NSRange(location: 0, length: html.characters.count)
+                if let result  = r.firstMatch(in: html, options: NSRegularExpression.MatchingOptions(), range: range) {
                     for i in 0...result.numberOfRanges - 1 {
                         let range = result.rangeAt(i)
                         let str = html as NSString
@@ -137,6 +138,6 @@ public final class Entry: Equatable, Hashable,
     }
 }
 
-public func ==(lhs: Entry, rhs: Entry) -> Bool {
+public func == (lhs: Entry, rhs: Entry) -> Bool {
     return lhs.id == rhs.id
 }
