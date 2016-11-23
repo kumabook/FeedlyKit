@@ -11,7 +11,7 @@
 - Xcode 8.0+
 - Swift 3.0+
 
-If you use swift 2.x, use 0.*
+If you use swift 2.x, use version 0.*
 
 ## Installation
 ### Carthage
@@ -26,7 +26,7 @@ And run `carthage update` and setup your xcode project.
 ### Cocoapods
 You can also use [Cocoapods][] to install FeedlyKit by adding it to your Podfile:
 ```Podfile
-pod 'FeedlyKit', '~> 0.6'
+pod 'FeedlyKit', '~> 1.0'
 ```
 
 ## Support API
