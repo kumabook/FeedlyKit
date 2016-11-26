@@ -45,6 +45,15 @@ open class PaginatedEntryCollection: ResponseObjectSerializable {
         alternate    = json["alternate"].isEmpty ? nil : Link(json: json["alternate"])
         items        = json["items"].arrayValue.map({Entry(json: $0)})
     }
+    public init(id: String, updated: Int64?, continuation: String?, title: String?, direction: String?, alternate: Link?, items: [Entry]) {
+        self.id           = id
+        self.updated      = updated
+        self.continuation = continuation
+        self.title        = title
+        self.direction    = direction
+        self.alternate    = alternate
+        self.items        = items
+    }
 }
 
 open class PaginatedIdCollection: ResponseObjectSerializable {
