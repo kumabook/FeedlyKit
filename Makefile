@@ -11,6 +11,9 @@ build:
 test:
 	$(XCODEBUILD) -scheme FeedlyKit-macOS test
 
+coverage:
+	slather coverage --html --scheme FeedlyKit-macOS ./FeedlyKit.xcodeproj
+
 example:
 	pod setup
 	pod install --project-directory=Example
