@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/kumabook/FeedlyKit.svg?branch=master)](https://travis-ci.org/kumabook/FeedlyKit)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+[![Coverage Status](https://coveralls.io/repos/github/kumabook/FeedlyKit/badge.svg?branch=master)](https://coveralls.io/github/kumabook/FeedlyKit?branch=master)
 
 [Feedly Cloud API][] client library with Swift
 
