@@ -1,0 +1,5 @@
+coverage_service: coveralls
+xcodeproj: ./FeedlyKit.xcodeproj
+scheme: FeedlyKit-macOS
+ignore:
+  - Spec/*
