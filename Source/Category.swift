@@ -31,15 +31,15 @@ public final class Category: Stream,
         self.init(json: json)
     }
 
-    public class func Must(_ userId: String) -> Category {
+    public class func must(_ userId: String) -> Category {
         return Category(id: "user/\(userId)/category/global.must", label: "Must")
     }
 
-    public class func All(_ userId: String) -> Category {
+    public class func all(_ userId: String) -> Category {
         return Category(id: "user/\(userId)/category/global.all", label: "All")
     }
 
-    public class func Uncategorized(_ userId: String) -> Category {
+    public class func uncategorized(_ userId: String) -> Category {
         return Category(id: "user/\(userId)/category/global.uncategorized", label: "Uncategorized")
     }
 

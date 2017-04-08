@@ -26,11 +26,11 @@ public final class Tag: Stream,
         return json.arrayValue.map({ Tag(json: $0) })
     }
 
-    public class func Read(_ userId: String) -> Tag {
+    public class func read(_ userId: String) -> Tag {
         return Tag(id: "user/\(userId)/tag/global.read", label: "Read")
     }
 
-    public class func Saved(_ userId: String) -> Tag {
+    public class func saved(_ userId: String) -> Tag {
         return Tag(id: "user/\(userId)/tag/global.saved", label: "Saved")
     }
 

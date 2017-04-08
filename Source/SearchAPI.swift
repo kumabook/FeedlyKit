@@ -28,20 +28,20 @@ open class SearchQueryOfFeed: ParameterEncodable {
 
 open class SearchQueryOfContent: ParameterEncodable {
     public enum Field: String {
-        case all      = "all"
-        case title    = "title"
-        case author   = "author"
-        case keywords = "keywords"
+        case all
+        case title
+        case author
+        case keywords
     }
     public enum Embedded: String {
-        case audio    = "audio"
-        case video    = "video"
-        case doc      = "doc"
-        case any      = "any"
+        case audio
+        case video
+        case doc
+        case any
     }
     public enum Engagement: String {
-        case medium = "medium"
-        case high   = "high"
+        case medium
+        case high
     }
     open var query:        String
     open var count:        Int?

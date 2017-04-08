@@ -111,12 +111,10 @@ open class CloudAPIClient {
         case production
         case custom(String)
         public var baseUrl: String {
-            get {
-                switch self {
-                case .sandbox:             return Target.sandboxBaseUrl
-                case .production:          return Target.productionBaseUrl
-                case .custom(let baseUrl): return baseUrl
-                }
+            switch self {
+            case .sandbox:             return Target.sandboxBaseUrl
+            case .production:          return Target.productionBaseUrl
+            case .custom(let baseUrl): return baseUrl
             }
         }
     }

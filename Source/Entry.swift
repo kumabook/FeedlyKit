@@ -82,7 +82,7 @@ public final class Entry: Equatable, Hashable,
     }
 
     public var hashValue: Int {
-        get { return id.hashValue }
+        return id.hashValue
     }
 
     public func toParameters() -> [String : Any] {
