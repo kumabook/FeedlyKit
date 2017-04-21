@@ -44,6 +44,8 @@ public final class Entry: Equatable, Hashable,
         self.init(json: json)
     }
 
+    public static var instanceDidInitialize: ((Entry, JSON) -> ())?
+
     public init(id: String) {
         self.id = id
     }
@@ -79,6 +81,7 @@ public final class Entry: Equatable, Hashable,
         } else {
             self.enclosure   = nil
         }
+        Entry.instanceDidInitialize?(self, json)
     }
 
     public var hashValue: Int {
