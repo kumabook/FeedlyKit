@@ -45,7 +45,7 @@ public final class Entry: Equatable, Hashable,
         self.init(json: json)
     }
 
-    public static var instanceDidInitialize: ((Entry, JSON) -> ())?
+    public static var instanceDidInitialize: ((Entry, JSON) -> Void)?
 
     public init(id: String) {
         self.id = id
