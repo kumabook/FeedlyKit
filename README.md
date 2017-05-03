@@ -4,6 +4,7 @@
 [![SwiftPM compatible](https://img.shields.io/badge/SwiftPM-compatible-orange.svg)](#swift-package-manager)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Coverage Status](https://coveralls.io/repos/github/kumabook/FeedlyKit/badge.svg?branch=master)](https://coveralls.io/github/kumabook/FeedlyKit?branch=master)
+[![GitHub release](https://img.shields.io/github/release/kumabook/FeedlyKit.svg)](https://github.com/kumabook/FeedlyKit/releases)
 
 [Feedly Cloud API][] client library with Swift
 
