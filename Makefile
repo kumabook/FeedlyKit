@@ -1,12 +1,15 @@
 XCODEBUILD:=xcodebuild
 
-default: build test example
+default: build spm_build test example
 
 build:
 	$(XCODEBUILD) -scheme FeedlyKit-iOS
 	$(XCODEBUILD) -scheme FeedlyKit-macOS
 	$(XCODEBUILD) -scheme FeedlyKit-tvOS
 	$(XCODEBUILD) -scheme FeedlyKit-watchOS
+
+spm_build:
+	swift build
 
 test:
 	$(XCODEBUILD) -scheme FeedlyKit-macOS test
