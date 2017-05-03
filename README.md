@@ -1,6 +1,7 @@
 # FeedlyKit
 
 [![Build Status](https://travis-ci.org/kumabook/FeedlyKit.svg?branch=master)](https://travis-ci.org/kumabook/FeedlyKit)
+[![SwiftPM compatible](https://img.shields.io/badge/SwiftPM-compatible-orange.svg)](#swift-package-manager)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Coverage Status](https://coveralls.io/repos/github/kumabook/FeedlyKit/badge.svg?branch=master)](https://coveralls.io/github/kumabook/FeedlyKit?branch=master)
 
