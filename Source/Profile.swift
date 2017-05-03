@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 Hiroki Kumamoto. All rights reserved.
 //
 
+import Foundation
 import SwiftyJSON
 
 open class Profile: NSObject, NSCoding, ResponseObjectSerializable {

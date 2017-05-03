@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Hiroki Kumamoto. All rights reserved.
 //
 
+import Foundation
 import SwiftyJSON
 
 public final class Entry: Equatable, Hashable,

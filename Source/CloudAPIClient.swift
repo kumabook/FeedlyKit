@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Hiroki Kumamoto. All rights reserved.
 //
 
+import Foundation
 import SwiftyJSON
 import Alamofire
 
