@@ -21,7 +21,7 @@ open class Origin: ParameterEncodable {
     }
 
     public init?(json: JSON) {
-        if json == nil { return nil }
+        if json == JSON.null { return nil }
         self.streamId = json["streamId"].stringValue
         self.title    = json["title"].stringValue
         self.htmlUrl  = json["htmlUrl"].stringValue

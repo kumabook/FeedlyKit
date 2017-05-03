@@ -19,7 +19,7 @@ open class Content: ParameterEncodable {
     }
 
     public init?(json: JSON) {
-        if json == nil { return nil }
+        if json == JSON.null { return nil }
         self.direction = json["direction"].stringValue
         self.content   = json["content"].stringValue
     }
