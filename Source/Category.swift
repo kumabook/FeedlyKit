@@ -12,8 +12,9 @@ import SwiftyJSON
 public final class Category: Stream,
                              ResponseObjectSerializable, ResponseCollectionSerializable,
                              ParameterEncodable {
-    public let id:    String
-    public let label: String
+    public let id:          String
+    public let label:       String
+    public let description: String?
 
     public override var streamId: String {
         return id
@@ -45,18 +46,21 @@ public final class Category: Stream,
     }
 
     public init(json: JSON) {
-        id    = json["id"].stringValue
-        label = json["label"].stringValue
+        id          = json["id"].stringValue
+        label       = json["label"].stringValue
+        description = json["description"].string
     }
 
-    public init(id: String, label: String) {
-        self.id    = id
-        self.label = label
+    public init(id: String, label: String, description: String? = nil) {
+        self.id          = id
+        self.label       = label
+        self.description = description
     }
 
-    public init(label: String, profile: Profile) {
-        self.id    = "user/\(profile.id)/category/\(label)"
-        self.label = label
+    public init(label: String, profile: Profile, description: String? = nil) {
+        self.id          = "user/\(profile.id)/category/\(label)"
+        self.label       = label
+        self.description = description
     }
 
     public func toParameters() -> [String : Any] {
