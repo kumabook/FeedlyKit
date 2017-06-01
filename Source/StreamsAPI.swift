@@ -16,6 +16,7 @@ open class PaginationParams: ParameterEncodable {
     open var unreadOnly:   Bool?
     open var newerThan:    Int64?
     open var continuation: String?
+
     public init() {}
     open func toParameters() -> [String : Any] {
         var params: [String:AnyObject] = [:]
@@ -74,7 +75,6 @@ extension CloudAPIClient {
           or
         GET /v3/streams/ids?streamId=:streamId
         (Authorization is optional; it is required for category and tag streams)
-        TODO
     */
     public func fetchEntryIds(_ streamId: String, paginationParams: PaginationParams, completionHandler: @escaping (DataResponse<PaginatedIdCollection>) -> Void) -> Request {
         return manager.request(Router.fetchEntryIds(target, streamId, paginationParams))
@@ -88,7 +88,6 @@ extension CloudAPIClient {
            or
         GET /v3/streams/contents?streamId=:streamId
         (Authorization is optional; it is required for category and tag streams)
-        TODO
     */
     public func fetchContents(_ streamId: String, paginationParams: PaginationParams, completionHandler: @escaping (DataResponse<PaginatedEntryCollection>) -> Void) -> Request {
         return manager.request(Router.fetchContents(target, streamId, paginationParams))
