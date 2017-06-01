@@ -173,6 +173,8 @@ open class CloudAPIClient {
         // Streams API
         case fetchEntryIds(Target, String, PaginationParams)
         case fetchContents(Target, String, PaginationParams)
+        // Mixes API
+        case fetchMix(Target, String, MixParams)
         // Subscriptions API
         case fetchSubscriptions(Target)
         case subscribeTo(Target, Subscription)
@@ -215,9 +217,11 @@ open class CloudAPIClient {
                 //Search API
             case .searchFeeds:               return .get
             case .searchContentOfStream:     return .get
-                //Streams API
+                // Streams API
             case .fetchEntryIds:             return .get
             case .fetchContents:             return .get
+                // Mixes API
+            case .fetchMix:                  return .get
                 // Subscriptions API
             case .fetchSubscriptions:        return .get
             case .subscribeTo:               return .post
@@ -267,6 +271,8 @@ open class CloudAPIClient {
                 // Streams API
             case .fetchEntryIds(let target, let streamId,  _):   return target.baseUrl + "/v3/streams/" + urlEncode(streamId) + "/ids"
             case .fetchContents(let target, let streamId, _):    return target.baseUrl + "/v3/streams/" + urlEncode(streamId) + "/contents"
+                // Mixes API
+            case .fetchMix(let target, let streamId, _):         return target.baseUrl + "/v3/mixes/" + urlEncode(streamId) + "/contents"
                 // Subscriptions API
             case .fetchSubscriptions(let target):                return target.baseUrl + "/v3/subscriptions"
             case .subscribeTo(let target, _):                    return target.baseUrl + "/v3/subscriptions"
@@ -331,9 +337,11 @@ open class CloudAPIClient {
                 // Search API
             case .searchFeeds(_, let query):                 return try U.encode(req, with: query)
             case .searchContentOfStream(_, _, _, let query): return try U.encode(req, with: query)
-                //Streams API
+                // Streams API
             case .fetchEntryIds(_, _, let params):           return try U.encode(req, with: params)
             case .fetchContents(_, _, let params):           return try U.encode(req, with: params)
+                // Mixes API
+            case .fetchMix(_, _, let params):                return try U.encode(req, with: params)
                 // Subscriptions API
             case .fetchSubscriptions, .unsubscribeTo:        return req
             case .subscribeTo(_, let subscription):          return try J.encode(req, with: subscription)
