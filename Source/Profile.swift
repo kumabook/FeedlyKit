@@ -10,18 +10,26 @@ import Foundation
 import SwiftyJSON
 
 open class Profile: NSObject, NSCoding, ResponseObjectSerializable {
-    open var id:         String
-    open var email:      String?
-    open var reader:     String?
-    open var gender:     String?
-    open var wave:       String?
-    open var google:     String?
-    open var facebook:   String?
-    open var familyName: String?
-    open var picture:    String?
-    open var twitter:    String?
-    open var givenName:  String?
-    open var locale:     String?
+    open var id:             String
+    open var email:          String?
+    open var givenName:      String?
+    open var familyName:     String?
+    open var fullName:       String?
+    open var picture:        String?
+    open var gender:         String?
+    open var locale:         String?
+    open var reader:         String?
+    open var wave:           String?
+    open var google:         String?
+    open var facebook:       String?
+    open var facebookUserId: String?
+    open var twitter:        String?
+    open var twitterUserId:  String?
+    open var wordPressId:    String?
+    open var windowsLiveId:  String?
+    open var client:         String = ""
+    open var source:         String = ""
+    open var created:        Int64?
 
     required public convenience init?(response: HTTPURLResponse, representation: Any) {
         let json = JSON(representation)
@@ -33,47 +41,71 @@ open class Profile: NSObject, NSCoding, ResponseObjectSerializable {
     }
 
     public init(json: JSON) {
-        id         = json["id"].stringValue
-        email      = json["email"].string
-        reader     = json["reader"].string
-        gender     = json["gender"].string
-        wave       = json["wave"].string
-        google     = json["google"].string
-        facebook   = json["facebook"].string
-        familyName = json["familyName"].string
-        picture    = json["picture"].string
-        twitter    = json["twitter"].string
-        givenName  = json["givenName"].string
-        locale     = json["locale"].string
+        id             = json["id"].stringValue
+        email          = json["email"].string
+        givenName      = json["givenName"].string
+        familyName     = json["familyName"].string
+        fullName       = json["fullName"].string
+        picture        = json["picture"].string
+        gender         = json["gender"].string
+        locale         = json["locale"].string
+        reader         = json["reader"].string
+        wave           = json["wave"].string
+        google         = json["google"].string
+        facebook       = json["facebook"].string
+        facebookUserId = json["facebookUserId"].string
+        twitter        = json["twitter"].string
+        twitterUserId  = json["twitterUserId"].string
+        wordPressId    = json["wordPressId"].string
+        windowsLiveId  = json["windowsLiveId"].string
+        client         = json["client"].stringValue
+        source         = json["source"].stringValue
+        created        = json["created"].int64
     }
     required public init?(coder aDecoder: NSCoder) {
-        id         = aDecoder.decodeObject(forKey: "id")         as? String ?? ""
-        email      = aDecoder.decodeObject(forKey: "email")      as? String
-        reader     = aDecoder.decodeObject(forKey: "reader")     as? String
-        gender     = aDecoder.decodeObject(forKey: "gender")     as? String
-        wave       = aDecoder.decodeObject(forKey: "wave")       as? String
-        google     = aDecoder.decodeObject(forKey: "google")     as? String
-        facebook   = aDecoder.decodeObject(forKey: "facebook")   as? String
-        familyName = aDecoder.decodeObject(forKey: "familyName") as? String
-        picture    = aDecoder.decodeObject(forKey: "picture")    as? String
-        twitter    = aDecoder.decodeObject(forKey: "twitter")    as? String
-        givenName  = aDecoder.decodeObject(forKey: "givenName")  as? String
-        locale     = aDecoder.decodeObject(forKey: "locale")     as? String
+        id             = aDecoder.decodeObject(forKey: "id")             as? String ?? ""
+        email          = aDecoder.decodeObject(forKey: "email")          as? String
+        givenName      = aDecoder.decodeObject(forKey: "givenName")      as? String
+        familyName     = aDecoder.decodeObject(forKey: "familyName")     as? String
+        fullName       = aDecoder.decodeObject(forKey: "fullName")       as? String
+        picture        = aDecoder.decodeObject(forKey: "picture")        as? String
+        gender         = aDecoder.decodeObject(forKey: "gender")         as? String
+        locale         = aDecoder.decodeObject(forKey: "locale")         as? String
+        reader         = aDecoder.decodeObject(forKey: "reader")         as? String
+        wave           = aDecoder.decodeObject(forKey: "wave")           as? String
+        google         = aDecoder.decodeObject(forKey: "google")         as? String
+        facebook       = aDecoder.decodeObject(forKey: "facebook")       as? String
+        facebookUserId = aDecoder.decodeObject(forKey: "facebookUserId") as? String
+        twitter        = aDecoder.decodeObject(forKey: "twitter")        as? String
+        twitterUserId  = aDecoder.decodeObject(forKey: "twitterUserId")  as? String
+        wordPressId    = aDecoder.decodeObject(forKey: "wordPressId")    as? String
+        windowsLiveId  = aDecoder.decodeObject(forKey: "windowsLiveId")  as? String
+        client         = aDecoder.decodeObject(forKey: "client")         as? String ?? ""
+        source         = aDecoder.decodeObject(forKey: "source")         as? String ?? ""
+        created        = aDecoder.decodeObject(forKey: "created")        as? Int64
     }
 
     open func encode(with aCoder: NSCoder) {
-        aCoder.encode(id,         forKey: "id")
-        aCoder.encode(email,      forKey: "email")
-        aCoder.encode(reader,     forKey: "reader")
-        aCoder.encode(gender,     forKey: "gender")
-        aCoder.encode(wave,       forKey: "wave")
-        aCoder.encode(google,     forKey: "google")
-        aCoder.encode(facebook,   forKey: "facebook")
-        aCoder.encode(familyName, forKey: "familyName")
-        aCoder.encode(picture,    forKey: "picture")
-        aCoder.encode(twitter,    forKey: "twitter")
-        aCoder.encode(givenName,  forKey: "givenName")
-        aCoder.encode(locale,     forKey: "locale")
+        aCoder.encode(id,             forKey: "id")
+        aCoder.encode(email,          forKey: "email")
+        aCoder.encode(givenName,      forKey: "givenName")
+        aCoder.encode(familyName,     forKey: "familyName")
+        aCoder.encode(fullName,       forKey: "fullName")
+        aCoder.encode(picture,        forKey: "picture")
+        aCoder.encode(gender,         forKey: "gender")
+        aCoder.encode(locale,         forKey: "locale")
+        aCoder.encode(reader,         forKey: "reader")
+        aCoder.encode(wave,           forKey: "wave")
+        aCoder.encode(google,         forKey: "google")
+        aCoder.encode(facebook,       forKey: "facebook")
+        aCoder.encode(facebookUserId, forKey: "facebookUserid")
+        aCoder.encode(twitter,        forKey: "twitter")
+        aCoder.encode(twitterUserId,  forKey: "twitterUserId")
+        aCoder.encode(wordPressId,    forKey: "wordPressId")
+        aCoder.encode(windowsLiveId,  forKey: "windowsLiveId")
+        aCoder.encode(client,         forKey: "client")
+        aCoder.encode(source,         forKey: "source")
+        aCoder.encode(created,        forKey: "created")
     }
 
     enum GlobalResource {
