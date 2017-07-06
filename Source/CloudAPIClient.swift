@@ -213,7 +213,7 @@ open class CloudAPIClient {
             case .updatePreferences:          return .post
                 // Profile API
             case .fetchProfile:              return .get
-            case .updateProfile:             return .get
+            case .updateProfile:             return .post
                 //Search API
             case .searchFeeds:               return .get
             case .searchContentOfStream:     return .get
