@@ -37,8 +37,11 @@ open class PaginatedEntryCollection: ResponseObjectSerializable {
     open fileprivate(set) var direction:    String?
     open fileprivate(set) var alternate:    Link?
     open fileprivate(set) var items:        [Entry]
-    required public init?(response: HTTPURLResponse, representation: Any) {
-        let json     = JSON(representation)
+    required public convenience init?(response: HTTPURLResponse, representation: Any) {
+        self.init(json: JSON(representation))
+    }
+
+    public init(json: JSON) {
         id           = json["id"].stringValue
         updated      = json["updated"].int64
         continuation = json["continuation"].string
@@ -47,6 +50,7 @@ open class PaginatedEntryCollection: ResponseObjectSerializable {
         alternate    = json["alternate"].isEmpty ? nil : Link(json: json["alternate"])
         items        = json["items"].arrayValue.map({Entry(json: $0)})
     }
+
     public init(id: String, updated: Int64?, continuation: String?, title: String?, direction: String?, alternate: Link?, items: [Entry]) {
         self.id           = id
         self.updated      = updated
