@@ -73,7 +73,7 @@ extension DataRequest {
                 completionHandler(DataResponse<Void>(request: response.request,
                                                          response: response.response,
                                                              data: response.data,
-                                                           result: Result.success()))
+                                                           result: Result.success(())))
             } else {
                 completionHandler(DataResponse<Void>(request: response.request,
                                                          response: response.response,

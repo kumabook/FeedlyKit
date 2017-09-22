@@ -36,12 +36,12 @@ open class SpecHelper {
 }
 
 extension Expectation {
-    public func toFinally<U>(_ matcher: U) where U : Matcher, U.ValueType == T {
-        self.toEventually(matcher, timeout: 10)
+    public func toFinally(_ predicate: Nimble.Predicate<T>) {
+        self.toEventually(predicate, timeout: 10)
     }
 
-    public func toFinallyNot<U>(_ matcher: U) where U : Matcher, U.ValueType == T {
-        self.toEventuallyNot(matcher, timeout: 10)
+    public func toFinallyNot(_ predicate: Nimble.Predicate<T>) {
+        self.toEventuallyNot(predicate, timeout: 10)
     }
 }
 

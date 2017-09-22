@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   s.source_files          = "Source/*.swift"
   s.exclude_files         = "Spec/*"
 
-  s.dependency "SwiftyJSON", "~> 3.0"
-  s.dependency "Alamofire",  "~> 4.0"
+  s.dependency "SwiftyJSON"
+  s.dependency "Alamofire",  "~> 4.5"
 
 end

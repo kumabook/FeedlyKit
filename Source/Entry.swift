@@ -129,7 +129,7 @@ public final class Entry: Equatable, Hashable,
                 let range = NSRange(location: 0, length: html.characters.count)
                 if let result  = r.firstMatch(in: html, options: NSRegularExpression.MatchingOptions(), range: range) {
                     for i in 0...result.numberOfRanges - 1 {
-                        let range = result.rangeAt(i)
+                        let range = result.range(at: i)
                         let str = html as NSString
                         if let url = str.substring(with: range).toURL() {
                             return url
