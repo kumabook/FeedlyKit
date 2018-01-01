@@ -122,22 +122,18 @@ open class CloudAPIClient {
 
     open var manager: Alamofire.SessionManager!
     open var target: Target
+    public var adapter: AccessTokenAdapter? {
+        return manager.adapter as? AccessTokenAdapter
+    }
 
     public init(target: Target) {
-        self.target = target
-        manager     = Alamofire.SessionManager(configuration: URLSessionConfiguration.ephemeral)
+        self.target     = target
+        manager         = SessionManager(configuration: URLSessionConfiguration.ephemeral)
+        manager.adapter = AccessTokenAdapter(accessToken: nil)
     }
 
     open func setAccessToken(_ accessToken: AccessToken?) {
-        let configuration = manager.session.configuration
-        var headers = configuration.httpAdditionalHeaders ?? [:]
-        if let token = accessToken {
-            headers["Authorization"] = "Bearer \(token)"
-        } else {
-            headers.removeValue(forKey: "Authorization")
-        }
-        configuration.httpAdditionalHeaders = headers
-        manager = Alamofire.SessionManager(configuration: configuration)
+        adapter?.accessToken = accessToken
     }
 
     public enum Router: URLRequestConvertible {
