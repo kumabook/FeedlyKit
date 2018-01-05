@@ -3,7 +3,7 @@ language: objective-c
 before_install: rvm use 2.3 --install --binary --fuzzy
 install: bundle install --without=documentation
 before_script:
-    - brew bundle
+    - brew update && brew bundle
     - carthage bootstrap --platform all
 script: make
 after_success: slather
