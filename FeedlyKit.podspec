@@ -3,7 +3,7 @@ Pod::Spec.new do |s|
   url                     = "https://github.com/kumabook/FeedlyKit"
   source_url              = "#{url}.git"
   s.name                  = "FeedlyKit"
-  s.version               = "1.0.0"
+  s.version               = "1.3.2"
   s.summary               = "Feedly Cloud API client library in Swift"
   s.homepage              = url
   s.license               = { :type => "MIT", :file => "LICENSE" }
