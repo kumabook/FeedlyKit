@@ -126,7 +126,7 @@ public final class Entry: Equatable, Hashable,
             let regex = try? NSRegularExpression(pattern: "<img.*src\\s*=\\s*[\"\'](.*?)[\"\'].*>",
                 options: NSRegularExpression.Options())
             if let r = regex {
-                let range = NSRange(location: 0, length: html.characters.count)
+                let range = NSRange(location: 0, length: html.count)
                 if let result  = r.firstMatch(in: html, options: NSRegularExpression.MatchingOptions(), range: range) {
                     for i in 0...result.numberOfRanges - 1 {
                         let range = result.range(at: i)
