@@ -91,15 +91,15 @@ public final class Entry: Equatable, Hashable,
 
     public func toParameters() -> [String : Any] {
         var params: [String: Any] = ["published": NSNumber(value: published)]
-        if let _title     = title     { params["title"]     = _title as AnyObject? }
-        if let _content   = content   { params["content"]   = _content.toParameters() as AnyObject? }
-        if let _summary   = summary   { params["summary"]   = _summary.toParameters() as AnyObject? }
-        if let _author    = author    { params["author"]    = _author as AnyObject? }
-        if let _enclosure = enclosure { params["enclosure"] = _enclosure.map({ $0.toParameters() }) }
-        if let _alternate = alternate { params["alternate"] = _alternate.map({ $0.toParameters() }) }
-        if let _keywords  = keywords  { params["keywords"]  = _keywords as AnyObject? }
-        if let _tags      = tags      { params["tags"]      = _tags.map { $0.toParameters() }}
-        if let _origin    = origin    { params["origin"]    = _origin.toParameters() as AnyObject? }
+        if let title     = title     { params["title"]     = title as AnyObject? }
+        if let content   = content   { params["content"]   = content.toParameters() as AnyObject? }
+        if let summary   = summary   { params["summary"]   = summary.toParameters() as AnyObject? }
+        if let author    = author    { params["author"]    = author as AnyObject? }
+        if let enclosure = enclosure { params["enclosure"] = enclosure.map({ $0.toParameters() }) }
+        if let alternate = alternate { params["alternate"] = alternate.map({ $0.toParameters() }) }
+        if let keywords  = keywords  { params["keywords"]  = keywords as AnyObject? }
+        if let tags      = tags      { params["tags"]      = tags.map { $0.toParameters() }}
+        if let origin    = origin    { params["origin"]    = origin.toParameters() as AnyObject? }
 
         return params
     }
