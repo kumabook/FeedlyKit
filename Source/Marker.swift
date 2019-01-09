@@ -77,7 +77,7 @@ open class UnreadCounts: ResponseObjectSerializable {
         value = json["unreadcounts"].arrayValue.map({ UnreadCount(json:$0) })
     }
     open subscript(index: Int) -> UnreadCount {
-        get { return value[index] }
+        return value[index]
     }
 }
 
@@ -122,6 +122,6 @@ open class TaggedEntryIds: ResponseObjectSerializable {
         }
     }
     open subscript(key: String) -> [String]? {
-        get { return value[key] }
+        return value[key]
     }
 }

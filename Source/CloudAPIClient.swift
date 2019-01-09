@@ -296,58 +296,58 @@ open class CloudAPIClient {
         // MARK: URLRequestConvertible
         // swiftlint:disable cyclomatic_complexity
         public func asURLRequest() throws -> URLRequest {
-            let U =  URLEncoding.default
-            let J = JSONEncoding.default
+            let u =  URLEncoding.default
+            let j = JSONEncoding.default
 
             var req = try URLRequest(url:  URL(string: url)!, method: HTTPMethod(rawValue: method.rawValue)!)
             switch self {
                 // Categories API
             case .fetchCategories, .deleteCategory:             return req
-            case .updateCategory(_, _, let label):              return try J.encode(req, with: ["label": label])
+            case .updateCategory(_, _, let label):              return try j.encode(req, with: ["label": label])
                 // Entries API
             case .fetchEntry:                                   return req
             case .fetchEntries(_, let entryIds):                return req.addParam(entryIds)
-            case .createEntry(_, let entry):                    return try J.encode(req, with: entry)
+            case .createEntry(_, let entry):                    return try j.encode(req, with: entry)
                 // Feeds API
             case .fetchFeed:                                    return req
             case .fetchFeeds(_, let feedIds):                   return req.addParam(feedIds)
                 // Markers API
-            case .fetchUnreadCounts(_, let unreadCountsParams): return try U.encode(req, with: unreadCountsParams)
-            case .markAs(_, let params):                        return try J.encode(req, with: params)
+            case .fetchUnreadCounts(_, let unreadCountsParams): return try u.encode(req, with: unreadCountsParams)
+            case .markAs(_, let params):                        return try j.encode(req, with: params)
             case .fetchLatestReadOperations(_, let newerThan):
                 if let n = newerThan {
-                    return try J.encode(req, with: ["newerThan": NSNumber(value: n as Int64)])
+                    return try j.encode(req, with: ["newerThan": NSNumber(value: n as Int64)])
                 }
                 return req
             case .fetchLatestTaggedEntryIds(_, let newerThan):
                 if let n = newerThan {
-                    return try J.encode(req, with: ["newerThan": NSNumber(value: n as Int64)])
+                    return try j.encode(req, with: ["newerThan": NSNumber(value: n as Int64)])
                 }
                 return req
                 // Preferences API
             case .fetchPreferences:                          return req
-            case .updatePreferences(_, let params):          return try J.encode(req, with: params)
+            case .updatePreferences(_, let params):          return try j.encode(req, with: params)
                 // Profile API
             case .fetchProfile:                              return req
-            case .updateProfile(_, let params):              return try U.encode(req, with: params)
+            case .updateProfile(_, let params):              return try u.encode(req, with: params)
                 // Search API
-            case .searchFeeds(_, let query):                 return try U.encode(req, with: query)
-            case .searchContentOfStream(_, _, _, let query): return try U.encode(req, with: query)
+            case .searchFeeds(_, let query):                 return try u.encode(req, with: query)
+            case .searchContentOfStream(_, _, _, let query): return try u.encode(req, with: query)
                 // Streams API
-            case .fetchEntryIds(_, _, let params):           return try U.encode(req, with: params)
-            case .fetchContents(_, _, let params):           return try U.encode(req, with: params)
+            case .fetchEntryIds(_, _, let params):           return try u.encode(req, with: params)
+            case .fetchContents(_, _, let params):           return try u.encode(req, with: params)
                 // Mixes API
-            case .fetchMix(_, _, let params):                return try U.encode(req, with: params)
+            case .fetchMix(_, _, let params):                return try u.encode(req, with: params)
                 // Subscriptions API
             case .fetchSubscriptions, .unsubscribeTo:        return req
-            case .subscribeTo(_, let subscription):          return try J.encode(req, with: subscription)
-            case .updateSubscription(_, let subscription):   return try J.encode(req, with: subscription)
+            case .subscribeTo(_, let subscription):          return try j.encode(req, with: subscription)
+            case .updateSubscription(_, let subscription):   return try j.encode(req, with: subscription)
                 // Tags API
             case .fetchTags, .deleteTags:                    return req
-            case .tagEntry(_, _, let entryId):               return try J.encode(req, with: ["entryId": entryId])
-            case .tagEntries(_, _, let entryIds):            return try J.encode(req, with: ["entryIds": entryIds])
-            case .changeTagLabel(_, _, let label):           return try J.encode(req, with: ["label": label])
-            case .untagEntries(_, _, let entryIds):          return try J.encode(req, with: ["entryIds": entryIds])
+            case .tagEntry(_, _, let entryId):               return try j.encode(req, with: ["entryId": entryId])
+            case .tagEntries(_, _, let entryIds):            return try j.encode(req, with: ["entryIds": entryIds])
+            case .changeTagLabel(_, _, let label):           return try j.encode(req, with: ["label": label])
+            case .untagEntries(_, _, let entryIds):          return try j.encode(req, with: ["entryIds": entryIds])
                 // Custom
             case .api(let api):                              return try api.asURLRequest()
             }

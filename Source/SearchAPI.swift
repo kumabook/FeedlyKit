@@ -21,8 +21,8 @@ open class SearchQueryOfFeed: ParameterEncodable {
     }
     open func toParameters() -> [String : Any] {
         var params: [String: Any] = ["query":query]
-        if let _count  = count  { params["count"]  = _count }
-        if let _locale = locale { params["locale"] = _locale }
+        if let c = count  { params["count"]  = c }
+        if let l = locale { params["locale"] = l }
         return params
     }
 }
@@ -57,13 +57,13 @@ open class SearchQueryOfContent: ParameterEncodable {
     }
     open func toParameters() -> [String : Any] {
         var params: [String:AnyObject] = ["query":query as AnyObject]
-        if let _count        = count        { params["count"]      = _count as AnyObject? }
-        if let _newerThan    = newerThan    { params["newerThan"]  = _newerThan as AnyObject? }
-        if let _continuation = continuation { params["count"]      = _continuation as AnyObject? }
-        if let _fields       = fields       { params["fields"]     = _fields.map({ $0.rawValue }).joined(separator: ",") as AnyObject? }
-        if let _embedded     = embedded     { params["embedded"]   = _embedded.rawValue as AnyObject? }
-        if let _engagement   = engagement   { params["engagement"] = _engagement.rawValue as AnyObject? }
-        if let _locale       = locale       { params["locale"]     = _locale as AnyObject? }
+        if let c   = count        { params["count"]      = c as AnyObject? }
+        if let n   = newerThan    { params["newerThan"]  = n as AnyObject? }
+        if let co  = continuation { params["count"]      = co as AnyObject? }
+        if let f   = fields       { params["fields"]     = f.map({ $0.rawValue }).joined(separator: ",") as AnyObject? }
+        if let emb = embedded     { params["embedded"]   = emb.rawValue as AnyObject? }
+        if let eng = engagement   { params["engagement"] = eng.rawValue as AnyObject? }
+        if let l   = locale       { params["locale"]     = l as AnyObject? }
         return params
     }
 }

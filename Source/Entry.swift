@@ -85,8 +85,8 @@ public final class Entry: Equatable, Hashable,
         Entry.instanceDidInitialize?(self, json)
     }
 
-    public var hashValue: Int {
-        return id.hashValue
+    public func hash(into hasher: inout Hasher) {
+        return id.hash(into: &hasher)
     }
 
     public func toParameters() -> [String : Any] {

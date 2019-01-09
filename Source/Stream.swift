@@ -17,8 +17,8 @@ open class Stream: Equatable, Hashable {
     open var thumbnailURL: URL? {
         return nil// should be override at subclass
     }
-    open var hashValue: Int {
-        return streamId.hashValue
+    open func hash(into hasher: inout Hasher) {
+        return streamId.hash(into: &hasher)
     }
     public init() {}
 }

@@ -20,11 +20,11 @@ open class PaginationParams: ParameterEncodable {
     public init() {}
     open func toParameters() -> [String : Any] {
         var params: [String:AnyObject] = [:]
-        if let _count        = count        { params["count"]        = _count as AnyObject? }
-        if let _ranked       = ranked       { params["ranked"]       = _ranked as AnyObject? }
-        if let _unreadOnly   = unreadOnly   { params["unreadOnly"]   = _unreadOnly ? "true" as AnyObject? : "false" as AnyObject? }
-        if let _newerThan    = newerThan    { params["newerThan"]    = NSNumber(value: _newerThan as Int64) }
-        if let _continuation = continuation { params["continuation"] = _continuation as AnyObject? }
+        if let c  = count        { params["count"]        = c as AnyObject? }
+        if let r  = ranked       { params["ranked"]       = r as AnyObject? }
+        if let u  = unreadOnly   { params["unreadOnly"]   = u ? "true" as AnyObject? : "false" as AnyObject? }
+        if let n  = newerThan    { params["newerThan"]    = NSNumber(value: n as Int64) }
+        if let co = continuation { params["continuation"] = co as AnyObject? }
         return params
     }
 }
