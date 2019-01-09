@@ -63,8 +63,8 @@ open class PaginatedEntryCollection: ResponseObjectSerializable {
 }
 
 open class PaginatedIdCollection: ResponseObjectSerializable {
-    open let continuation: String?
-    open let ids:          [String]
+    public let continuation: String?
+    public let ids:          [String]
     required public init?(response: HTTPURLResponse, representation: Any) {
         let json     = JSON(representation)
         continuation = json["continuation"].string

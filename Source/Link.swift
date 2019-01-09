@@ -10,9 +10,9 @@ import Foundation
 import SwiftyJSON
 
 open class Link: NSObject, ParameterEncodable {
-    open let href:   String
-    open let type:   String
-    open let length: Int?
+    public let href:   String
+    public let type:   String
+    public let length: Int?
 
     public init(href: String, type: String, length: Int?) {
         self.href   = href

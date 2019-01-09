@@ -69,9 +69,9 @@ open class SearchQueryOfContent: ParameterEncodable {
 }
 
 open class SearchResultFeeds: ResponseObjectSerializable {
-    open let hint: String
-    open let related: [String]
-    open let results: [Feed]
+    public let hint: String
+    public let related: [String]
+    public let results: [Feed]
     @objc required public convenience init?(response: HTTPURLResponse, representation: Any) {
         let json = JSON(representation)
         self.init(json: json)

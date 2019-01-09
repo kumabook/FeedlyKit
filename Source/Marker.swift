@@ -82,9 +82,9 @@ open class UnreadCounts: ResponseObjectSerializable {
 }
 
 open class UnreadCount {
-    open let updated: Int64
-    open let id:      String
-    open let count:   Int
+    public let updated: Int64
+    public let id:      String
+    public let count:   Int
     public init(json: JSON) {
         self.updated = json["updated"].int64Value
         self.id      = json["id"].stringValue

@@ -13,7 +13,7 @@ import Nimble
 import SwiftyJSON
 
 open class SpecHelper {
-    open static let perPage = 5
+    public static let perPage = 5
     open class func fixtureJSONObject(fixtureNamed: String) -> AnyObject? {
         let bundle   = Bundle(for: SpecHelper.self)
         let filePath = bundle.path(forResource: fixtureNamed, ofType: "json")
