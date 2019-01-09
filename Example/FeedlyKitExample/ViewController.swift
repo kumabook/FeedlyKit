@@ -18,7 +18,7 @@ class ViewController: UITableViewController {
     fileprivate let apiClient       = CloudAPIClient(target: .production)
     fileprivate var pagination      = PaginationParams()
     fileprivate var entries:[Entry] = []
-    fileprivate let indicator       = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+    fileprivate let indicator       = UIActivityIndicatorView(style: .gray)
     fileprivate enum State {
         case `init`
         case fetching
